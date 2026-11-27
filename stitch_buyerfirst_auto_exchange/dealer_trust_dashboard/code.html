@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000000",
+                    "tertiary-container": "#271901",
+                    "secondary-container": "#2170e4",
+                    "surface-container-highest": "#d3e4fe",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#98805d",
+                    "on-secondary": "#ffffff",
+                    "primary": "#000000",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed": "#d8e2ff",
+                    "primary-fixed": "#dae2fd",
+                    "on-error-container": "#93000a",
+                    "background": "#f8f9ff",
+                    "on-background": "#0b1c30",
+                    "primary-container": "#131b2e",
+                    "on-surface": "#0b1c30",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "surface-container-low": "#eff4ff",
+                    "surface": "#f8f9ff",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#7c839b",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#76777d",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#bec6e0",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#fefcff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "on-surface-variant": "#45464d",
+                    "inverse-surface": "#213145",
+                    "surface-tint": "#565e74",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#131b2e",
+                    "on-tertiary-fixed": "#271901",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface-variant": "#d3e4fe",
+                    "outline-variant": "#c6c6cd",
+                    "secondary": "#0058be",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-secondary-fixed": "#001a42"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "md": "16px",
+                    "2xl": "48px",
+                    "3xl": "64px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest dark:bg-tertiary-container border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg h-16 w-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="directions_car">directions_car</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">AutoNegotiate</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full" data-icon="notifications">notifications</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-20 pb-24 px-md max-w-md mx-auto space-y-lg">
+<!-- Profile Header -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex items-center gap-md relative overflow-hidden">
+<div class="w-16 h-16 rounded-lg bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist dealership logo featuring a geometric abstract car silhouette in deep navy blue and electric blue. The background is a crisp white, reflecting a professional and high-tech automotive corporate identity. The lighting is bright and even, conveying a sense of transparency and technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASlRXBR1M3wC_P6sTQo3FpYGWt4Q9qjBec5G_54JT-MXV8ygE_ZkBno-F0GbQ8he_T1qFxbKqChL496MSJwLQAcO2i_H0NyHK1rQ5GZe9dVb5HQ6zRLEKjGkTGP7Ypj-8BYRbqVy8XAgoGP2v3q3RoF-u_Z2EDihZR9VwRzc-FsD7OV4aaLJACnTfeS2Zbwp6ZopomUdGhOxM2dpCU0Fv4tVUqDYiXbWTUHr1aNwokQWjnLQb8IrI56w"/>
+</div>
+<div class="flex-1">
+<h2 class="font-headline-sm text-headline-sm text-primary">Elite Motors Group</h2>
+<div class="flex items-center gap-xs mt-1">
+<span class="bg-secondary-container text-on-secondary-container text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">Premium Subscription</span>
+</div>
+</div>
+<button class="material-symbols-outlined text-outline" data-icon="settings">settings</button>
+</section>
+<!-- Trust Dashboard -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm">Trust Dashboard</h3>
+<span class="text-secondary font-label-md text-label-md">Verified Dealer</span>
+</div>
+<!-- Bento Stats -->
+<div class="grid grid-cols-2 gap-md">
+<!-- Warning Counter -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col justify-center items-center text-center">
+<span class="text-[32px] font-bold text-primary">0</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Warnings</span>
+<div class="mt-2 text-[10px] text-green-600 font-bold bg-green-50 px-2 py-1 rounded">HEALTHY</div>
+</div>
+<!-- Trust Score -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md flex flex-col justify-center items-center text-center">
+<span class="text-[32px] font-bold text-secondary">98%</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Trust Score</span>
+<div class="mt-2 text-[10px] text-secondary font-bold bg-secondary-fixed px-2 py-1 rounded">ELITE</div>
+</div>
+</div>
+</section>
+<!-- Terms Agreement Mandate -->
+<section class="bg-primary-container text-on-primary-container rounded-lg p-lg border border-primary relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[80px]" data-icon="gavel">gavel</span>
+</div>
+<h4 class="font-label-md text-label-md text-white flex items-center gap-sm mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+                Terms Agreement
+            </h4>
+<p class="font-body-sm text-body-sm leading-relaxed text-slate-300">
+                By messaging buyers, you legally agree to their listed terms. Violations result in account suspension.
+            </p>
+<div class="mt-4 pt-4 border-t border-slate-700">
+<button class="text-white font-label-md text-label-md flex items-center gap-xs">
+                    View Agreement Contract
+                    <span class="material-symbols-outlined text-sm" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</section>
+<!-- Recent Reviews -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm">Transparency Log</h3>
+<button class="font-label-md text-label-md text-secondary">View All</button>
+</div>
+<div class="space-y-sm">
+<!-- Review Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md space-y-sm">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-xs">JD</div>
+<div>
+<p class="font-label-md text-label-md">John Doe</p>
+<p class="text-[10px] text-outline">Verified Buyer • 2 days ago</p>
+</div>
+</div>
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">"Honest negotiation process. The dealer respected my target price and we closed the deal in 48 hours without hidden fees."</p>
+</div>
+<!-- Review Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md space-y-sm">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-xs">AS</div>
+<div>
+<p class="font-label-md text-label-md">Alice Smith</p>
+<p class="text-[10px] text-outline">Verified Buyer • 1 week ago</p>
+</div>
+</div>
+<div class="flex text-secondary">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star_half" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">"Very professional. They were upfront about the inventory shortages and didn't waste time on unrealistic counter-offers."</p>
+</div>
+</div>
+</section>
+<!-- Subscription Details -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-widest">Subscription Plan</h3>
+<div class="flex justify-between items-center py-sm">
+<div>
+<p class="font-headline-sm text-headline-sm">Dealer Pro Plus</p>
+<p class="font-body-sm text-body-sm text-outline">Next billing: Oct 12, 2024</p>
+</div>
+<div class="text-right">
+<p class="font-headline-sm text-headline-sm">$499/mo</p>
+<button class="text-secondary font-label-sm text-label-sm hover:underline">Manage Plan</button>
+</div>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant space-y-sm">
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm">Unlimited Negotiation Channels</span>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm">Priority Search Placement</span>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-sm text-body-sm">Advanced Buyer Analytics</span>
+</div>
+</div>
+</section>
+<!-- Support / Action -->
+<section class="py-md">
+<button class="w-full bg-surface-container-high border border-outline-variant text-primary font-label-md text-label-md py-md rounded-lg flex items-center justify-center gap-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+                Contact Dealer Support
+            </button>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest dark:bg-tertiary-container border-t border-outline-variant dark:border-outline flex justify-around items-center h-20 pb-safe w-full">
+<!-- Listings -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-sm text-label-sm mt-1">Listings</span>
+</div>
+<!-- Search -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm mt-1">Search</span>
+</div>
+<!-- Messages -->
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Messages</span>
+</div>
+<!-- Trust (ACTIVE) -->
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm mt-1">Trust</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for navigation
+        document.querySelectorAll('nav > div').forEach(item => {
+            item.addEventListener('click', () => {
+                // In a real app, this would route
+                console.log('Navigating to:', item.innerText.trim());
+            });
+        });
+
+        // Simple scroll shadow effect for header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 10) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

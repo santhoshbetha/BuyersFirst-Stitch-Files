@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evidence Request Sent | ArbiterCore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .success-check-draw {
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
+            animation: dash 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards 0.2s;
+        }
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#000000",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary-fixed": "#271901",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "tertiary-fixed": "#fcdeb5",
+                        "primary-container": "#131b2e",
+                        "on-secondary-container": "#fefcff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-background": "#0b1c30",
+                        "on-surface-variant": "#45464d",
+                        "primary-fixed": "#dae2fd",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-container": "#2170e4",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary": "#0058be",
+                        "tertiary-container": "#271901",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-primary": "#bec6e0",
+                        "outline": "#76777d",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#98805d",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "primary": "#000000",
+                        "inverse-surface": "#213145",
+                        "surface-container": "#e5eeff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001a42",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-surface": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#7c839b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "2xl": "48px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "3xl": "64px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface-container-lowest dark:bg-surface-container-lowest border-b border-outline-variant dark:border-outline-variant z-50">
+<div class="flex items-center justify-between px-lg py-sm w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed-dim" data-icon="gavel">gavel</span>
+<h1 class="font-headline-sm text-headline-sm font-bold text-tertiary dark:text-tertiary-fixed">ArbiterCore</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex gap-lg">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md px-sm py-xs rounded-lg" href="#">Dashboard</a>
+<a class="text-secondary dark:text-secondary-fixed-dim font-bold hover:bg-surface-container-high transition-colors font-label-md px-sm py-xs rounded-lg" href="#">Case Management</a>
+</div>
+<span class="material-symbols-outlined text-secondary cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-md bg-gradient-to-br from-background to-surface-container-low">
+<div class="w-full max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+<!-- Success Hero Section -->
+<div class="text-center mb-xl">
+<div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-secondary-container mb-lg shadow-sm animate-float">
+<svg class="w-12 h-12 text-on-secondary-container" viewbox="0 0 52 52">
+<circle class="opacity-20" cx="26" cy="26" fill="none" r="25" stroke="currentColor" stroke-width="2"></circle>
+<path class="success-check-draw" d="M14.1 27.2l7.1 7.2 16.7-16.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+</svg>
+</div>
+<h2 class="font-display-lg text-display-lg text-tertiary mb-sm tracking-tight">Request Dispatched</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
+                    The evidence request has been officially logged and transmitted to the dealer.
+                </p>
+</div>
+<!-- Bento Grid Summary -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Main Status Card -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between mb-lg pb-sm border-b border-outline-variant">
+<span class="font-label-md text-label-md uppercase tracking-wider text-outline">Request Summary</span>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Awaiting Evidence</span>
+</div>
+</div>
+<div class="space-y-md">
+<div class="flex items-start gap-md">
+<div class="p-sm bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="store">store</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Target Entity</p>
+<p class="font-body-md text-body-md font-bold text-tertiary">Northside Automotive Dealer Group</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<div class="p-sm bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="description">description</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Documents Requested</p>
+<p class="font-body-md text-body-md font-bold text-tertiary">3 Files (Sales Contract, Inspection Report, Odometer Affidavit)</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<div class="p-sm bg-surface-container rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="timer">timer</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline">Compliance Deadline</p>
+<p class="font-body-md text-body-md font-bold text-tertiary">48 Hours (Exp. Oct 26, 14:00 GMT)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Info Panel -->
+<div class="md:col-span-4 flex flex-col gap-lg">
+<div class="bg-primary-container text-white rounded-xl p-lg flex flex-col justify-between flex-grow shadow-sm">
+<div>
+<span class="font-label-sm text-label-sm text-on-primary-container">Case ID</span>
+<h3 class="font-headline-sm text-headline-sm mb-md">#ARB-2024-0982</h3>
+</div>
+<div class="p-md bg-white/10 rounded-lg backdrop-blur-sm">
+<p class="font-label-sm text-label-sm mb-xs opacity-80">Current Status</p>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm" data-icon="published_with_changes">published_with_changes</span>
+<span class="font-label-md text-label-md">Status Updated</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-lg shadow-sm">
+<span class="font-label-sm text-label-sm text-outline block mb-sm">Next Automated Action</span>
+<p class="font-body-sm text-body-sm text-on-surface">Auto-escalation if no response within deadline window.</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-2xl flex flex-col md:flex-row items-center justify-center gap-md">
+<button class="w-full md:w-auto px-2xl py-md bg-tertiary text-on-tertiary font-label-md text-label-md rounded-lg hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                    Return to Case
+                </button>
+<button class="w-full md:w-auto px-2xl py-md bg-transparent border border-secondary text-secondary font-label-md text-label-md rounded-lg hover:bg-secondary/5 active:scale-95 transition-all flex items-center justify-center gap-sm">
+                    Go to Queue
+                    <span class="material-symbols-outlined" data-icon="queue">queue</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full bottom-0 bg-surface-container-low dark:bg-surface-container-low border-t border-outline-variant dark:border-outline-variant">
+<div class="flex justify-between items-center px-lg py-md w-full max-w-container-max mx-auto">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-tertiary">ArbiterCore</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Automotive Arbitration &amp; Compliance System. Internal Use Only.</p>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-opacity duration-150" href="#">Security Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-opacity duration-150" href="#">Arbiter Guidelines</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-opacity duration-150" href="#">System Status</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for hover states on summary cards
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0px)';
+            });
+        });
+    </script>
+</body></html>

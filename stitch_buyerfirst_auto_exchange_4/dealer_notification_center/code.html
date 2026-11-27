@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notification Center - AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#fefcff",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "on-primary-fixed": "#131b2e",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#000000",
+                    "surface-container-high": "#dce9ff",
+                    "secondary-container": "#2170e4",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#bec6e0",
+                    "primary-fixed-dim": "#bec6e0",
+                    "primary-container": "#131b2e",
+                    "on-surface": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed": "#271901",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-container": "#98805d",
+                    "on-surface-variant": "#45464d",
+                    "inverse-surface": "#213145",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "surface-dim": "#cbdbf5",
+                    "surface": "#f8f9ff",
+                    "secondary": "#0058be",
+                    "primary-fixed": "#dae2fd",
+                    "outline": "#76777d",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "background": "#f8f9ff",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-background": "#0b1c30",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#eff4ff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-primary-container": "#7c839b",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "outline-variant": "#c6c6cd",
+                    "primary": "#000000",
+                    "on-secondary-fixed": "#001a42",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#d8e2ff",
+                    "tertiary-container": "#271901",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface-tint": "#565e74"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "xl": "32px",
+                    "2xl": "48px",
+                    "3xl": "64px",
+                    "lg": "24px",
+                    "gutter": "24px",
+                    "md": "16px",
+                    "base": "4px",
+                    "xs": "4px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-shadow {
+            box-shadow: 0px 1px 3px rgba(15, 23, 42, 0.1), 0px 1px 2px rgba(15, 23, 42, 0.06);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-20 md:pb-0 md:pt-16">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-inverse-surface border-b border-outline-variant dark:border-outline h-16 flex items-center shadow-none">
+<div class="flex items-center justify-between px-md h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed">directions_car</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface">AutoNegotiate</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex gap-lg items-center mr-lg">
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-sm py-1 rounded-lg font-label-md text-label-md" href="#">Deals</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-sm py-1 rounded-lg font-label-md text-label-md" href="#">Inventory</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-sm py-1 rounded-lg font-label-md text-label-md" href="#">Settings</a>
+</div>
+<button class="material-symbols-outlined text-secondary dark:text-secondary-fixed p-sm rounded-full bg-surface-container-low">notifications</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="max-w-container-max mx-auto px-md py-lg md:py-xl">
+<!-- Page Header -->
+<div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Notification Center</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your deal assignments and buyer interactions.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container-lowest border border-outline-variant px-md py-sm rounded-lg custom-shadow">
+<span class="material-symbols-outlined text-secondary text-sm">filter_list</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Filter by: All Activity</span>
+<span class="material-symbols-outlined text-on-surface-variant text-sm">expand_more</span>
+</div>
+</div>
+<!-- Notification Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- FEATURED NOTIFICATION: New Deal Assignment (BMW M3) -->
+<section class="md:col-span-12 lg:col-span-8">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden custom-shadow relative group">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-secondary text-on-secondary text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded-full">New Assignment</span>
+</div>
+<div class="flex flex-col md:flex-row">
+<!-- Vehicle Image Container -->
+<div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden relative">
+<div class="absolute inset-0 bg-gradient-to-t from-on-primary-fixed/60 to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A professional studio photograph of a 2024 BMW M3 in Frozen Brilliant White. The car is angled dynamically to showcase its aggressive front grille and aerodynamic lines. The lighting is sophisticated, with soft rim lights highlighting the sleek contours against a clean, minimalist charcoal gray backdrop, evoking a premium and technical automotive atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeBAXrr_-AuPsti-61tR4xfd_kY08MsbPCwJNjO4WFfPoMjRZhplyvGpy7TX4oi57rZmH-2yUHEHpZw12kaZzXNtSMrDGNy6AVOiS1xcl4ahjhlB4r_xgd6mG2qcAhm3TIXh_dkRYY6xahA_qudySkn6fGjZjyFjErE446oPd4kmaQkg0uKYz28VyYqAvQOY-YMpqd3ugr4sTfnzSR1i1560IFSCG6HWmi28obOGS5kEGkoaaEGgkdOg"/>
+<div class="absolute bottom-4 left-4 z-20">
+<p class="text-white font-headline-sm text-headline-sm">2024 BMW M3</p>
+<p class="text-white/80 font-label-sm text-label-sm">Competition xDrive</p>
+</div>
+</div>
+<!-- Details Content -->
+<div class="p-lg md:p-xl flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<div class="w-10 h-10 rounded-full border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional corporate headshot of Marcus Thorne, a mid-40s male administrator with a sharp, professional appearance. He wears a tailored navy blue suit and a crisp white shirt. The background is a blurred high-end dealership showroom with subtle glass and steel architectural elements, lit with bright, neutral daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuFSx07X53VlAXFjE6hBUNgSSYwv6R2je-z9Y1I4tQGfr3a8OKlxwdorFtjKqI2AZmuhpIpmtpIAldqM5V-fpLmaexUxUSqhji2EAhuPZG1qIK_Ok8JaNJ6eW0e4xzLTyw2GdLtbS08U1Wm3LBJvo9L0qadGATgFHXv0KHYo0xXzHoCRrMEbX-9L1qifuBpMZLJWMwRh46hFavXuqLy8SzA-R8rj4EHcuagfEbtJy9ZV-oCmQeMZ0-ew"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Assigned by Marcus Thorne</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sales Administrator • 2 minutes ago</p>
+</div>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">High-Priority Negotiation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">A qualified buyer has requested a final term sheet for the BMW M3. Initial offer is within 3% of target margins. Immediate attention required to secure the month-end close.</p>
+</div>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/30">
+<div class="flex gap-lg">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Offer</p>
+<p class="font-headline-sm text-headline-sm text-secondary">$84,500</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Gap</p>
+<p class="font-headline-sm text-headline-sm text-error">-$1,250</p>
+</div>
+</div>
+<button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-lg py-sm rounded-lg hover:bg-on-primary-container hover:text-white transition-all active:scale-95 flex items-center gap-sm">
+                                    View Deal
+                                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- STATS / QUICK VIEW -->
+<aside class="md:col-span-12 lg:col-span-4 flex flex-col gap-lg">
+<div class="bg-primary-container text-white p-lg rounded-xl custom-shadow">
+<h4 class="font-label-md text-label-md text-white/70 uppercase mb-md tracking-wider">Today's Pipeline</h4>
+<div class="space-y-md">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md">New Leads</span>
+<span class="font-headline-sm text-headline-sm">04</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md">Active Chats</span>
+<span class="font-headline-sm text-headline-sm">12</span>
+</div>
+<div class="w-full bg-white/10 h-1.5 rounded-full mt-lg">
+<div class="bg-secondary-fixed w-[75%] h-full rounded-full"></div>
+</div>
+<p class="font-label-sm text-label-sm text-white/60">75% of daily target reached</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl custom-shadow">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase mb-md">Quick Actions</h4>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex flex-col items-center justify-center p-md rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary mb-xs">add_box</span>
+<span class="font-label-sm text-label-sm">New Offer</span>
+</button>
+<button class="flex flex-col items-center justify-center p-md rounded-lg border border-outline-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary mb-xs">contact_page</span>
+<span class="font-label-sm text-label-sm">Directory</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- NOTIFICATION LIST -->
+<section class="md:col-span-12 space-y-md">
+<div class="flex items-center justify-between px-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Recent Activity</h2>
+<button class="text-secondary font-label-md text-label-md hover:underline">Mark all as read</button>
+</div>
+<!-- Buyer Message -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md custom-shadow hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex items-start gap-md">
+<div class="bg-secondary-container/10 p-sm rounded-full">
+<span class="material-symbols-outlined text-secondary">chat_bubble</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-md text-label-md text-on-surface">Buyer Message: Sarah Jenkins</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">15m ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-1">"Can we finalize the trade-in value today? I'm ready to sign if we can hit my target."</p>
+<div class="mt-sm flex items-center gap-lg">
+<span class="font-label-sm text-label-sm text-secondary bg-secondary/5 px-2 py-0.5 rounded">2023 Audi Q5</span>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Unread</span>
+</div>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity self-center text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Price Alert -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md custom-shadow hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex items-start gap-md">
+<div class="bg-error-container/20 p-sm rounded-full">
+<span class="material-symbols-outlined text-error">trending_down</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-md text-label-md text-on-surface">Market Price Alert</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Market value for <span class="font-bold">Porsche 911 (992)</span> inventory has shifted by -2.4%. Review pending offers.</p>
+<div class="mt-sm flex items-center gap-lg">
+<span class="font-label-sm text-label-sm text-error bg-error/5 px-2 py-0.5 rounded">Action Recommended</span>
+</div>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity self-center text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Deal Status Update -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md custom-shadow hover:border-secondary transition-colors cursor-pointer group opacity-75">
+<div class="flex items-start gap-md">
+<div class="bg-surface-variant p-sm rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant">check_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-label-md text-label-md text-on-surface">Deal Finalized: #TR-9902</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">3h ago</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">2024 Mercedes-Benz GLE negotiation closed at $72,400. Document signing complete.</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity self-center text-on-surface-variant">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface dark:bg-inverse-surface border-t border-outline-variant dark:border-outline shadow-sm flex justify-around items-center h-16 px-sm pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest active:scale-95 transition-transform duration-100 px-sm">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-sm text-label-sm">Deals</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold active:scale-95 transition-transform duration-100 px-sm relative">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+<span class="absolute top-1 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest active:scale-95 transition-transform duration-100 px-sm">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-sm text-label-sm">Inventory</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest active:scale-95 transition-transform duration-100 px-sm">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</button>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.classList.add('scale-[1.002]');
+            });
+            item.addEventListener('mouseleave', () => {
+                item.classList.remove('scale-[1.002]');
+            });
+        });
+    </script>
+</body></html>

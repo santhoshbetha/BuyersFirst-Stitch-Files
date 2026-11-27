@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Compliance Rebuttal | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#e5eeff",
+                        "secondary": "#0058be",
+                        "on-surface": "#0b1c30",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed": "#d8e2ff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "background": "#f8f9ff",
+                        "tertiary-container": "#271901",
+                        "on-tertiary-container": "#98805d",
+                        "surface": "#f8f9ff",
+                        "on-background": "#0b1c30",
+                        "on-primary-fixed": "#131b2e",
+                        "on-secondary-container": "#fefcff",
+                        "secondary-container": "#2170e4",
+                        "primary-fixed": "#dae2fd",
+                        "outline": "#76777d",
+                        "on-secondary-fixed": "#001a42",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-primary": "#bec6e0",
+                        "on-tertiary-fixed": "#271901",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#eff4ff",
+                        "surface-variant": "#d3e4fe",
+                        "surface-bright": "#f8f9ff",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "inverse-surface": "#213145",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface-variant": "#45464d",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-container": "#7c839b",
+                        "primary-container": "#131b2e",
+                        "primary": "#000000",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-container-high": "#dce9ff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#004395"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "3xl": "64px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xl": "32px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); }
+        .tab-active { border-bottom: 2px solid #0058be; color: #0058be; }
+        .upload-area:hover { border-color: #0058be; background-color: #eff4ff; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-on-background border-b border-outline-variant dark:border-on-surface-variant z-50">
+<div class="flex justify-between items-center px-lg py-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed text-headline-md">directions_car</span>
+<h1 class="text-headline-md font-headline-md font-bold text-on-background dark:text-background">AutoNegotiate</h1>
+</div>
+<div class="flex items-center gap-lg">
+<nav class="hidden md:flex items-center gap-md">
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md transition-colors hover:text-secondary" href="#">Dashboard</a>
+<a class="text-secondary dark:text-secondary-fixed font-label-md font-bold" href="#">Compliance</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md transition-colors hover:text-secondary" href="#">Inventory</a>
+</nav>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-white text-xs font-bold">DP</div>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-lg py-xl">
+<!-- Header Section -->
+<div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<nav class="flex items-center gap-xs text-on-surface-variant mb-sm">
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Compliance</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider">Flag ID #8842-CF</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Respond to Compliance Flag</h2>
+<p class="text-body-md text-on-surface-variant mt-xs">Action required to maintain your Trust Score and platform eligibility.</p>
+</div>
+<div class="flex items-center gap-sm bg-error-container text-on-error-container px-md py-sm rounded-lg border border-error/20">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-label-md text-label-md">High Priority Resolution</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<!-- Left Column: System Detection Info -->
+<div class="lg:col-span-5 space-y-lg">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="px-lg py-md border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+                            System Detection
+                        </h3>
+</div>
+<div class="p-lg space-y-md">
+<div class="p-md bg-surface rounded-lg border border-outline-variant">
+<span class="text-label-sm text-on-surface-variant uppercase font-bold block mb-base">Violation Type</span>
+<span class="text-headline-sm text-error font-bold">Unmapped Market Adjustment</span>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="p-md bg-surface-container-low rounded-lg">
+<span class="text-label-sm text-on-surface-variant block mb-base">Platform Agreed Fee</span>
+<span class="text-headline-sm font-bold text-on-surface">$0.00</span>
+</div>
+<div class="p-md bg-error-container rounded-lg">
+<span class="text-label-sm text-on-error-container block mb-base">Detected on Contract</span>
+<span class="text-headline-sm font-bold text-error">$2,495.00</span>
+</div>
+</div>
+<div class="pt-md border-t border-outline-variant">
+<span class="text-label-sm text-on-surface-variant uppercase font-bold block mb-base">System Evidence Trace</span>
+<div class="bg-on-background p-md rounded-lg">
+<pre class="text-xs text-outline-variant font-mono whitespace-pre-wrap leading-relaxed">OCR_SCAN_MATCH: [Line 42] "Market_Adj"
+VALUE: 2495.00
+CONTRACT_REF: VIN_...4922_REV2
+TIMESTAMP: 2023-10-24 14:22:10</pre>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Score Impact Warning -->
+<div class="p-lg bg-surface-container-high border-l-4 border-error rounded-r-xl shadow-sm">
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-error-container mb-xs">Critical Legal Notice</h4>
+<p class="text-body-sm text-on-surface-variant">Submission of false or misleading evidence during a formal rebuttal is a breach of the Dealer Agreement. Validated false rebuttals result in an immediate -15 point penalty to your <strong>Dealer Trust Score</strong> and may trigger an audit of the last 90 days of transactions.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Rebuttal Form -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm h-full">
+<div class="px-lg py-md border-b border-outline-variant flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm">Resolution Selection</h3>
+<div class="flex bg-surface-container-low p-xs rounded-lg">
+<button class="px-md py-sm rounded-md text-label-md font-bold transition-all bg-white shadow-sm text-secondary" id="tab-update" onclick="switchAction('update')">
+                                Update Offer
+                            </button>
+<button class="px-md py-sm rounded-md text-label-md font-bold transition-all text-on-surface-variant hover:text-on-surface" id="tab-rebut" onclick="switchAction('rebut')">
+                                Formal Rebuttal
+                            </button>
+</div>
+</div>
+<form class="p-lg space-y-lg" id="rebuttal-form">
+<!-- Choice 1: Update Offer (Default Hidden/Shown via JS) -->
+<div class="space-y-md" id="section-update">
+<div class="p-lg border-2 border-secondary/20 bg-secondary/5 rounded-xl">
+<h4 class="font-headline-sm text-headline-sm text-secondary mb-sm">Correct &amp; Update Offer</h4>
+<p class="text-body-md text-on-surface-variant mb-md">Acknowledging the discrepancy will automatically remove the $2,495 charge from the buyer's portal and regenerate the compliance-approved contract. No Trust Score penalty applies for prompt corrections.</p>
+<button class="w-full py-md bg-secondary text-white font-label-md rounded-lg hover:bg-on-secondary-fixed-variant transition-colors shadow-lg shadow-secondary/20" type="button">
+                                    Apply Correction Now
+                                </button>
+</div>
+</div>
+<!-- Choice 2: Formal Rebuttal -->
+<div class="hidden space-y-lg" id="section-rebut">
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-sm">Explanation of Charge</label>
+<textarea class="w-full bg-surface border border-outline-variant rounded-lg p-md text-body-md focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all resize-none" placeholder="Please provide a detailed justification for this fee. Reference specific dealership policy or prior communication with the buyer..." rows="6"></textarea>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface-variant mb-sm">Evidence Documentation</label>
+<div class="upload-area border-2 border-dashed border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center text-center transition-colors cursor-pointer group">
+<div class="w-12 h-12 bg-surface-container-low rounded-full flex items-center justify-center text-secondary mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">cloud_upload</span>
+</div>
+<h5 class="font-label-md text-label-md text-on-surface mb-xs">Drag and drop evidence here</h5>
+<p class="text-body-sm text-on-surface-variant max-w-xs">Upload signed addendums, buyer-approved quote sheets, or timestamped communications (PDF, PNG, JPG).</p>
+<input class="hidden" id="file-input" multiple="" type="file"/>
+<button class="mt-md px-lg py-sm border border-secondary text-secondary font-label-md rounded-lg hover:bg-secondary hover:text-white transition-all" onclick="document.getElementById('file-input').click()" type="button">
+                                        Browse Files
+                                    </button>
+</div>
+</div>
+<div class="flex items-start gap-sm">
+<input class="mt-1 rounded text-secondary focus:ring-secondary" id="confirm-truth" type="checkbox"/>
+<label class="text-body-sm text-on-surface-variant" for="confirm-truth">
+                                    I certify that the information provided is accurate and that I have the legal authority to represent the dealership in this rebuttal. I understand that fraudulent submissions will be penalized.
+                                </label>
+</div>
+<div class="flex gap-md pt-md">
+<button class="flex-1 py-md bg-secondary text-white font-label-md rounded-lg hover:shadow-lg transition-all opacity-50 cursor-not-allowed" disabled="" id="submit-rebuttal-btn" type="button">
+                                    Submit Formal Rebuttal
+                                </button>
+<button class="px-xl py-md bg-surface text-on-surface-variant font-label-md border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors" onclick="switchAction('update')" type="button">
+                                    Cancel
+                                </button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface dark:bg-on-background px-md pb-safe border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">security</span>
+<span class="text-label-sm font-label-sm">Compliance</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-label-sm font-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-label-sm font-label-sm">Settings</span>
+</a>
+</footer>
+<script>
+        function switchAction(action) {
+            const updateSec = document.getElementById('section-update');
+            const rebutSec = document.getElementById('section-rebut');
+            const updateTab = document.getElementById('tab-update');
+            const rebutTab = document.getElementById('tab-rebut');
+
+            if (action === 'update') {
+                updateSec.classList.remove('hidden');
+                rebutSec.classList.add('hidden');
+                updateTab.classList.add('bg-white', 'shadow-sm', 'text-secondary');
+                updateTab.classList.remove('text-on-surface-variant');
+                rebutTab.classList.remove('bg-white', 'shadow-sm', 'text-secondary');
+                rebutTab.classList.add('text-on-surface-variant');
+            } else {
+                rebutSec.classList.remove('hidden');
+                updateSec.classList.add('hidden');
+                rebutTab.classList.add('bg-white', 'shadow-sm', 'text-secondary');
+                rebutTab.classList.remove('text-on-surface-variant');
+                updateTab.classList.remove('bg-white', 'shadow-sm', 'text-secondary');
+                updateTab.classList.add('text-on-surface-variant');
+            }
+        }
+
+        // Enable button logic
+        const checkbox = document.getElementById('confirm-truth');
+        const submitBtn = document.getElementById('submit-rebuttal-btn');
+        checkbox.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        });
+    </script>
+</body></html>

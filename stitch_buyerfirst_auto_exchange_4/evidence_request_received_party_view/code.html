@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evidence Required | ArbiterCore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000000",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-tertiary-fixed": "#271901",
+                    "outline-variant": "#c6c6cd",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#565e74",
+                    "tertiary-fixed": "#fcdeb5",
+                    "primary-container": "#131b2e",
+                    "on-secondary-container": "#fefcff",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "on-background": "#0b1c30",
+                    "on-surface-variant": "#45464d",
+                    "primary-fixed": "#dae2fd",
+                    "background": "#f8f9ff",
+                    "surface-variant": "#d3e4fe",
+                    "secondary-container": "#2170e4",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#131b2e",
+                    "secondary": "#0058be",
+                    "tertiary-container": "#271901",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "inverse-primary": "#bec6e0",
+                    "outline": "#76777d",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#98805d",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface": "#f8f9ff",
+                    "surface-dim": "#cbdbf5",
+                    "primary": "#000000",
+                    "inverse-surface": "#213145",
+                    "surface-container": "#e5eeff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#001a42",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-surface": "#0b1c30",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#7c839b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "2xl": "48px",
+                    "md": "16px",
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "3xl": "64px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .urgent-gradient {
+            background: linear-gradient(90deg, #ba1a1a 0%, #8b1212 100%);
+        }
+        .timer-glow {
+            text-shadow: 0 0 8px rgba(186, 26, 26, 0.3);
+        }
+        .document-card:hover {
+            border-color: #0058be;
+            background-color: #f8f9ff;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface-container-lowest border-b border-outline-variant z-50">
+<div class="flex items-center justify-between px-lg py-sm w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span class="font-headline-sm text-headline-sm font-bold text-tertiary">ArbiterCore</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-xs rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant font-label-md">
+<span class="material-symbols-outlined">help_outline</span>
+<span>Support</span>
+</button>
+<span class="material-symbols-outlined text-secondary cursor-pointer">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow w-full max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-lg p-lg">
+<!-- Urgent Header & Dispute Summary (Bento Left) -->
+<div class="lg:col-span-8 flex flex-col gap-lg">
+<!-- Urgent Banner -->
+<div class="urgent-gradient text-on-error p-xl rounded-xl shadow-lg relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-md mb-sm">
+<span class="material-symbols-outlined text-[32px]">warning</span>
+<h1 class="font-headline-lg text-headline-lg tracking-tight">Evidence Required</h1>
+</div>
+<p class="font-body-lg text-white/90 max-w-2xl">
+                        A formal arbitration request has been filed regarding Case #ARB-88291. Immediate action is required to maintain your standing in this dispute.
+                    </p>
+</div>
+<!-- Subtle background pattern -->
+<div class="absolute right-[-20px] top-[-20px] opacity-10">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'wght' 700;">priority_high</span>
+</div>
+</div>
+<!-- Dispute Details Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<div class="flex justify-between items-start mb-md border-b border-outline-variant pb-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary mb-1">Dispute Description</h2>
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Category: Structural Integrity Misrepresentation</span>
+</div>
+<span class="bg-secondary-container text-on-secondary-container px-md py-1 rounded-full font-label-md">Status: Pending Evidence</span>
+</div>
+<div class="space-y-md">
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                        The buyer (Apex Logistics Corp) claims the vehicle <span class="font-bold text-primary">2021 Freightliner Cascadia (VIN: ...8821)</span> was sold with undisclosed frame damage. The arbitration body requires technical documentation and point-of-sale inspection reports to determine liability for the $14,200 repair estimate.
+                    </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md pt-sm">
+<div class="bg-surface-container-low p-md rounded-lg">
+<span class="block text-outline font-label-sm mb-1">CLAIM AMOUNT</span>
+<span class="block font-headline-sm text-headline-sm text-primary">$14,200.00</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg">
+<span class="block text-outline font-label-sm mb-1">OPPOSING PARTY</span>
+<span class="block font-headline-sm text-headline-sm text-primary">Apex Logistics</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg">
+<span class="block text-outline font-label-sm mb-1">LOCATION</span>
+<span class="block font-headline-sm text-headline-sm text-primary" data-location="Chicago, IL">Chicago, IL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Evidence Checklist -->
+<div class="space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm">Requested Documents</h3>
+<span class="text-outline font-label-md">0 of 4 Uploaded</span>
+</div>
+<div class="grid grid-cols-1 gap-sm">
+<!-- Doc Item 1 -->
+<div class="document-card group border border-outline-variant bg-surface-container-lowest p-md rounded-xl flex items-center justify-between transition-all">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">description</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Original Inspection Report</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Must include frame and structural assessment stamps.</p>
+</div>
+</div>
+<button class="flex items-center gap-xs px-lg py-sm bg-secondary text-on-secondary rounded-lg font-label-md hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+<span>Upload</span>
+</button>
+</div>
+<!-- Doc Item 2 -->
+<div class="document-card group border border-outline-variant bg-surface-container-lowest p-md rounded-xl flex items-center justify-between transition-all">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Pre-Sale Undercarriage Photos</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Minimum 4 high-resolution angles of the chassis.</p>
+</div>
+</div>
+<button class="flex items-center gap-xs px-lg py-sm bg-secondary text-on-secondary rounded-lg font-label-md hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+<span>Upload</span>
+</button>
+</div>
+<!-- Doc Item 3 -->
+<div class="document-card group border border-outline-variant bg-surface-container-lowest p-md rounded-xl flex items-center justify-between transition-all">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">signature</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Signed Bill of Sale</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Counter-signed document with 'As-Is' disclosure.</p>
+</div>
+</div>
+<button class="flex items-center gap-xs px-lg py-sm bg-secondary text-on-secondary rounded-lg font-label-md hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+<span>Upload</span>
+</button>
+</div>
+<!-- Doc Item 4 -->
+<div class="document-card group border border-outline-variant bg-surface-container-lowest p-md rounded-xl flex items-center justify-between transition-all">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Repair History Records</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Last 12 months of service logs for this VIN.</p>
+</div>
+</div>
+<button class="flex items-center gap-xs px-lg py-sm bg-secondary text-on-secondary rounded-lg font-label-md hover:bg-opacity-90 transition-all">
+<span class="material-symbols-outlined text-[18px]">upload</span>
+<span>Upload</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar (Countdown & Actions) -->
+<aside class="lg:col-span-4 flex flex-col gap-lg">
+<!-- Countdown Timer Card -->
+<div class="bg-surface-container-lowest border-2 border-error border-opacity-20 rounded-xl p-lg shadow-sm">
+<h3 class="font-label-md text-label-md text-error flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                    SUBMISSION DEADLINE
+                </h3>
+<div class="flex justify-between items-center text-center gap-sm py-md" id="countdown">
+<div class="flex-1">
+<span class="block font-display-lg text-[40px] text-error timer-glow font-extrabold" id="days">23</span>
+<span class="block font-label-sm text-outline uppercase tracking-tighter">Hours</span>
+</div>
+<div class="text-error font-extrabold text-2xl">:</div>
+<div class="flex-1">
+<span class="block font-display-lg text-[40px] text-error timer-glow font-extrabold" id="mins">45</span>
+<span class="block font-label-sm text-outline uppercase tracking-tighter">Mins</span>
+</div>
+<div class="text-error font-extrabold text-2xl">:</div>
+<div class="flex-1">
+<span class="block font-display-lg text-[40px] text-error timer-glow font-extrabold" id="secs">12</span>
+<span class="block font-label-sm text-outline uppercase tracking-tighter">Secs</span>
+</div>
+</div>
+<p class="mt-md font-body-sm text-on-surface-variant text-center italic">
+                    Failure to upload by <span class="text-primary font-bold">Oct 14, 2024, 5:00 PM EST</span> will result in an automatic default judgment.
+                </p>
+</div>
+<!-- Action Center -->
+<div class="bg-surface-container-low rounded-xl p-lg space-y-md">
+<h3 class="font-headline-sm text-headline-sm">Support & Assistance</h3>
+<p class="font-body-sm text-on-surface-variant">
+                    If you have technical issues with the upload or require an extension due to legal processing, contact the assigned arbiter immediately.
+                </p>
+<div class="space-y-sm">
+<button class="w-full flex items-center justify-center gap-md px-md py-md bg-tertiary text-on-tertiary rounded-lg font-label-md hover:opacity-90 transition-all">
+<span class="material-symbols-outlined">chat</span>
+<span>Contact Arbiter</span>
+</button>
+<button class="w-full flex items-center justify-center gap-md px-md py-md border border-outline text-secondary rounded-lg font-label-md hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined">history</span>
+<span>View Communication Log</span>
+</button>
+</div>
+</div>
+<!-- Related Info -->
+<div class="p-md border border-outline-variant border-dashed rounded-xl">
+<div class="flex gap-md">
+<div class="flex-shrink-0">
+<span class="material-symbols-outlined text-outline">verified_user</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary">Security & Compliance</h4>
+<p class="font-body-sm text-body-sm text-outline mt-1">All uploaded evidence is encrypted and only accessible by the presiding legal arbiter.</p>
+</div>
+</div>
+</div>
+<!-- Visual Context Image -->
+<div class="rounded-xl overflow-hidden h-48 relative border border-outline-variant shadow-inner">
+<div class="absolute inset-0 bg-black/40 flex items-end p-md z-10">
+<span class="text-white font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                        ArbiterCore Compliance Node - East Coast
+                    </span>
+</div>
+<img class="w-full h-full object-cover" data-alt="A clean, high-tech corporate office interior with architectural glass and soft blue accent lighting. The environment is minimalist and professional, suggesting a secure legal or financial headquarters. In the background, a digital screen displays blurred data charts in a navy and slate color palette, reinforcing the brand's authority and technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQ0O25ObTTw8Xr5vq0sKclqWf4yLJKISkiMFjniXKug-cUW6_0XRbZA520UwCxWvXexhbBD0uJKa38KdX8c7OjCohaLS3YsfOBRNEWhT7mAfhQtmgai9RwMpDWaTSE_-Jay_xbOdBIVZpDLMGy1YiLV6efaQKJTDG3Z_HZDfb24M5u_hhtiBRr_D1d70wM45QYT5z92wQkyHh5yH5NF584nBh6qb8r1BdOHOC6Sh7HihJW5o8XkLSxtw"/>
+</div>
+</aside>
+</main>
+<!-- Footer -->
+<footer class="w-full bottom-0 bg-surface-container-low border-t border-outline-variant mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg py-md w-full max-w-container-max mx-auto gap-md">
+<div class="flex flex-col md:flex-row items-center gap-md">
+<span class="font-label-md text-label-md font-bold text-tertiary">ArbiterCore</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Automotive Arbitration & Compliance System. Internal Use Only.</span>
+</div>
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-opacity duration-150" href="#">Security Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-opacity duration-150" href="#">Arbiter Guidelines</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-opacity duration-150" href="#">System Status</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple countdown timer logic
+        function updateTimer() {
+            const h = document.getElementById('hours');
+            const m = document.getElementById('mins');
+            const s = document.getElementById('secs');
+            
+            let hours = parseInt(document.getElementById('days').innerText);
+            let mins = parseInt(m.innerText);
+            let secs = parseInt(s.innerText);
+            
+            if (secs > 0) {
+                secs--;
+            } else {
+                secs = 59;
+                if (mins > 0) {
+                    mins--;
+                } else {
+                    mins = 59;
+                    if (hours > 0) {
+                        hours--;
+                    }
+                }
+            }
+            
+            document.getElementById('days').innerText = hours.toString().padStart(2, '0');
+            m.innerText = mins.toString().padStart(2, '0');
+            s.innerText = secs.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateTimer, 1000);
+
+        // Micro-interaction for upload buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.textContent.includes('Upload')) {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span><span>Uploading...</span>';
+                    this.classList.add('opacity-50');
+                    setTimeout(() => {
+                        this.innerHTML = '<span class="material-symbols-outlined">check_circle</span><span>Complete</span>';
+                        this.classList.remove('bg-secondary');
+                        this.classList.add('bg-green-600');
+                        this.classList.remove('opacity-50');
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body></html>

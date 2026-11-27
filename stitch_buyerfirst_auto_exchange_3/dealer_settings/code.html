@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoNegotiate | Dealer Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .trust-score-gradient {
+            background: linear-gradient(135deg, #2170e4 0%, #004395 100%);
+        }
+        /* Custom scrollbar for high-density layouts */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f8f9ff; }
+        ::-webkit-scrollbar-thumb { background: #c6c6cd; border-radius: 3px; }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#dce9ff",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "outline": "#76777d",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "primary-fixed": "#dae2fd",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#fefcff",
+                    "surface-tint": "#565e74",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#2170e4",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-container": "#e5eeff",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed-dim": "#bec6e0",
+                    "error-container": "#ffdad6",
+                    "surface": "#f8f9ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#000000",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#98805d",
+                    "on-background": "#0b1c30",
+                    "inverse-on-surface": "#eaf1ff",
+                    "inverse-primary": "#bec6e0",
+                    "secondary-fixed": "#d8e2ff",
+                    "surface-variant": "#d3e4fe",
+                    "secondary": "#0058be",
+                    "on-tertiary-fixed": "#271901",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary-container": "#7c839b",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "background": "#f8f9ff",
+                    "outline-variant": "#c6c6cd",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#004395",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "tertiary-container": "#271901",
+                    "on-surface-variant": "#45464d",
+                    "on-surface": "#0b1c30",
+                    "surface-container-low": "#eff4ff",
+                    "primary": "#000000",
+                    "surface-dim": "#cbdbf5",
+                    "primary-container": "#131b2e",
+                    "inverse-surface": "#213145"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "3xl": "64px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "2xl": "48px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-low border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center px-4 md:px-lg h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="handshake">handshake</span>
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">AutoNegotiate</span>
+</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low transition-colors px-2 py-1 font-label-md" href="#">Offers</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low transition-colors px-2 py-1 font-label-md" href="#">Inventory</a>
+<a class="text-secondary dark:text-secondary-fixed font-semibold px-2 py-1 font-label-md" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-xs">JD</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-4 md:px-lg py-lg mb-20 md:mb-10">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-lg">
+<div>
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg">Advanced Settings</h1>
+<p class="text-on-surface-variant font-body-md">Manage your dealership profile, team, and professional integrations.</p>
+</div>
+<!-- Trust Dashboard Shortcut -->
+<button class="trust-score-gradient text-white flex items-center gap-3 px-lg py-sm rounded-xl shadow-lg hover:opacity-90 transition-all group">
+<div class="flex flex-col items-start">
+<span class="font-label-sm opacity-80">Dealer Trust Score</span>
+<span class="font-headline-sm">98.4 / 100</span>
+</div>
+<div class="h-10 w-px bg-white/20"></div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="trending_up">trending_up</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Sidebar Navigation -->
+<aside class="md:col-span-3 space-y-xs">
+<a class="flex items-center gap-3 p-md rounded-lg bg-surface-container-highest text-secondary font-semibold transition-all" href="#profile">
+<span class="material-symbols-outlined" data-icon="store">store</span>
+<span class="font-label-md">Dealership Profile</span>
+</a>
+<a class="flex items-center gap-3 p-md rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-all" href="#team">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-md">Team Management</span>
+</a>
+<a class="flex items-center gap-3 p-md rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-all" href="#inventory">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md">Inventory Defaults</span>
+</a>
+<a class="flex items-center gap-3 p-md rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-all" href="#api">
+<span class="material-symbols-outlined" data-icon="integration_instructions">integration_instructions</span>
+<span class="font-label-md">API &amp; Integrations</span>
+</a>
+<a class="flex items-center gap-3 p-md rounded-lg hover:bg-surface-container-low text-on-surface-variant transition-all" href="#billing">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md">Billing &amp; Subscription</span>
+</a>
+</aside>
+<!-- Main Content Area -->
+<div class="md:col-span-9 space-y-lg">
+<!-- Section: Dealership Profile -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm" id="profile">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h2 class="font-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="badge">badge</span>
+                            Dealership Profile
+                        </h2>
+<button class="text-secondary font-label-md hover:underline">Edit Info</button>
+</div>
+<div class="p-md grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-md">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-on-surface-variant">Dealership Legal Name</label>
+<p class="font-body-md font-semibold">Prestige Motors International LLC</p>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-on-surface-variant">Business Address</label>
+<p class="font-body-md">4400 Industrial Parkway, Suite 200, San Francisco, CA 94107</p>
+</div>
+</div>
+<div class="h-40 rounded-lg bg-surface-container-high relative overflow-hidden">
+<div class="absolute inset-0 grayscale opacity-50" data-location="San Francisco" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDqkCJAbUh4jlZF41Mjr9uyiQmWUd93oy89mw6S-KYzntSwdn5UE5zZWEtGTcO1-Jz5oV-9Wq8z4FM0Hd1ChHjPzKAbZQiCQjVeOgUXGAW1fY2__s-5jxDDtRSE6H-4-SxydlmLHOkj8EHBNijmA8EVtL2FaT76kaYGsBDDtKoNLzWvDzXVSOPYpKubj7Q87CpDlR4u0_0nfzdzViI2UkuPF736nMI39K9UHRb3jb2VFGu5Z6ZaRmWiYg')"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-white px-3 py-1 rounded shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-sm" data-icon="location_on" data-weight="fill">location_on</span>
+<span class="font-label-sm">Verified HQ</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Team Management -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm" id="team">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h2 class="font-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="person_add">person_add</span>
+                            Team Management
+                        </h2>
+<button class="bg-primary text-white px-4 py-1.5 rounded text-label-md font-semibold hover:opacity-90">Invite Member</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-md border-b border-outline-variant">
+<th class="px-md py-3">Member</th>
+<th class="px-md py-3">Role</th>
+<th class="px-md py-3">Status</th>
+<th class="px-md py-3 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center font-bold text-xs">AB</div>
+<div>
+<div class="font-semibold">Alex Bennett</div>
+<div class="text-xs text-on-surface-variant">alex@prestigemotors.com</div>
+</div>
+</div>
+</td>
+<td class="px-md py-3"><span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded text-[10px] font-bold">ADMIN</span></td>
+<td class="px-md py-3"><span class="flex items-center gap-1.5 text-green-600"><span class="w-2 h-2 rounded-full bg-green-500"></span> Active</span></td>
+<td class="px-md py-3 text-right"><span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="more_vert">more_vert</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-md py-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center font-bold text-xs">SC</div>
+<div>
+<div class="font-semibold">Sarah Chen</div>
+<div class="text-xs text-on-surface-variant">s.chen@prestigemotors.com</div>
+</div>
+</div>
+</td>
+<td class="px-md py-3"><span class="px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded text-[10px] font-bold">SALES</span></td>
+<td class="px-md py-3"><span class="flex items-center gap-1.5 text-green-600"><span class="w-2 h-2 rounded-full bg-green-500"></span> Active</span></td>
+<td class="px-md py-3 text-right"><span class="material-symbols-outlined text-on-surface-variant cursor-pointer" data-icon="more_vert">more_vert</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Bento Grid for Inventory & API -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Inventory Defaults -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm flex flex-col" id="inventory">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low">
+<h2 class="font-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="settings_suggest">settings_suggest</span>
+                                Inventory Defaults
+                            </h2>
+</div>
+<div class="p-md space-y-md flex-grow">
+<div class="flex justify-between items-center py-2">
+<div>
+<div class="font-label-md">Automatic Lead Response</div>
+<div class="text-xs text-on-surface-variant">Send instant AI acknowledgment to new offers.</div>
+</div>
+<div class="w-10 h-6 bg-secondary rounded-full flex items-center justify-end px-1 cursor-pointer">
+<div class="w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between items-center py-2 border-t border-outline-variant">
+<div>
+<div class="font-label-md">Default Negotiation Buffer</div>
+<div class="text-xs text-on-surface-variant">Minimum percentage below MSRP allowed.</div>
+</div>
+<span class="font-label-md bg-surface-container px-2 py-1 rounded">3.5%</span>
+</div>
+<div class="flex justify-between items-center py-2 border-t border-outline-variant">
+<div>
+<div class="font-label-md">Listing Expiry</div>
+<div class="text-xs text-on-surface-variant">Days before inventory is marked as stale.</div>
+</div>
+<span class="font-label-md bg-surface-container px-2 py-1 rounded">45 Days</span>
+</div>
+</div>
+</section>
+<!-- API & Integrations -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm" id="api">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low">
+<h2 class="font-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="api">api</span>
+                                API &amp; Integrations
+                            </h2>
+</div>
+<div class="p-md space-y-md">
+<div class="flex items-center gap-3 p-sm bg-surface rounded border border-outline-variant hover:border-secondary transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="dataset">dataset</span>
+</div>
+<div class="flex-grow">
+<div class="font-label-md">CRM Sync (Salesforce)</div>
+<div class="text-xs text-on-surface-variant">Connected • Last sync 2m ago</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="flex items-center gap-3 p-sm bg-surface rounded border border-outline-variant hover:border-secondary transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="webhook">webhook</span>
+</div>
+<div class="flex-grow">
+<div class="font-label-md">Webhooks</div>
+<div class="text-xs text-on-surface-variant">3 Active Endpoints</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary" data-icon="chevron_right">chevron_right</span>
+</div>
+<button class="w-full py-2 border border-secondary text-secondary font-label-md rounded hover:bg-secondary/5 transition-colors">
+                                Generate New API Key
+                            </button>
+</div>
+</section>
+</div>
+<!-- Section: Billing/Subscription -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm" id="billing">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h2 class="font-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="account_balance">account_balance</span>
+                            Billing &amp; Subscription
+                        </h2>
+</div>
+<div class="p-md flex flex-col md:flex-row gap-lg">
+<div class="md:w-1/3 bg-primary-container text-white p-lg rounded-xl flex flex-col justify-between min-h-[160px]">
+<div>
+<div class="font-label-sm opacity-70">Current Plan</div>
+<div class="font-headline-md">Enterprise Pro</div>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<div class="font-label-sm opacity-70">Next Invoice</div>
+<div class="font-body-md">Oct 12, 2023</div>
+</div>
+<div class="font-headline-sm">$1,499.00</div>
+</div>
+</div>
+<div class="md:w-2/3 space-y-md">
+<div class="flex items-center gap-4 p-md border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="credit_card">credit_card</span>
+<div class="flex-grow">
+<div class="font-label-md">Visa ending in 9021</div>
+<div class="text-xs text-on-surface-variant">Expires 04/2026</div>
+</div>
+<button class="text-secondary font-label-sm">Change</button>
+</div>
+<div class="flex gap-4">
+<button class="flex-1 py-2 bg-surface-container-highest font-label-md rounded hover:bg-surface-container-high">View History</button>
+<button class="flex-1 py-2 bg-surface-container-highest font-label-md rounded hover:bg-surface-container-high">Download W-9</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 bg-surface dark:bg-surface-container-lowest px-md pb-safe border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-sm">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple smooth scroll and active state toggle for sidebar
+        document.querySelectorAll('aside a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                // Update UI active state
+                document.querySelectorAll('aside a').forEach(a => {
+                    a.classList.remove('bg-surface-container-highest', 'text-secondary', 'font-semibold');
+                    a.classList.add('hover:bg-surface-container-low', 'text-on-surface-variant');
+                });
+                this.classList.add('bg-surface-container-highest', 'text-secondary', 'font-semibold');
+                this.classList.remove('hover:bg-surface-container-low', 'text-on-surface-variant');
+
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

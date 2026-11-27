@@ -1,0 +1,323 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Settings | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#dce9ff",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "outline": "#76777d",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "primary-fixed": "#dae2fd",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#fefcff",
+                    "surface-tint": "#565e74",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#2170e4",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-container": "#e5eeff",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed-dim": "#bec6e0",
+                    "error-container": "#ffdad6",
+                    "surface": "#f8f9ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#000000",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#98805d",
+                    "on-background": "#0b1c30",
+                    "inverse-on-surface": "#eaf1ff",
+                    "inverse-primary": "#bec6e0",
+                    "secondary-fixed": "#d8e2ff",
+                    "surface-variant": "#d3e4fe",
+                    "secondary": "#0058be",
+                    "on-tertiary-fixed": "#271901",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary-container": "#7c839b",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "background": "#f8f9ff",
+                    "outline-variant": "#c6c6cd",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#004395",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "tertiary-container": "#271901",
+                    "on-surface-variant": "#45464d",
+                    "on-surface": "#0b1c30",
+                    "surface-container-low": "#eff4ff",
+                    "primary": "#000000",
+                    "surface-dim": "#cbdbf5",
+                    "primary-container": "#131b2e",
+                    "inverse-surface": "#213145"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "3xl": "64px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "2xl": "48px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .settings-list-item {
+            transition: background-color 0.2s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-container-low docked full-width top-0 sticky z-50 border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-4 md:px-lg h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-size: 24px;">handshake</span>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary dark:text-primary-fixed">AutoNegotiate</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-container-high p-2 rounded-full transition-colors">notifications</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged man with a friendly expression, wearing a minimalist dark navy polo shirt. He is set against a clean, softly lit architectural background with neutral tones and sharp, modern lines. The lighting is bright and even, reflecting a high-tech corporate aesthetic consistent with a premium SaaS platform's profile interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkno84ih79bOEzKS_FRD4JA-hH87MEemSXr9XB48pGaQr3fVFfoRdJESNHVJ72UXoXEH_7Cpfu-mX9xpMQzGJZ6B2whVua1_POxOOIeR9UAh94s7Vmdenhpw34r5bwCKlPCLOnmtcOoNlbASP-0KmTHkkjT4c8iB72IUW1y8dypcWGv3iL3WxwynlliqVzrXRa8ErMuLEy55nh3e9TkNuxoJeX5oSJvsuwEydXhj8fJClofFGrpthwCA">
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-4 py-8 md:py-12 mb-20">
+<!-- Page Title -->
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Settings</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Manage your personal account and negotiation preferences.</p>
+</div>
+<!-- Settings Container -->
+<div class="space-y-lg">
+<!-- Profile Info -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Profile Info</h3>
+</div>
+<div class="divide-y divide-outline-variant">
+<button class="settings-list-item w-full flex items-center justify-between p-md hover:bg-surface-container-low text-left">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">person</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Name</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Alexander Richardson</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+<button class="settings-list-item w-full flex justify-between p-md hover:bg-surface-container-low text-left items-start"><div class="flex items-center gap-md w-full"><span class="material-symbols-outlined text-secondary">location_on</span><div class="flex-1"><div class="flex items-center justify-between"><p class="font-body-md text-body-md text-on-surface font-semibold">Location</p><span class="material-symbols-outlined text-outline">chevron_right</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">San Francisco, CA</p><p class="font-label-sm text-label-sm text-secondary mt-xs">Precise address or GPS (Optional)</p><div class="mt-sm p-2 bg-surface-container-low rounded flex gap-xs items-start"><span class="material-symbols-outlined text-outline text-[16px] mt-0.5">info</span><p class="font-body-sm text-body-sm text-on-surface-variant">Used for more accurate negotiation matches. Default city coordinates used if not provided.</p></div></div></div></button>
+</div>
+</section>
+<!-- Buying & Selling -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Buying &amp; Selling</h3>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="p-md bg-surface-container-low/30">
+<div class="flex items-center justify-between mb-sm">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">campaign</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Active Listings</p>
+</div>
+<span class="font-label-md text-label-md bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded">0 / 2</span>
+</div>
+<div class="w-full bg-outline-variant h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-0"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">You have 2 free listings remaining this month.</p>
+</div>
+<button class="settings-list-item w-full flex items-center justify-between p-md hover:bg-surface-container-low text-left">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">history</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Negotiation History</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Notifications -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Notifications</h3>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">mail</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Email Notifications</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Get updates on bids and offers</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<button class="settings-list-item w-full flex items-center justify-between p-md hover:bg-surface-container-low text-left">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">devices</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Push Preferences</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Security & Trust -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Security &amp; Trust</h3>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Verification Status</p>
+<p class="font-body-sm text-body-sm text-secondary font-medium flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Verified Individual
+                                </p>
+</div>
+</div>
+<button class="text-secondary font-label-md text-label-md border border-secondary px-3 py-1 rounded-lg hover:bg-secondary/10 transition-colors">Details</button>
+</div>
+<button class="settings-list-item w-full flex items-center justify-between p-md hover:bg-surface-container-low text-left">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">lock</span>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Change Password</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Payment Methods -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-md py-sm border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Payment Methods</h3>
+</div>
+<div class="divide-y divide-outline-variant">
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">credit_card</span>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Visa ending in 4242</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Expires 12/26 • Default</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">more_vert</span>
+</div>
+<button class="settings-list-item w-full flex items-center gap-md p-md hover:bg-surface-container-low text-left text-secondary">
+<span class="material-symbols-outlined">add</span>
+<p class="font-body-md text-body-md font-semibold">Add New Payment Method</p>
+</button>
+</div>
+</section>
+<!-- Danger Zone -->
+<button class="w-full flex items-center justify-center gap-sm p-md border border-error/30 rounded-xl text-error hover:bg-error/5 transition-colors font-semibold">
+<span class="material-symbols-outlined">logout</span>
+                Sign Out
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-16 bg-surface dark:bg-surface-container-lowest px-md pb-safe border-t border-outline-variant dark:border-outline shadow-lg dark:shadow-none z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-sm text-label-sm">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-4 py-1 hover:text-secondary dark:hover:text-secondary-fixed-dim transition-colors" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for list items
+        document.querySelectorAll('.settings-list-item').forEach(item => {
+            item.addEventListener('mousedown', () => {
+                item.style.transform = 'scale(0.99)';
+            });
+            item.addEventListener('mouseup', () => {
+                item.style.transform = 'scale(1)';
+            });
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple toggle simulation
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                const parent = e.target.closest('div.flex');
+                if (e.target.checked) {
+                    console.log('Notifications Enabled');
+                } else {
+                    console.log('Notifications Disabled');
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

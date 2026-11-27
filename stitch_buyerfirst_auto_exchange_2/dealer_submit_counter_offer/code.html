@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Submit Counter-Offer | Dealer Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dae2fd",
+                    "surface": "#f8f9ff",
+                    "primary": "#000000",
+                    "on-secondary-container": "#fefcff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-tertiary": "#ffffff",
+                    "secondary": "#0058be",
+                    "on-tertiary-container": "#98805d",
+                    "outline-variant": "#c6c6cd",
+                    "on-tertiary-fixed": "#271901",
+                    "on-background": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "outline": "#76777d",
+                    "tertiary-container": "#271901",
+                    "tertiary": "#000000",
+                    "surface-tint": "#565e74",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-primary-fixed": "#131b2e",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "inverse-primary": "#bec6e0",
+                    "surface-container": "#e5eeff",
+                    "on-secondary-fixed": "#001a42",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-surface-variant": "#45464d",
+                    "inverse-surface": "#213145",
+                    "surface-container-high": "#dce9ff",
+                    "surface-bright": "#f8f9ff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-surface": "#0b1c30",
+                    "primary-container": "#131b2e",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-fixed": "#d8e2ff",
+                    "tertiary-fixed": "#fcdeb5",
+                    "on-secondary": "#ffffff",
+                    "on-primary-container": "#7c839b",
+                    "surface-variant": "#d3e4fe",
+                    "background": "#f8f9ff",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "secondary-container": "#2170e4",
+                    "primary-fixed-dim": "#bec6e0",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "2xl": "48px",
+                    "sm": "8px",
+                    "gutter": "24px",
+                    "3xl": "64px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; color: #0b1c30; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .glass-effect { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.8); }
+        .number-tabular { font-variant-numeric: tabular-nums; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar (From JSON) -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-lg py-md w-full bg-surface dark:bg-on-background border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Dealer Suite</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex gap-lg mr-lg">
+<a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container-low transition-colors px-md py-xs rounded-lg" href="#">Active Deals</a>
+<a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container-low transition-colors px-md py-xs rounded-lg" href="#">Inventory</a>
+<a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container-low transition-colors px-md py-xs rounded-lg" href="#">Analytics</a>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a mid-40s male car dealership executive in a tailored navy suit. The background is a clean, out-of-focus modern showroom with bright daylight filtering through large glass windows, maintaining a corporate and authoritative aesthetic. The lighting is soft and professional, highlighting a reliable and technical persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvAsPU0BIhXNMcHNIJiZvZfVVUOSCFhJIL1dCC1u9CwrjbMjxED4iVd-Zt28N_HwckUseqyuiPzK5MYVqNkbhbQHfqPPGlxHz-bRw9WfMJ-NStxPVW1ZfZV9K4OE-7jK_PlVJ2h5dvIuCmsZmt_jeTkldb0LrrMllRxTzcC0o2959lrtgrG3jMAHsQ5YtDEASTwKPA8WJYKMOO7sBDuE5HljhUrae2wrsIWeNlvGQc8p1n5oTVu3lJrQ"/>
+</div>
+</div>
+</header>
+<!-- Sidebar Navigation (From JSON) -->
+<aside class="hidden md:flex flex-col h-full fixed left-0 top-0 z-40 bg-surface-container-lowest dark:bg-on-background border-r border-outline-variant dark:border-on-surface-variant h-screen w-64 pt-24">
+<div class="px-md mb-xl flex items-center gap-md">
+<div class="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center text-on-secondary">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md font-bold">Northside Motors</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lead Negotiator</p>
+</div>
+</div>
+<nav class="flex-1">
+<div class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-md scale-[0.98] transition-transform duration-200">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-md text-label-md">Active Deals</span>
+</div>
+<div class="text-on-surface-variant dark:text-outline mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</div>
+<div class="text-on-surface-variant dark:text-outline mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">insert_chart</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</div>
+<div class="text-on-surface-variant dark:text-outline mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+<div class="p-md border-t border-outline-variant">
+<p class="font-label-sm text-label-sm text-outline">v2.4.0</p>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 p-gutter min-h-screen">
+<div class="max-w-4xl mx-auto">
+<!-- Modal-like Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-md overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-500">
+<!-- Modal Header -->
+<div class="px-lg py-md border-b border-outline-variant flex items-center justify-between bg-surface">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">edit_document</span>
+<h2 class="font-headline-sm text-headline-sm">Submit Counter-Offer</h2>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container-high px-md py-xs rounded-lg transition-colors font-label-md">Cancel</button>
+</div>
+<div class="flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-outline-variant">
+<!-- Left Column: Form Controls -->
+<div class="flex-1 p-lg space-y-xl custom-scrollbar max-h-[707px] overflow-y-auto">
+<!-- Price Adjustment Section -->
+<section>
+<label class="font-label-md text-label-md block mb-md text-on-surface-variant">PRICE ADJUSTMENT</label>
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant">
+<div class="flex justify-between items-end mb-md">
+<div class="flex-1">
+<p class="font-label-sm text-label-sm text-outline mb-xs">New Counter Price</p>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-outline font-headline-md">$</span>
+<input class="w-full pl-8 pr-md py-md bg-white border border-outline focus:border-secondary focus:ring-2 focus:ring-secondary/20 rounded-lg font-headline-md text-headline-md number-tabular outline-none transition-all" id="priceInput" type="text" value="48,500"/>
+</div>
+</div>
+</div>
+<!-- Slider Mock -->
+<div class="relative py-md">
+<input class="w-full h-1.5 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-secondary" max="52000" min="45000" step="100" type="range" value="48500"/>
+<div class="flex justify-between mt-xs">
+<span class="font-label-sm text-label-sm text-outline">$45,000</span>
+<span class="font-label-sm text-label-sm text-outline">$52,000</span>
+</div>
+</div>
+<!-- Quick Adjust Buttons -->
+<div class="flex gap-sm mt-md">
+<button class="flex-1 py-xs border border-outline-variant rounded hover:bg-white transition-colors font-label-sm text-on-surface-variant">- $500</button>
+<button class="flex-1 py-xs border border-outline-variant rounded hover:bg-white transition-colors font-label-sm text-on-surface-variant">- $100</button>
+<button class="flex-1 py-xs border border-outline-variant rounded hover:bg-white transition-colors font-label-sm text-on-surface-variant">+ $100</button>
+<button class="flex-1 py-xs border border-outline-variant rounded hover:bg-white transition-colors font-label-sm text-on-surface-variant">+ $500</button>
+</div>
+</div>
+</section>
+<!-- Terms Adjustment -->
+<section class="space-y-md">
+<label class="font-label-md text-label-md block text-on-surface-variant">SECONDARY TERMS</label>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md border border-outline-variant rounded-lg hover:border-secondary transition-colors group">
+<p class="font-label-sm text-label-sm text-outline mb-xs">Financing APR</p>
+<div class="flex items-center justify-between">
+<input class="bg-transparent border-none p-0 font-headline-sm text-headline-sm focus:ring-0 w-24" type="text" value="4.99%"/>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary">percent</span>
+</div>
+</div>
+<div class="p-md border border-outline-variant rounded-lg hover:border-secondary transition-colors group">
+<p class="font-label-sm text-label-sm text-outline mb-xs">Down Payment</p>
+<div class="flex items-center justify-between">
+<input class="bg-transparent border-none p-0 font-headline-sm text-headline-sm focus:ring-0 w-24" type="text" value="$5,000"/>
+<span class="material-symbols-outlined text-outline group-hover:text-secondary">payments</span>
+</div>
+</div>
+</div>
+<div class="p-md border border-outline-variant rounded-lg">
+<p class="font-label-sm text-label-sm text-outline mb-md">Add-on Inclusions</p>
+<div class="space-y-sm">
+<label class="flex items-center justify-between p-sm hover:bg-surface-container rounded cursor-pointer transition-colors">
+<span class="font-body-md text-body-md">Protection Package (3-Yr)</span>
+<input checked="" class="rounded text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-sm hover:bg-surface-container rounded cursor-pointer transition-colors">
+<span class="font-body-md text-body-md">Premium Window Tinting</span>
+<input class="rounded text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-sm hover:bg-surface-container rounded cursor-pointer transition-colors">
+<span class="font-body-md text-body-md">Floor Mats (All-Weather)</span>
+<input checked="" class="rounded text-secondary focus:ring-secondary w-5 h-5" type="checkbox"/>
+</label>
+</div>
+</div>
+</section>
+<!-- Expiration and Message -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="md:col-span-1">
+<label class="font-label-md text-label-md block mb-sm text-on-surface-variant">EXPIRY</label>
+<select class="w-full border border-outline-variant rounded-lg p-md bg-white focus:ring-secondary focus:border-secondary">
+<option>24 Hours</option>
+<option selected="">48 Hours</option>
+<option>72 Hours</option>
+<option>7 Days</option>
+</select>
+</div>
+<div class="md:col-span-2">
+<label class="font-label-md text-label-md block mb-sm text-on-surface-variant">MESSAGE TO BUYER</label>
+<textarea class="w-full border border-outline-variant rounded-lg p-md bg-white focus:ring-secondary focus:border-secondary h-24 resize-none" placeholder="Explain why this counter-offer is a great value..." style="font-size: 14px;">This reflects the current market demand for the 2024 model. We've included the Protection Package to ensure long-term value for you.</textarea>
+</div>
+</div>
+</div>
+<!-- Right Column: Deal Summary & Visual Impact -->
+<div class="w-full md:w-80 bg-surface-container-low p-lg flex flex-col gap-lg">
+<div class="space-y-md">
+<h3 class="font-label-md text-label-md text-outline">DEAL CONTEXT</h3>
+<!-- Vehicle Card -->
+<div class="bg-white p-md rounded-lg border border-outline-variant">
+<div class="w-full h-32 bg-cover bg-center rounded-md mb-md" data-alt="A side-profile shot of a sleek, dark metallic SUV parked in a minimalist, high-end studio with cool blue and slate grey lighting. The surface of the car reflects the pristine floor and technical lighting setups, emphasizing its premium features and modern design. The overall mood is cold, professional, and sophisticated, reflecting a high-value automotive transaction atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAUC1AZV0eDTaw-72uvMcwaWaQg5DbBwq92ujL8YL3RtSHA7z4A-hQfyFJb21gvnQQEMAs0UzW3-Rr1inZ7Xj9D2I4iQP1FtU5igmZC0intX8RlyFJpIEjytStXmo3fyaiEv66jielRdCa9ygnEofiN0vNNrkpcGqz3Q_nhkcHoo4aUkyMlQuW8uLFt2D8STqHPccI-XIpSEGND8lZ_eRgyoBES8EkS6smG4mT8RG7TdBL-VviLL8HRjQ')"></div>
+<p class="font-headline-sm text-headline-sm leading-tight mb-xs">2024 Model X-Series</p>
+<p class="font-body-sm text-body-sm text-outline">Inventory ID: #DX-9902</p>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Buyer</span>
+<span class="font-label-md text-label-md">Alexander Thorne</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Current Offer</span>
+<span class="font-label-md text-label-md number-tabular">$46,200</span>
+</div>
+<div class="flex justify-between items-center pt-sm border-t border-outline-variant">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Original MSRP</span>
+<span class="font-label-md text-label-md number-tabular">$51,495</span>
+</div>
+</div>
+</div>
+<div class="space-y-md mt-auto">
+<!-- Impact Visualization -->
+<div class="bg-primary-container p-md rounded-lg text-on-primary-container">
+<p class="font-label-sm text-label-sm text-on-primary-container/70 mb-xs">Negotiation Gap</p>
+<div class="flex items-baseline gap-sm">
+<span class="font-display-lg text-display-lg number-tabular text-on-primary" id="gapDisplay">$2,300</span>
+<span class="font-label-md text-label-md text-error flex items-center">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+                                        -$1,495
+                                    </span>
+</div>
+<div class="w-full bg-on-primary-container/20 h-1 rounded-full mt-md overflow-hidden">
+<div class="bg-secondary h-full" style="width: 65%;"></div>
+</div>
+<p class="font-label-sm text-label-sm mt-xs opacity-70">Progress toward target margin</p>
+</div>
+<button class="w-full bg-secondary hover:bg-on-secondary-fixed-variant text-on-secondary font-label-md text-label-md py-md rounded-lg shadow-lg active:scale-95 transition-all flex items-center justify-center gap-sm">
+<span>Send Counter-Offer</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+<p class="text-center font-label-sm text-label-sm text-outline">Countering locks terms for 48h</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<div class="mt-lg flex justify-between items-center px-md text-outline">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="font-label-sm text-label-sm">Secure Negotiation Tunnel</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm">Time to Response: ~4h</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Navigation (From JSON) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-on-background border-t border-outline-variant shadow-md">
+<div class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm">Deals</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Offers</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for price input and gap calculation
+        const priceInput = document.getElementById('priceInput');
+        const gapDisplay = document.getElementById('gapDisplay');
+        const buyerOffer = 46200;
+
+        priceInput.addEventListener('input', (e) => {
+            let val = e.target.value.replace(/[^0-9]/g, '');
+            if (val) {
+                const numericVal = parseInt(val);
+                const gap = numericVal - buyerOffer;
+                gapDisplay.textContent = `$${gap.toLocaleString()}`;
+                
+                // Format the input field
+                e.target.value = numericVal.toLocaleString();
+            }
+        });
+
+        // Toggle state for range slider interaction
+        const range = document.querySelector('input[type="range"]');
+        range.addEventListener('input', (e) => {
+            const val = parseInt(e.target.value);
+            priceInput.value = val.toLocaleString();
+            const gap = val - buyerOffer;
+            gapDisplay.textContent = `$${gap.toLocaleString()}`;
+        });
+    </script>
+</body></html>

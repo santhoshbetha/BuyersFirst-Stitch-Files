@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoNegotiate | Advanced Search Filters</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary-fixed": "#d8e2ff",
+                  "secondary-fixed-dim": "#adc6ff",
+                  "background": "#f8f9ff",
+                  "on-primary-fixed": "#131b2e",
+                  "surface": "#f8f9ff",
+                  "on-primary-container": "#7c839b",
+                  "primary-fixed": "#dae2fd",
+                  "on-error": "#ffffff",
+                  "surface-container-low": "#eff4ff",
+                  "on-tertiary-fixed": "#271901",
+                  "on-background": "#0b1c30",
+                  "tertiary-container": "#271901",
+                  "surface-variant": "#d3e4fe",
+                  "inverse-surface": "#213145",
+                  "on-secondary-fixed-variant": "#004395",
+                  "primary-container": "#131b2e",
+                  "surface-container": "#e5eeff",
+                  "on-primary-fixed-variant": "#3f465c",
+                  "primary-fixed-dim": "#bec6e0",
+                  "primary": "#000000",
+                  "surface-bright": "#f8f9ff",
+                  "secondary-container": "#2170e4",
+                  "tertiary-fixed-dim": "#dec29a",
+                  "on-secondary-container": "#fefcff",
+                  "surface-container-lowest": "#ffffff",
+                  "surface-container-highest": "#d3e4fe",
+                  "on-surface": "#0b1c30",
+                  "secondary": "#0058be",
+                  "tertiary": "#000000",
+                  "outline": "#76777d",
+                  "surface-dim": "#cbdbf5",
+                  "outline-variant": "#c6c6cd",
+                  "on-surface-variant": "#45464d",
+                  "on-tertiary": "#ffffff",
+                  "on-tertiary-container": "#98805d",
+                  "on-error-container": "#93000a",
+                  "on-primary": "#ffffff",
+                  "surface-container-high": "#dce9ff",
+                  "error-container": "#ffdad6",
+                  "on-tertiary-fixed-variant": "#574425",
+                  "on-secondary-fixed": "#001a42",
+                  "inverse-primary": "#bec6e0",
+                  "surface-tint": "#565e74",
+                  "tertiary-fixed": "#fcdeb5",
+                  "on-secondary": "#ffffff",
+                  "inverse-on-surface": "#eaf1ff",
+                  "error": "#ba1a1a"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "lg": "24px",
+                  "xl": "32px",
+                  "gutter": "24px",
+                  "xs": "4px",
+                  "sm": "8px",
+                  "3xl": "64px",
+                  "2xl": "48px",
+                  "container-max": "1280px",
+                  "md": "16px",
+                  "base": "4px"
+          },
+          "fontFamily": {
+                  "body-md": ["Inter"],
+                  "label-md": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "label-sm": ["Inter"],
+                  "headline-lg-mobile": ["Inter"],
+                  "headline-lg": ["Inter"],
+                  "display-lg": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "headline-sm": ["Inter"],
+                  "body-sm": ["Inter"]
+          },
+          "fontSize": {
+                  "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                  "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                  "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                  "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                  "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                  "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                  "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                  "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9ff;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+
+    /* Custom range slider styling */
+    input[type='range'] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+    }
+    input[type='range']::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 4px;
+      background: #E2E8F0;
+      border-radius: 2px;
+    }
+    input[type='range']::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      background: #0058be;
+      cursor: pointer;
+      margin-top: -7px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    /* Custom checkbox styling */
+    .custom-checkbox {
+      appearance: none;
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 1px solid #c6c6cd;
+      border-radius: 0.125rem;
+      background-color: #ffffff;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+    }
+    .custom-checkbox::before {
+      content: "";
+      width: 0.65rem;
+      height: 0.65rem;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em #0058be;
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    }
+    .custom-checkbox:checked::before {
+      transform: scale(1);
+    }
+    .custom-checkbox:checked {
+      border-color: #0058be;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Transition for overlay */
+    #filter-overlay {
+      transition: opacity 0.3s ease;
+    }
+    #filter-drawer {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background">
+<!-- Shell Mockup Background (Dashboard context) -->
+<div class="min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-tertiary-container text-primary dark:text-primary-fixed fixed top-0 w-full z-40 border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg h-16">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary">directions_car</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">AutoNegotiate</span>
+</div>
+<div class="flex items-center gap-lg">
+<nav class="hidden md:flex gap-lg">
+<a class="font-headline-md text-headline-md font-bold text-secondary dark:text-secondary-fixed" href="#">Listings</a>
+<a class="font-headline-md text-headline-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-2" href="#">Search</a>
+<a class="font-headline-md text-headline-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-2" href="#">Messages</a>
+</nav>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-low rounded-full transition-colors active:scale-95">notifications</button>
+</div>
+</header>
+<main class="flex-grow pt-24 px-lg pb-32">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-background">Inventory Search</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-xs">Manage and negotiate incoming buyer offers.</p>
+</div>
+<button class="flex items-center gap-sm bg-primary text-on-primary px-lg py-md rounded-lg font-label-md text-label-md active:scale-95 transition-transform" id="open-filters">
+<span class="material-symbols-outlined">tune</span>
+            Advanced Filters
+          </button>
+</div>
+<!-- Bento Grid Content Placeholder -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Card 1 -->
+<div class="md:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant pb-md">
+<h2 class="font-headline-sm text-headline-sm">Active Negotiations</h2>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full font-label-sm text-label-sm">12 Active</span>
+</div>
+<div class="space-y-md">
+<!-- Item -->
+<div class="flex items-center gap-md p-md hover:bg-surface-container-low transition-colors rounded-lg border border-transparent hover:border-outline-variant">
+<div class="w-16 h-16 bg-surface-dim rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">directions_car</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-md text-label-md">2024 Porsche 911 GT3</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Stock #A9023 • Premium Trim</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-secondary">$182,400</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Current Offer</p>
+</div>
+</div>
+<div class="flex items-center gap-md p-md hover:bg-surface-container-low transition-colors rounded-lg border border-transparent hover:border-outline-variant">
+<div class="w-16 h-16 bg-surface-dim rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">directions_car</span>
+</div>
+<div class="flex-grow">
+<p class="font-label-md text-label-md">2023 Tesla Model X</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Stock #T4410 • Plaid</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-secondary">$94,000</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Current Offer</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 (Quick Stats) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg flex flex-col gap-lg shadow-sm">
+<h2 class="font-headline-sm text-headline-sm">Search Metrics</h2>
+<div class="space-y-lg">
+<div class="p-md bg-background rounded-lg border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Avg. Deal Gap</p>
+<p class="font-display-lg text-display-lg mt-xs">$3,420</p>
+</div>
+<div class="p-md bg-background rounded-lg border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Market Exposure</p>
+<p class="font-display-lg text-display-lg mt-xs text-secondary">High</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-tertiary-container fixed bottom-0 w-full z-40 border-t border-outline-variant dark:border-outline flex justify-around items-center h-20 pb-safe">
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-sm text-label-sm">Listings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-sm text-label-sm">Trust</span>
+</div>
+</nav>
+</div>
+<!-- FILTER OVERLAY DRAWER -->
+<div class="fixed inset-0 z-[60] bg-on-background/40 opacity-0 pointer-events-none transition-opacity duration-300" id="filter-overlay"></div>
+<div class="fixed right-0 top-0 h-full w-full sm:max-w-md bg-surface-container-lowest z-[70] shadow-2xl translate-x-full flex flex-col" id="filter-drawer">
+<!-- Drawer Header -->
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<div>
+<h2 class="font-headline-md text-headline-md">Advanced Filters</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Narrow down dealer inventory search</p>
+</div>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-low rounded-full active:scale-90 transition-transform" id="close-filters">close</button>
+</div>
+<!-- Filter Form Content -->
+<form class="flex-grow overflow-y-auto p-lg space-y-xl">
+<!-- Section: Vehicle Specifications -->
+<section>
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary">settings_input_component</span>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant">Vehicle Specifications</h3>
+</div>
+<div class="space-y-md">
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block font-label-sm text-label-sm mb-xs">Year</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-md font-body-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors outline-none appearance-none">
+<option>2024</option>
+<option>2023</option>
+<option>2022</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm mb-xs">Make</label>
+<select class="w-full bg-surface-container-lowest border border-outline-variant rounded-lg p-md font-body-md text-body-md focus:border-secondary outline-none appearance-none">
+<option>All Makes</option>
+<option>Porsche</option>
+<option>Tesla</option>
+<option>BMW</option>
+<option>Mercedes-Benz</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm mb-xs">Model</label>
+<input class="w-full border border-outline-variant rounded-lg p-md font-body-md text-body-md focus:border-secondary outline-none" placeholder="e.g. 911 Carrera" type="text"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm mb-xs">Trim Level</label>
+<input class="w-full border border-outline-variant rounded-lg p-md font-body-md text-body-md focus:border-secondary outline-none" placeholder="e.g. Turbo S, Plaid" type="text"/>
+</div>
+</div>
+</section>
+<!-- Section: Financial Parameters -->
+<section>
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary">payments</span>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant">Financial Parameters</h3>
+</div>
+<div class="space-y-xl">
+<div>
+<div class="flex justify-between items-center mb-md">
+<label class="font-label-sm text-label-sm">Price Range</label>
+<span class="font-label-md text-label-md text-secondary" id="price-display">$20,000 - $180,000+</span>
+</div>
+<input class="w-full h-1 bg-surface-container-highest rounded-lg cursor-pointer accent-secondary" max="250000" min="10000" step="5000" type="range" value="180000"/>
+</div>
+<div>
+<div class="flex justify-between items-center mb-md">
+<label class="font-label-sm text-label-sm">Max APR Target</label>
+<span class="font-label-md text-label-md text-secondary" id="apr-display">4.9%</span>
+</div>
+<input class="w-full" max="15" min="0" step="0.1" type="range" value="4.9"/>
+</div>
+</div>
+</section>
+<!-- Section: Logistics -->
+<section>
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary">location_on</span>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant">Logistics</h3>
+</div>
+<div class="space-y-md">
+<div class="grid grid-cols-3 gap-md">
+<div class="col-span-1">
+<label class="block font-label-sm text-label-sm mb-xs">Zip Code</label>
+<input class="w-full border border-outline-variant rounded-lg p-md font-body-md text-body-md focus:border-secondary outline-none text-center" maxlength="5" type="text" value="90210"/>
+</div>
+<div class="col-span-2">
+<div class="flex justify-between items-center mb-xs">
+<label class="font-label-sm text-label-sm">Radius</label>
+<span class="font-label-md text-label-md text-secondary" id="radius-display">50 miles</span>
+</div>
+<input class="w-full mt-3" max="500" min="10" step="10" type="range" value="50"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Buyer Profile -->
+<section class="pb-lg">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary">badge</span>
+<h3 class="font-label-md text-label-md uppercase tracking-widest text-on-surface-variant">Buyer Profile</h3>
+</div>
+<div class="space-y-md">
+<label class="flex items-center gap-md p-md border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container-low transition-colors group">
+<input checked="" class="custom-checkbox" type="checkbox"/>
+<div class="flex-grow">
+<span class="block font-label-md text-label-md">Verified Buyers Only</span>
+<span class="block font-body-sm text-body-sm text-on-surface-variant">Verified credit and identity profiles</span>
+</div>
+<span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1;">verified</span>
+</label>
+<div class="grid grid-cols-2 gap-md">
+<button class="flex flex-col items-center justify-center gap-xs border-2 border-secondary bg-secondary-container/10 p-md rounded-lg group transition-all" type="button">
+<span class="material-symbols-outlined text-secondary">person</span>
+<span class="font-label-sm text-label-sm text-secondary">Individual</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-xs border border-outline-variant p-md rounded-lg hover:border-secondary transition-all" type="button">
+<span class="material-symbols-outlined text-on-surface-variant">apartment</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Institutional</span>
+</button>
+</div>
+</div>
+</section>
+</form>
+<!-- Drawer Footer Actions -->
+<div class="p-lg bg-surface-container-lowest border-t border-outline-variant grid grid-cols-2 gap-lg">
+<button class="py-md border border-outline-variant font-label-md text-label-md rounded-lg hover:bg-surface-container-low active:scale-95 transition-all text-on-surface-variant" id="reset-filters" type="button">
+        Reset
+      </button>
+<button class="py-md bg-secondary text-on-secondary font-label-md text-label-md rounded-lg shadow-md hover:brightness-110 active:scale-95 transition-all" id="apply-filters" type="submit">
+        Apply Filters
+      </button>
+</div>
+</div>
+<script>
+    const openBtn = document.getElementById('open-filters');
+    const closeBtn = document.getElementById('close-filters');
+    const overlay = document.getElementById('filter-overlay');
+    const drawer = document.getElementById('filter-drawer');
+    const applyBtn = document.getElementById('apply-filters');
+
+    function toggleDrawer(isOpen) {
+      if (isOpen) {
+        overlay.classList.remove('pointer-events-none', 'opacity-0');
+        overlay.classList.add('opacity-100');
+        drawer.classList.remove('translate-x-full');
+      } else {
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        overlay.classList.remove('opacity-100');
+        drawer.classList.add('translate-x-full');
+      }
+    }
+
+    openBtn.addEventListener('click', () => toggleDrawer(true));
+    closeBtn.addEventListener('click', () => toggleDrawer(false));
+    overlay.addEventListener('click', () => toggleDrawer(false));
+    applyBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleDrawer(false);
+    });
+
+    // Simple display value updates for sliders
+    const sliders = [
+      { input: 'price', display: 'price-display', prefix: '$', suffix: '+' },
+      { input: 'apr', display: 'apr-display', prefix: '', suffix: '%' },
+      { input: 'radius', display: 'radius-display', prefix: '', suffix: ' miles' }
+    ];
+
+    // Placeholder for real range logic (using input type="range" here for brevity)
+    document.querySelectorAll('input[type="range"]').forEach((input, index) => {
+      input.addEventListener('input', (e) => {
+        // This is a naive mapping for the specific demo inputs
+        const value = e.target.value;
+        const displays = ['price-display', 'apr-display', 'radius-display'];
+        const displayEl = document.getElementById(displays[index]);
+        if (displayEl) {
+          if (index === 0) displayEl.innerText = `$10k - $${parseInt(value).toLocaleString()}`;
+          if (index === 1) displayEl.innerText = `${value}%`;
+          if (index === 2) displayEl.innerText = `${value} miles`;
+        }
+      });
+    });
+  </script>
+</body></html>

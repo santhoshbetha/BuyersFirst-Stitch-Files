@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoNegotiate | Inventory Search</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface": "#f8f9ff",
+                    "outline": "#76777d",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#565e74",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#bec6e0",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-container": "#271901",
+                    "surface-dim": "#cbdbf5",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-secondary-container": "#fefcff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "tertiary": "#000000",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed": "#d8e2ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary-container": "#7c839b",
+                    "on-tertiary-fixed": "#271901",
+                    "surface-variant": "#d3e4fe",
+                    "primary": "#000000",
+                    "inverse-surface": "#213145",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-container": "#98805d",
+                    "on-surface": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "secondary": "#0058be",
+                    "on-background": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "outline-variant": "#c6c6cd",
+                    "on-primary-fixed": "#131b2e",
+                    "secondary-container": "#2170e4",
+                    "surface-container-low": "#eff4ff",
+                    "primary-container": "#131b2e",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#45464d",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#001a42"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "3xl": "64px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "2xl": "48px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0 pt-16">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-tertiary-container fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-size: 28px;">directions_car</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight">AutoNegotiate</span>
+</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-3 py-2 rounded-lg" href="#">Listings</a>
+<a class="text-secondary dark:text-secondary-fixed font-bold font-label-md text-label-md px-3 py-2 rounded-lg" href="#">Search</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-3 py-2 rounded-lg" href="#">Messages</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors px-3 py-2 rounded-lg" href="#">Trust</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-colors">notifications</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container text-xs font-bold">JD</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto px-4 md:px-lg py-xl">
+<!-- Search & Filter Hero -->
+<section class="mb-xl">
+<div class="flex flex-col gap-lg">
+<div class="max-w-2xl">
+<h1 class="font-headline-lg text-headline-lg mb-xs">Inventory Search</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Precision search across thousands of verified dealer inventories.</p>
+</div>
+<!-- Primary Search Bar -->
+<div class="relative w-full max-w-3xl">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary transition-all font-body-md shadow-sm" placeholder="Search Make, Model, or VIN..." type="text"/>
+<div class="absolute inset-y-0 right-3 flex items-center">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md active:scale-95 transition-transform">SEARCH</button>
+</div>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap items-center gap-sm">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider mr-2">Quick Filters:</span>
+<button class="flex items-center gap-xs px-4 py-2 bg-surface-container border border-outline-variant rounded-full hover:bg-surface-container-high transition-colors font-label-md text-label-md text-on-surface">
+                        Price Range <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-xs px-4 py-2 bg-surface-container border border-outline-variant rounded-full hover:bg-surface-container-high transition-colors font-label-md text-label-md text-on-surface">
+                        Body Style <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center gap-xs px-4 py-2 bg-surface-container border border-outline-variant rounded-full hover:bg-surface-container-high transition-colors font-label-md text-label-md text-on-surface">
+                        Distance <span class="material-symbols-outlined text-[18px]">keyboard_arrow_down</span>
+</button>
+<div class="h-6 w-[1px] bg-outline-variant mx-2"></div>
+<button class="flex items-center gap-xs px-4 py-2 text-secondary font-label-md text-label-md hover:underline">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                        Advanced Filters
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats / Header -->
+<div class="flex justify-between items-end mb-md border-b border-outline-variant pb-md">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Showing 482 Vehicles</span>
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm text-outline">Sort by:</span>
+<select class="bg-transparent border-none font-label-md text-label-md text-on-surface focus:ring-0 p-0 pr-6">
+<option>Matches My Terms</option>
+<option>Price: Low to High</option>
+<option>Newest Listings</option>
+</select>
+</div>
+</div>
+<!-- Inventory Grid -->
+<div class="bento-grid">
+<!-- Card 1 (Match) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-end professional studio photograph of a 2024 luxury electric sedan in a deep charcoal metallic finish. The car is positioned at a three-quarter angle against a minimalist, brightly lit white studio background with soft reflections. The lighting is crisp and technical, emphasizing the car's aerodynamic curves and sharp LED headlights. The overall aesthetic is modern, authoritative, and clean." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQFTghnZmT4lSvVWZ0jbjwhNrVEHkL0dZfFM414klFbVx_gCloC7ewMmbi_5RJO2VIxKodi91QLfDpK_40Dj0rglQ4na6U4WyJEdhJqU-HnQl50PAhKoa4XhZtvYfSTl9pScVAfZ5OpziQ-IyRG2fXANJGc85qv9c4Sok1bqLL1OcPKEQ_QuMJ_wy_3QLSLjTz0G16Da8Kf8lZCzrayDy3CIBMzbFCHQfQXbszBMXXtqOI-GSBNZqNuQ"/>
+<div class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-lg flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm font-bold">Matches My Terms</span>
+</div>
+<button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-on-surface hover:text-error transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="mb-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase">New Arrival • 12 mi</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">2024 Lucid Air Touring</h3>
+</div>
+<div class="flex items-baseline gap-2 mb-md">
+<span class="font-headline-md text-headline-md text-primary">$78,900</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">3.9% APR Available</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex justify-between items-center">
+<div>
+<p class="font-label-sm text-label-sm text-outline">Negotiation Gap</p>
+<p class="font-label-md text-label-md text-secondary font-bold">-$1,250 Under Target</p>
+</div>
+<span class="material-symbols-outlined text-secondary">trending_down</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                            View Details &amp; Negotiate
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2 (Standard) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A side-profile shot of a rugged 2024 off-road SUV in a desert sand matte finish. The vehicle is parked on a clean, modern concrete platform during the blue hour, with subtle warm ambient lights from a nearby glass-walled showroom. The visual style is premium and corporate, utilizing a color palette of slate grays and muted earth tones. The focus is sharp and the depth of field is shallow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7Sw6CA3dBsW5BUJE1ek2pWMYytrJCJ74QY9em-2jqfVlVt7US5RXcZgTAawePIL1n3TlbBArdufyIA14Q-xoepYzyeABm-suFdTyG7ArTWk52nrvzdPoSMPIf8P21J_CYhB1S1tMbBIigLDO-iGP5TNZvc2bdI2cjLuOY0FoPYr1YFc2UqX6uhZ9Y0Yz1kFxtB1nodvLC0Q1kA2kB1YMjc-5eB2Y_V9V1K1HhX6eHR2XPAsl4kvKNAw"/>
+<button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-on-surface hover:text-error transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="mb-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase">Certified Pre-Owned • 14,500 mi</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">2023 Land Rover Defender 110</h3>
+</div>
+<div class="flex items-baseline gap-2 mb-md">
+<span class="font-headline-md text-headline-md text-primary">$64,500</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Market Average</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex justify-between items-center opacity-60">
+<div>
+<p class="font-label-sm text-label-sm text-outline">Negotiation Gap</p>
+<p class="font-label-md text-label-md text-on-surface-variant">+$2,100 Above Target</p>
+</div>
+<span class="material-symbols-outlined text-outline">trending_up</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                            View Details &amp; Negotiate
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 3 (Match) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A sleek 2024 German performance coupe in a brilliant electric blue finish. The car is captured in a high-tech underground garage with linear neon lighting strips reflecting off its polished surfaces. The scene is incredibly clean and organized, conveying a sense of technical precision and authority. The lighting is high-contrast, highlighting the metallic flakes in the blue paint and the aggressive front grille." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDASKBmlm8K6c_-UWEHRXladoEAWVSUz6uwmFXW1BR84BGHfPHppZF6IUr7NkfWjN_Nih2N4GpmX0fegbstjwH21Anxxs2elSkJ67EEo8Zo9vnE8vAv3M-gzj0ZhgNtevd6ccrsQVihbpHipT9LGiNTB4s8ytNFufgRPUKeDVgIMzBU4i399-in-NUCNr22XDqBbXWpMPwjlSQ4NturYSPCRStyINWeX7HnIQThvckoUn-xoBiOPzDE6w"/>
+<div class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-lg flex items-center gap-1 shadow-md">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm font-bold">Matches My Terms</span>
+</div>
+<button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-on-surface hover:text-error transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="mb-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase">New • 5 mi</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">2024 BMW M4 Competition</h3>
+</div>
+<div class="flex items-baseline gap-2 mb-md">
+<span class="font-headline-md text-headline-md text-primary">$86,200</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Dealer Incentive Applied</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex justify-between items-center">
+<div>
+<p class="font-label-sm text-label-sm text-outline">Negotiation Gap</p>
+<p class="font-label-md text-label-md text-secondary font-bold">-$400 Under Target</p>
+</div>
+<span class="material-symbols-outlined text-secondary">trending_down</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                            View Details &amp; Negotiate
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 4 (Standard) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden group hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+<div class="relative aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A clean, minimalist front-view of a 2024 family SUV in a pearl white finish. The car is set against a soft gray architectural background with clean lines and a professional corporate feel. The lighting is diffused and even, showcasing the car's grille details and large windshield. The atmosphere is calm, safe, and trustworthy, fitting a modern high-end SaaS aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa3J_FJJTsvGsrjOyNRke-9CBxG81EA1mkH9UD08T1sedBf7d-YC_F7ksSEpq-fdcsUhqas6YjplOge8xeM8FTBQ9b54C03cdR4Kc2hMSBH1jvtl-zgJElfSk2r_xeI4ow0EoarEZIEVUy0OPcgOtAGdY4TC0aJRDMvHJ9STBG_UZBtSjXEmJamBRs48QdSp6MnnVMedwi89cFG8dK4zbPXrqaOBGzZ47rqIDzYajV15b0d-WTMZprNg"/>
+<button class="absolute top-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full text-on-surface hover:text-error transition-colors">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="mb-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase">Certified Pre-Owned • 21,000 mi</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">2023 Volvo XC90 Recharge</h3>
+</div>
+<div class="flex items-baseline gap-2 mb-md">
+<span class="font-headline-md text-headline-md text-primary">$58,900</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2.9% APR available</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="bg-surface-container-low p-3 rounded-lg border border-outline-variant/30 flex justify-between items-center opacity-60">
+<div>
+<p class="font-label-sm text-label-sm text-outline">Negotiation Gap</p>
+<p class="font-label-md text-label-md text-on-surface-variant">+$150 Above Target</p>
+</div>
+<span class="material-symbols-outlined text-outline">horizontal_rule</span>
+</div>
+<button class="w-full bg-primary text-on-primary py-3 rounded-lg font-label-md text-label-md hover:bg-primary-container active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                            View Details &amp; Negotiate
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More -->
+<div class="mt-2xl flex flex-col items-center gap-md">
+<button class="px-xl py-3 border border-primary text-primary font-bold font-label-md text-label-md rounded-lg hover:bg-surface-container transition-colors active:scale-95">
+                Load 24 More Results
+            </button>
+<p class="font-body-sm text-body-sm text-outline">You've viewed 4 of 482 matching vehicles</p>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface-container-lowest dark:bg-tertiary-container fixed bottom-0 w-full z-50 border-t border-outline-variant dark:border-outline flex justify-around items-center h-20 pb-safe w-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-sm text-label-sm mt-1">Listings</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-label-sm mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-sm text-label-sm mt-1">Trust</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                // Subtle pulse for primary buttons could go here
+            });
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        const searchContainer = searchInput.parentElement;
+        
+        searchInput.addEventListener('focus', () => {
+            searchContainer.classList.add('ring-2', 'ring-secondary/20');
+        });
+        
+        searchInput.addEventListener('blur', () => {
+            searchContainer.classList.remove('ring-2', 'ring-secondary/20');
+        });
+    </script>
+</body></html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Offers | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#98805d",
+                        "surface-variant": "#d3e4fe",
+                        "on-surface": "#0b1c30",
+                        "surface-tint": "#565e74",
+                        "on-tertiary-fixed": "#271901",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "tertiary-container": "#271901",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "error": "#ba1a1a",
+                        "tertiary": "#000000",
+                        "on-primary-container": "#7c839b",
+                        "secondary": "#0058be",
+                        "on-secondary-fixed": "#001a42",
+                        "primary-container": "#131b2e",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "secondary-container": "#2170e4",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#45464d",
+                        "on-secondary-fixed-variant": "#004395",
+                        "inverse-primary": "#bec6e0",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#fcdeb5",
+                        "background": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-secondary-container": "#fefcff",
+                        "on-primary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "outline-variant": "#c6c6cd",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-background": "#0b1c30",
+                        "primary": "#000000",
+                        "outline": "#76777d",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d8e2ff",
+                        "primary-fixed": "#dae2fd",
+                        "inverse-surface": "#213145",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container": "#e5eeff",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "3xl": "64px",
+                        "2xl": "48px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+            color: #0b1c30;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 2px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface z-50 border-b border-outline-variant flex items-center justify-between px-md h-16">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container transition-colors rounded-lg active:scale-95">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">AutoNegotiate</h1>
+</div>
+<div class="flex items-center gap-md">
+<nav class="hidden md:flex gap-lg items-center mr-8">
+<a class="text-secondary font-bold font-label-md" href="#">Offers</a>
+<a class="text-on-surface-variant hover:bg-surface-container px-3 py-2 rounded-lg transition-colors font-label-md" href="#">Search</a>
+<a class="text-on-surface-variant hover:bg-surface-container px-3 py-2 rounded-lg transition-colors font-label-md" href="#">Messages</a>
+</nav>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container transition-colors rounded-lg active:scale-95">notifications</button>
+</div>
+</header>
+<main class="pt-24 px-md max-w-container-max mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-xl">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">My Offers</h2>
+<div class="flex bg-surface-container rounded-xl p-1 w-fit border border-outline-variant">
+<button class="px-6 py-2 rounded-lg bg-surface-container-lowest shadow-sm text-secondary font-bold font-label-md transition-all">Active</button>
+<button class="px-6 py-2 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md transition-all">History</button>
+</div>
+</div>
+<!-- Summary Stats -->
+<div class="grid grid-cols-2 gap-md w-full md:w-auto">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl min-w-[160px]">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider mb-xs">Total Active Bids</p>
+<p class="font-headline-sm text-headline-sm text-primary">03</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl min-w-[160px]">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider mb-xs">Avg. Response Time</p>
+<p class="font-headline-sm text-headline-sm text-primary">2.4 hrs</p>
+</div>
+</div>
+</div>
+<!-- Negotiation Stepper (Contextual) -->
+<div class="hidden md:flex items-center gap-xs mb-lg bg-surface-container-low p-sm rounded-lg border border-outline-variant overflow-x-auto no-scrollbar">
+<span class="flex items-center gap-xs font-label-sm text-secondary bg-secondary/10 px-3 py-1 rounded-full"><span class="material-symbols-outlined text-[18px]">list_alt</span> Offer Submitted</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+<span class="flex items-center gap-xs font-label-sm text-on-surface-variant px-3 py-1">Negotiation</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+<span class="flex items-center gap-xs font-label-sm text-on-surface-variant px-3 py-1">Terms Review</span>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+<span class="flex items-center gap-xs font-label-sm text-on-surface-variant px-3 py-1">Final Contract</span>
+</div>
+<!-- Negotiation List -->
+<div class="flex flex-col gap-lg pb-xl">
+<!-- Card 1: Nexa EV -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-72 h-48 md:h-auto overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform hover:scale-105 duration-700" data-alt="A sleek, modern 2024 Nexa EV Zenith electric sedan parked in a high-tech charging station with neon blue accents. The car's metallic charcoal paint glistens under soft studio lighting, highlighting its aerodynamic curves and futuristic headlights. The atmosphere is professional, quiet, and sophisticated, reflecting a high-end automotive negotiation context." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_uXUdmqTSw-t_7GvJrXLvv4BTQxLWQwhlyXhUDecqPMAFy7Y16GG7ljWC1Xq4dUTCRvgOXQtYy8C6jE3AD8Z-UrSJEwnP4TgxAlePCB7OAejSsDKF9CAgyV-o26Ys240mw-6-C40RyNu17NsqBzp1kUW_si7wxHExdyT-BXICfv0uuJnhfU043Tt_-CZJPtxKgSYW74FtpE2JfP6atuAmY8pgmIM6KyJYp1RhqmRJxKwwrsiUzAAEYw')"></div>
+</div>
+<div class="flex-1 p-lg flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">2024 Nexa EV Zenith</h3>
+<p class="text-on-surface-variant font-body-sm">Awaiting Dealer Response</p>
+</div>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full font-label-sm flex items-center gap-xs border border-outline-variant">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 32h 15m
+                                </span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-lg mt-md border-t border-outline-variant pt-md">
+<div>
+<p class="text-on-surface-variant font-label-sm mb-xs">Your Offer</p>
+<p class="font-headline-sm text-headline-sm text-primary">$58,450</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm mb-xs">Negotiation Gap</p>
+<p class="font-headline-sm text-headline-sm text-secondary-container">-$1,200</p>
+</div>
+<div class="hidden md:block">
+<p class="text-on-surface-variant font-label-sm mb-xs">Dealer Status</p>
+<p class="font-body-md text-on-surface">Reviewing Terms</p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-md mt-lg">
+<button class="flex-1 md:flex-none px-6 py-2 bg-primary text-on-primary rounded-lg font-label-md hover:opacity-90 active:scale-95 transition-all">View Details</button>
+<button class="flex-1 md:flex-none px-6 py-2 border border-secondary text-secondary rounded-lg font-label-md hover:bg-surface-container-low active:scale-95 transition-all">Modify Terms</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2: Tesla Model 3 (High Highlight) -->
+<div class="bg-surface-container-lowest border-2 border-secondary rounded-xl overflow-hidden shadow-sm relative">
+<div class="absolute top-0 right-0 bg-secondary text-on-secondary px-4 py-1 rounded-bl-xl font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">priority_high</span> Action Needed
+                </div>
+<div class="flex flex-col md:flex-row">
+<div class="md:w-72 h-48 md:h-auto overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="A 2023 Pearl White Tesla Model 3 driving through a minimalist urban canyon at dusk. The city lights create soft bokeh in the background, while the car's clean lines and glass roof are perfectly exposed. The aesthetic is clean, financial-tech focused, and emphasizes precision and value in a modern automotive marketplace." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCF0iLQRKr9GPpjLm9N1KOuttdH_oh6UCg0lzGLEi6Z_t_VHYXTRZvcl8a7xhJHntzLkiSci2OM4fYg1Khrfv0CsPSr0WVUxFwFl3NdwnimDFwxfQ7Hy_fLDuj1glMUL3o9ElKLfH3cTtHNsWEKgpgVjpOl6yQe1b9p-GTzqgB3Zf_2TPBOaEdfdmbJKahT_wyPZzcx0OKSzKdAukCA1Z481xbxTizrm5cdupWhRAHv0_BuevRlAeb6ng')"></div>
+</div>
+<div class="flex-1 p-lg flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">2023 Tesla Model 3</h3>
+<p class="text-secondary font-bold font-body-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">forum</span> Counter Received
+                                    </p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-lg mt-md border-t border-outline-variant pt-md">
+<div>
+<p class="text-on-surface-variant font-label-sm mb-xs">Dealer Counter</p>
+<p class="font-headline-sm text-headline-sm text-secondary">$42,500</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm mb-xs">Your Last Bid</p>
+<p class="font-headline-sm text-headline-sm text-on-surface-variant">$41,000</p>
+</div>
+<div class="hidden md:block">
+<p class="text-on-surface-variant font-label-sm mb-xs">Market Price</p>
+<p class="font-body-md text-on-surface">$44,200</p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-md mt-lg">
+<button class="flex-1 md:flex-none px-6 py-2 bg-secondary text-on-secondary rounded-lg font-label-md hover:opacity-95 active:scale-95 transition-all">Review Counter</button>
+<button class="flex-1 md:flex-none px-6 py-2 border border-secondary text-secondary rounded-lg font-label-md hover:bg-secondary/5 active:scale-95 transition-all">View Chat</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 3: Rivian R1S -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="flex flex-col md:flex-row">
+<div class="md:w-72 h-48 md:h-auto overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="A forest green 2024 Rivian R1S SUV parked on a gravel path near a misty forest at sunrise. The lighting is ethereal and soft, highlighting the vehicle's rugged yet sophisticated design. The image conveys trust, adventure, and the successful completion of a high-value transaction in a calm, professional manner." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBzRbbplxU399P0XUfkvUuCVXzxshKGk1Ip9ZxyLMOpI1qwuLitOmsD1HXkLkiI1dqws3sDw7UXTHYSHhWrZvWxulBh7z7e63uybbYctLm8Nwl76vOEOmD6Tar6-3z4dF7qP-MbmjYhP3Gaq4IXCPg2gHd9FHfANoG4PvkcJG2Jg2oe8lDkxPhktEJkcBHEY2Rp1D0pW3exSEomFT9aW3WkWj5GaYn9qqsE7yJNACtVZijHtBnwHXEamw')"></div>
+</div>
+<div class="flex-1 p-lg flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">2024 Rivian R1S</h3>
+<p class="text-on-tertiary-container font-bold font-body-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]">check_circle</span> Offer Accepted
+                                    </p>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-lg mt-md border-t border-outline-variant pt-md">
+<div>
+<p class="text-on-surface-variant font-label-sm mb-xs">Final Price</p>
+<p class="font-headline-sm text-headline-sm text-primary">$92,000</p>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-sm mb-xs">Savings vs MSRP</p>
+<p class="font-headline-sm text-headline-sm text-secondary-container">$4,500</p>
+</div>
+<div class="hidden md:block">
+<p class="text-on-surface-variant font-label-sm mb-xs">Next Step</p>
+<p class="font-body-md text-on-surface">Digital Signature</p>
+</div>
+</div>
+</div>
+<div class="flex flex-wrap gap-md mt-lg">
+<button class="flex-1 md:flex-none px-6 py-2 bg-primary-container text-on-primary-container rounded-lg font-label-md hover:bg-primary-container/90 active:scale-95 transition-all">Finalize Contract</button>
+<button class="flex-1 md:flex-none px-6 py-2 border border-outline text-on-surface-variant rounded-lg font-label-md hover:bg-surface-container-low active:scale-95 transition-all">Download Summary</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-around items-center h-16 px-sm pb-safe shadow-sm rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-secondary bg-secondary-container/20 rounded-xl px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-sm text-label-sm">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for hover states and button feedback
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

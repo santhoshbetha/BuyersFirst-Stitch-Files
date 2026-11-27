@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiterCore | Default Judgment Execution</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E2E8F0;
+        }
+        .deadline-pulse {
+            animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; color: #ba1a1a; }
+            50% { opacity: 0.5; color: #ffdad6; }
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#d3e4fe",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "outline-variant": "#c6c6cd",
+                    "inverse-primary": "#bec6e0",
+                    "on-tertiary-fixed": "#271901",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary-fixed": "#131b2e",
+                    "primary-fixed": "#dae2fd",
+                    "secondary-container": "#2170e4",
+                    "outline": "#76777d",
+                    "on-secondary-fixed": "#001a42",
+                    "error": "#ba1a1a",
+                    "tertiary": "#000000",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-surface": "#0b1c30",
+                    "surface-container": "#e5eeff",
+                    "secondary": "#0058be",
+                    "primary-fixed-dim": "#bec6e0",
+                    "background": "#f8f9ff",
+                    "surface-tint": "#565e74",
+                    "secondary-fixed": "#d8e2ff",
+                    "surface": "#f8f9ff",
+                    "on-background": "#0b1c30",
+                    "tertiary-container": "#271901",
+                    "on-tertiary-container": "#98805d",
+                    "primary": "#000000",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface-container-high": "#dce9ff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary-container": "#7c839b",
+                    "on-error": "#ffffff",
+                    "primary-container": "#131b2e",
+                    "on-surface-variant": "#45464d",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#cbdbf5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "3xl": "64px",
+                    "lg": "24px",
+                    "gutter": "24px",
+                    "2xl": "48px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center justify-between px-lg py-sm w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-secondary text-[24px]">gavel</span>
+<span class="font-headline-sm text-headline-sm font-bold text-tertiary">ArbiterCore</span>
+</div>
+<div class="flex items-center gap-md">
+<nav class="hidden md:flex gap-lg">
+<span class="text-on-surface-variant font-label-md text-label-md cursor-pointer hover:bg-surface-container-high transition-colors px-sm py-xs rounded">Dashboard</span>
+<span class="text-secondary font-bold font-label-md text-label-md cursor-pointer hover:bg-surface-container-high transition-colors px-sm py-xs rounded">Active Cases</span>
+<span class="text-on-surface-variant font-label-md text-label-md cursor-pointer hover:bg-surface-container-high transition-colors px-sm py-xs rounded">Reports</span>
+</nav>
+<div class="h-8 w-px bg-outline-variant hidden md:block"></div>
+<span class="material-symbols-outlined text-secondary text-[24px] cursor-pointer active:opacity-80">account_circle</span>
+</div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- NavigationDrawer -->
+<aside class="h-full w-64 sticky top-0 hidden lg:flex flex-col p-md gap-sm bg-surface border-r border-outline-variant">
+<div class="mb-lg">
+<h2 class="font-headline-sm text-headline-sm font-bold text-tertiary px-sm">Arbitration Suite</h2>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out rounded-full font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">folder_shared</span>
+                    Case Management
+                </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out rounded-full font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">plagiarism</span>
+                    Evidence Review
+                </a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container font-bold transition-all duration-200 ease-in-out rounded-full font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">balance</span>
+                    Ruling Queue
+                </a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out rounded-full font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+                    Compliance Logs
+                </a>
+</nav>
+<div class="mt-auto p-md bg-surface-container-low rounded-xl">
+<div class="flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Internal System Status</span>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="font-body-sm text-body-sm">Operational</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto p-lg bg-surface">
+<div class="max-w-5xl mx-auto space-y-lg">
+<!-- Case Header / Hero -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md border-b border-outline-variant pb-lg">
+<div class="space-y-xs">
+<div class="flex items-center gap-sm">
+<span class="px-sm py-xs bg-error-container text-on-error-container font-label-md text-label-md rounded">CRITICAL TIMEOUT</span>
+<span class="text-on-surface-variant font-label-md text-label-md">#ARB-2024-0982</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary">Northside Automotive</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Pending Default Judgment for non-compliance with information requests regarding chassis integrity dispute #1029-X.</p>
+</div>
+<div class="flex flex-col items-end gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Time Remaining</span>
+<span class="font-display-lg text-display-lg deadline-pulse leading-none">00:00:00</span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Alert Banner (Full Width within Grid) -->
+<div class="md:col-span-12 flex items-center gap-md p-md bg-error-container border border-error rounded-lg">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div class="flex-1">
+<h3 class="font-label-md text-label-md font-bold text-on-error-container uppercase">Status: Final Warning Sent</h3>
+<p class="font-body-sm text-body-sm text-on-error-container opacity-80">Automated notification was dispatched via Certified e-Log 48 hours ago. No response received.</p>
+</div>
+</div>
+<!-- Evidence Card -->
+<div class="md:col-span-7 space-y-md">
+<div class="glass-card rounded-lg overflow-hidden flex flex-col h-full">
+<div class="p-md border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm">Required Evidence</h3>
+<span class="font-label-md text-label-md text-error font-bold">0 / 4 SUBMITTED</span>
+</div>
+<div class="p-lg flex-1 flex flex-col justify-center items-center gap-md">
+<div class="w-20 h-20 rounded-full border-4 border-dashed border-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-[40px]">inventory_2</span>
+</div>
+<div class="text-center">
+<p class="font-headline-sm text-headline-sm text-on-surface-variant">No Documentation Found</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">The respondent has failed to provide the mandated service logs, inspection reports, and chain of custody forms.</p>
+</div>
+<div class="w-full space-y-sm mt-md">
+<div class="flex justify-between items-center p-sm border border-outline-variant rounded bg-surface">
+<span class="font-body-sm text-body-sm">1. Manufacturer Integrity Report</span>
+<span class="material-symbols-outlined text-error">cancel</span>
+</div>
+<div class="flex justify-between items-center p-sm border border-outline-variant rounded bg-surface">
+<span class="font-body-sm text-body-sm">2. Signed Sale Agreement</span>
+<span class="material-symbols-outlined text-error">cancel</span>
+</div>
+<div class="flex justify-between items-center p-sm border border-outline-variant rounded bg-surface">
+<span class="font-body-sm text-body-sm">3. Maintenance Record Archive</span>
+<span class="material-symbols-outlined text-error">cancel</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Sidebar -->
+<div class="md:col-span-5 space-y-lg">
+<!-- Entity Image -->
+<div class="h-48 w-full rounded-lg overflow-hidden relative shadow-sm border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional, sterile architectural photograph of a modern automotive dealership headquarters at dusk. The building features large glass panels, brushed steel accents, and minimalist signage. The lighting is cold and precise, reflecting a corporate, high-tech atmosphere consistent with a technical arbitration platform. Deep blue sky contrasts with warm interior office lights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUvOGsmf1EzRDFB2cqV3qOK2DaiO8Pu30kEChe-Mf8lD6CvlqugaDR1Oh_t66Do7TxjUzX1HkNsdyUrSbn1rNtq5gLiUx3BhF3EM55HLaykXGYE1BVEmhEHCQzVAhk44xuqAca-OI51XyttFAElZuKTOia2vsHYb-ZkyxEzMun4grcbWfFEKK8ukFh7jdcNrp81lak5jXPYS3Nwm0SDNv93Q5YGqIjmPk-0hiFTD_TgvV_h73Zthaxig"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<p class="text-white font-label-sm text-label-sm uppercase tracking-widest opacity-80">Subject Entity</p>
+<p class="text-white font-headline-sm text-headline-sm">Northside Automotive HQ</p>
+</div>
+</div>
+<!-- Action Card -->
+<div class="p-lg bg-surface-container-highest rounded-lg border border-outline shadow-lg space-y-md">
+<div class="space-y-xs">
+<h3 class="font-label-md text-label-md font-bold text-primary uppercase">Arbiter Decision</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                                    Under Protocol 14.2, the failure to provide evidence within the 72-hour window constitutes an admission of fault.
+                                </p>
+</div>
+<button class="w-full py-md bg-primary text-on-primary font-bold rounded-lg flex items-center justify-center gap-md hover:opacity-90 active:scale-[0.98] transition-all" id="execute-btn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
+                                EXECUTE DEFAULT JUDGMENT
+                            </button>
+<button class="w-full py-sm border border-secondary text-secondary font-label-md text-label-md rounded-lg hover:bg-secondary-container/10 transition-colors">
+                                Review Regulatory Precedent
+                            </button>
+<p class="font-label-sm text-label-sm text-center text-on-surface-variant italic mt-md">
+                                *This action is irreversible and will trigger automatic financial levies.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Case History / Audit Trail -->
+<section class="space-y-md">
+<h3 class="font-headline-sm text-headline-sm">Audit Trail</h3>
+<div class="border border-outline-variant rounded-lg overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase">Timestamp</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase">Action</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase">System Actor</th>
+<th class="p-md font-label-md text-label-md text-on-surface-variant uppercase">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-body-sm text-body-sm font-mono">2024-05-24 14:00:00</td>
+<td class="p-md font-body-sm text-body-sm">Final Compliance Deadline Passed</td>
+<td class="p-md font-body-sm text-body-sm">Auto-Sentinel v4</td>
+<td class="p-md"><span class="text-error font-bold text-label-sm">EXPIRED</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-body-sm text-body-sm font-mono">2024-05-22 14:00:00</td>
+<td class="p-md font-body-sm text-body-sm">Certified e-Log Notification Sent</td>
+<td class="p-md font-body-sm text-body-sm">Mailer Daemon</td>
+<td class="p-md"><span class="text-secondary font-bold text-label-sm">DELIVERED</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md font-body-sm text-body-sm font-mono">2024-05-21 09:12:44</td>
+<td class="p-md font-body-sm text-body-sm">Case Escalation: Evidence Missing</td>
+<td class="p-md font-body-sm text-body-sm">Case Logic Engine</td>
+<td class="p-md"><span class="text-on-surface-variant font-bold text-label-sm">FLAGGED</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full bottom-0 bg-surface-container-low border-t border-outline-variant">
+<div class="flex justify-between items-center px-lg py-md w-full max-w-container-max mx-auto">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Automotive Arbitration &amp; Compliance System. Internal Use Only.</p>
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-opacity duration-150" href="#">Security Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-opacity duration-150" href="#">Arbiter Guidelines</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary transition-opacity duration-150" href="#">System Status</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the execution button
+        document.getElementById('execute-btn').addEventListener('click', function() {
+            if(confirm('CONFIRM DEFAULT JUDGMENT: This will finalize Case #ARB-2024-0982 against Northside Automotive. Proceed?')) {
+                this.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> EXECUTING...';
+                this.disabled = true;
+                this.classList.add('opacity-50');
+                
+                setTimeout(() => {
+                    this.innerHTML = '<span class="material-symbols-outlined">check_circle</span> JUDGMENT FINALIZED';
+                    this.classList.remove('bg-primary');
+                    this.classList.add('bg-green-700');
+                    alert('Judgment Executed. Notification sent to Northside Automotive legal department.');
+                }, 1500);
+            }
+        });
+
+        // Hover animation for table rows
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+                row.style.transition = 'transform 0.2s ease-out';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body></html>

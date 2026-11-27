@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Negotiation Detail | Dealer Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#131b2e",
+                    "on-secondary-fixed": "#001a42",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#565e74",
+                    "primary-fixed": "#dae2fd",
+                    "surface-container-low": "#eff4ff",
+                    "on-primary-container": "#7c839b",
+                    "secondary": "#0058be",
+                    "on-secondary-fixed-variant": "#004395",
+                    "tertiary": "#000000",
+                    "on-secondary-container": "#fefcff",
+                    "outline-variant": "#c6c6cd",
+                    "surface-variant": "#d3e4fe",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#e5eeff",
+                    "primary-container": "#131b2e",
+                    "surface-bright": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "on-tertiary-fixed": "#271901",
+                    "on-background": "#0b1c30",
+                    "secondary-container": "#2170e4",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#98805d",
+                    "tertiary-container": "#271901",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#76777d",
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-high": "#dce9ff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-surface": "#0b1c30",
+                    "primary": "#000000",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "background": "#f8f9ff",
+                    "on-surface-variant": "#45464d",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "inverse-on-surface": "#eaf1ff",
+                    "inverse-surface": "#213145",
+                    "inverse-primary": "#bec6e0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "2xl": "48px",
+                    "xs": "4px",
+                    "3xl": "64px",
+                    "md": "16px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .monospaced-nums {
+            font-variant-numeric: tabular-nums;
+        }
+        .thermometer-gradient {
+            background: linear-gradient(90deg, #ba1a1a 0%, #2170e4 50%, #adc6ff 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-lg py-md w-full bg-surface dark:bg-on-background border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors p-sm rounded-full">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Negotiation: #DL-8821</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex gap-lg mr-xl">
+<span class="text-secondary dark:text-secondary-fixed font-bold border-b-2 border-secondary font-label-md text-label-md cursor-pointer">Active Deals</span>
+<span class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container-low transition-colors cursor-pointer px-2">Inventory</span>
+<span class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container-low transition-colors cursor-pointer px-2">Analytics</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a corporate car dealer administrator in a high-end office environment. Soft, professional lighting highlights a warm, confident expression. The style is clean, modern corporate SaaS aesthetic with a neutral, slightly blurred background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQcUrN2jdhYxOk5jTHS9zhCGMklXyVyUo8DXctP2wmFJXYY0GySW5MmbCBa3yhe86SfVwhYrDh80ZzbgTa5ro-ieLUKQel0OFSXN_woWtprS8fjWrPc__9XairtGJO7OwGJgFnlWPv5cDT0HyCm0iiVnOue4tULQXTAkezogYdXUe6jUoS4X0V2pL4m8RUA9-54aDqXwgokDX_iIAlpV_SC2uZ6MWCzMI40sl_OXqDhnwvm5A9RK9Q2A"/>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md py-lg md:px-lg flex flex-col md:flex-row gap-lg mb-32">
+<!-- Sidebar: Deal Overview -->
+<aside class="w-full md:w-80 flex flex-col gap-lg">
+<!-- Car Info Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover" data-alt="A high-end luxury electric sedan parked in a minimalist, modern showroom with polished concrete floors and dramatic architectural lighting. The color palette is composed of deep navies and sharp metallic highlights, reflecting an atmosphere of technical precision and authority. Cinematic wide shot." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Fhr6EILabFkvWGjLHzvV4J3Qs-7m485zniYX-aSkMnp-1enBtEorAG3IOLTU3Zj6y_mLEpnMD7sm6ZfzccZPWhl258RDWUvKSnoaS8l2_xeI-GtKolhdDIaCplSMoLUe6vIP8SQihlMGo67H3w24Yb0hqrCrMgeXKILriobEDzFn8I-flxknkw9ucCd5d7-kxNdj4SmRSD60agwftdloQAkuyaBovh1JfU5CTC48vmbAzUdZwOt8mg"/>
+<div class="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1 rounded-full font-label-sm text-label-sm">
+                        PREMIUM
+                    </div>
+</div>
+<div class="p-md">
+<h2 class="font-headline-sm text-headline-sm mb-xs">2024 Nexa EV Zenith</h2>
+<p class="text-on-surface-variant font-body-sm text-body-sm mb-md">VIN: 1N4AL3AP5FC123456</p>
+<div class="flex justify-between items-center pt-md border-t border-outline-variant">
+<span class="text-on-surface-variant font-label-md text-label-md">MSRP</span>
+<span class="font-headline-sm text-headline-sm monospaced-nums">$62,500</span>
+</div>
+</div>
+</div>
+<!-- Buyer Info Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<h3 class="font-label-md text-label-md uppercase tracking-wider text-on-surface-variant mb-md">Buyer Profile</h3>
+<div class="flex items-center gap-md mb-lg">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">
+                        JD
+                    </div>
+<div>
+<p class="font-headline-sm text-headline-sm">Jonathan Doe</p>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Verified Buyer • 4.9 <span class="material-symbols-outlined text-sm align-middle" style="font-variation-settings: 'FILL' 1;">star</span></p>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between">
+<span class="text-on-surface-variant font-body-sm text-body-sm">Location</span>
+<span class="font-body-sm text-body-sm">Austin, TX</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant font-body-sm text-body-sm">Pre-Approved</span>
+<span class="font-body-sm text-body-sm text-secondary font-bold">YES</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content: Negotiation Canvas -->
+<section class="flex-1 flex flex-col gap-lg">
+<!-- Deal Thermometer Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-xl">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<h3 class="font-headline-md text-headline-md mb-xs">Deal Thermometer</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Visualizing the gap between current bid and reserve price.</p>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant font-label-md text-label-md uppercase">Current Offer</p>
+<p class="font-display-lg text-display-lg monospaced-nums text-secondary">$58,200</p>
+</div>
+</div>
+<!-- The Thermometer Visual -->
+<div class="relative pt-12 pb-8">
+<!-- Tracks -->
+<div class="h-4 w-full bg-surface-container-high rounded-full overflow-hidden relative border border-outline-variant">
+<div class="h-full thermometer-gradient w-[85%] rounded-full opacity-30"></div>
+</div>
+<!-- Marker: Buyer Max (Low End) -->
+<div class="absolute top-0 left-[20%] flex flex-col items-center">
+<div class="w-0.5 h-16 bg-outline-variant absolute top-4"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Buyer Max</span>
+<span class="font-label-md text-label-md monospaced-nums">$56,500</span>
+</div>
+<!-- Marker: Current Offer (The Active Point) -->
+<div class="absolute top-0 left-[65%] flex flex-col items-center z-10 transition-all duration-700">
+<div class="w-1 h-20 bg-secondary absolute top-4 shadow-md"></div>
+<div class="w-4 h-4 bg-secondary rounded-full absolute top-20 shadow-lg border-2 border-surface"></div>
+<span class="font-label-sm text-label-sm text-secondary font-bold mb-1">Current Offer</span>
+<span class="font-headline-sm text-headline-sm monospaced-nums text-secondary">$58,200</span>
+</div>
+<!-- Marker: Dealer Reserve (The Goal) -->
+<div class="absolute top-0 left-[85%] flex flex-col items-center">
+<div class="w-0.5 h-16 bg-on-background absolute top-4"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-1">Reserve</span>
+<span class="font-label-md text-label-md monospaced-nums text-on-background">$60,500</span>
+</div>
+</div>
+<div class="mt-xl p-md bg-surface-container-low rounded-lg flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        The current offer is <span class="font-bold text-on-background monospaced-nums">$2,300</span> away from your reserve price. The buyer has increased their bid twice in the last 24 hours.
+                    </p>
+</div>
+</div>
+<!-- Immutable Terms Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-sm mb-md text-on-surface-variant">
+<span class="material-symbols-outlined">percent</span>
+<h4 class="font-label-md text-label-md uppercase">APR Rate</h4>
+</div>
+<p class="font-display-lg text-display-lg monospaced-nums">3.9%</p>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-md">Fixed for 60 months. Non-negotiable based on credit tier.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-sm mb-md text-on-surface-variant">
+<span class="material-symbols-outlined">account_balance</span>
+<h4 class="font-label-md text-label-md uppercase">Financing</h4>
+</div>
+<p class="font-headline-lg text-headline-lg">Standard</p>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-md">Provided by Nexa Financial Services. Subject to approval.</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-sm mb-md text-on-surface-variant">
+<span class="material-symbols-outlined">verified_user</span>
+<h4 class="font-label-md text-label-md uppercase">Warranty</h4>
+</div>
+<p class="font-headline-lg text-headline-lg">Included</p>
+</div>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-md">8-year / 100k miles battery and powertrain protection.</p>
+</div>
+</div>
+<!-- Negotiation History / Message Snippet -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-label-md text-label-md uppercase text-on-surface-variant">Negotiation Log</h3>
+<button class="text-secondary font-label-sm text-label-sm hover:underline">View All</button>
+</div>
+<div class="p-lg space-y-md">
+<div class="flex gap-md">
+<div class="w-8 h-8 rounded-full bg-outline-variant flex-shrink-0"></div>
+<div class="bg-surface-container-high rounded-lg p-md max-w-lg">
+<p class="font-body-sm text-body-sm">"I'm really interested in this Zenith model. Can we meet closer to $58,000? I'm ready to sign today if we can make it happen."</p>
+<span class="block text-[10px] text-outline mt-xs uppercase">Buyer • 10:42 AM</span>
+</div>
+</div>
+<div class="flex gap-md flex-row-reverse">
+<div class="w-8 h-8 rounded-full bg-secondary flex-shrink-0 flex items-center justify-center text-[10px] text-white">ME</div>
+<div class="bg-secondary-container text-on-secondary-container rounded-lg p-md max-w-lg">
+<p class="font-body-sm text-body-sm">"We appreciate the offer, Jonathan. This unit has several factory upgrades. How about $59,500 and we include the Home Charger?"</p>
+<span class="block text-[10px] opacity-70 mt-xs uppercase">Dealer (You) • 11:15 AM</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Action Bar / Footer Area -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant z-50 p-md md:p-lg shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+<div class="max-w-container-max mx-auto flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="hidden md:block">
+<p class="text-on-surface-variant font-label-sm text-label-sm uppercase">Current Status</p>
+<div class="flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<p class="font-headline-sm text-headline-sm">Awaiting Dealer Action</p>
+</div>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-md w-full md:w-auto">
+<button class="flex-1 md:flex-none px-xl py-3 border-2 border-secondary text-secondary font-bold rounded-lg hover:bg-surface-container-low transition-all active:scale-95 flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">chat</span>
+                    Message Buyer
+                </button>
+<button class="flex-1 md:flex-none px-xl py-3 border-2 border-secondary text-secondary font-bold rounded-lg hover:bg-surface-container-low transition-all active:scale-95 flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined">edit_note</span>
+                    Counter Offer
+                </button>
+<button class="w-full md:w-auto px-2xl py-3 bg-secondary text-on-secondary font-bold rounded-lg hover:bg-secondary-container transition-all active:scale-95 shadow-lg shadow-secondary/20 flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Accept Offer
+                </button>
+</div>
+</div>
+</footer>
+<!-- Mobile Bottom Navigation (Syncing with JSON but kept minimal as per Task) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-[60] flex justify-around items-center px-4 py-2 bg-surface dark:bg-on-background border-t border-outline-variant pointer-events-none opacity-0">
+<!-- Hidden as it conflicts with the Primary Action Bar for this specific task screen -->
+</nav>
+<script>
+        // Micro-interaction for the Action Bar shadow on scroll
+        window.addEventListener('scroll', () => {
+            const footer = document.querySelector('footer');
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+                footer.classList.remove('shadow-[0_-10px_20px_rgba(0,0,0,0.05)]');
+            } else {
+                footer.classList.add('shadow-[0_-10px_20px_rgba(0,0,0,0.05)]');
+            }
+        });
+
+        // Simulating progress logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeMarker = document.querySelector('.left-\\[65\\%\\]');
+            if (activeMarker) {
+                activeMarker.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    activeMarker.style.transform = 'translateY(0)';
+                }, 500);
+            }
+        });
+    </script>
+</body></html>

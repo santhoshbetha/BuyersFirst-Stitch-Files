@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Trail | ArbiterCore Audit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary-fixed": "#271901",
+                        "on-background": "#0b1c30",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-dim": "#cbdbf5",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-container": "#98805d",
+                        "on-secondary-fixed": "#001a42",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-container": "#7c839b",
+                        "secondary-container": "#2170e4",
+                        "outline": "#76777d",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#271901",
+                        "surface-container-low": "#eff4ff",
+                        "secondary": "#0058be",
+                        "surface-tint": "#565e74",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-surface": "#213145",
+                        "primary-container": "#131b2e",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container": "#e5eeff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-container": "#fefcff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#000000",
+                        "primary": "#000000",
+                        "background": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "container-max": "1280px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "3xl": "64px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .data-table-row:hover { background-color: #f1f5f9; }
+        .chip { padding: 4px 12px; border-radius: 9999px; font-weight: 600; font-size: 12px; }
+        .chip-critical { background-color: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+        .chip-resolved { background-color: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+        .chip-pending { background-color: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface antialiased overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col py-lg z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-sm text-headline-sm text-on-primary-container">ArbiterCore Audit</h1>
+</div>
+<nav class="flex-1 space-y-xs overflow-y-auto">
+<div class="bg-secondary-container text-on-secondary-container rounded-xl mx-sm my-xs px-md py-sm flex items-center gap-md transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-md text-label-md">Master Trail</span>
+</div>
+<div class="text-on-surface-variant mx-sm my-xs px-md py-sm flex items-center gap-md hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-md text-label-md">Case Logs</span>
+</div>
+<div class="text-on-surface-variant mx-sm my-xs px-md py-sm flex items-center gap-md hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-md text-label-md">Risk Flags</span>
+</div>
+<div class="text-on-surface-variant mx-sm my-xs px-md py-sm flex items-center gap-md hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+<div class="px-md mt-auto pt-lg">
+<div class="flex items-center gap-sm p-sm rounded-xl hover:bg-surface-container-highest transition-colors cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">
+                    CP
+                </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Compliance Officer</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">ID: 992-881</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex flex-col h-screen overflow-hidden">
+<!-- Header -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant z-40">
+<div class="flex items-center justify-between px-lg py-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-2xl">security</span>
+<h2 class="font-headline-md text-headline-md text-primary">Audit &amp; Compliance</h2>
+</div>
+<div class="flex items-center gap-lg">
+<div class="relative hidden lg:block">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="bg-surface-container-low border border-outline-variant rounded-full pl-xl pr-md py-sm w-80 text-body-sm focus:outline-none focus:border-secondary transition-all" placeholder="Search Master Trail..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-sm rounded-full hover:bg-surface-container-low transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full bg-cover bg-center border border-outline-variant cursor-pointer" data-alt="A professional headshot of a senior compliance officer with silvering hair, wearing a neutral gray blazer and glasses. The lighting is crisp and studio-like, set against a blurred office environment with soft blue and white highlights, conveying a mood of authority and precision." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4vktyuOMlKUR4rWHoHbv0DJccC3GqE-PWcPeE48_IVfWSVUy6lytFfmEzjdddl3CLd8ixJfDmnpqDWhX-Q-wVp4Di7Lo1fnYdJJd0vD0E74q2xC9B-sIzuIuPH1S1ZASpko-f_KWuQIakWpeECFGjkFRStPXd35b-aDUEdHyJQlO-xXAJo3TCVT95tFUtdIkyzt7zr8ucQab8kIVJhik1z9a6d4-VK2FXwWg1rQMqRkdqDWNeNlnlZA')"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Tool Bar -->
+<section class="bg-surface-container-lowest px-lg py-sm border-b border-outline-variant flex flex-wrap items-center justify-between gap-md">
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-xs px-md py-sm rounded-lg bg-secondary text-white font-label-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span>Filters</span>
+</button>
+<div class="h-6 w-[1px] bg-outline-variant mx-xs"></div>
+<div class="flex gap-xs">
+<button class="px-md py-sm rounded-lg border border-outline-variant font-label-md text-on-surface-variant hover:bg-surface-container-low transition-all">All</button>
+<button class="px-md py-sm rounded-lg border border-outline-variant font-label-md text-on-surface-variant hover:bg-surface-container-low transition-all flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-error"></span> Critical
+                    </button>
+<button class="px-md py-sm rounded-lg border border-outline-variant font-label-md text-on-surface-variant hover:bg-surface-container-low transition-all flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-green-500"></span> Resolved
+                    </button>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Viewing 1-50 of 1,204 logs</span>
+<div class="flex gap-xs">
+<button class="p-xs rounded hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined">chevron_left</span></button>
+<button class="p-xs rounded hover:bg-surface-container-low transition-colors"><span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+<button class="flex items-center gap-xs px-md py-sm rounded-lg border border-outline-variant font-label-md text-on-surface-variant hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</section>
+<!-- Audit Table Canvas -->
+<section class="flex-1 overflow-auto bg-surface">
+<div class="w-full min-w-[1000px]">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-container-high z-10 border-b border-outline">
+<tr>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Timestamp</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Event Type</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Status</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Case ID</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Arbiter ID</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Entry 1 -->
+<tr class="data-table-row transition-colors group">
+<td class="px-lg py-md">
+<p class="text-body-sm font-medium">Oct 24, 2024</p>
+<p class="text-label-sm text-on-surface-variant">14:32:01.442</p>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">gavel</span>
+<span class="text-body-sm font-semibold">Ruling Issued</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="chip chip-resolved">Resolved</span>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-body-sm text-secondary hover:underline cursor-pointer">#ARB-9920-X</span>
+</td>
+<td class="px-lg py-md text-body-sm">ID: 881-J.K.</td>
+<td class="px-lg py-md text-right">
+<button class="text-secondary font-label-md hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Entry 2 -->
+<tr class="data-table-row transition-colors group">
+<td class="px-lg py-md">
+<p class="text-body-sm font-medium">Oct 24, 2024</p>
+<p class="text-label-sm text-on-surface-variant">13:15:22.091</p>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-error">priority_high</span>
+<span class="text-body-sm font-semibold">Default Judgment</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="chip chip-critical">Critical</span>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-body-sm text-secondary hover:underline cursor-pointer">#ARB-9104-Y</span>
+</td>
+<td class="px-lg py-md text-body-sm">System Auto</td>
+<td class="px-lg py-md text-right">
+<button class="text-secondary font-label-md hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Entry 3 -->
+<tr class="data-table-row transition-colors group">
+<td class="px-lg py-md">
+<p class="text-body-sm font-medium">Oct 24, 2024</p>
+<p class="text-label-sm text-on-surface-variant">11:02:45.110</p>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">description</span>
+<span class="text-body-sm font-semibold">Evidence Requested</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="chip chip-pending">Pending</span>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-body-sm text-secondary hover:underline cursor-pointer">#ARB-8822-M</span>
+</td>
+<td class="px-lg py-md text-body-sm">ID: 762-L.S.</td>
+<td class="px-lg py-md text-right">
+<button class="text-secondary font-label-md hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Repeat Rows for visual density -->
+<tr class="data-table-row transition-colors group">
+<td class="px-lg py-md">
+<p class="text-body-sm font-medium">Oct 23, 2024</p>
+<p class="text-label-sm text-on-surface-variant">22:40:12.883</p>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+<span class="text-body-sm font-semibold">Audit Review Triggered</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="chip chip-resolved">Resolved</span>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-body-sm text-secondary hover:underline cursor-pointer">#ARB-7712-A</span>
+</td>
+<td class="px-lg py-md text-body-sm">System Cron</td>
+<td class="px-lg py-md text-right">
+<button class="text-secondary font-label-md hover:underline">View Details</button>
+</td>
+</tr>
+<tr class="data-table-row transition-colors group">
+<td class="px-lg py-md">
+<p class="text-body-sm font-medium">Oct 23, 2024</p>
+<p class="text-label-sm text-on-surface-variant">19:12:00.005</p>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">handshake</span>
+<span class="text-body-sm font-semibold">Offer Accepted</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="chip chip-resolved">Resolved</span>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-body-sm text-secondary hover:underline cursor-pointer">#ARB-1044-K</span>
+</td>
+<td class="px-lg py-md text-body-sm">ID: 102-M.R.</td>
+<td class="px-lg py-md text-right">
+<button class="text-secondary font-label-md hover:underline">View Details</button>
+</td>
+</tr>
+<tr class="data-table-row transition-colors group">
+<td class="px-lg py-md">
+<p class="text-body-sm font-medium">Oct 23, 2024</p>
+<p class="text-label-sm text-on-surface-variant">18:55:31.990</p>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">mail</span>
+<span class="text-body-sm font-semibold">Final Warning Sent</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="chip chip-pending">Pending</span>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-body-sm text-secondary hover:underline cursor-pointer">#ARB-2003-P</span>
+</td>
+<td class="px-lg py-md text-body-sm">System Auto</td>
+<td class="px-lg py-md text-right">
+<button class="text-secondary font-label-md hover:underline">View Details</button>
+</td>
+</tr>
+<tr class="data-table-row transition-colors group">
+<td class="px-lg py-md">
+<p class="text-body-sm font-medium">Oct 23, 2024</p>
+<p class="text-label-sm text-on-surface-variant">17:33:45.221</p>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">policy</span>
+<span class="text-body-sm font-semibold">Policy Overridden</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="chip chip-critical">Critical</span>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-body-sm text-secondary hover:underline cursor-pointer">#ARB-5501-L</span>
+</td>
+<td class="px-lg py-md text-body-sm">ID: 001-Admin</td>
+<td class="px-lg py-md text-right">
+<button class="text-secondary font-label-md hover:underline">View Details</button>
+</td>
+</tr>
+<tr class="data-table-row transition-colors group">
+<td class="px-lg py-md">
+<p class="text-body-sm font-medium">Oct 23, 2024</p>
+<p class="text-label-sm text-on-surface-variant">16:10:05.118</p>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant">inventory_2</span>
+<span class="text-body-sm font-semibold">Evidence Uploaded</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="chip chip-resolved">Resolved</span>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-body-sm text-secondary hover:underline cursor-pointer">#ARB-4409-Q</span>
+</td>
+<td class="px-lg py-md text-body-sm">ID: 928-V.V.</td>
+<td class="px-lg py-md text-right">
+<button class="text-secondary font-label-md hover:underline">View Details</button>
+</td>
+</tr>
+<!-- Fill remainder -->
+<tr class="data-table-row transition-colors group">
+<td class="px-lg py-md">
+<p class="text-body-sm font-medium">Oct 23, 2024</p>
+<p class="text-label-sm text-on-surface-variant">14:02:11.772</p>
+</td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">account_balance</span>
+<span class="text-body-sm font-semibold">Funds Verified</span>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="chip chip-resolved">Resolved</span>
+</td>
+<td class="px-lg py-md">
+<span class="font-mono text-body-sm text-secondary hover:underline cursor-pointer">#ARB-1100-B</span>
+</td>
+<td class="px-lg py-md text-body-sm">System Auth</td>
+<td class="px-lg py-md text-right">
+<button class="text-secondary font-label-md hover:underline">View Details</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full bottom-0 bg-surface-container-low border-t border-outline-variant">
+<div class="flex justify-between items-center px-lg py-md w-full">
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                    © 2024 ArbiterCore Negotiation Systems. Internal Audit Environment.
+                </p>
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity duration-150" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity duration-150" href="#">Audit Protocol</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity duration-150 flex items-center gap-xs" href="#">
+<span class="w-2 h-2 rounded-full bg-green-500"></span> System Status
+                    </a>
+</div>
+</div>
+</footer>
+</main>
+<!-- Micro-interaction JS -->
+<script>
+        document.querySelectorAll('.data-table-row').forEach(row => {
+            row.addEventListener('click', () => {
+                // Mock visual feedback for selection
+                row.classList.toggle('bg-surface-container');
+            });
+        });
+
+        // Search highlight mock
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('input', (e) => {
+            const val = e.target.value.toLowerCase();
+            document.querySelectorAll('.data-table-row').forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(val) ? '' : 'none';
+            });
+        });
+    </script>
+</body></html>

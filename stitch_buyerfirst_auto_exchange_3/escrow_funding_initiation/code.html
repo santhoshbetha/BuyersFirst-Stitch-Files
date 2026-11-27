@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Secure Escrow Funding | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface-container": "#e5eeff",
+                    "tertiary": "#000000",
+                    "surface-dim": "#cbdbf5",
+                    "primary-fixed": "#dae2fd",
+                    "on-surface-variant": "#45464d",
+                    "on-tertiary-container": "#98805d",
+                    "background": "#f8f9ff",
+                    "surface-container-high": "#dce9ff",
+                    "on-primary-fixed": "#131b2e",
+                    "primary": "#000000",
+                    "inverse-primary": "#bec6e0",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-bright": "#f8f9ff",
+                    "surface-tint": "#565e74",
+                    "on-secondary-container": "#fefcff",
+                    "inverse-surface": "#213145",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#271901",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#131b2e",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-container": "#7c839b",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-container": "#271901",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface-variant": "#d3e4fe",
+                    "secondary-container": "#2170e4",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "outline-variant": "#c6c6cd",
+                    "on-secondary-fixed": "#001a42",
+                    "outline": "#76777d",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-background": "#0b1c30",
+                    "error-container": "#ffdad6",
+                    "surface": "#f8f9ff",
+                    "on-surface": "#0b1c30",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "secondary": "#0058be",
+                    "secondary-fixed": "#d8e2ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "2xl": "48px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "3xl": "64px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-active { color: theme('colors.secondary'); }
+        .step-inactive { color: theme('colors.outline'); }
+        .tab-active { border-bottom: 2px solid theme('colors.secondary'); color: theme('colors.secondary'); }
+        .tab-inactive { border-bottom: 2px solid transparent; color: theme('colors.on-surface-variant'); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface-container-lowest border-b border-outline-variant flex items-center justify-between px-md h-16">
+<div class="flex items-center gap-sm cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</div>
+<h1 class="font-headline-sm text-headline-sm text-primary font-bold">Secure Escrow</h1>
+<div class="flex items-center gap-sm cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined text-primary">security</span>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-md py-lg lg:grid lg:grid-cols-12 lg:gap-lg">
+<!-- Left Column: Deal Info & Progress -->
+<div class="lg:col-span-4 space-y-lg">
+<!-- Deal Summary Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md overflow-hidden">
+<div class="aspect-video w-full mb-md rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A side-profile high-resolution studio shot of a 2023 Porsche 911 Carrera S in Chalk Grey. The lighting is crisp and professional, emphasizing the aerodynamic curves of the vehicle against a minimalist white background. The overall aesthetic is luxury automotive photography with deep navy shadows and sharp highlights, reflecting the premium nature of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdTBvcz4cOZaj1sW5s-1kPnKQJiAe9GW9JaNU2_DB6WVtyh-4xHN2nks9Dbxx2g5aHSp3A3hoE_9dcQJYV1z3sx4sB12mcOO3IGYy_3-3Mpu0ttLnfmtIOq7QHVtDKfdf5SuoYREwYwJe2Bb1TjZJqglc-GtGkXmC00FFIijQaYuPS4i4zgPcNumahwUJ2jEbM7F2psljEX1jN80S7OUG_gcgGx-jhcDwFA8yvG7rCsGpQSw4vhh7M5A"/>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-primary mb-xs">2023 Porsche 911 Carrera S</h2>
+<p class="font-body-sm text-on-surface-variant mb-md">VIN: WP0AB2A92PS2XXXXXX</p>
+<div class="flex items-end justify-between border-t border-outline-variant pt-md">
+<span class="font-label-md text-on-surface-variant">Total Purchase Price</span>
+<span class="font-headline-md text-headline-md text-secondary font-bold">$116,500</span>
+</div>
+</section>
+<!-- Funding Progress -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md">
+<h3 class="font-label-md text-primary mb-md uppercase tracking-wider">Escrow Status</h3>
+<div class="relative flex flex-col gap-lg">
+<div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-outline-variant"></div>
+<div class="relative flex items-start gap-md z-10">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px] text-white" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="font-label-md text-secondary">Funding Initiated</p>
+<p class="font-body-sm text-on-surface-variant">Step active: Awaiting wire transfer or bank link confirmation.</p>
+</div>
+</div>
+<div class="relative flex items-start gap-md z-10">
+<div class="w-6 h-6 rounded-full bg-surface-container border border-outline-variant flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant">Verification</p>
+<p class="font-body-sm text-on-surface-variant/60">Compliance and KYC check in progress after receipt.</p>
+</div>
+</div>
+<div class="relative flex items-start gap-md z-10">
+<div class="w-6 h-6 rounded-full bg-surface-container border border-outline-variant flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<div>
+<p class="font-label-md text-on-surface-variant">Funds Secured</p>
+<p class="font-body-sm text-on-surface-variant/60">Capital locked in escrow until vehicle delivery.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Payment Details -->
+<div class="lg:col-span-8 mt-lg lg:mt-0 space-y-lg">
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<div class="p-md border-b border-outline-variant bg-surface-container-low flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-primary">Funding Method</h3>
+<div class="flex gap-xs">
+<span class="bg-secondary/10 text-secondary px-sm py-xs rounded-full font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Recommended
+                        </span>
+</div>
+</div>
+<!-- Method Selector -->
+<div class="flex border-b border-outline-variant">
+<button class="flex-1 py-md px-md font-label-md tab-active flex items-center justify-center gap-sm transition-colors hover:bg-surface-container-low">
+<span class="material-symbols-outlined">account_balance</span>
+                        Wire Transfer
+                    </button>
+<button class="flex-1 py-md px-md font-label-md tab-inactive flex items-center justify-center gap-sm transition-colors hover:bg-surface-container-low">
+<span class="material-symbols-outlined">link</span>
+                        Secure Bank Link
+                    </button>
+</div>
+<!-- Wire Transfer Details -->
+<div class="p-md md:p-xl space-y-xl">
+<div class="flex items-start gap-md p-md bg-secondary-fixed text-on-secondary-fixed rounded-lg border border-secondary/20">
+<span class="material-symbols-outlined">info</span>
+<div>
+<p class="font-label-md">Processing Time: 1-4 Business Hours</p>
+<p class="font-body-sm opacity-90">Wire transfers are the fastest way to secure high-value automotive deals. Please use the Reference ID below to ensure instant matching.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-xs">
+<label class="font-label-sm text-on-surface-variant uppercase tracking-wider">Bank Name</label>
+<div class="flex items-center justify-between border-b border-outline-variant py-sm">
+<span class="font-body-md font-medium">AutoSecure Trust Bank</span>
+<button class="text-secondary hover:bg-secondary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-on-surface-variant uppercase tracking-wider">Account Name</label>
+<div class="flex items-center justify-between border-b border-outline-variant py-sm">
+<span class="font-body-md font-medium">AutoNegotiate Escrow LLC</span>
+<button class="text-secondary hover:bg-secondary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-on-surface-variant uppercase tracking-wider">Routing Number (ABA)</label>
+<div class="flex items-center justify-between border-b border-outline-variant py-sm">
+<span class="font-body-md font-mono font-medium">021000021</span>
+<button class="text-secondary hover:bg-secondary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-on-surface-variant uppercase tracking-wider">Account Number</label>
+<div class="flex items-center justify-between border-b border-outline-variant py-sm">
+<span class="font-body-md font-mono font-medium">8829-4410-0922</span>
+<button class="text-secondary hover:bg-secondary/10 p-1 rounded transition-colors">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Highlighted Reference ID -->
+<div class="bg-primary text-white p-lg rounded-xl flex flex-col md:flex-row items-center justify-between gap-md shadow-lg">
+<div>
+<h4 class="font-label-md opacity-70 uppercase tracking-tighter mb-xs">Required Reference ID</h4>
+<p class="font-headline-md text-headline-md tracking-widest font-mono">AN-9872-XP</p>
+</div>
+<button class="bg-secondary hover:bg-secondary/90 text-white px-lg py-md rounded-lg font-label-md flex items-center gap-sm transition-all active:scale-95">
+<span class="material-symbols-outlined">content_copy</span>
+                            Copy ID
+                        </button>
+</div>
+</div>
+</section>
+<!-- Security Badges Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-surface-container-low p-md rounded-lg flex items-center gap-md border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-md text-primary">FDIC Insured</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg flex items-center gap-md border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span class="font-label-md text-primary">SSL Encrypted</span>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg flex items-center gap-md border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<span class="font-label-md text-primary">3rd-Party Audited</span>
+</div>
+</section>
+<!-- Footer Actions -->
+<div class="flex flex-col md:flex-row gap-md pt-md border-t border-outline-variant">
+<button class="flex-1 bg-primary text-white font-label-md py-md rounded-lg hover:bg-primary/90 transition-all active:scale-[0.98] flex items-center justify-center gap-sm">
+                    Confirm Transfer Initiated
+                    <span class="material-symbols-outlined">chevron_right</span>
+</button>
+<button class="flex-1 border border-secondary text-secondary font-label-md py-md rounded-lg hover:bg-secondary/5 transition-all flex items-center justify-center gap-sm">
+                    View Escrow Terms
+                    <span class="material-symbols-outlined">description</span>
+</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 border-t border-outline-variant bg-surface-container-lowest flex justify-around items-center py-sm">
+<div class="flex flex-col items-center justify-center text-on-surface-variant cursor-pointer scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-sm text-label-sm">Deal</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 cursor-pointer scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm">Escrow</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant cursor-pointer scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-sm text-label-sm">Documents</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant cursor-pointer scale-95 active:scale-90 transition-transform">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-label-sm text-label-sm">Support</span>
+</div>
+</nav>
+<!-- Spacer for mobile nav -->
+<div class="h-20 md:hidden"></div>
+<script>
+        // Simple micro-interaction for copying text
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.innerText.includes('Copy')) {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = '<span class="material-symbols-outlined">check</span> Copied!';
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body></html>

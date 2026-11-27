@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Buyer Protection Center | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-low": "#eff4ff",
+            "tertiary-container": "#271901",
+            "surface-bright": "#f8f9ff",
+            "error": "#ba1a1a",
+            "outline": "#76777d",
+            "inverse-primary": "#bec6e0",
+            "primary": "#000000",
+            "on-secondary-container": "#fefcff",
+            "error-container": "#ffdad6",
+            "tertiary": "#000000",
+            "outline-variant": "#c6c6cd",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-variant": "#d3e4fe",
+            "secondary-container": "#2170e4",
+            "tertiary-fixed-dim": "#dec29a",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#98805d",
+            "on-secondary-fixed-variant": "#004395",
+            "on-error-container": "#93000a",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#7c839b",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#0b1c30",
+            "on-secondary": "#ffffff",
+            "inverse-surface": "#213145",
+            "secondary-fixed-dim": "#adc6ff",
+            "surface-container-high": "#dce9ff",
+            "surface-container": "#e5eeff",
+            "on-tertiary-fixed": "#271901",
+            "primary-container": "#131b2e",
+            "on-tertiary": "#ffffff",
+            "on-surface-variant": "#45464d",
+            "on-tertiary-fixed-variant": "#574425",
+            "on-primary-fixed": "#131b2e",
+            "tertiary-fixed": "#fcdeb5",
+            "secondary-fixed": "#d8e2ff",
+            "surface-tint": "#565e74",
+            "surface-container-highest": "#d3e4fe",
+            "primary-fixed-dim": "#bec6e0",
+            "on-background": "#0b1c30",
+            "background": "#f8f9ff",
+            "primary-fixed": "#dae2fd",
+            "on-secondary-fixed": "#001a42",
+            "secondary": "#0058be",
+            "surface-dim": "#cbdbf5",
+            "surface": "#f8f9ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "3xl": "64px",
+            "2xl": "48px",
+            "gutter": "24px",
+            "base": "4px",
+            "xl": "32px",
+            "lg": "24px",
+            "container-max": "1280px",
+            "sm": "8px",
+            "md": "16px",
+            "xs": "4px"
+          },
+          "fontFamily": {
+            "headline-lg-mobile": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-md": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-sm": ["Inter"],
+            "body-sm": ["Inter"],
+            "display-lg": ["Inter"],
+            "label-sm": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg-mobile": ["28px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "label-md": ["14px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "1.4", "fontWeight": "600" }],
+            "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.5rem;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant">
+<div class="flex justify-between items-center px-lg h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="gavel">gavel</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoNegotiate</h1>
+</div>
+<nav class="hidden md:flex gap-xl">
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-md py-xs rounded-lg" href="#">Marketplace</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-md py-xs rounded-lg" href="#">My Bids</a>
+<a class="font-label-md text-label-md text-secondary font-bold px-md py-xs rounded-lg" href="#">Protection</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</button>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</button>
+</div>
+</div>
+</header>
+<main class="mt-24 px-lg w-full max-w-container-max mx-auto mb-12">
+<!-- Hero Section -->
+<section class="mb-2xl flex flex-col md:flex-row gap-xl items-center">
+<div class="flex-1 space-y-md">
+<div class="inline-flex items-center gap-sm bg-secondary-container px-md py-xs rounded-full text-white">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm">Enterprise-Grade Security</span>
+</div>
+<h2 class="font-display-lg text-display-lg text-on-surface leading-tight">Buyer Protection Center</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+          We’ve built the world's most transparent automotive negotiation engine. Every transaction is backed by our multi-layered defense system, ensuring your investment is never at risk.
+        </p>
+<div class="flex flex-wrap gap-md pt-md">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-xl py-md rounded-lg flex items-center gap-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="report">report</span>
+            Report an Issue
+          </button>
+<button class="border border-outline text-secondary font-label-md text-label-md px-xl py-md rounded-lg flex items-center gap-md hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+            Full Terms of Service
+          </button>
+</div>
+</div>
+<div class="flex-1 w-full max-w-md hidden lg:block">
+<div class="relative w-full h-80 rounded-xl overflow-hidden shadow-sm border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A sophisticated, minimalist abstract digital representation of a secure transaction. Sleek deep navy and electric blue laser lines form a geometric shield over a futuristic car silhouette. High-end financial SaaS aesthetic with bright, professional lighting and a sense of absolute precision and calm control." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNEKjxa8vsviuUCbEVK3RYddANCQkk2rE1w_36udd7ZH40flct4SHlq2oO18V8_888N43uzGQhnAEXN-chn6Y2NfPfid2cIDQvGhUj_jZCG86PN872YgICbdxO7d1uy1tJ95b2fbIaU-ILBJn0_Y862Op_EmDnTRcpoDkV3pkJl2SrGPl_ZHSdojzTuZ_BpfI7AF1YYfMq56Dd2cufFpnfNAvjPjTqP7oLUeHIGVKI-UNkZNpJ5Yh1FQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+<div class="absolute bottom-md left-md p-md glass-effect rounded-lg border border-outline-variant/30">
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-xs">Live Protection</p>
+<p class="font-headline-sm text-headline-sm font-bold text-primary">Active Escrow: $12.4M</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content Bento Grid -->
+<div class="bento-grid">
+<!-- Immutable Terms -->
+<div class="col-span-12 md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-xl flex flex-col md:flex-row gap-xl">
+<div class="flex-1 space-y-md">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="history_edu">history_edu</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Immutable Terms™ Guarantee</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Once a deal is struck, the pricing, fees, and delivery terms are locked into a cryptographic ledger. Dealers are strictly prohibited from adding "mandatory" add-ons or "market adjustments" post-negotiation.
+          </p>
+<ul class="space-y-sm">
+<li class="flex items-center gap-sm font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="check_circle">check_circle</span>
+              Zero-hidden-fee policy enforced via platform audits.
+            </li>
+<li class="flex items-center gap-sm font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="check_circle">check_circle</span>
+              Price lock guaranteed for 72 hours post-acceptance.
+            </li>
+</ul>
+</div>
+<div class="flex-1 bg-surface-container-low rounded-lg p-md border border-outline-variant/30 overflow-hidden">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant pb-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">CONTRACT_SNAPSHOT_V2.PDF</span>
+<span class="bg-secondary text-white text-[10px] px-sm py-0.5 rounded uppercase">Verified</span>
+</div>
+<div class="space-y-sm opacity-60 pointer-events-none">
+<div class="h-4 bg-outline-variant w-3/4 rounded"></div>
+<div class="h-4 bg-outline-variant w-full rounded"></div>
+<div class="h-4 bg-outline-variant w-1/2 rounded"></div>
+<div class="h-4 bg-outline-variant w-5/6 rounded"></div>
+<div class="h-4 bg-outline-variant w-2/3 rounded"></div>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant flex justify-between">
+<span class="font-label-md text-label-md font-bold">Total Payable:</span>
+<span class="font-label-md text-label-md text-secondary font-bold">$42,950.00</span>
+</div>
+</div>
+</div>
+<!-- Secure Escrow -->
+<div class="col-span-12 md:col-span-4 bg-primary text-on-primary rounded-xl p-xl flex flex-col justify-between">
+<div class="space-y-md">
+<div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="lock">lock</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm">Secure Escrow Process</h3>
+<p class="font-body-sm text-body-sm text-on-primary/70">
+            Funds are held in a Tier-1 banking vault until you take delivery and inspect the vehicle. No more "holding deposits" lost to shady dealerships.
+          </p>
+</div>
+<div class="mt-xl flex items-center gap-md bg-white/5 p-md rounded-lg border border-white/10">
+<div class="w-10 h-10 rounded-full border-2 border-dashed border-white/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[20px]" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm">Federal Reserve Bank</p>
+<p class="text-[10px] opacity-60">Fidelity Certified Account</p>
+</div>
+</div>
+</div>
+<!-- Fair Play Rules -->
+<div class="col-span-12 lg:col-span-12 bg-surface-container-low border border-outline-variant rounded-xl p-xl">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md mb-xl">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Dealer 'Fair Play' Framework</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Strict rules of engagement that all network dealers must follow.</p>
+</div>
+<div class="flex items-center gap-xs text-secondary font-bold px-md py-sm bg-white rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined" data-icon="policy">policy</span>
+<span class="font-label-md text-label-md">v4.2 Compliance</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-white p-lg rounded-lg border border-outline-variant hover:shadow-sm transition-shadow">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="timer">timer</span>
+<h4 class="font-label-md text-label-md text-primary">No Pressure Responses</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dealers must provide firm offers within 4 business hours. Automated bot-responses are strictly prohibited.</p>
+</div>
+<div class="bg-white p-lg rounded-lg border border-outline-variant hover:shadow-sm transition-shadow">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="fact_check">fact_check</span>
+<h4 class="font-label-md text-label-md text-primary">Mandatory Inspection</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Every vehicle listed must include a 150-point inspection report uploaded to the deal room prior to bidding.</p>
+</div>
+<div class="bg-white p-lg rounded-lg border border-outline-variant hover:shadow-sm transition-shadow">
+<div class="flex items-center gap-md mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="visibility_off">visibility_off</span>
+<h4 class="font-label-md text-label-md text-primary">Data Anonymity</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dealers do not see your private contact info until the final escrow is funded. No unwanted solicitation.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Stepper Section -->
+<section class="mt-2xl">
+<h3 class="font-headline-sm text-headline-sm mb-xl text-center">Your Protection Path</h3>
+<div class="relative">
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-outline-variant -translate-y-1/2 hidden md:block"></div>
+<div class="relative z-10 flex flex-col md:flex-row justify-between gap-xl">
+<!-- Step 1 -->
+<div class="flex flex-col items-center text-center max-w-[200px] mx-auto">
+<div class="w-12 h-12 rounded-full bg-secondary text-white flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined" data-icon="search_check">search_check</span>
+</div>
+<h5 class="font-label-md text-label-md text-primary mb-xs">Secure Search</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Verified inventory only. No phantom listings.</p>
+</div>
+<!-- Step 2 -->
+<div class="flex flex-col items-center text-center max-w-[200px] mx-auto">
+<div class="w-12 h-12 rounded-full bg-secondary text-white flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+</div>
+<h5 class="font-label-md text-label-md text-primary mb-xs">Locked Offer</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Transparent pricing with immutable terms.</p>
+</div>
+<!-- Step 3 -->
+<div class="flex flex-col items-center text-center max-w-[200px] mx-auto">
+<div class="w-12 h-12 rounded-full bg-secondary text-white flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<h5 class="font-label-md text-label-md text-primary mb-xs">Escrow Funding</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your money stays safe until you say "go".</p>
+</div>
+<!-- Step 4 -->
+<div class="flex flex-col items-center text-center max-w-[200px] mx-auto">
+<div class="w-12 h-12 rounded-full bg-secondary text-white flex items-center justify-center mb-md shadow-sm">
+<span class="material-symbols-outlined" data-icon="key">key</span>
+</div>
+<h5 class="font-label-md text-label-md text-primary mb-xs">Release &amp; Drive</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Funds released only after physical inspection.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Support Callout -->
+<section class="mt-3xl bg-surface-container-high rounded-2xl p-2xl text-center border border-outline-variant overflow-hidden relative">
+<div class="absolute top-0 right-0 p-lg opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]" data-icon="support_agent">support_agent</span>
+</div>
+<div class="relative z-10 max-w-2xl mx-auto space-y-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">Need immediate assistance?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Our human arbitration team is available 24/7 to resolve disputes between buyers and sellers. We typically resolve 95% of issues within 2 hours.
+        </p>
+<div class="pt-md">
+<button class="bg-primary text-on-primary font-label-md text-label-md px-2xl py-lg rounded-lg hover:opacity-90 transition-all transform active:scale-95 shadow-md">
+            Start a Live Dispute Chat
+          </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-sm bg-surface border-t border-outline-variant z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span class="font-label-sm text-label-sm">Deals</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">Documents</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-sm text-label-sm">Chat</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary font-semibold transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm">Protection</span>
+</button>
+</nav>
+<script>
+    // Simple intersection observer for subtle fade-in effects
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-4');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.bento-grid > div, section').forEach(el => {
+      el.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-700', 'ease-out');
+      observer.observe(el);
+    });
+
+    // Mock interaction for the "Report" button
+    const reportBtn = document.querySelector('button:has(span[data-icon="report"])');
+    if (reportBtn) {
+      reportBtn.addEventListener('click', () => {
+        alert("Initializing secure reporting portal... Our compliance team will be notified immediately.");
+      });
+    }
+  </script>
+</body></html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#000000",
+            "tertiary-container": "#271901",
+            "secondary-container": "#2170e4",
+            "surface-container-highest": "#d3e4fe",
+            "error": "#ba1a1a",
+            "on-tertiary-container": "#98805d",
+            "on-secondary": "#ffffff",
+            "primary": "#000000",
+            "tertiary-fixed": "#fcdeb5",
+            "secondary-fixed": "#d8e2ff",
+            "primary-fixed": "#dae2fd",
+            "on-error-container": "#93000a",
+            "background": "#f8f9ff",
+            "on-background": "#0b1c30",
+            "primary-container": "#131b2e",
+            "on-surface": "#0b1c30",
+            "tertiary-fixed-dim": "#dec29a",
+            "surface-container-low": "#eff4ff",
+            "surface": "#f8f9ff",
+            "on-error": "#ffffff",
+            "on-primary-container": "#7c839b",
+            "on-tertiary": "#ffffff",
+            "outline": "#76777d",
+            "surface-bright": "#f8f9ff",
+            "inverse-primary": "#bec6e0",
+            "surface-container-high": "#dce9ff",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#fefcff",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-container": "#e5eeff",
+            "on-surface-variant": "#45464d",
+            "inverse-surface": "#213145",
+            "surface-tint": "#565e74",
+            "primary-fixed-dim": "#bec6e0",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#131b2e",
+            "on-tertiary-fixed": "#271901",
+            "on-secondary-fixed-variant": "#004395",
+            "surface-variant": "#d3e4fe",
+            "outline-variant": "#c6c6cd",
+            "secondary": "#0058be",
+            "surface-dim": "#cbdbf5",
+            "secondary-fixed-dim": "#adc6ff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-tertiary-fixed-variant": "#574425",
+            "on-secondary-fixed": "#001a42"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "container-max": "1280px",
+            "xs": "4px",
+            "gutter": "24px",
+            "md": "16px",
+            "2xl": "48px",
+            "3xl": "64px",
+            "xl": "32px",
+            "base": "4px",
+            "sm": "8px",
+            "lg": "24px"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+            "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+            "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+            "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+            "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .custom-scrollbar::-webkit-scrollbar { display: none; }
+    .custom-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant shadow-sm h-16 flex justify-between items-center px-lg">
+<div class="flex items-center gap-md">
+<button class="p-2 -ml-2 active:scale-95 transition-transform hover:bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+</button>
+<img alt="AutoTrust Negotiator Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLsi_uDjXiCldHwjemgyFQW1HGDTeV_XJZlg6q9MdjhcfTn-ddtmhMqhsO_VjLZXFPfy0EyNRsbdtVTOqTrikrBXZZKT8h8BdgH9SE1JowFzvJMNdaOXdNMTd8iqwzz6OmgyfU5JKmPfupQWwuia0gAo71ForsCp2tc5lwlN_62gRhI9TzOrfomne2o1H_zAHhiay5J82IQc35GASmYhKeDIerF49Q101CAm8RuXojP7Rs7e8E3nh63giGk"/>
+</div>
+<div class="flex items-center">
+<span class="font-headline-sm text-headline-sm font-bold text-primary mr-2">AutoNegotiate</span>
+<button class="p-2 active:scale-95 transition-transform hover:bg-surface-container-low rounded-full">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-20 px-md space-y-md">
+<!-- Hero Section -->
+<section class="relative rounded-xl overflow-hidden h-60 w-full bg-surface-container shadow-sm border border-outline-variant">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A professional, high-resolution commercial photograph of a 2024 Tesla Model 3 in a sleek white finish. The car is parked in a minimalist, modern concrete studio with soft, diffused overhead lighting creating subtle reflections on the body. The overall mood is high-tech and premium, adhering to a clean corporate aesthetic with deep navy and electric blue secondary tones in the background shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQq-BXPW9Fq8uTBYCr5kK-48_QhfYo5iowQEA2gaOraI7GGXvlFxbBobzKz4f1YkvB-wixBXfJCJysS-TS255lFCFG4cx9eaXsq9YvHwtHnbe-_Lr_F4MI6eWzbl4zI3dQz2W0JrfVyKbdnhDtPexJfIKQ4khjYAvx9SGtaAbhRlM-mljuOIfNc-107phZY6GKenHcv64Msr5A-kbtpDrgtSB3N60KFvOF3cGhlLFc4yJ4o0pK_RyChw"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent z-10"></div>
+<div class="absolute bottom-0 left-0 p-lg z-20">
+<span class="inline-block px-2 py-1 bg-secondary text-on-secondary font-label-sm text-label-sm rounded-sm mb-2">ACTIVE LISTING</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-white font-bold leading-tight">2024 Tesla Model 3 (New)</h1>
+</div>
+</section>
+<!-- Buyer's Immutable Terms Card -->
+<section class="bg-primary-container text-on-primary-container p-lg rounded-xl shadow-md border border-primary relative overflow-hidden">
+<!-- Decorative element for "Immutable" feel -->
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary opacity-10 blur-3xl rounded-full -mr-12 -mt-12"></div>
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary-fixed">gavel</span>
+<h2 class="font-headline-sm text-headline-sm font-extrabold uppercase tracking-wider text-white">Buyer's Immutable Terms</h2>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="p-md bg-white/5 rounded-lg border border-white/10">
+<p class="font-label-sm text-label-sm text-on-primary-container opacity-70 mb-1">Max Price</p>
+<p class="font-headline-sm text-headline-sm font-bold text-white">$42,000</p>
+</div>
+<div class="p-md bg-white/5 rounded-lg border border-white/10">
+<p class="font-label-sm text-label-sm text-on-primary-container opacity-70 mb-1">Max APR</p>
+<p class="font-headline-sm text-headline-sm font-bold text-white">4.5%</p>
+</div>
+<div class="p-md bg-white/5 rounded-lg border border-white/10">
+<p class="font-label-sm text-label-sm text-on-primary-container opacity-70 mb-1">Max Miles</p>
+<p class="font-headline-sm text-headline-sm font-bold text-white">50</p>
+</div>
+<div class="p-md bg-white/5 rounded-lg border border-white/10">
+<p class="font-label-sm text-label-sm text-on-primary-container opacity-70 mb-1">Timeframe</p>
+<p class="font-headline-sm text-headline-sm font-bold text-white">7 Days</p>
+</div>
+</div>
+</section>
+<!-- Additional Conditions -->
+<section class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-sm">info</span>
+        Additional Conditions
+      </h3>
+<div class="space-y-sm">
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-secondary font-bold text-md mt-1">check_circle</span>
+<p class="font-body-md text-body-md text-on-surface">No dealer add-ons, price must include all fees.</p>
+</div>
+<div class="flex gap-md">
+<span class="material-symbols-outlined text-secondary font-bold text-md mt-1">check_circle</span>
+<p class="font-body-md text-body-md text-on-surface">In-house financing preferred but must match APR.</p>
+</div>
+</div>
+</section>
+<!-- Sellers Interested List -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold">Sellers Interested</h3>
+<span class="px-2 py-0.5 bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm rounded-full">2 PENDING</span>
+</div>
+<div class="space-y-sm">
+<!-- Seller Item 1 -->
+<div class="bg-white p-md rounded-lg border border-outline-variant shadow-sm flex items-center justify-between active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A small, professional corporate logo of a high-end luxury car dealership. The logo is minimalist, featuring a stylized chrome emblem on a deep slate gray background. The lighting is crisp and modern, reflecting a premium automotive retail environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVNpciNo8Vng9XgDLg8B85Od7KEptNLWKbDRbr2OQ6-22I57ZnscUJ6539N2q_LvyelkKBuN1_cLITfePmZalosrHIdke8dvb56MJtUiWU8T0rq_ztD5QL1-rtptlTwkpi2RAtoDaE20KNwnEuK334qDbS8r3yxNuSTgCO3NaWBNYk8Zg0-1W9t-hcYNeTqQSJpkdK8jVIEd3DgG14ZvzUawb2_E_8ZMrZlKE4Muc0OLeWKVn8z9XoDw"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Metro Tesla Center</p>
+<div class="flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Agreed to Terms</span>
+</div>
+</div>
+</div>
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-label-md text-label-md active:scale-90 transition-transform">
+            Review
+          </button>
+</div>
+<!-- Seller Item 2 -->
+<div class="bg-white p-md rounded-lg border border-outline-variant shadow-sm flex items-center justify-between active:scale-[0.98] transition-transform">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist logo for a reputable automotive group. The design uses geometric shapes and a professional blue and white color scheme, conveying trust and reliability. Set against a white background to maintain a high-contrast corporate look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASbQaSUb6HRv6QvXf5WLQ0x2wR4EyWHuuUmT4o3WQPSqy58NShy8QFi5aqJyt9QNRIGNNxc135DaIGAkPk__d5ACU3qYToWP13reamA7AgWjY7SLtRpjxGXQv8y9Mm_vUgppRDfsqln_ORHwreFBMJPGk0i9LKVOJmiJxDXI-rzEKxHuChJ3h8AviwchX-SBIMtjtTFozPzf-DKCHIYH6Muh0aftVuYfIoC-gsoax58SQqADIktSJPsw"/>
+</div>
+<div>
+<p class="font-label-md text-label-md font-bold">Premier Auto Group</p>
+<div class="flex items-center gap-xs mt-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Agreed to Terms</span>
+</div>
+</div>
+</div>
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-label-md text-label-md active:scale-90 transition-transform">
+            Review
+          </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant h-20 pb-safe flex justify-around items-center">
+<!-- Listings (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="font-label-sm text-label-sm">Listings</span>
+</a>
+<!-- Search -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<!-- Messages -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<!-- Trust -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-sm text-label-sm">Trust</span>
+</a>
+</nav>
+<script>
+    // Simple micro-interaction for scroll effects
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 20) {
+        header.classList.add('shadow-md');
+        header.classList.remove('shadow-sm');
+      } else {
+        header.classList.remove('shadow-md');
+        header.classList.add('shadow-sm');
+      }
+    });
+  </script>
+</body></html>

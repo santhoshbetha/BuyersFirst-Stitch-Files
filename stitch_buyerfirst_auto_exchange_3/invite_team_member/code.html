@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Invite Team Member - AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#45464d",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "background": "#f8f9ff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-primary-container": "#7c839b",
+                    "on-tertiary-fixed": "#271901",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary-container": "#fefcff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "secondary-container": "#2170e4",
+                    "on-background": "#0b1c30",
+                    "primary-container": "#131b2e",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#dae2fd",
+                    "surface-tint": "#565e74",
+                    "outline-variant": "#c6c6cd",
+                    "on-tertiary-container": "#98805d",
+                    "on-error-container": "#93000a",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#000000",
+                    "surface": "#f8f9ff",
+                    "surface-container-high": "#dce9ff",
+                    "secondary": "#0058be",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "inverse-surface": "#213145",
+                    "on-surface": "#0b1c30",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "on-primary-fixed": "#131b2e",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed": "#d8e2ff",
+                    "inverse-primary": "#bec6e0",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary": "#000000",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "3xl": "64px",
+                    "lg": "24px",
+                    "2xl": "48px",
+                    "container-max": "1280px",
+                    "xl": "32px",
+                    "xs": "4px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .role-card.active {
+            border-color: #0058be;
+            background-color: #f0f7ff;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface dark:bg-on-background border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex justify-between items-center px-lg py-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed">directions_car</span>
+<span class="text-headline-md font-headline-md font-bold text-on-background dark:text-background">AutoNegotiate</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex gap-lg">
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md hover:bg-surface-container-low dark:hover:bg-surface-variant px-sm py-xs transition-colors duration-200" href="#">Inventory</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md hover:bg-surface-container-low dark:hover:bg-surface-variant px-sm py-xs transition-colors duration-200" href="#">Leads</a>
+<a class="text-secondary dark:text-secondary-fixed font-label-md font-bold" href="#">Settings</a>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a car dealership manager, wearing a crisp white shirt and a dark navy blazer, set against a blurred modern office background with neutral gray tones and soft natural lighting. The image conveys authority, trustworthiness, and executive leadership in the automotive industry." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD07gV098WaHVCL8S8929J3h076AXFHYzXZBsL1J0EoDlYR3PoV7X2_NDr51TFtsfKAT-oLJx2DEHfFeDTdj9GP8KW88aPcZbrgS87I02Snk9pNqW_Muqi1KRNBRLwK3hCO8_2-swOf4AAtr0r-lzIYHl-zD6EYHHip36kQoFqhPRmSa18sTNDhfRs2pJEBRHEti254Vc6CrhZw1o470k6n0yyWVVzYkNaDDG579lhJCrcL4xyTIno2kA"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center py-xl px-md md:px-lg overflow-y-auto custom-scrollbar pb-32">
+<div class="w-full max-w-[800px] flex flex-col gap-lg">
+<!-- Header Section -->
+<div class="flex flex-col gap-xs">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Invite Team Member</h1>
+<p class="text-on-surface-variant font-body-md">Onboard your team to streamline negotiations and manage inventory with precision.</p>
+</div>
+<!-- Form Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<div class="flex flex-col gap-xl">
+<!-- Email Input Group -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-md text-on-surface" for="email">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">mail</span>
+<input class="w-full pl-xl pr-md py-md border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all bg-surface" id="email" placeholder="e.g. johndoe@dealership.com" type="email"/>
+</div>
+</div>
+<!-- Role Selection Group -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-end">
+<label class="font-label-md text-on-surface">Assign Primary Role</label>
+<span class="text-label-sm text-secondary">Learn about roles</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Role: Sales -->
+<div class="role-card group cursor-pointer border border-outline-variant rounded-lg p-md flex flex-col gap-sm transition-all hover:border-secondary/50 hover:bg-surface-container-low active:scale-95" onclick="selectRole(this)">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary group-[.active]:bg-secondary group-[.active]:text-on-secondary">
+<span class="material-symbols-outlined">sell</span>
+</div>
+<div>
+<h3 class="font-label-md text-on-surface">Sales</h3>
+<p class="text-label-sm text-on-surface-variant">Focus on deals</p>
+</div>
+</div>
+<!-- Role: Manager -->
+<div class="role-card group cursor-pointer border border-outline-variant rounded-lg p-md flex flex-col gap-sm transition-all hover:border-secondary/50 hover:bg-surface-container-low active:scale-95" onclick="selectRole(this)">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary group-[.active]:bg-secondary group-[.active]:text-on-secondary">
+<span class="material-symbols-outlined">supervisor_account</span>
+</div>
+<div>
+<h3 class="font-label-md text-on-surface">Manager</h3>
+<p class="text-label-sm text-on-surface-variant">Review offers</p>
+</div>
+</div>
+<!-- Role: Inventory -->
+<div class="role-card group cursor-pointer border border-outline-variant rounded-lg p-md flex flex-col gap-sm transition-all hover:border-secondary/50 hover:bg-surface-container-low active:scale-95" onclick="selectRole(this)">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary group-[.active]:bg-secondary group-[.active]:text-on-secondary">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div>
+<h3 class="font-label-md text-on-surface">Inventory</h3>
+<p class="text-label-sm text-on-surface-variant">Manage stock</p>
+</div>
+</div>
+<!-- Role: Admin -->
+<div class="role-card active group cursor-pointer border border-outline-variant rounded-lg p-md flex flex-col gap-sm transition-all hover:border-secondary/50 hover:bg-surface-container-low active:scale-95" onclick="selectRole(this)">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-secondary group-[.active]:bg-secondary group-[.active]:text-on-secondary">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+</div>
+<div>
+<h3 class="font-label-md text-on-surface">Admin</h3>
+<p class="text-label-sm text-on-surface-variant">Full access</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Permissions Section -->
+<div class="flex flex-col gap-sm">
+<label class="font-label-md text-on-surface">Module Permissions</label>
+<div class="border border-outline-variant rounded-lg overflow-hidden divide-y divide-outline-variant">
+<!-- Toggle 1 -->
+<div class="flex items-center justify-between p-md bg-surface hover:bg-surface-container-low transition-colors">
+<div class="flex gap-md items-center">
+<span class="material-symbols-outlined text-outline-variant">warehouse</span>
+<div>
+<h4 class="font-label-md text-on-surface">Inventory Management</h4>
+<p class="text-label-sm text-on-surface-variant">Edit vehicle details and pricing status.</p>
+</div>
+</div>
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-outline-variant transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2" onclick="toggleSwitch(this)">
+<span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0"></span>
+</button>
+</div>
+<!-- Toggle 2 -->
+<div class="flex items-center justify-between p-md bg-surface hover:bg-surface-container-low transition-colors">
+<div class="flex gap-md items-center">
+<span class="material-symbols-outlined text-outline-variant">forum</span>
+<div>
+<h4 class="font-label-md text-on-surface">Negotiation Access</h4>
+<p class="text-label-sm text-on-surface-variant">Active communication with buyers and offer handling.</p>
+</div>
+</div>
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-secondary transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2" onclick="toggleSwitch(this)">
+<span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5"></span>
+</button>
+</div>
+<!-- Toggle 3 -->
+<div class="flex items-center justify-between p-md bg-surface hover:bg-surface-container-low transition-colors">
+<div class="flex gap-md items-center">
+<span class="material-symbols-outlined text-outline-variant">account_balance_wallet</span>
+<div>
+<h4 class="font-label-md text-on-surface">Financial View</h4>
+<p class="text-label-sm text-on-surface-variant">Access to profit margins and transaction logs.</p>
+</div>
+</div>
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-outline-variant transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2" onclick="toggleSwitch(this)">
+<span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-0"></span>
+</button>
+</div>
+<!-- Toggle 4 -->
+<div class="flex items-center justify-between p-md bg-surface hover:bg-surface-container-low transition-colors">
+<div class="flex gap-md items-center">
+<span class="material-symbols-outlined text-outline-variant">monitoring</span>
+<div>
+<h4 class="font-label-md text-on-surface">Analytics Dashboard</h4>
+<p class="text-label-sm text-on-surface-variant">Performance metrics and conversion reports.</p>
+</div>
+</div>
+<button class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent bg-secondary transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2" onclick="toggleSwitch(this)">
+<span class="pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out translate-x-5"></span>
+</button>
+</div>
+</div>
+</div>
+<!-- Explanatory Note -->
+<div class="bg-surface-container-low border border-outline-variant/50 p-md rounded-lg flex gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+<p class="text-body-sm text-on-surface-variant">Permissions can be updated later in <strong>Member Settings</strong> if roles or responsibilities change within the dealership.</p>
+</div>
+<!-- Action Button -->
+<div class="pt-md border-t border-outline-variant">
+<button class="w-full bg-primary text-on-primary py-lg rounded-lg font-label-md hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-[0.98] flex items-center justify-center gap-sm">
+<span>Send Invitation</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface dark:bg-on-background px-md pb-safe border-t border-outline-variant dark:border-on-surface-variant shadow-sm md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-sm text-label-sm">Deals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">local_offer</span>
+<span class="font-label-sm text-label-sm">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        function selectRole(element) {
+            // Remove active class from all role cards
+            document.querySelectorAll('.role-card').forEach(card => {
+                card.classList.remove('active');
+                card.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+            });
+            // Add active class to clicked card
+            element.classList.add('active');
+            element.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+        }
+
+        function toggleSwitch(element) {
+            const circle = element.querySelector('span');
+            const isEnabled = element.classList.contains('bg-secondary');
+            
+            if (isEnabled) {
+                element.classList.remove('bg-secondary');
+                element.classList.add('bg-outline-variant');
+                circle.classList.remove('translate-x-5');
+                circle.classList.add('translate-x-0');
+            } else {
+                element.classList.remove('bg-outline-variant');
+                element.classList.add('bg-secondary');
+                circle.classList.remove('translate-x-0');
+                circle.classList.add('translate-x-5');
+            }
+        }
+        
+        // Initial state for pre-selected Admin role
+        document.querySelector('.role-card.active .material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+    </script>
+</body></html>

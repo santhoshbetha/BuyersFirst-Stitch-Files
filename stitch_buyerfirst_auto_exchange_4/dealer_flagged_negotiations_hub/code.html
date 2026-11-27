@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoNegotiate | Compliance Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#e5eeff",
+                    "secondary": "#0058be",
+                    "on-surface": "#0b1c30",
+                    "surface-tint": "#565e74",
+                    "secondary-fixed": "#d8e2ff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "background": "#f8f9ff",
+                    "tertiary-container": "#271901",
+                    "on-tertiary-container": "#98805d",
+                    "surface": "#f8f9ff",
+                    "on-background": "#0b1c30",
+                    "on-primary-fixed": "#131b2e",
+                    "on-secondary-container": "#fefcff",
+                    "secondary-container": "#2170e4",
+                    "primary-fixed": "#dae2fd",
+                    "outline": "#76777d",
+                    "on-secondary-fixed": "#001a42",
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary": "#000000",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "inverse-primary": "#bec6e0",
+                    "on-tertiary-fixed": "#271901",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#eff4ff",
+                    "surface-variant": "#d3e4fe",
+                    "surface-bright": "#f8f9ff",
+                    "outline-variant": "#c6c6cd",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "inverse-surface": "#213145",
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface-variant": "#45464d",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary-container": "#7c839b",
+                    "primary-container": "#131b2e",
+                    "primary": "#000000",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface-container-high": "#dce9ff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed-variant": "#004395"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "base": "4px",
+                    "3xl": "64px",
+                    "lg": "24px",
+                    "gutter": "24px",
+                    "xl": "32px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .urgent-pulse {
+            animation: pulse-red 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-red {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-20 md:pb-0">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface dark:bg-on-background border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex justify-between items-center px-lg py-md w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed text-headline-md" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+<h1 class="text-headline-md font-headline-md font-bold text-on-background dark:text-background">AutoNegotiate</h1>
+</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors px-sm py-xs rounded font-label-md text-label-md" href="#">Inventory</a>
+<a class="text-secondary dark:text-secondary-fixed hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors px-sm py-xs rounded font-label-md text-label-md" href="#">Compliance</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-low dark:hover:bg-surface-variant transition-colors px-sm py-xs rounded font-label-md text-label-md" href="#">Reports</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary transition-colors">notifications</button>
+<div class="h-10 w-10 rounded-full border border-outline-variant bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a premium car dealership manager, wearing a crisp dark suit, smiling confidently. The lighting is soft and corporate, with a blurred high-end showroom in the background featuring sleek silver vehicles. The aesthetic is clean, professional, and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzvsTOMNRPS7FEdrLwTEt5VkhO7UOeljqGLJGN-vW-LTjhK0qaxW_yOSPU2L0LUTNWgBmJPluvblYOd1_hbq1NcwM0llC0N6vQ8ndvLKWRbolx6I85M9KsufuWKs0Qw_YUTzpcoPYVZieiJDxU6Pzcu8XK5v_t8P_LlQgNYG8_9Et6BW7uY4udxEUsb8nRTlywx9RIQ1ynOSLABExmTIKEAV51pNXHl31zeQO1Pc8TAEhh6Z252Gzwrg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md md:px-lg py-xl">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-xs">Risk Mitigation</p>
+<h2 class="font-headline-lg text-headline-lg text-on-background">Compliance Dashboard</h2>
+</div>
+<div class="flex gap-sm">
+<div class="bg-surface border border-outline-variant px-md py-sm rounded-lg flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-error urgent-pulse"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">4 Urgent Flags</span>
+</div>
+<div class="bg-surface border border-outline-variant px-md py-sm rounded-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">verified_user</span>
+<span class="font-label-md text-label-md text-on-surface-variant">98% Health Score</span>
+</div>
+</div>
+</div>
+<!-- Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Main Content Area: Urgent Flags List -->
+<div class="lg:col-span-8 space-y-md">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-sm text-headline-sm">Urgent Flags</h3>
+<button class="text-secondary font-label-md text-label-md flex items-center gap-xs hover:underline">
+                        View Audit Log <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<!-- Flag Item 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+<div class="flex flex-col md:flex-row">
+<div class="bg-error/10 w-2 shrink-0"></div>
+<div class="p-md md:p-lg flex-1 flex flex-col md:flex-row gap-lg md:items-center">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-sm">
+<span class="bg-error-container text-on-error-container px-sm py-1 rounded-full font-label-sm text-label-sm uppercase">Price Baiting</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">#NEG-88219</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">2024 Mercedes-Benz S-Class</h4>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Buyer: <strong>David Chen</strong> • Listed: $114,200 • Negotiated: $108,500</p>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-sm italic border-l-2 border-outline-variant pl-sm">"Reported: Digital price tag on site shows $112,000 while agent insisted on $114k starting."</p>
+</div>
+<div class="flex flex-col items-start md:items-end gap-md">
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Deadline</p>
+<div class="flex items-center gap-xs text-error font-bold">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-md text-label-md">02:14:45 remaining</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-lg py-md rounded font-label-md text-label-md hover:bg-on-background/90 transition-colors w-full md:w-auto">Review &amp; Respond</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Flag Item 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+<div class="flex flex-col md:flex-row">
+<div class="bg-error/10 w-2 shrink-0"></div>
+<div class="p-md md:p-lg flex-1 flex flex-col md:flex-row gap-lg md:items-center">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-sm">
+<span class="bg-error-container text-on-error-container px-sm py-1 rounded-full font-label-sm text-label-sm uppercase">Fee Discrepancy</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">#NEG-90432</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">2023 Porsche Taycan 4S</h4>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Buyer: <strong>Sarah Miller</strong> • Unexplained Dealer Markup: $4,500</p>
+<p class="text-on-surface-variant font-body-sm text-body-sm mt-sm italic border-l-2 border-outline-variant pl-sm">"Automated audit detected 'Preparation Fee' exceeding regional cap of $850."</p>
+</div>
+<div class="flex flex-col items-start md:items-end gap-md">
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Deadline</p>
+<div class="flex items-center gap-xs text-error font-bold">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-md text-label-md">04:42:10 remaining</span>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-lg py-md rounded font-label-md text-label-md hover:bg-on-background/90 transition-colors w-full md:w-auto">Review &amp; Respond</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Flag Item 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:shadow-md transition-shadow duration-300 opacity-80">
+<div class="flex flex-col md:flex-row">
+<div class="bg-outline-variant w-2 shrink-0"></div>
+<div class="p-md md:p-lg flex-1 flex flex-col md:flex-row gap-lg md:items-center">
+<div class="flex-1">
+<div class="flex items-center gap-sm mb-sm">
+<span class="bg-surface-variant text-on-surface-variant px-sm py-1 rounded-full font-label-sm text-label-sm uppercase">Disclosure Gap</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">#NEG-77341</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-xs">2024 Audi RS6 Avant</h4>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Buyer: <strong>TechLogix Fleet</strong> • Missing CPO documentation</p>
+</div>
+<div class="flex flex-col items-start md:items-end gap-md">
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">Deadline</p>
+<div class="flex items-center gap-xs text-on-surface-variant font-bold">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-md text-label-md">22:05:30 remaining</span>
+</div>
+</div>
+<button class="border border-secondary text-secondary px-lg py-md rounded font-label-md text-label-md hover:bg-secondary/5 transition-colors w-full md:w-auto">Open Case</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Content: Analytics & Recent Activity -->
+<div class="lg:col-span-4 space-y-lg">
+<!-- Compliance Health Card -->
+<div class="bg-primary-container text-on-primary-container p-lg rounded-xl">
+<h3 class="font-headline-sm text-headline-sm mb-md">Network Health</h3>
+<div class="flex items-center justify-between mb-sm">
+<span class="font-body-sm text-body-sm">Overall Compliance</span>
+<span class="font-bold text-headline-sm">94.2%</span>
+</div>
+<div class="w-full bg-white/10 h-2 rounded-full mb-lg overflow-hidden">
+<div class="bg-secondary-fixed h-full w-[94.2%] shimmer"></div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-white/5 p-sm rounded border border-white/10">
+<p class="font-label-sm text-label-sm opacity-70">Audits Today</p>
+<p class="font-headline-sm text-headline-sm">1,248</p>
+</div>
+<div class="bg-white/5 p-sm rounded border border-white/10">
+<p class="font-label-sm text-label-sm opacity-70">Cleared</p>
+<p class="font-headline-sm text-headline-sm text-secondary-fixed">1,192</p>
+</div>
+</div>
+</div>
+<!-- Violation Trends -->
+<div class="bg-surface border border-outline-variant p-lg rounded-xl">
+<h3 class="font-headline-sm text-headline-sm mb-md">Violation Trends</h3>
+<div class="space-y-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-error/10 flex items-center justify-center text-error">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Price Baiting</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">+12% vs last month</p>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded bg-secondary-fixed/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">trending_down</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Unfair Fees</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">-5% improvement</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Resolutions -->
+<div class="bg-surface border border-outline-variant p-lg rounded-xl">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-sm text-headline-sm">Recent Resolutions</h3>
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+</div>
+<div class="space-y-sm">
+<div class="text-sm p-sm rounded-lg hover:bg-surface-container-low transition-colors cursor-default border-l-4 border-secondary">
+<p class="font-label-md text-label-md">#NEG-1102 Resolved</p>
+<p class="text-xs text-on-surface-variant">Price correction applied by Agent J. Doe</p>
+</div>
+<div class="text-sm p-sm rounded-lg hover:bg-surface-container-low transition-colors cursor-default border-l-4 border-secondary">
+<p class="font-label-md text-label-md">#NEG-0985 Dismissed</p>
+<p class="text-xs text-on-surface-variant">Technical glitch confirmed by admin</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface dark:bg-on-background px-md pb-safe border-t border-outline-variant dark:border-on-surface-variant shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-sm text-label-sm">Deals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">local_offer</span>
+<span class="font-label-sm text-label-sm">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for countdown simulation
+        function updateTimers() {
+            const timers = document.querySelectorAll('.font-bold.text-error span.font-label-md, .font-bold.text-on-surface-variant span.font-label-md');
+            timers.forEach(timer => {
+                let text = timer.innerText;
+                if (text.includes('remaining')) {
+                    // This is just a visual placeholder, in a real app we'd parse and decrement
+                    // For the demo, we'll just flicker the colon occasionally
+                    if (Math.random() > 0.8) {
+                        timer.classList.add('opacity-80');
+                        setTimeout(() => timer.classList.remove('opacity-80'), 100);
+                    }
+                }
+            });
+        }
+        setInterval(updateTimers, 1000);
+
+        // Hover sound/effect logic placeholder
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                // Subtle interaction logic
+            });
+        });
+    </script>
+</body></html>

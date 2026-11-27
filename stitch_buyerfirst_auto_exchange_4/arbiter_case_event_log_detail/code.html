@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Case Audit: #ARB-2024-0982 | ArbiterCore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .monospaced-audit {
+            font-family: 'JetBrains Mono', 'Roboto Mono', monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary-fixed": "#271901",
+                        "on-background": "#0b1c30",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-dim": "#cbdbf5",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-container": "#98805d",
+                        "on-secondary-fixed": "#001a42",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-container": "#7c839b",
+                        "secondary-container": "#2170e4",
+                        "outline": "#76777d",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#271901",
+                        "surface-container-low": "#eff4ff",
+                        "secondary": "#0058be",
+                        "surface-tint": "#565e74",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-surface-variant": "#45464d",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-surface": "#213145",
+                        "primary-container": "#131b2e",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container": "#e5eeff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface": "#f8f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-container": "#fefcff",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#bec6e0",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-primary-fixed": "#131b2e",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary": "#ffffff",
+                        "tertiary": "#000000",
+                        "primary": "#000000",
+                        "background": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "xs": "4px",
+                        "container-max": "1280px",
+                        "xl": "32px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "3xl": "64px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-md text-on-background selection:bg-secondary-fixed">
+<!-- Navigation Drawer (Mandatory Shell) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant py-lg z-50">
+<div class="px-md mb-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span class="font-headline-sm text-headline-sm text-on-primary-container">ArbiterCore Audit</span>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="text-on-surface-variant mx-sm px-md py-sm flex items-center gap-md hover:bg-surface-container-highest rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-md text-label-md">Master Trail</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-xl mx-sm my-xs px-md py-sm flex items-center gap-md transition-all duration-200 shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">history_edu</span>
+<span class="font-label-md text-label-md">Case Logs</span>
+</a>
+<a class="text-on-surface-variant mx-sm px-md py-sm flex items-center gap-md hover:bg-surface-container-highest rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-md text-label-md">Risk Flags</span>
+</a>
+<a class="text-on-surface-variant mx-sm px-md py-sm flex items-center gap-md hover:bg-surface-container-highest rounded-xl transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-md py-sm">
+<div class="p-sm bg-surface-container rounded-lg border border-outline-variant flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed font-bold text-xs">CO</div>
+<div class="flex-1 overflow-hidden">
+<p class="text-xs font-bold truncate">Compliance Officer</p>
+<p class="text-[10px] text-on-surface-variant truncate">Session: #9211</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen flex flex-col">
+<!-- TopAppBar (Mandatory Shell) -->
+<header class="w-full top-0 sticky z-40 bg-surface border-b border-outline-variant flex items-center justify-between px-lg py-md max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-md">
+<button class="md:hidden p-xs">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm font-bold text-on-surface">Audit &amp; Compliance</h1>
+<p class="text-[10px] text-on-surface-variant tracking-widest uppercase">System Integrity Dashboard</p>
+</div>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden lg:flex items-center gap-md px-md border-x border-outline-variant">
+<div class="flex flex-col items-end">
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Network Status</span>
+<span class="text-xs text-secondary flex items-center gap-xs"><span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span> Encrypted</span>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full bg-outline-variant flex items-center justify-center overflow-hidden cursor-pointer active:opacity-80 transition-colors hover:bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a female compliance officer in a modern corporate setting, wearing a tailored navy suit and glasses, with a blurred minimalist office background in soft slate and white tones. The lighting is crisp and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZOBJOR3s0MDY5UNLYO9FiNSU-zuP5xYuN8vcWjfZqrngBisxJRt4_ah4CeOzBBYyKBnIXfmoPJF6q2jDnWmbCv7XNAzRx05yRRhVeP0cfuhBx4HDQTZsKuJ2ceS8is6TAhAyJUwhAbHXk-xtgQgQMja-wxxCkCWrfAafZkvE_lb0O3mm3Hj2Glbeu-bg0hP4Du5_gLcdwLzD06-Wp87-8HDq7a8-j5LuNvoOR3K7VNcVWcu3gS_nrAg"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<div class="flex-1 p-lg max-w-container-max mx-auto w-full">
+<!-- Breadcrumbs & Actions -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-lg gap-md">
+<div>
+<div class="flex items-center gap-xs text-on-surface-variant mb-xs">
+<span class="font-label-sm text-label-sm">Case Logs</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="font-label-sm text-label-sm text-secondary">#ARB-2024-0982</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight">Case Audit History</h2>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-sm border border-secondary text-secondary font-label-md text-label-md rounded-lg flex items-center gap-sm hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-md">print</span>
+                        Export PDF
+                    </button>
+<button class="px-md py-sm bg-primary text-on-primary font-label-md text-label-md rounded-lg flex items-center gap-sm hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-md">verified_user</span>
+                        Verify Hash
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Timeline Section (Left Col) -->
+<section class="lg:col-span-8 space-y-lg">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low/50">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">database</span>
+                                Immutable Audit Trail
+                            </h3>
+<span class="px-sm py-xs bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase tracking-tighter">Read-Only Access</span>
+</div>
+<div class="p-lg relative">
+<!-- Timeline Vertical Line -->
+<div class="absolute left-[39px] top-lg bottom-lg w-px bg-outline-variant border-dashed border-l"></div>
+<!-- Timeline Items -->
+<div class="space-y-xl relative">
+<!-- Event 1 -->
+<div class="flex gap-lg">
+<div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-secondary flex items-center justify-center shadow-sm">
+<div class="w-1.5 h-1.5 bg-secondary rounded-full"></div>
+</div>
+<div class="flex-1 space-y-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-xs">
+<span class="font-label-md text-label-md text-primary">Case Finalized &amp; Ruling Signed</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant monospaced-audit bg-surface-container px-sm py-xs rounded">2024-10-12 14:42:01 UTC</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">The arbitration session reached a final consensus. Digital signatures from both parties and the head arbiter have been verified and locked.</p>
+<div class="p-sm bg-surface rounded border border-outline-variant flex items-center gap-md">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant">person</span>
+<div>
+<p class="font-label-sm text-label-sm">Arbiter: Marcus Thorne (ID: 0882)</p>
+<p class="text-[10px] text-on-surface-variant">Auth: Multi-factor Biometric</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex gap-lg">
+<div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-outline flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-outline rounded-full"></div>
+</div>
+<div class="flex-1 space-y-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-xs">
+<span class="font-label-md text-label-md text-primary">Arbiter Note Added</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant monospaced-audit bg-surface-container px-sm py-xs rounded">2024-10-12 11:15:33 UTC</span>
+</div>
+<div class="p-md bg-surface-container-low italic border-l-4 border-secondary text-body-md text-on-surface-variant rounded-r-lg">
+                                            "Buyer provided supplemental maintenance records which reconciled the engine variance concerns. Target price adjusted based on internal Table 4.C depreciation standards."
+                                        </div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="flex gap-lg">
+<div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-outline flex items-center justify-center">
+<div class="w-1.5 h-1.5 bg-outline rounded-full"></div>
+</div>
+<div class="flex-1 space-y-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-xs">
+<span class="font-label-md text-label-md text-primary">System Trigger: Counter-Offer Detected</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant monospaced-audit bg-surface-container px-sm py-xs rounded">2024-10-11 16:02:18 UTC</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Automated validation engine flagged an outlier offer from Seller (Entity ID: SEL-772). Manual arbiter review requested.</p>
+<div class="flex gap-sm">
+<span class="px-sm py-xs bg-error-container text-on-error-container text-[10px] font-bold rounded">THRESHOLD_BREACH</span>
+<span class="px-sm py-xs bg-surface-container text-on-surface-variant text-[10px] font-bold rounded">AUTO_FLAG</span>
+</div>
+</div>
+</div>
+<!-- Event 4 -->
+<div class="flex gap-lg">
+<div class="relative z-10 w-6 h-6 rounded-full bg-surface-container-lowest border-2 border-outline-variant flex items-center justify-center shadow-sm">
+<div class="w-1.5 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<div class="flex-1 space-y-sm opacity-60">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-xs">
+<span class="font-label-md text-label-md text-primary">Case Initialization</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant monospaced-audit bg-surface-container px-sm py-xs rounded">2024-10-10 09:00:00 UTC</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">Record initialized following non-resolution of standard private negotiation channel.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Metadata & Summary (Right Col) -->
+<aside class="lg:col-span-4 space-y-lg">
+<!-- Final Ruling Summary -->
+<div class="bg-primary-container text-on-primary-fixed border border-primary p-lg rounded-xl shadow-xl relative overflow-hidden">
+<div class="absolute -right-8 -top-8 opacity-10">
+<span class="material-symbols-outlined text-[160px]">verified</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary-fixed">workspace_premium</span>
+                            Final Ruling
+                        </h4>
+<div class="space-y-md relative z-10">
+<div class="flex justify-between items-end border-b border-on-primary-fixed-variant pb-sm">
+<span class="text-label-sm uppercase tracking-widest opacity-70">Settlement Amount</span>
+<span class="font-display-lg text-[24px] monospaced-audit">$42,500.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-label-sm opacity-70">Responsible Party</span>
+<span class="text-label-md font-bold">Buyer (Primary)</span>
+</div>
+<div class="pt-sm border-t border-on-primary-fixed-variant">
+<span class="text-label-sm opacity-70 block mb-sm">Applied Penalties</span>
+<div class="space-y-xs">
+<div class="flex justify-between text-error-container">
+<span class="text-xs">Late Submission Fee</span>
+<span class="text-xs monospaced-audit">+$250.00</span>
+</div>
+<div class="flex justify-between text-on-secondary-fixed">
+<span class="text-xs">Processing Credit</span>
+<span class="text-xs monospaced-audit">-$50.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Verification Metadata -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-md py-sm bg-surface-container-high border-b border-outline-variant">
+<h4 class="font-label-md text-label-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-xs">lock</span>
+                                Verification Metadata
+                            </h4>
+</div>
+<div class="p-md space-y-md">
+<div>
+<label class="text-[10px] uppercase font-bold text-on-surface-variant block mb-xs">Immutable Record Hash</label>
+<div class="bg-surface-container p-sm rounded border border-outline-variant overflow-hidden">
+<code class="text-[11px] monospaced-audit break-all text-on-secondary-fixed-variant">
+                                        SHA-256: 8f3c72b2e9d1a12c45f6a89c3b2e1a7d5f6c8a9b0d1e2f3a4b5c6d7e8f9a0b1c
+                                    </code>
+</div>
+<button class="mt-sm text-secondary text-[10px] font-bold flex items-center gap-xs hover:underline">
+<span class="material-symbols-outlined text-[14px]">content_copy</span> Copy Hash
+                                </button>
+</div>
+<div>
+<label class="text-[10px] uppercase font-bold text-on-surface-variant block mb-xs">Blockchain Status</label>
+<div class="flex items-center gap-sm p-sm bg-surface-container-low rounded border border-secondary/20">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+<div>
+<p class="text-xs font-bold text-primary">Anchored to Mainnet</p>
+<p class="text-[10px] text-on-surface-variant">Block: #18442991 | Confirmations: 482</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Accent -->
+<div class="rounded-xl overflow-hidden h-32 relative group cursor-crosshair">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A macro photograph of an expensive automotive brake system and wheel hub, focusing on high-tech mechanical textures and brushed metal surfaces. The scene is lit with professional blue and white studio lights, conveying a sense of luxury engineering and technical inspection. Modern corporate UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYe1-XRe_mWnW8OeLuVNEKxcHhlIEgUQRCoFXOQ65adLWTqFJy1alpgZaJm3RD2tytVSLzt5HBwy_8t26iPaIO0ZmqVHcKNu683Syzrn1w_wMnc77sHU0ASuFLMF5LxizHMxCcb_vwI2jfddwT8ZCT-CDwkfhf_NHqlrPd2UKhIOYGD0RwczNtxPbf8PXbHXEc32LjvxrgPJC8wLlOxu5VasvMhR8RAmRXPczuAylNALAG4fFf6-pGUg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-md">
+<p class="text-on-primary text-[10px] font-bold uppercase tracking-widest">Evidence Lock: V-922</p>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<!-- Footer (Mandatory Shell) -->
+<footer class="mt-auto w-full bg-surface-container-low border-t border-outline-variant flex flex-col md:flex-row justify-between items-center px-lg py-md">
+<div class="flex items-center gap-md mb-md md:mb-0">
+<span class="font-label-md text-label-md font-semibold text-on-surface-variant">© 2024 ArbiterCore Negotiation Systems.</span>
+<span class="px-sm py-xs bg-outline-variant/30 rounded text-[10px] font-bold text-on-surface-variant">INTERNAL AUDIT ENVIRONMENT</span>
+</div>
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity duration-150 underline" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity duration-150 underline" href="#">Audit Protocol</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity duration-150 underline" href="#">System Status</a>
+</div>
+</footer>
+</main>
+<!-- Interactive Layer for Verification -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const verifyBtn = document.querySelector('button:contains("Verify Hash")');
+            if (verifyBtn) {
+                verifyBtn.addEventListener('click', () => {
+                    const originalText = verifyBtn.innerHTML;
+                    verifyBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Verifying...';
+                    verifyBtn.classList.add('opacity-80');
+                    
+                    setTimeout(() => {
+                        verifyBtn.innerHTML = '<span class="material-symbols-outlined text-green-500">check_circle</span> Verified';
+                        verifyBtn.classList.remove('bg-primary');
+                        verifyBtn.classList.add('bg-green-100', 'text-green-800', 'border-green-300');
+                        
+                        setTimeout(() => {
+                            verifyBtn.innerHTML = originalText;
+                            verifyBtn.classList.add('bg-primary');
+                            verifyBtn.classList.remove('bg-green-100', 'text-green-800', 'border-green-300', 'opacity-80');
+                        }, 3000);
+                    }, 1500);
+                });
+            }
+        });
+
+        // Helper for selector
+        window.jQueryLike = (selector, text) => {
+          return Array.from(document.querySelectorAll(selector)).find(el => el.textContent.includes(text));
+        }
+        
+        // Manual override for button selector since standard querySelector doesn't support :contains natively
+        const b = window.jQueryLike('button', 'Verify Hash');
+        if (b) {
+            b.addEventListener('click', function() {
+                const btn = this;
+                const originalContent = btn.innerHTML;
+                btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-sm">progress_activity</span> Validating Node...';
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="material-symbols-outlined text-sm">verified</span> Block Verified';
+                    btn.style.backgroundColor = '#059669';
+                    setTimeout(() => {
+                        btn.innerHTML = originalContent;
+                        btn.style.backgroundColor = '';
+                    }, 2000);
+                }, 1000);
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoNegotiate | Investigation Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#eff4ff",
+                    "tertiary-container": "#271901",
+                    "surface-bright": "#f8f9ff",
+                    "error": "#ba1a1a",
+                    "outline": "#76777d",
+                    "inverse-primary": "#bec6e0",
+                    "primary": "#000000",
+                    "on-secondary-container": "#fefcff",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#000000",
+                    "outline-variant": "#c6c6cd",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-variant": "#d3e4fe",
+                    "secondary-container": "#2170e4",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-container": "#98805d",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#7c839b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#0b1c30",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-fixed": "#271901",
+                    "primary-container": "#131b2e",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#45464d",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-primary-fixed": "#131b2e",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed": "#d8e2ff",
+                    "surface-tint": "#565e74",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-background": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "primary-fixed": "#dae2fd",
+                    "on-secondary-fixed": "#001a42",
+                    "secondary": "#0058be",
+                    "surface-dim": "#cbdbf5",
+                    "surface": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "3xl": "64px",
+                    "2xl": "48px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 24px;
+            bottom: -8px;
+            width: 2px;
+            background-color: #e2e8f0;
+        }
+        .timeline-step:last-child .timeline-line::before {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface border-b border-outline-variant">
+<div class="flex justify-between items-center px-lg h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="gavel">gavel</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoNegotiate</h1>
+</div>
+<nav class="hidden md:flex gap-xl">
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs rounded" href="#">Dashboard</a>
+<a class="font-label-md text-label-md text-secondary font-bold hover:bg-surface-container-low transition-colors px-sm py-xs rounded" href="#">Documents</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-sm py-xs rounded" href="#">History</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="p-sm rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-xs">JD</div>
+</div>
+</div>
+</header>
+<main class="mt-24 px-md md:px-lg max-w-container-max mx-auto">
+<!-- Back Action & Title -->
+<div class="mb-lg flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<button class="flex items-center gap-xs text-secondary font-semibold font-label-md text-label-md mb-sm group">
+<span class="material-symbols-outlined text-sm group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+                    Back to Documents
+                </button>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Investigation #88241-TX</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-base">Case file: 2024 Mercedes-Benz GLE 450 Negotiation</p>
+</div>
+<div class="flex gap-sm">
+<span class="px-md py-xs bg-surface-container-high border border-outline-variant rounded-full font-label-sm text-label-sm flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    Investigation Active
+                </span>
+</div>
+</div>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left: Timeline of Protective Actions (Bento Main) -->
+<div class="lg:col-span-8 flex flex-col gap-lg">
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<div class="p-lg border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-headline-sm text-headline-sm">Investigation Timeline</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Real-time tracking of platform protective actions.</p>
+</div>
+<div class="p-lg flex flex-col gap-lg">
+<!-- Step 1: Report Received -->
+<div class="relative timeline-step flex gap-lg">
+<div class="timeline-line shrink-0">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center z-10 relative">
+<span class="material-symbols-outlined text-[14px] text-on-secondary" data-icon="check" style="font-variation-settings: 'FILL' 0, 'wght' 700;">check</span>
+</div>
+</div>
+<div class="flex-1 pb-xl">
+<div class="flex justify-between items-start">
+<h4 class="font-headline-sm text-headline-sm leading-none">Report Received</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 12, 09:42 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">Consumer flagged non-standard document fees in dealer's secondary purchase agreement (Line item 14b). Platform automated scanner matched against jurisdictional limits.</p>
+<div class="mt-md p-md bg-surface-bright rounded-lg border border-outline-variant flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary" data-icon="flag">flag</span>
+<span class="font-body-sm text-body-sm italic">"Fee mismatch detected: $895.00 vs state cap of $150.00"</span>
+</div>
+</div>
+</div>
+<!-- Step 2: Evidence Verified -->
+<div class="relative timeline-step flex gap-lg">
+<div class="timeline-line shrink-0">
+<div class="w-6 h-6 rounded-full bg-secondary flex items-center justify-center z-10 relative">
+<span class="material-symbols-outlined text-[14px] text-on-secondary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1 pb-xl">
+<div class="flex justify-between items-start">
+<h4 class="font-headline-sm text-headline-sm leading-none">Evidence Verified</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Oct 12, 11:15 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">Legal compliance engine cross-referenced current state regulations (TX Admin Code § 84.202). Documentation confirmed as non-compliant.</p>
+<div class="mt-md grid grid-cols-2 gap-sm">
+<div class="p-sm bg-surface-container border border-outline-variant rounded flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="description">description</span>
+<span class="font-label-sm text-label-sm">tx_compliance_ref.pdf</span>
+</div>
+<div class="p-sm bg-surface-container border border-outline-variant rounded flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="image">image</span>
+<span class="font-label-sm text-label-sm">contract_capture_8b.jpg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3: Dealer Contacted -->
+<div class="relative timeline-step flex gap-lg">
+<div class="timeline-line shrink-0">
+<div class="w-6 h-6 rounded-full border-2 border-secondary bg-surface flex items-center justify-center z-10 relative">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+</div>
+</div>
+<div class="flex-1 pb-xl">
+<div class="flex justify-between items-start">
+<h4 class="font-headline-sm text-headline-sm leading-none text-secondary">Dealer Contacted</h4>
+<span class="font-label-sm text-label-sm text-secondary font-bold">IN PROGRESS</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">AutoNegotiate Compliance Bot sent a correction request to 'Luxury Motors Houston'. The dealer has 4 business hours to revise the fee or provide a legal exemption justification.</p>
+<div class="mt-md flex items-center gap-sm">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-outline-variant border-2 border-surface"></div>
+<div class="w-8 h-8 rounded-full bg-secondary-container border-2 border-surface flex items-center justify-center">
+<span class="text-[10px] font-bold">BOT</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Communicating with Dealer Admin...</span>
+</div>
+</div>
+</div>
+<!-- Step 4: Final Resolution -->
+<div class="relative timeline-step flex gap-lg">
+<div class="timeline-line shrink-0">
+<div class="w-6 h-6 rounded-full bg-outline-variant flex items-center justify-center z-10 relative opacity-40">
+<span class="material-symbols-outlined text-[14px] text-surface" data-icon="lock">lock</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start opacity-40">
+<h4 class="font-headline-sm text-headline-sm leading-none">Final Resolution</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pending Dealer response</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm italic">Expected resolution within 24 hours.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right: Details & Status (Bento Secondary) -->
+<div class="lg:col-span-4 flex flex-col gap-lg">
+<!-- Case Summary Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-md border-b border-outline-variant pb-base">INVESTIGATION SUMMARY</h3>
+<div class="space-y-md">
+<div class="flex justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Dealer Name</span>
+<span class="font-label-sm text-label-sm">Luxury Motors Houston</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Assigned Agent</span>
+<span class="font-label-sm text-label-sm">Auto-Audit (System 4)</span>
+</div>
+<div class="flex justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Risk Level</span>
+<span class="px-sm py-xs bg-error-container text-on-error-container rounded font-label-sm text-label-sm">High Priority</span>
+</div>
+<div class="flex justify-between border-t border-outline-variant pt-md">
+<span class="font-body-md text-body-md font-bold">Potential Savings</span>
+<span class="font-headline-sm text-headline-sm text-secondary">$745.00</span>
+</div>
+</div>
+<button class="w-full mt-lg py-md bg-primary text-on-primary rounded font-label-md text-label-md hover:opacity-90 transition-opacity">
+                        View Full Report
+                    </button>
+</section>
+<!-- Protective Measures Info -->
+<section class="bg-primary-container text-on-primary-container rounded-lg p-lg relative overflow-hidden">
+<!-- Subtle background noise/mesh via SVG -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<svg height="100%" preserveaspectratio="none" viewbox="0 0 100 100" width="100%">
+<defs>
+<pattern height="10" id="grid" patternunits="userSpaceOnUse" width="10">
+<path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5"></path>
+</pattern>
+</defs>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+</svg>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary-fixed-dim" data-icon="shield_with_heart" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<h3 class="font-label-md text-label-md text-inverse-primary uppercase tracking-wider">Protective Shield Active</h3>
+</div>
+<p class="font-body-sm text-body-sm mb-md">This negotiation is currently under the AutoNegotiate Buyer Protection Protocol. Any illegal fees detected will be automatically challenged.</p>
+<ul class="space-y-sm">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-xs mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm opacity-90">Locked target pricing</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-xs mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm opacity-90">Compliance legal override</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-xs mt-1" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm opacity-90">Refund guarantee integration</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- Visual Evidence -->
+<div class="relative w-full aspect-video rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A clean, high-resolution minimalist photograph of a modern luxury car dealership interior. The setting is bright and professional with architectural glass and sleek slate surfaces. The lighting is high-key and corporate, reflecting the AutoNegotiate brand's precision and transparency. There is a sense of professional calm and structured data management in the atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9dDvRa4ghcmrixrD0_2_-qoWR6oJMAKWZKp8u_znodCHWTL9IOI3pxIjtrQtD7_WKZOPZMKIyQ73rrnCV700v3C_No_dPQlQS5DqE4QGz6LghiDNa4gBRAFw-o7FD4iE9GKTmyZNpnmW_IpPyJCkbsvne-Et1Yix_iHeUCsFmDxtN5AZ6iEA-fohMEyZFNbfZSBXbnhslivH7zQtkm8oVCcUqEy9mDZnS7knX5E38MXXYyFo7ucBavw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-md">
+<p class="text-white font-label-sm text-label-sm">Verification: Site visit scheduled if dealer contests.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center py-sm bg-surface border-t border-outline-variant z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+<span class="font-label-sm text-label-sm">Deals</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary font-semibold scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-label-sm text-label-sm">Documents</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-label-sm text-label-sm">Chat</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for timeline steps
+        document.querySelectorAll('.timeline-step').forEach(step => {
+            step.addEventListener('mouseenter', () => {
+                const icon = step.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'scale(1.1)';
+            });
+            step.addEventListener('mouseleave', () => {
+                const icon = step.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'scale(1)';
+            });
+        });
+
+        // Simple visibility toggle logic if more reports were present
+        console.log("Investigation Detail UI Loaded: Ready for dealer response monitoring.");
+    </script>
+</body></html>

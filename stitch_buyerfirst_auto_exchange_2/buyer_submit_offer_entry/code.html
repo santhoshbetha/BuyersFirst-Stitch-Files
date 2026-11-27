@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Submit Your Offer | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom range slider styling */
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #0058be;
+            cursor: pointer;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 2px rgba(0,0,0,0.2);
+            margin-top: -8px;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #d3e4fe;
+            border-radius: 2px;
+        }
+        .offer-input-focus:focus-within {
+            border-color: #0058be;
+            box-shadow: 0 0 0 2px rgba(33, 112, 228, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "tertiary-fixed": "#fcdeb5",
+                "surface-container": "#e5eeff",
+                "tertiary": "#000000",
+                "surface-dim": "#cbdbf5",
+                "primary-fixed": "#dae2fd",
+                "on-surface-variant": "#45464d",
+                "on-tertiary-container": "#98805d",
+                "background": "#f8f9ff",
+                "surface-container-high": "#dce9ff",
+                "on-primary-fixed": "#131b2e",
+                "primary": "#000000",
+                "inverse-primary": "#bec6e0",
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#bec6e0",
+                "surface-bright": "#f8f9ff",
+                "surface-tint": "#565e74",
+                "on-secondary-container": "#fefcff",
+                "inverse-surface": "#213145",
+                "secondary-fixed-dim": "#adc6ff",
+                "on-secondary": "#ffffff",
+                "on-tertiary-fixed": "#271901",
+                "on-primary-fixed-variant": "#3f465c",
+                "on-error-container": "#93000a",
+                "primary-container": "#131b2e",
+                "inverse-on-surface": "#eaf1ff",
+                "on-primary-container": "#7c839b",
+                "on-primary": "#ffffff",
+                "on-error": "#ffffff",
+                "tertiary-container": "#271901",
+                "on-tertiary": "#ffffff",
+                "on-secondary-fixed-variant": "#004395",
+                "surface-variant": "#d3e4fe",
+                "secondary-container": "#2170e4",
+                "tertiary-fixed-dim": "#dec29a",
+                "outline-variant": "#c6c6cd",
+                "on-secondary-fixed": "#001a42",
+                "outline": "#76777d",
+                "surface-container-low": "#eff4ff",
+                "surface-container-highest": "#d3e4fe",
+                "on-background": "#0b1c30",
+                "error-container": "#ffdad6",
+                "surface": "#f8f9ff",
+                "on-surface": "#0b1c30",
+                "error": "#ba1a1a",
+                "on-tertiary-fixed-variant": "#574425",
+                "secondary": "#0058be",
+                "secondary-fixed": "#d8e2ff"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "xl": "32px",
+                "sm": "8px",
+                "base": "4px",
+                "gutter": "24px",
+                "3xl": "64px",
+                "lg": "24px",
+                "xs": "4px",
+                "md": "16px",
+                "container-max": "1280px",
+                "2xl": "48px"
+              },
+              "fontFamily": {
+                "label-md": ["Inter"],
+                "display-lg": ["Inter"],
+                "body-sm": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-md": ["Inter"],
+                "label-sm": ["Inter"],
+                "headline-sm": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-md": ["Inter"]
+              },
+              "fontSize": {
+                "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- Top Navigation Anchor (Desktop/Top View) -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-lg h-16 w-full bg-surface-container-lowest border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-headline-md" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoNegotiate</h1>
+</div>
+<nav class="hidden md:flex gap-lg">
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Listings</a>
+<a class="font-label-md text-label-md text-secondary font-bold hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Search</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Messages</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-3 py-2 rounded-lg" href="#">Trust</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-colors active:scale-95 transition-transform">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-outline">account_circle</span>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-32 px-md md:px-gutter max-w-container-max mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Vehicle Summary & Info -->
+<div class="lg:col-span-5 space-y-lg">
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="h-64 relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A side-profile professional photograph of a sleek 2024 Nexa EV Zenith electric vehicle in a metallic silver finish. The car is parked in a modern, brightly lit architectural space with minimalist concrete walls and soft natural light from large skylights. The atmosphere is high-end, clean, and futuristic, emphasizing the vehicle's aerodynamic lines and premium finish in a modern corporate light-mode setting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBo0ktm4AJzg-8JylPez2tc8XYp9knvvjCZDUfTU7G0v8XmSvztJp6k-r3K2DOan1DaycKRNzuNVNZQTpe1BwW50GOdV3G85mWFfwpnOXF5SH_ptr1BeWt-H9gXOOzkoaggNd7-nSw-LwYJcx3_V6zLAKgsEc267s3l84JXb7g2LpGO4sp-uKm6so7zHqK95-nGvJe3u_Njc_Jh1sPe6l-nslBxUXe4oMcWBRoFYKnMTaNpBaJjWgKp4g')"></div>
+<div class="absolute bottom-4 left-4 flex gap-base">
+<span class="bg-secondary text-white text-label-sm font-label-sm px-2 py-1 rounded">Electric</span>
+<span class="bg-surface-container-highest text-primary text-label-sm font-label-sm px-2 py-1 rounded">New</span>
+</div>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">2024 Nexa EV Zenith</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Precision Edition • Midnight Pearl</p>
+</div>
+</div>
+<div class="flex flex-col gap-xs mt-md">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant border-dashed">
+<span class="font-body-sm text-body-sm text-on-surface-variant">MSRP</span>
+<span class="font-headline-sm text-headline-sm text-primary">$62,500</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Destination Fee</span>
+<span class="font-body-md text-body-md text-primary">$1,295</span>
+</div>
+</div>
+</div>
+</section>
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<p class="font-label-md text-label-md text-primary">Price Protection Active</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your negotiation is protected by our transparent pricing policy. No hidden dealer markups.</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Submission Form -->
+<div class="lg:col-span-7 space-y-lg">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<div class="mb-xl">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-xs">Submit Your Offer</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Define your terms and start the negotiation process.</p>
+</div>
+<!-- Negotiation Chips -->
+<div class="grid grid-cols-3 gap-md mb-xl">
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">Lowest Accepted</p>
+<p class="font-headline-sm text-headline-sm text-primary">$55,000</p>
+</div>
+<div class="bg-secondary-fixed p-md rounded-lg border border-secondary">
+<p class="font-label-sm text-label-sm text-on-secondary-fixed uppercase tracking-wider mb-xs">Your Current Offer</p>
+<p class="font-headline-sm text-headline-sm text-secondary font-bold" id="current-offer-display">$58,000</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg border border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">Savings Gap</p>
+<p class="font-headline-sm text-headline-sm text-primary" id="gap-display">-$4,500</p>
+</div>
+</div>
+<!-- Price Input Section -->
+<div class="space-y-lg mb-2xl">
+<div class="flex flex-col gap-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Your Offer Price</label>
+<div class="relative flex items-center border border-outline-variant rounded-lg p-lg offer-input-focus transition-all bg-surface-container-low">
+<span class="font-headline-lg text-headline-lg text-on-surface-variant mr-md">$</span>
+<input class="bg-transparent border-none focus:ring-0 font-display-lg text-display-lg text-primary w-full p-0 leading-none" id="price-input" max="65000" min="55000" step="100" type="number" value="58000"/>
+</div>
+</div>
+<div class="space-y-md">
+<input class="w-full h-1 bg-surface-variant rounded-lg appearance-none cursor-pointer" id="price-slider" max="65000" min="55000" step="100" type="range" value="58000"/>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>$55,000</span>
+<span>$65,000</span>
+</div>
+</div>
+<div class="flex gap-md">
+<button class="flex-1 py-3 px-4 border border-outline-variant rounded-lg font-label-md text-label-md text-secondary hover:bg-surface-container-high active:scale-95 transition-all" onclick="adjustPrice(500)">+ $500</button>
+<button class="flex-1 py-3 px-4 border border-outline-variant rounded-lg font-label-md text-label-md text-secondary hover:bg-surface-container-high active:scale-95 transition-all" onclick="adjustPrice(1000)">+ $1,000</button>
+</div>
+</div>
+<!-- Payment Method Section -->
+<div class="space-y-md mb-2xl">
+<label class="font-label-md text-label-md text-on-surface-variant">Payment Method</label>
+<div class="grid grid-cols-2 gap-md p-1 bg-surface-container-high rounded-xl">
+<button class="py-3 font-label-md text-label-md rounded-lg transition-all flex items-center justify-center gap-sm bg-secondary-container text-on-secondary-container shadow-sm" id="btn-financing" onclick="setPayment('financing')">
+<span class="material-symbols-outlined text-body-md" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                                Financing
+                            </button>
+<button class="py-3 font-label-md text-label-md rounded-lg transition-all flex items-center justify-center gap-sm text-on-surface-variant hover:bg-surface-container-highest" id="btn-cash" onclick="setPayment('cash')">
+<span class="material-symbols-outlined text-body-md">payments</span>
+                                Cash
+                            </button>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-lg flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Est. Monthly Payment</span>
+<span class="font-headline-sm text-headline-sm text-primary" id="monthly-payment">$842/mo</span>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-2xl py-4 rounded-lg hover:opacity-90 active:scale-95 transition-all shadow-md">Review Terms</button>
+</div>
+</div>
+<!-- Bento Style Details Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md border border-outline-variant rounded-xl bg-surface-container-lowest">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 18px;">lock</span>
+<h4 class="font-label-md text-label-md text-primary">Encrypted Terms</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">All bids are legally binding and encrypted for security.</p>
+</div>
+<div class="p-md border border-outline-variant rounded-xl bg-surface-container-lowest">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 18px;">history</span>
+<h4 class="font-label-md text-label-md text-primary">Response Time</h4>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Average dealer response time for this model is 4 hours.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center h-20 pb-safe w-full bg-surface-container-lowest border-t border-outline-variant">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-sm text-label-sm">Listings</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-sm text-label-sm">Trust</span>
+</div>
+</nav>
+<script>
+        const priceInput = document.getElementById('price-input');
+        const priceSlider = document.getElementById('price-slider');
+        const displayValue = document.getElementById('current-offer-display');
+        const gapDisplay = document.getElementById('gap-display');
+        const monthlyDisplay = document.getElementById('monthly-payment');
+        const msrp = 62500;
+
+        function updateUI(value) {
+            const formatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(value);
+            displayValue.innerText = formatted;
+            
+            const gap = value - msrp;
+            const gapFormatted = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(gap);
+            gapDisplay.innerText = gap >= 0 ? `+${gapFormatted}` : gapFormatted;
+            gapDisplay.className = gap >= 0 ? "font-headline-sm text-headline-sm text-error" : "font-headline-sm text-headline-sm text-secondary";
+
+            // Dummy monthly payment calc (5% for 60m)
+            const monthly = (value * 1.05) / 60;
+            monthlyDisplay.innerText = `$${Math.round(monthly).toLocaleString()}/mo`;
+        }
+
+        priceInput.addEventListener('input', (e) => {
+            let val = parseInt(e.target.value);
+            if (val >= 55000 && val <= 65000) {
+                priceSlider.value = val;
+                updateUI(val);
+            }
+        });
+
+        priceSlider.addEventListener('input', (e) => {
+            priceInput.value = e.target.value;
+            updateUI(e.target.value);
+        });
+
+        function adjustPrice(amount) {
+            let newVal = parseInt(priceInput.value) + amount;
+            if (newVal <= 65000) {
+                priceInput.value = newVal;
+                priceSlider.value = newVal;
+                updateUI(newVal);
+            }
+        }
+
+        function setPayment(type) {
+            const btnFinancing = document.getElementById('btn-financing');
+            const btnCash = document.getElementById('btn-cash');
+            const paymentContainer = document.getElementById('monthly-payment').parentElement;
+
+            if (type === 'financing') {
+                btnFinancing.className = "py-3 font-label-md text-label-md rounded-lg transition-all flex items-center justify-center gap-sm bg-secondary-container text-on-secondary-container shadow-sm";
+                btnCash.className = "py-3 font-label-md text-label-md rounded-lg transition-all flex items-center justify-center gap-sm text-on-surface-variant hover:bg-surface-container-highest";
+                paymentContainer.style.opacity = '1';
+            } else {
+                btnCash.className = "py-3 font-label-md text-label-md rounded-lg transition-all flex items-center justify-center gap-sm bg-secondary-container text-on-secondary-container shadow-sm";
+                btnFinancing.className = "py-3 font-label-md text-label-md rounded-lg transition-all flex items-center justify-center gap-sm text-on-surface-variant hover:bg-surface-container-highest";
+                paymentContainer.style.opacity = '0.3';
+            }
+        }
+
+        // Init
+        updateUI(58000);
+    </script>
+</body></html>

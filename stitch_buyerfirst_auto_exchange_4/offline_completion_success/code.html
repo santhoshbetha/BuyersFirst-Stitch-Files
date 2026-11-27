@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Deal Finalized | AutoNegotiator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#dce9ff",
+                        "inverse-primary": "#bec6e0",
+                        "tertiary": "#000000",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#131b2e",
+                        "outline-variant": "#c6c6cd",
+                        "tertiary-fixed": "#fcdeb5",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-tertiary-container": "#98805d",
+                        "surface-tint": "#565e74",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#7c839b",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed": "#271901",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#cbdbf5",
+                        "inverse-surface": "#213145",
+                        "surface-container-low": "#eff4ff",
+                        "surface": "#f8f9ff",
+                        "on-primary-fixed": "#131b2e",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed": "#001a42",
+                        "on-secondary-container": "#fefcff",
+                        "background": "#f8f9ff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "outline": "#76777d",
+                        "on-secondary-fixed-variant": "#004395",
+                        "surface-variant": "#d3e4fe",
+                        "surface-container": "#e5eeff",
+                        "secondary-fixed": "#d8e2ff",
+                        "secondary-container": "#2170e4",
+                        "on-surface-variant": "#45464d",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#0058be",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary": "#000000",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#271901",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "gutter": "24px",
+                        "2xl": "48px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "container-max": "1280px",
+                        "3xl": "64px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface-container-lowest border-b border-outline-variant z-50">
+<div class="flex items-center justify-between px-lg py-sm w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">AutoNegotiator</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a young male automotive buyer with a friendly expression, captured in high-key studio lighting. The aesthetic is clean, modern, and high-end SaaS corporate, utilizing a neutral grey background to maintain focus on the subject. The overall mood is one of technical precision and confidence, aligning with a luxury automotive brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgWLOtPeWxyXS2fgIBpVAoMufUFboGBLzLOqpW2J9eoBGsjvo3j_B2kdHOIY2QyDOTXYLbbj2-InJsXXd3lXDhfL_bJ8piZVr7SEo_fmAFE-IUQ_hokz6SU5MBS7NhV_Ksrx_VNPqPHZVlMILBVlhr3Ct2hrbubrsOBEDfswfrWIXX9H1XLemTleCKdJ7mRv70X10ZOZYLLNpNs3DWYbdfM-IFrzhwYyAf9uuSK-UcfzzIajnwZ-FAIQ"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-lg py-xl">
+<!-- Success Banner -->
+<div class="mb-xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="flex flex-col items-center text-center space-y-md">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-secondary-container text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary">Deal Successfully Finalized!</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Congratulations, Alex. Your digital negotiation is complete. We’ve secured your terms with Northside Motors.</p>
+</div>
+</div>
+<div class="bento-grid">
+<!-- Left Column: Vehicle & Price (Bento Big) -->
+<div class="col-span-12 lg:col-span-8 space-y-lg">
+<!-- Vehicle Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden flex flex-col md:flex-row shadow-sm">
+<div class="md:w-1/3 h-48 md:h-auto overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A sleek 2023 Porsche 911 Carrera S in a deep metallic silver finish, parked in a minimalist, high-tech showroom with polished concrete floors. The lighting is sophisticated and directional, highlighting the car's aerodynamic curves and technical precision. The background is slightly out of focus to emphasize the vehicle, maintaining a clean corporate aesthetic with cold blue and slate tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYrvzXYE-LPfwvUhg8D3mLTU4TqxKn2JmeyjCR2wnoMeAqgfPeYPvoZgTDRw-OH1Qh36R5Acdz7ErxG5JjkvZK0m5weCV0yDNdFYpYNPH7o6vZa16jrQn6h5b_lmULkHE9BdBtirH4VyW4stFR2RJs-toTjkWU9BRH559WiS1JW5-gZ4NThGQz5JTDMOEqxsIUqlgFf_LkSIOuG0qm0Big20ZOhNw86fMhLKepYgNC2ZSFj9-4nH84bg"/>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 rounded-full text-label-sm font-label-sm uppercase tracking-wider">Confirmed</div>
+</div>
+<div class="p-lg md:w-2/3 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-sm">
+<h2 class="font-headline-md text-headline-md text-primary">2023 Porsche 911 Carrera S</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">VIN: WP0AA2A9XPS240***</span>
+</div>
+<div class="grid grid-cols-2 gap-md border-y border-outline-variant py-md my-md">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-xs">Agreed Price</p>
+<p class="font-headline-sm text-headline-sm text-secondary font-bold">$124,500.00</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-xs">Deal Reference ID</p>
+<code class="font-body-md text-body-md bg-surface-container text-on-surface px-2 py-1 rounded">AN-992-TX-4521</code>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+<span class="font-body-sm text-body-sm">Final terms locked for 72 hours.</span>
+</div>
+</div>
+</div>
+<!-- Next Steps Bento -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<h3 class="font-headline-sm text-headline-sm text-primary mb-lg">Next Steps to Ownership</h3>
+<div class="space-y-lg relative">
+<!-- Step 1 -->
+<div class="flex gap-md">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-2 border-secondary flex items-center justify-center text-secondary font-bold">1</div>
+<div class="w-0.5 h-full bg-outline-variant"></div>
+</div>
+<div class="pb-xl">
+<h4 class="font-label-md text-label-md text-primary mb-xs">Visit Northside Motors</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">The physical transaction must be completed in-store. No further online steps are required.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-md">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-2 border-secondary flex items-center justify-center text-secondary font-bold">2</div>
+<div class="w-0.5 h-full bg-outline-variant"></div>
+</div>
+<div class="pb-xl">
+<h4 class="font-label-md text-label-md text-primary mb-xs">Show Reference ID</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Present ID <span class="font-bold">AN-992-TX-4521</span> to your sales advisor to pull up your pre-negotiated deal instantly.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-md">
+<div class="flex flex-col items-center">
+<div class="w-8 h-8 rounded-full border-2 border-secondary flex items-center justify-center text-secondary font-bold">3</div>
+</div>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-xs">Final Inspection &amp; Signing</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Review the vehicle in person, sign the physical title documents, and drive home.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Dealership Info (Bento Small) -->
+<div class="col-span-12 lg:col-span-4 space-y-lg">
+<!-- Dealership Details Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm">
+<div class="p-lg border-b border-outline-variant">
+<div class="flex items-center gap-md mb-md">
+<div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">store</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-primary leading-tight">Northside Motors</h3>
+<p class="text-label-sm font-label-sm text-secondary">Authorized Dealer</p>
+</div>
+</div>
+<div class="space-y-md">
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant shrink-0">location_on</span>
+<p class="font-body-md text-body-md text-on-surface-variant">1200 Automotive Way,<br/>Suite 400, Austin, TX 78701</p>
+</div>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant shrink-0">schedule</span>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+<p class="flex justify-between w-full"><span>Mon - Fri:</span> <span class="text-primary font-medium">9:00 AM - 7:00 PM</span></p>
+<p class="flex justify-between w-full"><span>Sat:</span> <span class="text-primary font-medium">10:00 AM - 5:00 PM</span></p>
+<p class="flex justify-between w-full"><span>Sun:</span> <span class="text-outline">Closed</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Map Stub -->
+<div class="relative h-40 w-full overflow-hidden">
+<div class="absolute inset-0 bg-surface-container-high flex items-center justify-center grayscale opacity-50">
+<img class="w-full h-full object-cover" data-location="Austin, Texas" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQz8HmJOfvAK2J4c7g8urI4giBGKwczemnVrpbAarS9iIvbY8fndGZqdcluo-vw4UhxyetacN26js3ph7FTP8SV-0wue0B0Hh1GzRAZXzvu0J90w_Wnnvbhga3-ada-X61tF0B-bOHBJzGzbikV6kk2ED_2f2f2qLyItKIMBP726U-4WwImry9HtN1bhMwo7JauPYtn78JjDfGs2rAMnVwAYIBB9my7wU10Y2o2Syla5DqUy0TtimvGA"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest/80 to-transparent"></div>
+<button class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-lg py-sm rounded-full font-label-md flex items-center gap-sm shadow-lg hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-sm">map</span>
+                            Get Directions
+                        </button>
+</div>
+</div>
+<!-- Action Hub -->
+<div class="space-y-md">
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-lg rounded-lg flex items-center justify-center gap-md hover:bg-on-primary-fixed-variant transition-colors active:scale-[0.98]">
+                        View My Deals
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-full border border-secondary text-secondary font-label-md text-label-md py-lg rounded-lg flex items-center justify-center gap-md hover:bg-surface-container-low transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined">chat</span>
+                        Contact Dealer
+                    </button>
+<div class="bg-surface-container p-md rounded-lg flex items-center gap-md">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Having trouble? Call our support line at (800) 555-AUTO</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface-container-lowest border-t border-outline-variant pb-safe shadow-xl">
+<div class="flex flex-col items-center justify-center text-secondary font-bold py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">handshake</span>
+<span class="text-label-sm font-label-sm">Deals</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant py-1">
+<span class="material-symbols-outlined">search</span>
+<span class="text-label-sm font-label-sm">Browse</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant py-1">
+<span class="material-symbols-outlined">store</span>
+<span class="text-label-sm font-label-sm">Store</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant py-1">
+<span class="material-symbols-outlined">person</span>
+<span class="text-label-sm font-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for the "Copy Reference ID" behavior
+        document.querySelector('code').addEventListener('click', function() {
+            const id = this.innerText;
+            navigator.clipboard.writeText(id).then(() => {
+                const originalText = this.innerText;
+                this.innerText = 'COPIED!';
+                this.classList.add('text-secondary');
+                setTimeout(() => {
+                    this.innerText = originalText;
+                    this.classList.remove('text-secondary');
+                }, 2000);
+            });
+        });
+
+        // Simple enter animation trigger
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.bento-grid > div').forEach((el, i) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(10px)';
+                el.style.transition = `all 0.5s ease ${0.2 + i * 0.1}s`;
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        });
+    </script>
+</body></html>

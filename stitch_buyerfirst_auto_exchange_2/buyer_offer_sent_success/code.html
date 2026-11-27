@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Offer Submitted | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        .confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-container": "#e5eeff",
+                        "tertiary": "#000000",
+                        "surface-dim": "#cbdbf5",
+                        "primary-fixed": "#dae2fd",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-container": "#98805d",
+                        "background": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-primary-fixed": "#131b2e",
+                        "primary": "#000000",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "surface-bright": "#f8f9ff",
+                        "surface-tint": "#565e74",
+                        "on-secondary-container": "#fefcff",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#271901",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#131b2e",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-container": "#7c839b",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#271901",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004395",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-container": "#2170e4",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "outline-variant": "#c6c6cd",
+                        "on-secondary-fixed": "#001a42",
+                        "outline": "#76777d",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-background": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "surface": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "secondary": "#0058be",
+                        "secondary-fixed": "#d8e2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "gutter": "24px",
+                        "3xl": "64px",
+                        "lg": "24px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Top Navigation Anchor (As requested by Shared Components) -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest dark:bg-tertiary-container border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg h-16">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed text-headline-md" data-icon="directions_car">directions_car</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">AutoNegotiate</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="min-h-screen pt-16 flex items-center justify-center p-md">
+<!-- Confetti Simulation -->
+<canvas class="confetti-canvas" id="confetti"></canvas>
+<div class="max-w-container-max w-full grid grid-cols-1 md:grid-cols-12 gap-lg items-center py-xl">
+<!-- Hero Content: Success Messaging -->
+<div class="md:col-span-7 flex flex-col items-center md:items-start text-center md:text-left space-y-lg">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-secondary-container text-on-secondary-container animate-float">
+<span class="material-symbols-outlined text-[48px] font-bold" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="space-y-sm">
+<h2 class="font-headline-lg text-headline-lg md:text-display-lg text-primary">Offer Sent Successfully!</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">Your bid has been officially logged in our high-precision negotiation engine. The seller is reviewing your terms.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-md w-full sm:w-auto">
+<button class="px-xl py-md bg-primary text-on-primary font-label-md text-label-md rounded-lg active:scale-95 transition-transform flex items-center justify-center gap-sm">
+<span>View My Active Offers</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="px-xl py-md border border-secondary text-secondary font-label-md text-label-md rounded-lg hover:bg-secondary-fixed transition-colors active:scale-95 transition-transform">
+                        Back to Browse
+                    </button>
+</div>
+</div>
+<!-- Context Card: Details & Terms -->
+<div class="md:col-span-5">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<!-- Vehicle Visual -->
+<div class="relative h-48 bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="A sleek, futuristic 2024 Nexa EV Zenith electric sedan parked in a high-tech charging station. The lighting is crisp and cool, emphasizing the vehicle's metallic finish and streamlined silhouette. The atmosphere is professional and authoritative, utilizing a palette of deep navy, electric blue, and brilliant whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7I07iG2c8YsflIpJ5PprRFnDUpmBLb3HhkIPtVWgVCefGJ9vGX9miOJcA1LzyGqrukvFfyjBNffRr731IXDbRHbfEZv1trCAHqpNntE77tau9ZbLusmM9WEt_67J9FMvbS8Mia-9fsPxSJZ-cp1FUDX3RICYapzoiKAKhkE0kaMigYxfzEc2Nl4ieb4gIaiiyPvLAvU_O0_gQ5a-K1YS0kuHdSMjMsKFaZNQNcS8rjPcPAUbTbP_qHw"/>
+<div class="absolute top-4 right-4 bg-primary text-on-primary px-sm py-1 rounded-full text-label-sm font-label-sm uppercase tracking-wider">
+                            Offer Confirmed
+                        </div>
+</div>
+<div class="p-lg space-y-lg">
+<!-- Vehicle ID -->
+<div>
+<span class="text-label-sm font-label-sm text-secondary uppercase tracking-widest">Selected Vehicle</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">2024 Nexa EV Zenith</h3>
+<p class="text-body-sm text-on-surface-variant">VIN: 1NXE-882-ZEN-44012</p>
+</div>
+<!-- Price Highlight -->
+<div class="p-md bg-surface-container-low rounded-lg border border-outline-variant flex justify-between items-center">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Your Offer Amount</span>
+<div class="text-headline-md font-headline-md text-primary">$58,450.00</div>
+</div>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="payments">payments</span>
+</div>
+</div>
+<!-- Precision Steps -->
+<div class="space-y-md">
+<h4 class="text-label-md font-label-md border-b border-outline-variant pb-xs">Next Steps &amp; Guarantees</h4>
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Dealer Response Window</p>
+<p class="text-body-sm text-on-surface-variant">The dealer has <span class="font-bold">48 hours</span> to respond. You will be notified via email and SMS the moment a decision is made.</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-secondary" data-icon="lock">lock</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">Your terms are locked</p>
+<p class="text-body-sm text-on-surface-variant">All financial disclosures, trade-in valuations, and financing rates in this offer are legally secured during the response period.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Support link -->
+<div class="mt-md text-center">
+<a class="text-label-sm text-on-surface-variant hover:text-secondary underline underline-offset-4 transition-colors" href="#">Need to modify your offer? Contact Support</a>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Suppression Logic: On transaction success, we don't show the global nav to focus the user -->
+<script>
+        // Simple Confetti Animation for "Success" effect
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.size = Math.random() * 8 + 4;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 2 - 1;
+                this.color = ['#0058be', '#2170e4', '#000000', '#d3e4fe'][Math.floor(Math.random() * 4)];
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+
+        // Optional: stop confetti after 5 seconds for a "professional" feel
+        setTimeout(() => {
+            particles = [];
+        }, 6000);
+    </script>
+</body></html>

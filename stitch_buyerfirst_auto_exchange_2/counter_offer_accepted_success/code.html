@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Agreement Secured | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-surface": "#0b1c30",
+                    "secondary": "#0058be",
+                    "surface-container-low": "#eff4ff",
+                    "surface-container-high": "#dce9ff",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "background": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "tertiary": "#000000",
+                    "on-primary-container": "#7c839b",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-secondary-fixed": "#001a42",
+                    "surface-bright": "#f8f9ff",
+                    "secondary-container": "#2170e4",
+                    "error": "#ba1a1a",
+                    "primary": "#000000",
+                    "on-surface-variant": "#45464d",
+                    "on-secondary-container": "#fefcff",
+                    "on-tertiary-fixed": "#271901",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "inverse-primary": "#bec6e0",
+                    "outline-variant": "#c6c6cd",
+                    "outline": "#76777d",
+                    "on-primary": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#271901",
+                    "on-tertiary-container": "#98805d",
+                    "primary-fixed": "#dae2fd",
+                    "inverse-surface": "#213145",
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "primary-container": "#131b2e",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-tint": "#565e74",
+                    "on-error-container": "#93000a",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-variant": "#d3e4fe",
+                    "on-primary-fixed-variant": "#3f465c"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "3xl": "64px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "2xl": "48px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .success-glow {
+            box-shadow: 0 0 80px -10px rgba(33, 112, 228, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md flex flex-col">
+<!-- Top Navigation Shell (Suppressed as per "Task-Focused" rule, but providing header for context) -->
+<header class="bg-surface docked full-width top-0 sticky z-50 shadow-sm border-b border-outline-variant flex justify-between items-center px-4 md:px-lg h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="handshake">handshake</span>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight text-primary">AutoNegotiate</h1>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<span class="text-on-surface-variant font-label-md cursor-pointer hover:bg-surface-container-low px-2 py-1 transition-colors">Help Center</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-md md:p-xl relative overflow-hidden">
+<!-- Background Animation -->
+<div class="absolute inset-0 z-0 opacity-40 pointer-events-none">
+
+</div>
+<canvas class="confetti-canvas" id="confetti"></canvas>
+<!-- Success Content Container -->
+<div class="w-full max-w-3xl z-20">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 md:p-xl success-glow relative overflow-hidden">
+<!-- Success Header -->
+<div class="flex flex-col items-center text-center space-y-4 mb-xl">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-2 animate-bounce">
+<span class="material-symbols-outlined text-4xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight">Agreement Secured</h2>
+<p class="text-on-surface-variant font-body-lg max-w-lg">
+                        The counter-offer for the 2024 Model X-Series has been officially accepted. 
+                        Your negotiation is complete.
+                    </p>
+</div>
+<!-- Bento Grid Summary -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-xl">
+<!-- Agreed Price Card -->
+<div class="md:col-span-7 bg-surface-container-low border border-outline-variant rounded-lg p-md flex flex-col justify-between">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-widest">Agreed Purchase Price</span>
+<div class="flex items-baseline gap-2 mt-2">
+<h3 class="font-display-lg text-display-lg text-secondary">$84,250.00</h3>
+<span class="text-on-surface-variant font-label-md">USD</span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-4 text-body-sm text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="trending_down">trending_down</span>
+<span>$4,150 Below MSRP</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary" data-icon="verified">verified</span>
+<span>Price Locked</span>
+</div>
+</div>
+</div>
+<!-- Vehicle Details Card -->
+<div class="md:col-span-5 bg-white border border-outline-variant rounded-lg overflow-hidden flex flex-col">
+<div class="h-32 relative bg-surface-dim">
+<img class="w-full h-full object-cover opacity-90" data-alt="A sleek, high-end 2024 Model X-Series electric SUV in metallic charcoal grey, parked in a minimalist, brightly lit showroom with polished concrete floors and large floor-to-ceiling windows. The aesthetic is clean, professional, and sophisticated, reflecting a premium automotive experience with deep navy and electric blue ambient lighting accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmua9ASnLIvCYnJTBjAg13dEZ8xKhkB60Q5O8qZmKmVm_IqAdGPEax2p7EnfPQ2HGx_Gb9HXF3p_0e4nk_kluGJUE9rV1Iob98tdqrMEQDhxS61qhSPsqK7-B5NCVJ5w3J2MPaKHaLgWwZIlQ_RcY5jmaOTSbN-OQvpcHIhpweBZmS4JDQkQuiAbX4Dytr_LWBXnmh46jNkgq1VBnPs8clCZZQ6apiaGcTlhyjGs6qNaKGWoZrjTWkGg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-2 left-2 text-white">
+<p class="font-label-md text-label-md">2024 Model X-Series</p>
+<p class="text-[10px] opacity-80 uppercase tracking-tighter">Performance Edition</p>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="text-label-sm text-on-surface-variant">Exterior</span>
+<span class="text-label-sm font-semibold text-on-surface">Obsidian Grey</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-2">
+<span class="text-label-sm text-on-surface-variant">Interior</span>
+<span class="text-label-sm font-semibold text-on-surface">Cloud White Leather</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-label-sm text-on-surface-variant">Dealer</span>
+<span class="text-label-sm font-semibold text-on-surface">Nexus Automotive Group</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Next Steps / Progress -->
+<div class="bg-surface-container p-md rounded-lg mb-xl border-l-4 border-secondary">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="description">description</span>
+<div>
+<h4 class="font-label-md text-on-surface text-label-md mb-1">Final Step: Digital Contract</h4>
+<p class="text-body-sm text-on-surface-variant">
+                                All terms have been validated. We are now ready to generate your legal purchase agreement. This document will be electronically signed by both parties to finalize the deal.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+<button class="w-full md:w-auto px-lg py-3 bg-primary text-on-primary rounded-lg font-label-md flex items-center justify-center gap-2 hover:opacity-90 active:scale-95 transition-all shadow-md">
+<span>Generate Official Contract</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full md:w-auto px-lg py-3 border border-outline text-on-surface-variant rounded-lg font-label-md hover:bg-surface-container-low transition-colors">
+                        View Offer History
+                    </button>
+</div>
+</div>
+<!-- Transparency Disclaimer -->
+<p class="text-center text-label-sm text-outline mt-lg max-w-lg mx-auto">
+                AutoNegotiate ensures all generated contracts adhere to regional consumer protection laws. Your price is guaranteed for the next 48 hours.
+            </p>
+</div>
+</main>
+<!-- Simple Bottom Bar for desktop footer feel -->
+<footer class="h-12 border-t border-outline-variant flex items-center justify-center bg-surface px-md">
+<p class="text-label-sm text-on-surface-variant">© 2024 AutoNegotiate Technology Corp. • SECURE SESSION: AN-4829-XJ</p>
+</footer>
+<script>
+        // Simple Confetti Effect for celebration
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const colors = ['#2170e4', '#adc6ff', '#0058be', '#0b1c30'];
+
+        function createParticle() {
+            return {
+                x: Math.random() * canvas.width,
+                y: -10,
+                size: Math.random() * 8 + 4,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speed: Math.random() * 3 + 2,
+                rotation: Math.random() * 360,
+                rotationSpeed: Math.random() * 10 - 5
+            };
+        }
+
+        for (let i = 0; i < 60; i++) {
+            setTimeout(() => {
+                particles.push(createParticle());
+            }, i * 15);
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                p.y += p.speed;
+                p.rotation += p.rotationSpeed;
+                
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                ctx.restore();
+
+                if (p.y > canvas.height) {
+                    particles[index] = createParticle();
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body></html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .step-gradient {
+            background: linear-gradient(90deg, #0058be 66%, #e5eeff 66%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#dec29a",
+                      "on-primary-fixed": "#131b2e",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#7c839b",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-container": "#e5eeff",
+                      "on-tertiary-fixed": "#271901",
+                      "on-secondary-fixed-variant": "#004395",
+                      "inverse-on-surface": "#eaf1ff",
+                      "inverse-surface": "#213145",
+                      "on-tertiary-fixed-variant": "#574425",
+                      "tertiary-fixed": "#fcdeb5",
+                      "on-surface": "#0b1c30",
+                      "surface-container-high": "#dce9ff",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-container": "#131b2e",
+                      "on-surface-variant": "#45464d",
+                      "secondary-container": "#2170e4",
+                      "outline": "#76777d",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "surface-container-low": "#eff4ff",
+                      "background": "#f8f9ff",
+                      "tertiary-container": "#271901",
+                      "secondary-fixed": "#d8e2ff",
+                      "surface-tint": "#565e74",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#d3e4fe",
+                      "on-secondary-fixed": "#001a42",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "inverse-primary": "#bec6e0",
+                      "primary-fixed": "#dae2fd",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "error-container": "#ffdad6",
+                      "secondary": "#0058be",
+                      "outline-variant": "#c6c6cd",
+                      "surface-bright": "#f8f9ff",
+                      "on-tertiary-container": "#98805d",
+                      "primary": "#000000",
+                      "primary-fixed-dim": "#bec6e0",
+                      "on-secondary-container": "#fefcff",
+                      "tertiary": "#000000",
+                      "surface-dim": "#cbdbf5",
+                      "surface": "#f8f9ff",
+                      "on-error-container": "#93000a",
+                      "on-background": "#0b1c30"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "2xl": "48px",
+                      "container-max": "1280px",
+                      "xs": "4px",
+                      "xl": "32px",
+                      "gutter": "24px",
+                      "3xl": "64px",
+                      "sm": "8px",
+                      "md": "16px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface selection:bg-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest flex justify-between items-center px-lg h-16 border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="directions_car">directions_car</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoNegotiate</h1>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-sm rounded-full" data-icon="notifications">notifications</button>
+</header>
+<main class="pt-20 pb-32 px-md max-w-md mx-auto">
+<!-- Progress Stepper -->
+<div class="mb-lg">
+<div class="flex justify-between items-center mb-sm px-xs">
+<span class="font-label-sm text-label-sm text-secondary font-bold">Step 3 of 3</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Review &amp; Publish</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full w-full step-gradient rounded-full"></div>
+</div>
+</div>
+<section class="space-y-lg">
+<!-- Summary Header -->
+<header>
+<h2 class="font-headline-sm text-headline-sm text-on-surface mb-xs">Review Your Listing</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Verify your immutable terms before going live to the dealer network.</p>
+</header>
+<!-- Listing Preview Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="relative h-48 w-full">
+<div class="bg-cover bg-center w-full h-full" data-alt="A professional studio photograph of a clean, high-end electric luxury sedan in metallic silver, parked in a minimalist showroom with soft, diffused industrial lighting. The composition is sleek and professional, conveying authority and technical precision, matching a modern corporate aesthetic with a neutral, high-contrast palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB6JKwSodSUeMdMWEbwjTQPscP_3NRiXUZEoBvVWVM6xxyfUiAqF-rBaICApLQWTACRXF2AT8G4FpQeTt4VoIW-OEdXuLK3Fv0-9ZANc6Xs5G78N_zUlIvk_4A3UzD_wK7ldNEiN6oQxglNG1U5WfHglei4IGcb2CveSOTF8w9DpNL1f5t7wrjKyuw99tl78Ghq5kRvW7g3StBOVZhqVwDIZId2zKOx6AzjOePacUEcNRbI8snJoi8AYw')"></div>
+<div class="absolute top-md right-md bg-primary text-white font-label-md text-label-md px-md py-1 rounded-full shadow-lg">
+                        Preview
+                    </div>
+</div>
+<div class="p-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">2022 Tesla Model 3 Performance</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Dual Motor All-Wheel Drive • 14,200 miles</p>
+</div>
+</div>
+<!-- Immutable Terms Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md space-y-md">
+<div class="flex items-center justify-between border-b border-outline-variant pb-md">
+<h4 class="font-label-md text-label-md text-primary uppercase tracking-wider">Immutable Terms</h4>
+<span class="material-symbols-outlined text-secondary" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="p-sm bg-surface-container-low rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Target Price</p>
+<p class="font-headline-sm text-headline-sm text-secondary">$48,500</p>
+</div>
+<div class="p-sm bg-surface-container-low rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Floor Price</p>
+<p class="font-headline-sm text-headline-sm text-on-surface">$46,200</p>
+</div>
+<div class="p-sm border border-outline-variant rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Response Time</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold">24 Hours</p>
+</div>
+<div class="p-sm border border-outline-variant rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-1">Contract Term</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold">As-Is</p>
+</div>
+</div>
+<div class="pt-sm">
+<div class="flex gap-sm p-sm bg-secondary-container/10 border border-secondary/20 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-md" data-icon="info">info</span>
+<p class="font-body-sm text-body-sm text-secondary">These terms cannot be modified once the listing is published and a dealer initiates contact.</p>
+</div>
+</div>
+</div>
+<!-- Legal Checkbox -->
+<div class="flex gap-md items-start p-md bg-surface-container rounded-xl border border-outline-variant">
+<div class="pt-1">
+<input class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary cursor-pointer" id="legal-check" type="checkbox"/>
+</div>
+<label class="font-body-sm text-body-sm text-on-surface select-none cursor-pointer" for="legal-check">
+                    I understand these terms are <span class="font-bold">legally binding</span> for dealers who contact me. By publishing, I agree to the AutoNegotiate Platform Standard Agreement.
+                </label>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-md">
+<button class="w-full h-14 bg-primary text-white rounded-xl font-headline-sm text-headline-sm flex items-center justify-center gap-sm active:scale-95 transition-transform shadow-md disabled:opacity-50 disabled:active:scale-100" disabled="" id="publish-btn">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+                    Publish Listing
+                </button>
+<button class="w-full h-14 border border-secondary text-secondary rounded-xl font-headline-sm text-headline-sm flex items-center justify-center gap-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="drafts">drafts</span>
+                    Save as Draft
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-20 pb-safe">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-sm text-label-sm">Listings</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="search" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm">Trust</span>
+</div>
+</nav>
+<script>
+        const checkbox = document.getElementById('legal-check');
+        const publishBtn = document.getElementById('publish-btn');
+
+        checkbox.addEventListener('change', (e) => {
+            publishBtn.disabled = !e.target.checked;
+        });
+
+        publishBtn.addEventListener('click', () => {
+            if (!publishBtn.disabled) {
+                publishBtn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> Publishing...';
+                setTimeout(() => {
+                    alert('Listing Published Successfully!');
+                    publishBtn.innerHTML = '<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span> Published';
+                }, 2000);
+            }
+        });
+    </script>
+</body></html>

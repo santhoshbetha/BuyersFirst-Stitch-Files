@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create Evidence Request | ArbiterCore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-checkbox:checked + label {
+            border-color: #0058be;
+            background-color: #eff4ff;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#000000",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-secondary-fixed-variant": "#004395",
+                        "on-tertiary-fixed": "#271901",
+                        "outline-variant": "#c6c6cd",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "tertiary-fixed": "#fcdeb5",
+                        "primary-container": "#131b2e",
+                        "on-secondary-container": "#fefcff",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-background": "#0b1c30",
+                        "on-surface-variant": "#45464d",
+                        "primary-fixed": "#dae2fd",
+                        "background": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "secondary-container": "#2170e4",
+                        "surface-container-high": "#dce9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary": "#0058be",
+                        "tertiary-container": "#271901",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-primary": "#bec6e0",
+                        "outline": "#76777d",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary-container": "#98805d",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface": "#f8f9ff",
+                        "surface-dim": "#cbdbf5",
+                        "primary": "#000000",
+                        "inverse-surface": "#213145",
+                        "surface-container": "#e5eeff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#001a42",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-surface": "#0b1c30",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#7c839b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "gutter": "24px",
+                        "base": "4px",
+                        "2xl": "48px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "3xl": "64px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden flex h-screen">
+<!-- Navigation Drawer -->
+<aside class="h-screen w-64 left-0 sticky flex flex-col p-md gap-sm bg-surface border-r border-outline-variant">
+<div class="mb-xl px-sm">
+<span class="font-headline-sm text-headline-sm font-bold text-tertiary">Arbitration Suite</span>
+</div>
+<nav class="flex flex-col gap-sm">
+<div class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out cursor-pointer active:opacity-80">
+<span class="material-symbols-outlined">folder_shared</span>
+<span class="font-label-md text-label-md">Case Management</span>
+</div>
+<div class="flex items-center gap-md p-md bg-secondary-container text-on-secondary-container font-bold rounded-full transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">plagiarism</span>
+<span class="font-label-md text-label-md">Evidence Review</span>
+</div>
+<div class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">balance</span>
+<span class="font-label-md text-label-md">Ruling Queue</span>
+</div>
+<div class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container-low transition-all duration-200 ease-in-out cursor-pointer">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-md text-label-md">Compliance Logs</span>
+</div>
+</nav>
+<div class="mt-auto p-md border-t border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-sm">gavel</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface font-bold">Arbiter 742</p>
+<p class="text-[10px] text-on-surface-variant">Senior Compliance</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col overflow-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface-container-lowest border-b border-outline-variant z-10">
+<div class="flex items-center justify-between px-lg py-sm w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">gavel</span>
+<span class="font-headline-sm text-headline-sm font-bold text-tertiary">ArbiterCore</span>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex gap-md">
+<span class="font-label-md text-label-md text-on-surface-variant hover:text-secondary cursor-pointer">System Status</span>
+<span class="font-label-md text-label-md text-on-surface-variant hover:text-secondary cursor-pointer">Guidelines</span>
+</div>
+<span class="material-symbols-outlined cursor-pointer text-secondary">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Content Area -->
+<section class="flex-1 overflow-y-auto p-lg bg-background">
+<div class="max-w-container-max mx-auto">
+<!-- Breadcrumbs & Header -->
+<div class="mb-lg">
+<div class="flex items-center gap-xs text-on-surface-variant mb-base">
+<span class="font-label-sm text-label-sm">Cases</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="font-label-sm text-label-sm">Case #AT-88291</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="font-label-sm text-label-sm text-secondary">New Evidence Request</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Initiate Formal Evidence Request</h1>
+<p class="text-on-surface-variant mt-xs">Compulsory information retrieval for dispute resolution.</p>
+</div>
+<div class="grid grid-cols-12 gap-lg">
+<!-- Configuration Form -->
+<div class="col-span-12 lg:col-span-7 space-y-lg">
+<!-- Step 1: Target Select -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-lg shadow-sm">
+<h2 class="font-headline-sm text-headline-sm mb-md flex items-center gap-sm">
+<span class="bg-secondary text-on-secondary rounded-full w-6 h-6 flex items-center justify-center text-[12px]">1</span>
+                                Select Recipient
+                            </h2>
+<div class="grid grid-cols-2 gap-md">
+<label class="cursor-pointer relative">
+<input checked="" class="peer sr-only" name="target" type="radio" value="buyer"/>
+<div class="p-md border border-outline-variant rounded-lg hover:border-secondary peer-checked:border-secondary peer-checked:bg-secondary-container/10 transition-all">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md">Buyer</span>
+<span class="material-symbols-outlined text-secondary scale-0 peer-checked:scale-100 transition-transform" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="text-xs text-on-surface-variant">Michael Chen (ID: 0012-B)</p>
+</div>
+</label>
+<label class="cursor-pointer relative">
+<input class="peer sr-only" name="target" type="radio" value="dealer"/>
+<div class="p-md border border-outline-variant rounded-lg hover:border-secondary peer-checked:border-secondary peer-checked:bg-secondary-container/10 transition-all">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md">Dealer</span>
+<span class="material-symbols-outlined text-secondary scale-0 peer-checked:scale-100 transition-transform" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="text-xs text-on-surface-variant">Apex Motorsports Group</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Step 2: Documentation Multi-select -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-lg shadow-sm">
+<h2 class="font-headline-sm text-headline-sm mb-md flex items-center gap-sm">
+<span class="bg-secondary text-on-secondary rounded-full w-6 h-6 flex items-center justify-center text-[12px]">2</span>
+                                Documentation Required
+                            </h2>
+<div class="grid grid-cols-2 gap-sm">
+<div class="flex items-center gap-md p-sm border border-outline-variant rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary" id="doc_pa" type="checkbox"/>
+<label class="font-body-sm text-body-sm flex-1 cursor-pointer" for="doc_pa">Purchase Agreement</label>
+</div>
+<div class="flex items-center gap-md p-sm border border-outline-variant rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary" id="doc_br" type="checkbox"/>
+<label class="font-body-sm text-body-sm flex-1 cursor-pointer" for="doc_br">Bank Receipt</label>
+</div>
+<div checked="" class="flex items-center gap-md p-sm border border-outline-variant rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors">
+<input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" id="doc_cl" type="checkbox"/>
+<label class="font-body-sm text-body-sm flex-1 cursor-pointer" for="doc_cl">Chat Logs</label>
+</div>
+<div class="flex items-center gap-md p-sm border border-outline-variant rounded-lg hover:bg-surface-container-low cursor-pointer transition-colors">
+<input class="rounded border-outline-variant text-secondary focus:ring-secondary" id="doc_ir" type="checkbox"/>
+<label class="font-body-sm text-body-sm flex-1 cursor-pointer" for="doc_ir">Inspection Report</label>
+</div>
+</div>
+</div>
+<!-- Step 3: Instructions & Deadline -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-lg shadow-sm">
+<h2 class="font-headline-sm text-headline-sm mb-md flex items-center gap-sm">
+<span class="bg-secondary text-on-secondary rounded-full w-6 h-6 flex items-center justify-center text-[12px]">3</span>
+                                Context &amp; Timing
+                            </h2>
+<div class="space-y-md">
+<div>
+<label class="font-label-md text-label-md block mb-xs text-on-surface-variant">Custom Arbiter Instructions</label>
+<textarea class="w-full rounded-lg border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary text-body-md" id="instructions" placeholder="Provide specific details regarding the requested documents..." rows="4"></textarea>
+</div>
+<div class="grid grid-cols-3 gap-md">
+<div>
+<label class="font-label-md text-label-md block mb-xs text-on-surface-variant">Response Deadline</label>
+<select class="w-full rounded-lg border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary text-body-md" id="deadline">
+<option value="24">24 Hours (Urgent)</option>
+<option selected="" value="48">48 Hours (Standard)</option>
+<option value="72">72 Hours (Extended)</option>
+<option value="168">7 Days (Review Phase)</option>
+</select>
+</div>
+<div class="col-span-2">
+<label class="font-label-md text-label-md block mb-xs text-on-surface-variant">Escalation Trigger</label>
+<div class="h-[42px] flex items-center px-md bg-surface-container-low border border-outline-variant rounded-lg text-body-sm text-on-surface-variant">
+                                            Auto-forfeit claim if deadline missed
+                                        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Live Preview & Summary -->
+<div class="col-span-12 lg:col-span-5 space-y-lg sticky top-0">
+<div class="bg-surface-container-highest border border-outline-variant rounded-lg overflow-hidden flex flex-col h-full shadow-lg">
+<div class="bg-primary text-on-primary px-lg py-md flex justify-between items-center">
+<span class="font-label-md text-label-md">TRANSMISSION PREVIEW</span>
+<span class="material-symbols-outlined text-sm">visibility</span>
+</div>
+<div class="p-lg flex-1 space-y-md">
+<div class="space-y-sm">
+<div class="flex justify-between border-b border-outline-variant pb-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">To</span>
+<span class="font-label-sm text-label-sm font-bold" id="preview-target">Buyer (Michael Chen)</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant pb-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Case ID</span>
+<span class="font-label-sm text-label-sm font-bold">#AT-88291</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant pb-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Deadline</span>
+<span class="font-label-sm text-label-sm font-bold text-error" id="preview-deadline">Nov 24, 2024 (48h)</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-md border border-outline-variant rounded-lg min-h-[240px]">
+<div class="mb-md">
+<h3 class="font-headline-sm text-headline-sm text-secondary mb-xs">Legal Notice: Evidence Required</h3>
+<p class="text-xs text-on-surface-variant">Automatic system notification on behalf of ArbiterCore Compliance.</p>
+</div>
+<div class="space-y-sm text-body-sm">
+<p>Dear Michael Chen,</p>
+<p>A neutral arbiter has requested additional documentation to proceed with your claim against Apex Motorsports Group.</p>
+<div class="bg-surface-container-low p-sm rounded border-l-4 border-secondary">
+<p class="font-bold mb-xs">Required Items:</p>
+<ul class="list-disc ml-md space-y-base" id="preview-docs">
+<li>Chat Logs</li>
+</ul>
+</div>
+<p class="italic text-on-surface-variant" id="preview-instructions">No custom instructions provided.</p>
+<p>Please upload these files through your secure portal before the deadline.</p>
+</div>
+</div>
+</div>
+<div class="p-lg bg-surface-container-low border-t border-outline-variant">
+<button class="w-full bg-secondary hover:bg-on-secondary-container text-on-secondary py-md rounded-lg font-bold transition-all flex items-center justify-center gap-sm active:opacity-80">
+<span class="material-symbols-outlined">send</span>
+                                    DISPATCH FORMAL REQUEST
+                                </button>
+<p class="text-center text-[10px] text-on-surface-variant mt-md uppercase tracking-widest">Action will be logged in compliance history</p>
+</div>
+</div>
+<!-- Technical Context Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-lg flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">End-to-End Encryption</p>
+<p class="text-xs text-on-surface-variant">All documentation is hashed and stored in secure archival storage.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full bottom-0 bg-surface-container-low border-t border-outline-variant">
+<div class="flex justify-between items-center px-lg py-md w-full">
+<span class="font-label-md text-label-md font-bold text-tertiary">ArbiterCore</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Automotive Arbitration &amp; Compliance System. Internal Use Only.</p>
+<div class="flex gap-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary cursor-pointer transition-opacity duration-150">Security Policy</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary cursor-pointer transition-opacity duration-150">System Status</span>
+</div>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interactions for Live Preview
+        const targetRadios = document.querySelectorAll('input[name="target"]');
+        const docCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+        const instructionsTextarea = document.getElementById('instructions');
+        const deadlineSelect = document.getElementById('deadline');
+
+        const previewTarget = document.getElementById('preview-target');
+        const previewDocs = document.getElementById('preview-docs');
+        const previewInstructions = document.getElementById('preview-instructions');
+        const previewDeadline = document.getElementById('preview-deadline');
+
+        function updatePreview() {
+            // Update Target
+            const selectedTarget = document.querySelector('input[name="target"]:checked').value;
+            previewTarget.textContent = selectedTarget === 'buyer' ? 'Buyer (Michael Chen)' : 'Dealer (Apex Motorsports Group)';
+
+            // Update Docs
+            previewDocs.innerHTML = '';
+            let selectedDocs = [];
+            docCheckboxes.forEach(cb => {
+                if (cb.checked) {
+                    const label = cb.nextElementSibling.textContent;
+                    const li = document.createElement('li');
+                    li.textContent = label;
+                    previewDocs.appendChild(li);
+                    selectedDocs.push(label);
+                }
+            });
+            if (selectedDocs.length === 0) {
+                previewDocs.innerHTML = '<li>No documents selected</li>';
+            }
+
+            // Update Instructions
+            previewInstructions.textContent = instructionsTextarea.value.trim() || 'No custom instructions provided.';
+
+            // Update Deadline
+            const hours = deadlineSelect.value;
+            const date = new Date();
+            date.setHours(date.getHours() + parseInt(hours));
+            const options = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+            previewDeadline.textContent = `${date.toLocaleDateString('en-US', options)} (${hours}h)`;
+        }
+
+        targetRadios.forEach(r => r.addEventListener('change', updatePreview));
+        docCheckboxes.forEach(cb => cb.addEventListener('change', updatePreview));
+        instructionsTextarea.addEventListener('input', updatePreview);
+        deadlineSelect.addEventListener('change', updatePreview);
+
+        // Initial update
+        updatePreview();
+    </script>
+</body></html>

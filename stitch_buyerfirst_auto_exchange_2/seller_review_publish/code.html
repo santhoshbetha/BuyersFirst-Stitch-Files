@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Go Live | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#213145",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "surface-container": "#e5eeff",
+                        "surface-container-low": "#eff4ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed": "#001a42",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-secondary-container": "#fefcff",
+                        "on-tertiary-fixed": "#271901",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-error": "#ffffff",
+                        "primary": "#000000",
+                        "tertiary-container": "#271901",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-surface-variant": "#45464d",
+                        "secondary": "#0058be",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "inverse-on-surface": "#eaf1ff",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed": "#131b2e",
+                        "on-background": "#0b1c30",
+                        "primary-container": "#131b2e",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "error": "#ba1a1a",
+                        "background": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "outline": "#76777d",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "secondary-container": "#2170e4",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#d3e4fe",
+                        "primary-fixed-dim": "#bec6e0",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#000000",
+                        "outline-variant": "#c6c6cd",
+                        "on-tertiary-container": "#98805d",
+                        "on-primary-container": "#7c839b",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30",
+                        "tertiary-fixed": "#fcdeb5",
+                        "on-secondary-fixed-variant": "#004395"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "3xl": "64px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "base": "4px",
+                        "2xl": "48px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #f8f9ff;
+            font-family: 'Inter', sans-serif;
+        }
+        .step-active { color: #0058be; border-bottom: 2px solid #0058be; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-lg h-16">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-headline-md" data-icon="directions_car">directions_car</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">AutoNegotiate</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-low transition-colors p-2 rounded-full" data-icon="notifications">notifications</button>
+<div class="h-8 w-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-label-sm">JD</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-lg max-w-container-max mx-auto">
+<!-- Progress Stepper -->
+<nav class="mb-lg overflow-x-auto">
+<div class="flex items-center min-w-[600px] gap-sm border-b border-outline-variant pb-base">
+<div class="flex-1 text-center py-2 text-on-surface-variant font-label-md opacity-50 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span> Vehicle Info
+                </div>
+<div class="flex-1 text-center py-2 text-on-surface-variant font-label-md opacity-50 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span> Pricing
+                </div>
+<div class="flex-1 text-center py-2 text-on-surface-variant font-label-md opacity-50 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span> Photos
+                </div>
+<div class="flex-1 text-center py-2 text-secondary font-label-md border-b-2 border-secondary font-bold flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span> Review &amp; Go Live
+                </div>
+</div>
+</nav>
+<header class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg mb-xs">Review Your Listing</h2>
+<p class="font-body-md text-on-surface-variant">Verify the technical details and pricing strategy before we publish your car to the AutoNegotiate network.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Detailed Summary -->
+<div class="lg:col-span-8 space-y-lg">
+<!-- Vehicle Overview Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<div class="flex justify-between items-start mb-md">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="directions_car">directions_car</span>
+                            2022 Porsche 911 Carrera S
+                        </h3>
+<button class="text-secondary font-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span> Edit
+                        </button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="space-y-xs">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider">Mileage</p>
+<p class="font-body-md font-bold">12,450 mi</p>
+</div>
+<div class="space-y-xs">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider">Exterior</p>
+<p class="font-body-md font-bold">Chalk Gray</p>
+</div>
+<div class="space-y-xs">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider">Interior</p>
+<p class="font-body-md font-bold">Bordeaux Red</p>
+</div>
+<div class="space-y-xs">
+<p class="text-on-surface-variant font-label-sm uppercase tracking-wider">Transmission</p>
+<p class="font-body-md font-bold">PDK 8-Speed</p>
+</div>
+</div>
+</section>
+<!-- Pricing & Negotiation Strategy -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden shadow-sm">
+<div class="p-lg border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="payments">payments</span>
+                            Pricing &amp; Strategy
+                        </h3>
+<button class="text-secondary font-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span> Edit
+                        </button>
+</div>
+<div class="p-lg">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg mb-lg">
+<div class="p-md rounded-lg bg-surface-container-high border border-outline-variant text-center">
+<p class="font-label-sm text-on-surface-variant uppercase mb-1">Asking Price</p>
+<p class="font-display-lg text-headline-lg font-black">$118,500</p>
+</div>
+<div class="p-md rounded-lg bg-secondary-container/10 border border-secondary/20 text-center">
+<p class="font-label-sm text-secondary uppercase mb-1">Reserve Floor</p>
+<p class="font-display-lg text-headline-lg font-black text-secondary">$112,000</p>
+</div>
+<div class="p-md rounded-lg bg-tertiary-fixed border border-outline-variant text-center">
+<p class="font-label-sm text-on-tertiary-fixed-variant uppercase mb-1">Estimated Net</p>
+<p class="font-display-lg text-headline-lg font-black text-on-tertiary-fixed">$111,901</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-lg">
+<p class="font-label-md mb-xs flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+                                AutoNegotiate AI Logic Enabled
+                            </p>
+<p class="text-body-sm text-on-surface-variant">The AI will handle initial inquiries and filter for buyers within 5% of your reserve floor. No offers below $112,000 will be presented without your explicit override.</p>
+</div>
+</div>
+</section>
+<!-- Media Preview -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<div class="flex justify-between items-start mb-md">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="photo_library">photo_library</span>
+                            Media (24 Photos)
+                        </h3>
+<button class="text-secondary font-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-sm" data-icon="add_a_photo">add_a_photo</span> Manage
+                        </button>
+</div>
+<div class="grid grid-cols-3 md:grid-cols-6 gap-sm">
+<div class="aspect-square bg-surface-container-high rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A front three-quarter view of a pristine Chalk Gray 2022 Porsche 911 Carrera S parked in a minimalist, bright white professional studio. High-key lighting emphasizes the sleek curves and metallic finish. Professional automotive photography style, clean and precise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW-Bwe4zBe_ysZUty-jZWgE3KU6M3KY_K3tjJ13wqxJkpEs5_KgnBeLHINDcncUjA30WMKiZCVZQkV2r__iaQxkLnjiyIhc5f3FsFPYPgYVc1Lq5loyA47IjNDJYelSRadIHWnrGqqjQwNRNjbDhAt9OICAeDibhVG5FRNyYNWBbbg4JXA69Gmdzp3bknijxAUnsx5Th6Pr6Fx1t1VkoNoQsZ4de0PeerKCAUYv3RNsgR4pfJTjtVK9A"/>
+</div>
+<div class="aspect-square bg-surface-container-high rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Close-up detail of the Bordeaux Red leather interior of a luxury sports car, showcasing the high-quality stitching and carbon fiber trim on the center console. Bright, soft light highlights the textures. Modern corporate aesthetic with a focus on luxury and technical precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsQFUvGiQoKTO1j4uNKmwiddT7AAO6zEsPx9cLT-Pmgm50ozJgwhzvrNaAf8BAIXzOesyafhMgSTQ24BFWZVBaVm_TEYaqBeFxbeh_sgUv4ssDj2L49jMUWuw5ndhVyAnSkBiHJ4bIjN1vihHIsW_Ue6o04Cfv1o8z5O_SLCVUAn_H2LdggCg7fih6qjvepbCn7JNN0YLOB69TcueIa8dgzeytxTEMvtd6HwxtAogfPp5s5_xRl_XWnw"/>
+</div>
+<div class="aspect-square bg-surface-container-high rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A rear view of a modern sports car, focusing on the LED light bar and dual exhaust system. The lighting is crisp and even, set against a neutral, high-end showroom background. Technical automotive photography highlighting design precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfMNVe8KmF0tuQnETUrwISvBFr3ATrCQHZV301uJwANIRuUKfAKSJ9FRcIfhLdxyJiZ7ipDGc4wxeJpBz6khda9wp-QOgN5h271kku2saP8NKpvDpUAUnSAeW2mVyJM8k_ltoehg_72tHa6fpG9q4LtLbkwhbtPMXi3gWsCk4XWwNw8Htg_HoQp9YG6U64E5bp0CzSfBCLNqdkfClYisuymXbbri8CwCmzShSVzTk66TT6bEFz2PI1SQ"/>
+</div>
+<div class="aspect-square bg-surface-container-high rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A detailed shot of a high-performance alloy wheel with bright yellow brake calipers visible behind the spokes. Professional lighting creates subtle reflections on the metallic surface, suggesting authority and technical quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDtJgiGA7SfCuBZeSQno2-shOkmoghBrilPVjhfmT3x1gHWlqNT9qRq_ru6b8y1MDOS-oLVpblZ3AWZdKHtTJiC_gkEeIPMkI8JIYeBpjuS3bEddkoT-giAQVtLMxhI7_1MK73Y9tZYEceC2TPIdppukKlSocRCI9gk0uWpMZBC65-Z2r0RFBHhVVIewnBk6nbl57iJsfqluWqWpKRVlDHtZ_3ZkN4LUpHkj_NDU8vW7VbSspRii89yQ"/>
+</div>
+<div class="aspect-square bg-surface-container-high rounded-lg overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A wide-angle interior shot from the driver's perspective, showing the digital dashboard and steering wheel of a Porsche 911. The atmosphere is bright and technically advanced, emphasizing the high-tech SaaS-like interior design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFfv4HUg-ZeUO-Tcq9rwK1FwBkHRQWyHVRNJo7peYrB6mCpgT4X2F7TqDaxXPQayThMwUfc7kN3qwUhNaKV2ejDtAXvscRa2iE8Tt4piFmch-a_VhNRPQoPiK_9V9R4dEE8d6kiw_5gZy7xc8lYeGkPj-Yy1Vucik_RpwwL3pT9k6Ch7FaQJVgX8zCSHacufORjEkZmHpODGQYI9VA_rBEyfmhsgGrouRiuiWoq1KR6k_EwDRf0AghUg"/>
+</div>
+<div class="aspect-square bg-surface-container-high rounded-lg flex items-center justify-center border border-outline-variant cursor-pointer hover:bg-surface-container transition-colors">
+<span class="font-label-md text-on-surface-variant">+19</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Final Actions & Fees -->
+<div class="lg:col-span-4">
+<div class="sticky top-24 space-y-lg">
+<!-- Fee Summary Card -->
+<div class="bg-primary text-on-primary rounded-lg p-lg shadow-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="verified">verified</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-md relative z-10">Seller Success Model</h3>
+<div class="space-y-md relative z-10">
+<div class="flex justify-between items-center border-b border-on-primary-container pb-sm">
+<span class="font-body-md">Listing Fee</span>
+<span class="font-body-md line-through opacity-60">$299</span>
+</div>
+<div class="flex justify-between items-center border-b border-on-primary-container pb-sm">
+<span class="font-body-md">Introductory Offer</span>
+<span class="font-body-md font-bold">FREE</span>
+</div>
+<div class="flex justify-between items-start pt-sm">
+<div>
+<span class="font-headline-md block text-white">$99</span>
+<span class="text-xs uppercase tracking-widest text-on-primary-container font-bold">Success Fee</span>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<p class="text-body-sm text-on-primary-container leading-relaxed">
+                                You only pay when your car is sold. No upfront costs. No hidden subscription fees. Our $99 success fee is deducted only after a successful negotiation and binding agreement.
+                            </p>
+</div>
+</div>
+<!-- Confirm & Terms -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<h4 class="font-label-md mb-md uppercase tracking-widest text-on-surface-variant">Binding Confirmation</h4>
+<div class="space-y-md mb-lg">
+<label class="flex items-start gap-md cursor-pointer group">
+<input class="mt-1 rounded-xs border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">
+                                    I confirm that all vehicle details, including VIN and condition reports, are accurate to the best of my knowledge.
+                                </span>
+</label>
+<label class="flex items-start gap-md cursor-pointer group">
+<input class="mt-1 rounded-xs border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-body-sm text-on-surface group-hover:text-primary transition-colors">
+                                    I agree to the <a class="text-secondary font-bold hover:underline" href="#">Seller Terms of Service</a> and acknowledge the $99 success fee obligation upon sale.
+                                </span>
+</label>
+</div>
+<button class="w-full bg-secondary text-white font-headline-sm py-4 rounded-lg flex items-center justify-center gap-sm active:scale-95 transition-all shadow-lg hover:bg-secondary-container" id="publishBtn">
+                            Publish Listing
+                            <span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+</button>
+<p class="text-center text-xs text-on-surface-variant mt-md">
+                            By clicking 'Publish', your car will immediately go live to our verified buyer network.
+                        </p>
+</div>
+<!-- Trust Signals -->
+<div class="flex items-center justify-center gap-lg py-md">
+<div class="flex flex-col items-center opacity-40">
+<span class="material-symbols-outlined text-display-lg" data-icon="security">security</span>
+<span class="font-label-sm mt-1">Encrypted</span>
+</div>
+<div class="flex flex-col items-center opacity-40">
+<span class="material-symbols-outlined text-display-lg" data-icon="gavel">gavel</span>
+<span class="font-label-sm mt-1">Verified</span>
+</div>
+<div class="flex flex-col items-center opacity-40">
+<span class="material-symbols-outlined text-display-lg" data-icon="support_agent">support_agent</span>
+<span class="font-label-sm mt-1">24/7 Concierge</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-20 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-sm text-label-sm">Listings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm">Trust</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the publish button
+        const publishBtn = document.getElementById('publishBtn');
+        publishBtn.addEventListener('click', () => {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+            
+            if (allChecked) {
+                publishBtn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span> Publishing...';
+                publishBtn.classList.add('opacity-80', 'cursor-not-allowed');
+                setTimeout(() => {
+                    alert('Success! Your listing is now live on AutoNegotiate.');
+                    window.location.reload();
+                }, 1500);
+            } else {
+                alert('Please accept the agreements to proceed.');
+                checkboxes.forEach(cb => {
+                    cb.parentElement.classList.add('text-error');
+                    setTimeout(() => cb.parentElement.classList.remove('text-error'), 1000);
+                });
+            }
+        });
+
+        // Toggle mobile menu logic if needed or other UI state
+    </script>
+</body></html>

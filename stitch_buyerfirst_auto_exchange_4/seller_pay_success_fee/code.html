@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Complete Your Sale | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed-dim": "#adc6ff",
+                    "error-container": "#ffdad6",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface": "#0b1c30",
+                    "on-primary-container": "#7c839b",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-container": "#98805d",
+                    "outline-variant": "#c6c6cd",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "tertiary-container": "#271901",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "inverse-primary": "#bec6e0",
+                    "surface-bright": "#f8f9ff",
+                    "surface-tint": "#565e74",
+                    "primary": "#000000",
+                    "inverse-surface": "#213145",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "secondary": "#0058be",
+                    "on-secondary-fixed": "#001a42",
+                    "on-secondary-container": "#fefcff",
+                    "on-primary": "#ffffff",
+                    "on-background": "#0b1c30",
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-low": "#eff4ff",
+                    "tertiary": "#000000",
+                    "inverse-on-surface": "#eaf1ff",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#131b2e",
+                    "on-error-container": "#93000a",
+                    "outline": "#76777d",
+                    "on-tertiary-fixed": "#271901",
+                    "surface": "#f8f9ff",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#45464d",
+                    "background": "#f8f9ff",
+                    "primary-fixed": "#dae2fd",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-container-high": "#dce9ff",
+                    "primary-container": "#131b2e",
+                    "surface-container": "#e5eeff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "secondary-container": "#2170e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "gutter": "24px",
+                    "2xl": "48px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "3xl": "64px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .shimmer-bg {
+            background: linear-gradient(90deg, #f8f9ff 0%, #eff4ff 50%, #f8f9ff 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .payment-card:hover {
+            border-color: #0058be;
+            box-shadow: 0 4px 12px rgba(0, 88, 190, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- Top Navigation Bar (Simplified for Transactional Focus) -->
+<header class="bg-surface sticky top-0 z-50 w-full border-b border-outline-variant px-md py-sm flex justify-between items-center">
+<div class="flex items-center gap-sm">
+<span class="font-headline-md text-headline-md font-bold text-secondary">AutoNegotiate</span>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">help_outline</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-md py-xl lg:py-2xl">
+<!-- Stepper Logic -->
+<div class="max-w-3xl mx-auto mb-xl">
+<div class="flex items-center justify-between">
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-label-sm">
+<span class="material-symbols-outlined text-md">check</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary">Deal Finalized</span>
+</div>
+<div class="flex-1 h-[2px] bg-secondary mx-sm mb-6"></div>
+<div class="flex flex-col items-center gap-xs">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-label-sm">2</div>
+<span class="font-label-sm text-label-sm text-secondary">Success Fee</span>
+</div>
+<div class="flex-1 h-[2px] bg-outline-variant mx-sm mb-6"></div>
+<div class="flex flex-col items-center gap-xs opacity-40">
+<div class="w-8 h-8 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-label-sm">3</div>
+<span class="font-label-sm text-label-sm">Handover</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-start max-w-6xl mx-auto">
+<!-- Left Column: Checkout Form -->
+<div class="lg:col-span-7 space-y-lg">
+<section>
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Complete Your Sale</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Secure your transaction and unlock final documentation.</p>
+</section>
+<!-- Payment Methods -->
+<div class="space-y-md">
+<h2 class="font-headline-sm text-headline-sm">Payment Method</h2>
+<!-- Express Pay -->
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex items-center justify-center gap-sm p-md border border-outline-variant rounded-lg hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined">apps</span>
+<span class="font-label-md text-label-md">Apple Pay</span>
+</button>
+<button class="flex items-center justify-center gap-sm p-md border border-outline-variant rounded-lg hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Google Pay</span>
+</button>
+</div>
+<div class="relative py-md">
+<div aria-hidden="true" class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant"></div>
+</div>
+<div class="relative flex justify-center">
+<span class="bg-background px-md text-on-surface-variant font-label-sm">OR PAY BY CARD</span>
+</div>
+</div>
+<!-- Card Form -->
+<form class="space-y-md">
+<div class="space-y-xs">
+<label class="font-label-sm text-on-surface-variant">Cardholder Name</label>
+<input class="w-full p-md border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="John Doe" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-on-surface-variant">Card Number</label>
+<div class="relative">
+<input class="w-full p-md border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all pl-12" placeholder="XXXX XXXX XXXX XXXX" type="text"/>
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">credit_card</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-sm text-on-surface-variant">Expiry Date</label>
+<input class="w-full p-md border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="MM / YY" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-sm text-on-surface-variant">CVV</label>
+<input class="w-full p-md border border-outline-variant rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="123" type="text"/>
+</div>
+</div>
+</form>
+</div>
+<!-- Trust Badges -->
+<div class="flex items-center gap-lg pt-md">
+<div class="flex items-center gap-xs opacity-60">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+<span class="font-label-sm">SSL Secure</span>
+</div>
+<div class="flex items-center gap-xs opacity-60">
+<span class="material-symbols-outlined text-secondary">lock</span>
+<span class="font-label-sm">Encrypted Payment</span>
+</div>
+<div class="flex items-center gap-xs opacity-60">
+<span class="material-symbols-outlined text-secondary">security</span>
+<span class="font-label-sm">PCI Compliant</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Order Summary & Info -->
+<div class="lg:col-span-5 space-y-md">
+<div class="bg-surface-container-low border border-outline-variant rounded-xl p-lg space-y-lg sticky top-32">
+<!-- Fee Details -->
+<div class="space-y-sm">
+<h3 class="font-headline-sm text-headline-sm">Order Summary</h3>
+<div class="flex justify-between items-center py-sm border-b border-outline-variant/50">
+<span class="font-body-md text-on-surface-variant">One-Time Success Fee</span>
+<span class="font-headline-sm text-headline-sm">$199.00</span>
+</div>
+<div class="flex justify-between items-center py-sm">
+<span class="font-body-md font-bold">Total to Pay</span>
+<span class="font-headline-md text-headline-md font-bold text-secondary">$199.00</span>
+</div>
+</div>
+<!-- Vehicle Details -->
+<div class="space-y-md pt-md border-t border-outline-variant">
+<div class="flex gap-md">
+<div class="w-24 h-16 rounded bg-surface-container-highest overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional, high-resolution automotive photograph of a sleek 2021 BMW M3 in Brooklyn Grey Metallic. The car is parked in a modern architectural driveway with crisp evening lighting, highlighting the aggressive body lines and precision engineering. The overall aesthetic is clean, corporate, and high-end, matching a sophisticated financial automotive platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP8FnLBEFyF3qZ-STy1hER4X1NaRGkI30DT25L9N4TuaBkujRnm8uGwgxEtXjN60D-C95My3uEsIOBlrKduVSkeWnYObQIxt56lhiUOnVGU8V4b_f_Em5PuuLJCHBzy4PbT5Eog764mjRLEebNrfW61yMfJ2r8wZN7SMklLAGR7uHpkMCFq4SoXjDh5WxIXF4m5Chgn5virDQCXl_UhIzjngiigmfhSg6J7G8ZYFJUJJk5kj0SVOHJNg"/>
+</div>
+<div>
+<h4 class="font-label-md text-on-surface">2021 BMW M3</h4>
+<p class="font-body-sm text-on-surface-variant">Final Sale Price: $72,500</p>
+</div>
+</div>
+</div>
+<!-- Buyer Info -->
+<div class="bg-white/50 border border-outline-variant/30 rounded-lg p-md space-y-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md">Buyer Information</span>
+</div>
+<div class="pl-8 space-y-xs">
+<p class="font-body-sm text-on-surface font-medium">Michael Aris</p>
+<p class="font-label-sm text-on-surface-variant">m.aris.verified@email.com</p>
+<div class="inline-flex items-center gap-xs px-xs py-[2px] bg-secondary-container text-on-secondary-container rounded text-[10px] font-bold uppercase tracking-wider">
+                                Verified Buyer
+                            </div>
+</div>
+</div>
+<!-- Main CTA -->
+<button class="w-full bg-secondary text-on-secondary py-md rounded-lg font-headline-sm text-headline-sm hover:bg-opacity-90 transition-all flex items-center justify-center gap-md active:scale-95" id="payButton">
+<span>Pay &amp; Finalize Deal</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center font-label-sm text-on-surface-variant px-md">
+                        By clicking pay, you agree to our <a class="text-secondary hover:underline" href="#">Terms of Service</a> and finalize the sales commission.
+                    </p>
+</div>
+<!-- Assistance Card -->
+<div class="p-md bg-surface-container rounded-lg border border-outline-variant flex gap-md items-center">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center border border-outline-variant">
+<span class="material-symbols-outlined text-secondary">support_agent</span>
+</div>
+<div>
+<p class="font-label-md">Need help with payment?</p>
+<p class="font-body-sm text-on-surface-variant">Our concierge is online and ready.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Security Message -->
+<footer class="max-w-6xl mx-auto px-md py-lg border-t border-outline-variant mt-2xl mb-xl">
+<div class="flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="flex items-center gap-md">
+<img class="h-8 opacity-40" data-alt="A collection of small, monochromatic icons representing major payment security standards: PCI Security Standards Council logo, a secure padlock icon, and a 256-bit encryption badge. The style is minimalist and professional, using a neutral slate and blue color palette to instill confidence and trust in the user." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj0ty_BAgt2Jqpbi_r8LGh8LSHZirY5Ml_oIrOCxhFaD3XIuTWOfl53mCAv6g-7AXUVjG5QHztfc7BQMHvKqdlERhE8chPcOvWYf6_sDUBmJrFIIwGKIOWe6w1JTt9zQj0tHOyjnEV-W0gaACjEVUn8MFvAh_o9cHZXTXxFsKACJv1Q7cym9OBxiY3_O8k5-I7bpkaRg2HMesoaLui0Q87MpPUPW7R13JeEDEZueyI8-BZ8Sw0DjVIMA"/>
+<span class="text-on-surface-variant font-label-sm">Protected by 256-bit AES Encryption</span>
+</div>
+<div class="text-on-surface-variant font-label-sm">
+                © 2024 AutoNegotiate Inc. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        document.getElementById('payButton').addEventListener('click', function() {
+            const btn = this;
+            const originalContent = btn.innerHTML;
+            
+            // Loading State Simulation
+            btn.disabled = true;
+            btn.innerHTML = `
+                <div class="flex items-center gap-md">
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>Processing...</span>
+                </div>
+            `;
+
+            setTimeout(() => {
+                btn.innerHTML = `
+                    <div class="flex items-center gap-md">
+                        <span class="material-symbols-outlined">check_circle</span>
+                        <span>Payment Success!</span>
+                    </div>
+                `;
+                btn.classList.remove('bg-secondary');
+                btn.classList.add('bg-green-600');
+                
+                // Trigger a redirect or success modal logic here
+                console.log('Transaction Complete');
+            }, 2000);
+        });
+    </script>
+</body></html>

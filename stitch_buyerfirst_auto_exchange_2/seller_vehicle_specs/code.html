@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Vehicle Identification | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .step-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-surface": "#213145",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-tint": "#565e74",
+                      "surface-container": "#e5eeff",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed": "#001a42",
+                      "tertiary-fixed-dim": "#dec29a",
+                      "on-secondary-container": "#fefcff",
+                      "on-tertiary-fixed": "#271901",
+                      "secondary-fixed": "#d8e2ff",
+                      "on-error": "#ffffff",
+                      "primary": "#000000",
+                      "tertiary-container": "#271901",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "on-surface-variant": "#45464d",
+                      "secondary": "#0058be",
+                      "on-tertiary-fixed-variant": "#574425",
+                      "inverse-on-surface": "#eaf1ff",
+                      "primary-fixed": "#dae2fd",
+                      "on-primary-fixed": "#131b2e",
+                      "on-background": "#0b1c30",
+                      "primary-container": "#131b2e",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "error": "#ba1a1a",
+                      "background": "#f8f9ff",
+                      "surface": "#f8f9ff",
+                      "outline": "#76777d",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "secondary-container": "#2170e4",
+                      "on-error-container": "#93000a",
+                      "surface-variant": "#d3e4fe",
+                      "primary-fixed-dim": "#bec6e0",
+                      "error-container": "#ffdad6",
+                      "tertiary": "#000000",
+                      "outline-variant": "#c6c6cd",
+                      "on-tertiary-container": "#98805d",
+                      "on-primary-container": "#7c839b",
+                      "inverse-primary": "#bec6e0",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#cbdbf5",
+                      "on-surface": "#0b1c30",
+                      "tertiary-fixed": "#fcdeb5",
+                      "on-secondary-fixed-variant": "#004395"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "3xl": "64px",
+                      "lg": "24px",
+                      "md": "16px",
+                      "container-max": "1280px",
+                      "sm": "8px",
+                      "base": "4px",
+                      "2xl": "48px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest border-b border-outline-variant shadow-sm flex justify-between items-center px-lg h-16">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="directions_car">directions_car</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">AutoNegotiate</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-xs">
+                JD
+            </div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-md md:px-lg max-w-4xl mx-auto">
+<!-- Progress Stepper -->
+<div class="mb-xl">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-label-md text-label-md text-secondary uppercase">Step 1 of 4</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Vehicle Identification</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-1/4 rounded-full"></div>
+</div>
+</div>
+<!-- Main Content Canvas -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Form -->
+<div class="lg:col-span-7 flex flex-col gap-lg">
+<!-- Identification Card -->
+<section class="bg-white border border-outline-variant rounded-lg p-md md:p-lg shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="fingerprint">fingerprint</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Vehicle Details</h2>
+</div>
+<form class="flex flex-col gap-md" id="vehicle-form">
+<!-- VIN Input -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="vin">Vehicle Identification Number (VIN)</label>
+<div class="relative">
+<input class="w-full px-md py-3 rounded border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary transition-all uppercase font-mono tracking-widest text-body-md" id="vin" maxlength="17" oninput="simulateVinLookup(this.value)" placeholder="17-character VIN" type="text"/>
+<div class="absolute right-md top-3.5 hidden" id="vin-loader">
+<div class="animate-spin rounded-full h-5 w-5 border-2 border-secondary border-t-transparent"></div>
+</div>
+<span class="absolute right-md top-3.5 hidden text-secondary" id="vin-check">
+<span class="material-symbols-outlined" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+</div>
+<p class="text-[11px] text-on-surface-variant italic">Commonly found on your registration or driver-side dashboard.</p>
+</div>
+<!-- Grid for Auto-populated Data -->
+<div class="grid grid-cols-2 gap-md opacity-50 transition-opacity duration-500" id="auto-fields">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Year</label>
+<input class="bg-surface-container-low px-md py-2.5 rounded border border-outline-variant font-body-md" id="year" placeholder="—" readonly="" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Make</label>
+<input class="bg-surface-container-low px-md py-2.5 rounded border border-outline-variant font-body-md" id="make" placeholder="—" readonly="" type="text"/>
+</div>
+<div class="col-span-2 flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Model</label>
+<input class="bg-surface-container-low px-md py-2.5 rounded border border-outline-variant font-body-md" id="model" placeholder="—" readonly="" type="text"/>
+</div>
+<div class="col-span-2 flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Trim / Package</label>
+<input class="bg-surface-container-low px-md py-2.5 rounded border border-outline-variant font-body-md" id="trim" placeholder="—" readonly="" type="text"/>
+</div>
+</div>
+<hr class="border-outline-variant my-sm"/>
+<!-- Mileage & Condition -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant" for="mileage">Current Mileage</label>
+<div class="relative">
+<input class="w-full pl-md pr-12 py-3 rounded border border-outline-variant focus:border-secondary focus:ring-1 focus:ring-secondary transition-all font-body-md" id="mileage" placeholder="e.g. 24,500" type="number"/>
+<span class="absolute right-md top-3.5 font-label-sm text-on-surface-variant">mi</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Vehicle Condition</label>
+<div class="flex p-1 bg-surface-container-low rounded border border-outline-variant h-full items-center">
+<button class="flex-1 py-1.5 rounded text-label-md transition-all" id="btn-new" onclick="setCondition('new')" type="button">New</button>
+<button class="flex-1 py-1.5 rounded text-label-md bg-white shadow-sm border border-outline-variant text-secondary font-bold" id="btn-used" onclick="setCondition('used')" type="button">Used</button>
+</div>
+</div>
+</div>
+</form>
+</section>
+<div class="flex justify-between items-center px-xs">
+<button class="text-on-surface-variant font-label-md flex items-center gap-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_back">arrow_back</span>
+                        Save Draft
+                    </button>
+<button class="bg-primary text-on-primary px-xl py-3 rounded-lg font-label-md flex items-center gap-md active:scale-95 transition-transform shadow-md disabled:opacity-50 disabled:cursor-not-allowed" disabled="" id="continue-btn">
+                        Next Step: Pricing
+                        <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Context/Trust -->
+<div class="lg:col-span-5 flex flex-col gap-lg">
+<!-- Trust Card -->
+<div class="bg-surface-container-low border border-outline-variant rounded-lg p-md overflow-hidden relative">
+<div class="absolute top-0 right-0 w-32 h-32 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="verified">verified</span>
+</div>
+<div class="relative z-10">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-sm">Why use a VIN?</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">Entering your VIN ensures 100% accuracy in your listing. It pulls official technical specifications, safety ratings, and original equipment lists directly from automotive databases.</p>
+<ul class="flex flex-col gap-sm">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="verified_user">verified_user</span>
+<span class="font-body-sm text-body-sm">Builds buyer trust immediately</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-body-sm text-body-sm">Auto-populates 15+ tech specs</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="bar_chart">bar_chart</span>
+<span class="font-body-sm text-body-sm">Unlocks precise market value analysis</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Visual Context -->
+<div class="relative rounded-lg overflow-hidden h-48 border border-outline-variant group">
+<div class="absolute inset-0 bg-primary/20 group-hover:bg-primary/0 transition-colors z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A cinematic close-up of a modern electric car's sleek dashboard and steering wheel in a minimalist high-tech garage. Soft overhead studio lighting emphasizes the metallic surfaces and digital displays. Professional photography style with a deep navy and cool slate color palette." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJ3LrEQiMhtmpclT7sgIO4LMffhhTxi_lzEsEbwsZU7VAUX3zzOSOEE6loKmV-iuec8KeBn2U0KaXL0BaBOqj5_XJoqkBKEvTAzdjTN6mk3trxbCD3DDNL7loUy2xHBa7y_oVOSS0O5cFr2tc-bCRDH3TsV7uAHVNAp2vYgdO6Ep2KHha8xNbEjYRvhjim7JofZrusoXX9vA5pnnD85T7GS_sCCssJUMEBqTTgzdzB6B_sbArCTgL_DQ')"></div>
+<div class="absolute bottom-md left-md z-20">
+<span class="bg-white/90 backdrop-blur px-sm py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-primary">Technical Precision</span>
+</div>
+</div>
+<!-- Security Assurance -->
+<div class="flex items-center gap-md p-md border border-outline-variant rounded-lg bg-white">
+<span class="material-symbols-outlined text-outline" data-icon="lock" style="font-variation-settings: 'opsz' 20;">lock</span>
+<p class="text-[12px] text-on-surface-variant leading-tight">Your data is encrypted. We never share personal identification without your explicit permission during negotiation.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav for Mobile -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container-lowest border-t border-outline-variant flex justify-around items-center h-20 pb-safe">
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-sm text-label-sm">Listings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm">Trust</span>
+</div>
+</nav>
+<script>
+        function setCondition(val) {
+            const btnNew = document.getElementById('btn-new');
+            const btnUsed = document.getElementById('btn-used');
+            
+            if (val === 'new') {
+                btnNew.className = 'flex-1 py-1.5 rounded text-label-md bg-white shadow-sm border border-outline-variant text-secondary font-bold';
+                btnUsed.className = 'flex-1 py-1.5 rounded text-label-md text-on-surface-variant transition-all';
+            } else {
+                btnUsed.className = 'flex-1 py-1.5 rounded text-label-md bg-white shadow-sm border border-outline-variant text-secondary font-bold';
+                btnNew.className = 'flex-1 py-1.5 rounded text-label-md text-on-surface-variant transition-all';
+            }
+        }
+
+        let lookupTimeout;
+        function simulateVinLookup(val) {
+            const loader = document.getElementById('vin-loader');
+            const check = document.getElementById('vin-check');
+            const autoFields = document.getElementById('auto-fields');
+            const continueBtn = document.getElementById('continue-btn');
+            
+            // Clear existing results
+            check.classList.add('hidden');
+            autoFields.classList.add('opacity-50');
+            continueBtn.disabled = true;
+
+            if (val.length === 17) {
+                loader.classList.remove('hidden');
+                
+                // Simulate API Call
+                clearTimeout(lookupTimeout);
+                lookupTimeout = setTimeout(() => {
+                    loader.classList.add('hidden');
+                    check.classList.remove('hidden');
+                    autoFields.classList.remove('opacity-50');
+                    
+                    // Fill dummy data
+                    document.getElementById('year').value = "2023";
+                    document.getElementById('make').value = "Porsche";
+                    document.getElementById('model').value = "Taycan";
+                    document.getElementById('trim').value = "4S Performance Battery Plus";
+                    
+                    continueBtn.disabled = false;
+                }, 1200);
+            }
+        }
+
+        // Floating Micro-interaction
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.bg-white.border');
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const cardX = rect.left + rect.width / 2;
+                const cardY = rect.top + rect.height / 2;
+                
+                const angleX = (mouseY - cardY) / 100;
+                const angleY = (cardX - mouseX) / 100;
+
+                // card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+                // Subtle shadow shift
+                const shadowX = (mouseX - cardX) / 30;
+                const shadowY = (mouseY - cardY) / 30;
+                card.style.boxShadow = `${shadowX}px ${shadowY}px 25px rgba(15, 23, 42, 0.05)`;
+            });
+        });
+    </script>
+</body></html>

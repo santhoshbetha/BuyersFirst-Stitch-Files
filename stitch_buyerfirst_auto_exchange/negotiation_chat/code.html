@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000000",
+                    "tertiary-container": "#271901",
+                    "secondary-container": "#2170e4",
+                    "surface-container-highest": "#d3e4fe",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#98805d",
+                    "on-secondary": "#ffffff",
+                    "primary": "#000000",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed": "#d8e2ff",
+                    "primary-fixed": "#dae2fd",
+                    "on-error-container": "#93000a",
+                    "background": "#f8f9ff",
+                    "on-background": "#0b1c30",
+                    "primary-container": "#131b2e",
+                    "on-surface": "#0b1c30",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "surface-container-low": "#eff4ff",
+                    "surface": "#f8f9ff",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#7c839b",
+                    "on-tertiary": "#ffffff",
+                    "outline": "#76777d",
+                    "surface-bright": "#f8f9ff",
+                    "inverse-primary": "#bec6e0",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#fefcff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container": "#e5eeff",
+                    "on-surface-variant": "#45464d",
+                    "inverse-surface": "#213145",
+                    "surface-tint": "#565e74",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed": "#131b2e",
+                    "on-tertiary-fixed": "#271901",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface-variant": "#d3e4fe",
+                    "outline-variant": "#c6c6cd",
+                    "secondary": "#0058be",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-secondary-fixed": "#001a42"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "md": "16px",
+                    "2xl": "48px",
+                    "3xl": "64px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar - Authority Source: JSON -->
+<header class="fixed top-0 w-full z-50 bg-surface-container-lowest dark:bg-tertiary-container border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center px-lg h-16 w-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed cursor-pointer">arrow_back</span>
+<div class="flex flex-col">
+<h1 class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed">Classic Ford</h1>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary text-[14px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="font-label-sm text-label-sm text-secondary">4.8/5 (Verified)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+</button>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">more_vert</span>
+</button>
+</div>
+</header>
+<main class="pt-16 pb-36 min-h-screen flex flex-col">
+<!-- Sticky Agreed Terms Banner -->
+<div class="sticky top-16 z-40 bg-surface-container-high px-md py-sm border-b border-outline-variant flex justify-between items-center backdrop-blur-md bg-opacity-95">
+<div class="flex flex-col">
+<span class="font-label-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Agreed Terms</span>
+<p class="font-label-md text-label-md font-bold text-primary">$40,000 | 4.9% APR | No Add-ons</p>
+</div>
+<button class="flex items-center gap-xs px-3 py-1.5 border border-error rounded-lg bg-error-container text-on-error-container hover:bg-error transition-colors active:scale-95 group" onclick="document.getElementById('report-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[18px]">report</span>
+<span class="font-label-sm text-label-sm">Bait-and-Switch</span>
+</button>
+</div>
+<!-- Chat Container -->
+<div class="flex-1 flex flex-col p-md gap-lg overflow-y-auto">
+<!-- Timestamp Separator -->
+<div class="flex justify-center my-md">
+<span class="bg-surface-container-low px-3 py-1 rounded-full font-label-sm text-label-sm text-on-surface-variant">Today</span>
+</div>
+<!-- Dealer Message (Left) -->
+<div class="flex gap-sm items-end max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container text-[20px]">directions_car</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-tr-xl rounded-br-xl rounded-tl-xl p-md shadow-sm">
+<p class="font-body-md text-body-md text-on-surface">Hello! We've reviewed your specifications for the 2024 Mach-E. The $40,000 price point and 4.9% APR are locked in as per our initial agreement.</p>
+<span class="block mt-xs font-label-sm text-[10px] text-on-surface-variant text-right">10:15 AM</span>
+</div>
+</div>
+<!-- Buyer Message (Right) -->
+<div class="flex flex-col items-end gap-xs max-w-[85%] self-end">
+<div class="bg-primary text-on-primary rounded-tl-xl rounded-bl-xl rounded-tr-xl p-md shadow-sm">
+<p class="font-body-md text-body-md">Excellent. Just to confirm, does this include the tech package without the $2,500 dealer mark-up we discussed?</p>
+<span class="block mt-xs font-label-sm text-[10px] text-on-primary/70 text-right">10:18 AM</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-label-sm text-[10px] text-on-surface-variant">Read</span>
+<span class="material-symbols-outlined text-[12px] text-secondary">done_all</span>
+</div>
+</div>
+<!-- Dealer Message (Left) -->
+<div class="flex gap-sm items-end max-w-[85%]">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container text-[20px]">directions_car</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-tr-xl rounded-br-xl rounded-tl-xl p-md shadow-sm">
+<p class="font-body-md text-body-md text-on-surface">We have a unit that matches your specs exactly. When can you come in?</p>
+<div class="mt-md pt-md border-t border-outline-variant flex flex-col gap-sm">
+<button class="w-full py-2 bg-surface-container-high rounded-lg font-label-md text-label-md text-secondary border border-secondary/20 active:scale-95 transition-transform">Schedule Appointment</button>
+<button class="w-full py-2 bg-surface-container-high rounded-lg font-label-md text-label-md text-secondary border border-secondary/20 active:scale-95 transition-transform">View Unit VIN Details</button>
+</div>
+<span class="block mt-xs font-label-sm text-[10px] text-on-surface-variant text-right">10:22 AM</span>
+</div>
+</div>
+<!-- Floating Quick Reply Tags -->
+<div class="flex gap-sm overflow-x-auto hide-scrollbar pb-xs">
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors">I can come today at 5</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors">Send financing docs</button>
+<button class="whitespace-nowrap px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors">Is delivery available?</button>
+</div>
+</div>
+</main>
+<!-- Chat Input Area -->
+<div class="fixed bottom-20 left-0 w-full bg-surface-container-lowest border-t border-outline-variant px-md py-sm z-50">
+<div class="flex items-center gap-sm bg-surface-container-low rounded-full px-md py-sm border border-outline-variant">
+<button class="flex items-center justify-center p-1 rounded-full text-on-surface-variant hover:bg-surface-container-high">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface p-0" placeholder="Write a message..." type="text"/>
+<button class="flex items-center justify-center w-10 h-10 rounded-full bg-secondary text-on-secondary active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar - Authority Source: JSON -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container-lowest dark:bg-tertiary-container border-t border-outline-variant dark:border-outline flex justify-around items-center h-20 pb-safe w-full">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-sm text-label-sm">Listings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors active:scale-90 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-sm text-label-sm">Trust</span>
+</div>
+</nav>
+<!-- Report Bait-and-Switch Modal (Hidden by default) -->
+<div class="hidden fixed inset-0 z-[60] flex items-center justify-center p-lg" id="report-modal">
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-sm" onclick="document.getElementById('report-modal').classList.add('hidden')"></div>
+<div class="relative bg-surface-container-lowest w-full max-w-sm rounded-xl border border-outline-variant shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+<div class="p-lg">
+<div class="flex items-center gap-md text-error mb-md">
+<span class="material-symbols-outlined text-[32px]">report_problem</span>
+<h3 class="font-headline-sm text-headline-sm font-bold">Report Terms</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+                    Has the dealer changed the agreed-upon terms? Reporting a bait-and-switch protects your score and notifies AutoNegotiate auditors immediately.
+                </p>
+<div class="flex flex-col gap-md">
+<label class="flex items-center gap-md p-md border border-outline-variant rounded-lg hover:bg-surface-container-low cursor-pointer">
+<input class="text-secondary focus:ring-secondary" name="report_reason" type="radio"/>
+<span class="font-label-md text-label-md">Pricing increased</span>
+</label>
+<label class="flex items-center gap-md p-md border border-outline-variant rounded-lg hover:bg-surface-container-low cursor-pointer">
+<input class="text-secondary focus:ring-secondary" name="report_reason" type="radio"/>
+<span class="font-label-md text-label-md">Unvetted add-ons added</span>
+</label>
+</div>
+</div>
+<div class="flex border-t border-outline-variant h-14">
+<button class="flex-1 font-label-md text-label-md text-on-surface-variant border-r border-outline-variant hover:bg-surface-container-low" onclick="document.getElementById('report-modal').classList.add('hidden')">Cancel</button>
+<button class="flex-1 font-label-md text-label-md text-error font-bold hover:bg-error-container" onclick="document.getElementById('report-modal').classList.add('hidden')">Report Flag</button>
+</div>
+</div>
+</div>
+<script>
+        // Simple interactive micro-effect for the chat bubbles
+        document.querySelectorAll('.rounded-xl').forEach(bubble => {
+            bubble.addEventListener('click', () => {
+                bubble.style.transform = 'scale(0.98)';
+                setTimeout(() => { bubble.style.transform = 'scale(1)'; }, 100);
+            });
+        });
+    </script>
+</body></html>

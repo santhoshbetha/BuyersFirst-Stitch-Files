@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arbiter: Final Ruling &amp; Notification</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        /* Custom scrollbar for reasoning area */
+        textarea::-webkit-scrollbar {
+            width: 8px;
+        }
+        textarea::-webkit-scrollbar-track {
+            background: #eff4ff;
+        }
+        textarea::-webkit-scrollbar-thumb {
+            background: #c6c6cd;
+            border-radius: 4px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#271901",
+                        "inverse-surface": "#213145",
+                        "on-surface": "#0b1c30",
+                        "on-primary-fixed": "#131b2e",
+                        "tertiary-fixed": "#fcdeb5",
+                        "surface-bright": "#f8f9ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#004395",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#271901",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "background": "#f8f9ff",
+                        "on-secondary-container": "#fefcff",
+                        "surface-dim": "#cbdbf5",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#2170e4",
+                        "surface-container-high": "#dce9ff",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-tint": "#565e74",
+                        "secondary-fixed": "#d8e2ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container": "#e5eeff",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#76777d",
+                        "tertiary": "#000000",
+                        "surface": "#f8f9ff",
+                        "primary-container": "#131b2e",
+                        "secondary": "#0058be",
+                        "inverse-primary": "#bec6e0",
+                        "surface-container-low": "#eff4ff",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-background": "#0b1c30",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "on-secondary-fixed": "#001a42",
+                        "on-tertiary-container": "#98805d",
+                        "primary": "#000000",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-container": "#7c839b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "3xl": "64px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "2xl": "48px",
+                        "container-max": "1280px",
+                        "lg": "24px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 h-16 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="gavel">gavel</span>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">AutoCompliance Case Management</h1>
+</div>
+<button class="font-label-md text-label-md px-md py-sm rounded-lg hover:bg-surface-container-low transition-colors duration-200 ease-in-out text-secondary">
+            Release Case
+        </button>
+</header>
+<!-- NavigationDrawer -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-surface-container-low border-r border-outline-variant flex flex-col py-lg gap-base">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="account_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Lead Arbiter</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Compliance Division</p>
+</div>
+</div>
+<div class="mt-sm bg-surface-container-high px-sm py-xs rounded-md">
+<p class="font-label-sm text-label-sm text-on-surface-variant">SLA: <span class="text-secondary font-bold">98.4%</span></p>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-md text-label-md">Case Queue</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="find_in_page">find_in_page</span>
+<span class="font-label-md text-label-md">Evidence Review</span>
+</a>
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container font-semibold rounded-lg px-md py-sm mx-sm" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Rulings</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high hover:text-on-surface transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">Audit Logs</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-16 p-lg bg-surface min-h-[calc(100vh-64px)]">
+<div class="max-w-container-max mx-auto">
+<!-- Header Section -->
+<div class="mb-xl flex justify-between items-end">
+<div>
+<nav class="flex items-center gap-xs mb-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Rulings</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+<span class="font-label-sm text-label-sm text-secondary">Final Review</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Issue Final Ruling</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-sm">Case #AC-88921-X • Asset: 2024 High-Performance Sedan</p>
+</div>
+<div class="flex gap-sm">
+<span class="px-md py-xs bg-surface-container-highest text-on-surface-variant rounded-full font-label-md text-label-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+                        Legal Audit Ready
+                    </span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-lg">
+<!-- Reasoning Column -->
+<div class="col-span-12 lg:col-span-7 space-y-lg">
+<!-- Arbiter Reasoning Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<div class="flex items-center justify-between mb-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="edit_note">edit_note</span>
+                                Arbiter Reasoning
+                            </h3>
+<span class="font-label-sm text-label-sm text-error">* Required for Legal Compliance</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-md">
+                            Provide a detailed justification for this ruling. This text will be entered into the immutable audit log and shared with both parties as the official basis for decision.
+                        </p>
+<textarea class="w-full h-64 p-md rounded-lg border border-outline-variant bg-surface-container-low font-body-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all resize-none" placeholder="Type reasoning here... (Min. 200 characters)"></textarea>
+<div class="mt-lg pt-lg border-t border-outline-variant flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Apply Trust Score Penalty</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Reduces dealer credibility by 15 points.</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+<span class="ml-3 font-label-md text-label-md text-error">-15 pts</span>
+</label>
+</div>
+</div>
+<!-- Final Action -->
+<div class="flex items-center justify-end gap-md">
+<button class="px-xl py-md font-label-md text-label-md text-secondary border border-secondary rounded-lg hover:bg-surface-container-low transition-all active:scale-[0.98]">
+                            Save Draft
+                        </button>
+<button class="px-xl py-md font-label-md text-label-md bg-primary text-on-primary rounded-lg shadow-md hover:bg-on-background transition-all active:scale-[0.98] flex items-center gap-sm">
+                            Issue Final Ruling
+                            <span class="material-symbols-outlined" data-icon="gavel" data-weight="fill" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</button>
+</div>
+</div>
+<!-- Preview Column -->
+<div class="col-span-12 lg:col-span-5 space-y-lg">
+<!-- Notification Previews -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="px-lg py-md bg-surface-container-low border-b border-outline-variant">
+<h3 class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="notifications_active">notifications_active</span>
+                                Notification Preview
+                            </h3>
+</div>
+<div class="p-lg space-y-lg">
+<!-- Buyer Notification -->
+<div class="relative pl-lg border-l-4 border-secondary">
+<div class="flex items-center justify-between mb-base">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">To: Buyer</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Push &amp; Email</span>
+</div>
+<div class="bg-surface-container p-md rounded-lg">
+<p class="font-label-md text-label-md text-on-surface mb-xs">Decision: Refund Approved</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                                        "The Arbiter has ruled in your favor for Case #AC-88921-X. A full refund of $4,200 for 'Mechanical Undisclosed Defects' has been issued..."
+                                    </p>
+</div>
+</div>
+<!-- Dealer Notification -->
+<div class="relative pl-lg border-l-4 border-error">
+<div class="flex items-center justify-between mb-base">
+<span class="font-label-sm text-label-sm text-error uppercase tracking-wider">To: Dealer</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Portal Alert &amp; Certified Mail</span>
+</div>
+<div class="bg-error-container p-md rounded-lg">
+<p class="font-label-md text-label-md text-on-error-container mb-xs">Decision: Compliance Violation</p>
+<p class="font-body-sm text-body-sm text-on-error-container/80">
+                                        "Your response for Case #AC-88921-X was deemed insufficient. You are required to process the refund immediately. Trust Score penalty applied."
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- Negotiation Data Context (Technical Precision) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-widest">Case Snapshots</h3>
+<div class="space-y-sm">
+<div class="flex justify-between items-center p-sm bg-surface-container-low rounded-lg">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Disputed Amount</span>
+<span class="font-label-md text-label-md text-on-surface">$4,200.00</span>
+</div>
+<div class="flex justify-between items-center p-sm bg-surface-container-low rounded-lg">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Dealer Trust Score</span>
+<div class="flex items-center gap-sm">
+<span class="font-label-md text-label-md text-on-surface">82</span>
+<span class="material-symbols-outlined text-error text-[16px]" data-icon="trending_down">trending_down</span>
+<span class="font-label-md text-label-md text-error">67</span>
+</div>
+</div>
+<div class="flex justify-between items-center p-sm bg-surface-container-low rounded-lg">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Legal Precedent</span>
+<span class="font-label-md text-label-md text-secondary">Match Found (92%)</span>
+</div>
+</div>
+</div>
+<!-- Visual Atmospheric Element -->
+<div class="h-48 rounded-xl overflow-hidden relative border border-outline-variant">
+<div class="w-full h-full bg-cover bg-center" data-alt="A macro photograph of a chrome and glass automotive dashboard with soft blue and silver lighting, suggesting technical precision and modern luxury. The focus is shallow, blurring technical readouts into a professional SaaS aesthetic. Calm, cool tones of slate and electric blue dominate the composition." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDidQ5uBFWZNQrEYE0S9Hrm-QoipR7OQpB0jqKShARaK6zUkccGT4VDxa4uhjF5Tr1ljdbsEb8G70HoSneTOOYAaCax3je5kbNJuxT-jp1LJQcNHk_QANs9qEEm-_P04BKK-IUrrwCRTGccJFnHY3j0PRsWZR5P0_imHhcPUFu5Uqytq6V_5IIGGAiCLvayTpeVaeUgUQH_nTL2_nBrW4A4f7AkLdcRRJhTkb3RkUBM640cy8PY6WVtIw')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/60 to-transparent flex items-end p-md">
+<p class="text-on-secondary font-label-sm text-label-sm">Internal System Evidence ID: SV-00129</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<script>
+        // Micro-interaction for the Ruling Button
+        const rulingBtn = document.querySelector('button.bg-primary');
+        if (rulingBtn) {
+            rulingBtn.addEventListener('click', () => {
+                const textarea = document.querySelector('textarea');
+                if(textarea.value.length < 50) {
+                    textarea.classList.add('border-error', 'ring-1', 'ring-error');
+                    setTimeout(() => textarea.classList.remove('border-error', 'ring-1', 'ring-error'), 2000);
+                    alert('Legal Audit Requirement: Arbiter reasoning must be more detailed.');
+                    return;
+                }
+                
+                rulingBtn.innerHTML = `
+                    <span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span>
+                    Processing Final Ruling...
+                `;
+                rulingBtn.classList.add('opacity-80', 'cursor-not-allowed');
+                
+                setTimeout(() => {
+                    rulingBtn.innerHTML = `
+                        <span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                        Ruling Issued
+                    `;
+                    rulingBtn.classList.replace('bg-primary', 'bg-secondary');
+                }, 1500);
+            });
+        }
+
+        // Toggle Penalty Visual feedback
+        const toggle = document.querySelector('input[type="checkbox"]');
+        const penaltyText = document.querySelector('.text-error.-ml-3'); // Targetting the -15pts span
+        if(toggle && penaltyText) {
+            toggle.addEventListener('change', (e) => {
+                const label = toggle.nextElementSibling.nextElementSibling;
+                if(!e.target.checked) {
+                    label.classList.add('opacity-30', 'grayscale');
+                } else {
+                    label.classList.remove('opacity-30', 'grayscale');
+                }
+            });
+        }
+    </script>
+</body></html>

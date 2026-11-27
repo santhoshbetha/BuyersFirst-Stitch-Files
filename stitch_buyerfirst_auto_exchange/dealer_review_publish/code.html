@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Review &amp; Publish | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dae2fd",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface": "#f8f9ff",
+                    "outline": "#76777d",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#565e74",
+                    "on-primary": "#ffffff",
+                    "inverse-primary": "#bec6e0",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-container": "#271901",
+                    "surface-dim": "#cbdbf5",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-secondary-container": "#fefcff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "tertiary": "#000000",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed": "#d8e2ff",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary-container": "#7c839b",
+                    "on-tertiary-fixed": "#271901",
+                    "surface-variant": "#d3e4fe",
+                    "primary": "#000000",
+                    "inverse-surface": "#213145",
+                    "error": "#ba1a1a",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary-container": "#98805d",
+                    "on-surface": "#0b1c30",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "secondary": "#0058be",
+                    "on-background": "#0b1c30",
+                    "background": "#f8f9ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "outline-variant": "#c6c6cd",
+                    "on-primary-fixed": "#131b2e",
+                    "secondary-container": "#2170e4",
+                    "surface-container-low": "#eff4ff",
+                    "primary-container": "#131b2e",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#45464d",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#001a42"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "3xl": "64px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "2xl": "48px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9ff; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #E2E8F0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest dark:bg-tertiary-container border-b border-outline-variant dark:border-outline shadow-sm fixed top-0 w-full z-50 flex justify-between items-center px-lg h-16 w-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" style="font-size: 24px;">directions_car</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">AutoNegotiate</h1>
+</div>
+<div class="flex items-center gap-lg">
+<nav class="hidden md:flex gap-xl items-center">
+<a class="text-secondary dark:text-secondary-fixed font-bold font-label-md text-label-md" href="#">Listings</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors px-2 py-1 rounded" href="#">Search</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors px-2 py-1 rounded" href="#">Messages</a>
+</nav>
+<button class="material-symbols-outlined text-on-surface-variant active:scale-95 transition-transform">notifications</button>
+</div>
+</header>
+<main class="pt-24 px-gutter max-w-container-max mx-auto">
+<!-- Progress Stepper -->
+<div class="mb-xl flex items-center justify-between max-w-2xl mx-auto">
+<div class="flex flex-col items-center gap-xs flex-1">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">1</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Vehicle Details</span>
+</div>
+<div class="h-[2px] bg-outline-variant flex-1 mb-6"></div>
+<div class="flex flex-col items-center gap-xs flex-1">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs">2</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Pricing</span>
+</div>
+<div class="h-[2px] bg-outline-variant flex-1 mb-6"></div>
+<div class="flex flex-col items-center gap-xs flex-1">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-xs">3</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">Review &amp; Publish</span>
+</div>
+</div>
+<!-- Hero Section / Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg mb-xl">
+<!-- Left Column: Vehicle Visuals -->
+<div class="lg:col-span-7 space-y-md">
+<div class="rounded-xl overflow-hidden aspect-video border border-outline-variant shadow-sm relative group">
+<img class="w-full h-full object-cover" data-alt="High-resolution, professionally photographed front-three-quarter view of a sleek, dark metallic grey luxury electric SUV parked in a minimalist, concrete-floored architectural studio. Soft, diffused overhead studio lighting highlights the aerodynamic curves and metallic flake finish. The background is a clean white wall with subtle shadows, reflecting a high-end corporate automotive aesthetic that is both technical and authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyjy7ry3K2iIZY7oJ3tdRi8A8wkm8NiqG_oJH7l8NXeFUSnwyg55HdYIlcSGNqdt77_VI3G3zlj_lUN8pSQRiaD08kuHyG1oQkpeF4nwLUn0-FCgodd4NVPbV7a39eXcw6DAm91alzPE_kKs5nIcOozvnEC9FW8uybcnP_qmfDn65oYn7veEdSBufnCI6Bcw-W5MH2z2djH0qSu36UMemvBKMoJPi4ca6yw327CqPWhXSEj2Gu6WgxfA"/>
+<div class="absolute bottom-md right-md flex gap-sm">
+<button class="bg-primary/80 backdrop-blur-md text-on-primary px-md py-sm rounded-full font-label-md text-label-md flex items-center gap-xs active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">photo_library</span> 12 Photos
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Exterior</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Obsidian Gray</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Interior</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Cloud Leather</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant block mb-1">Odometer</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">1,240 mi</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Critical Deal Data -->
+<div class="lg:col-span-5 space-y-lg">
+<div class="glass-card p-xl rounded-xl">
+<div class="mb-lg border-b border-outline-variant pb-md">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-1">2024 Electra S-Series</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Performance Dual-Motor AWD</p>
+</div>
+<div class="space-y-xl">
+<!-- Negotiation Chips -->
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-center p-md bg-surface rounded-lg border border-outline-variant">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">MSRP / Market Price</span>
+<span class="font-headline-md text-headline-md text-on-surface">$89,500</span>
+</div>
+<div class="flex justify-between items-center p-md bg-secondary-container text-on-secondary-container rounded-lg shadow-md ring-1 ring-secondary/20">
+<span class="font-label-md text-label-md uppercase tracking-wider">Platform Reserved Price</span>
+<span class="font-display-lg text-headline-md font-black">$84,200</span>
+</div>
+<div class="flex justify-between items-center px-md">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dealer Margin Adjustment</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">-$5,300 (5.9%)</span>
+</div>
+</div>
+<!-- Technical Specs Mini Table -->
+<div class="space-y-sm">
+<h3 class="font-label-md text-label-md text-on-surface-variant border-b border-outline-variant pb-1">Listing Configuration</h3>
+<div class="grid grid-cols-2 gap-y-sm py-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Negotiation Mode</span>
+<span class="font-body-sm text-body-sm text-on-surface text-right font-medium">Automatic / AI-Led</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Stock Number</span>
+<span class="font-body-sm text-body-sm text-on-surface text-right font-medium">#ES-24-9981</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Visibility</span>
+<span class="font-body-sm text-body-sm text-on-surface text-right font-medium">Global Marketplace</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Legal / Immutable Terms Block -->
+<div class="bg-primary-container p-lg rounded-xl text-on-primary-container relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-[80px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<h4 class="font-label-md text-label-md font-bold uppercase tracking-widest">Dealer Commitment</h4>
+</div>
+<p class="font-body-sm text-body-sm leading-relaxed mb-md">
+                            By publishing this listing, you legally agree to honor the buyer’s <span class="font-bold underline decoration-secondary">Immutable Terms</span> if an automated negotiation reaches your Reserved Price. This includes honoring all stated financing rates, trade-in valuation ranges, and delivery windows without mid-deal adjustment.
+                        </p>
+<label class="flex items-start gap-md cursor-pointer hover:bg-white/5 p-sm rounded transition-colors">
+<input class="mt-1 rounded border-secondary text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="font-label-sm text-label-sm">I confirm that all provided specs are accurate and agree to the platform's immutable fulfillment protocol.</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Bar (Footer Replacement for this screen) -->
+<div class="flex flex-col md:flex-row justify-between items-center gap-lg border-t border-outline-variant pt-xl">
+<button class="flex items-center gap-sm text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md group">
+<span class="material-symbols-outlined group-active:-translate-x-1 transition-transform">arrow_back</span>
+                Edit Vehicle Details
+            </button>
+<div class="flex gap-md w-full md:w-auto">
+<button class="flex-1 md:flex-none px-xl h-14 rounded-lg border border-secondary text-secondary font-bold font-label-md text-label-md hover:bg-surface-container transition-all active:scale-95">
+                    Save as Draft
+                </button>
+<button class="flex-1 md:flex-none px-3xl h-14 rounded-lg bg-primary text-on-primary font-bold font-label-md text-label-md shadow-lg shadow-primary/20 hover:translate-y-[-2px] transition-all active:scale-95 active:translate-y-0" id="publishBtn">
+                    Publish to Marketplace
+                </button>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Nav (As defined in JSON) -->
+<nav class="md:hidden bg-surface-container-lowest border-t border-outline-variant fixed bottom-0 w-full z-50 flex justify-around items-center h-20 pb-safe">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-sm text-label-sm">Listings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span class="font-label-sm text-label-sm">Trust</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for publish button
+        const publishBtn = document.getElementById('publishBtn');
+        publishBtn.addEventListener('click', () => {
+            publishBtn.innerHTML = `
+                <span class="flex items-center gap-2">
+                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Publishing...
+                </span>
+            `;
+            setTimeout(() => {
+                publishBtn.innerHTML = `
+                    <span class="flex items-center gap-2">
+                        <span class="material-symbols-outlined">check_circle</span>
+                        Live on Marketplace
+                    </span>
+                `;
+                publishBtn.classList.replace('bg-primary', 'bg-green-600');
+            }, 1800);
+        });
+
+        // Toggle checkbox state visualization
+        const checkbox = document.querySelector('input[type="checkbox"]');
+        checkbox.addEventListener('change', (e) => {
+            const container = e.target.closest('.bg-primary-container');
+            if (e.target.checked) {
+                container.classList.add('ring-2', 'ring-secondary');
+            } else {
+                container.classList.remove('ring-2', 'ring-secondary');
+            }
+        });
+    </script>
+</body></html>

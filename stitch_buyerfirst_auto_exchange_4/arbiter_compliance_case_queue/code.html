@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Arbiter: Compliance Case Queue</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9ff;
+        }
+        /* Hide scrollbars for cleaner high-end UI */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed": "#271901",
+                      "inverse-surface": "#213145",
+                      "on-surface": "#0b1c30",
+                      "on-primary-fixed": "#131b2e",
+                      "tertiary-fixed": "#fcdeb5",
+                      "surface-bright": "#f8f9ff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed-variant": "#004395",
+                      "tertiary-fixed-dim": "#dec29a",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#271901",
+                      "surface-container-highest": "#d3e4fe",
+                      "surface-variant": "#d3e4fe",
+                      "on-tertiary-fixed-variant": "#574425",
+                      "background": "#f8f9ff",
+                      "on-secondary-container": "#fefcff",
+                      "surface-dim": "#cbdbf5",
+                      "error-container": "#ffdad6",
+                      "secondary-container": "#2170e4",
+                      "surface-container-high": "#dce9ff",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "surface-tint": "#565e74",
+                      "secondary-fixed": "#d8e2ff",
+                      "on-secondary": "#ffffff",
+                      "surface-container": "#e5eeff",
+                      "surface-container-lowest": "#ffffff",
+                      "outline": "#76777d",
+                      "tertiary": "#000000",
+                      "surface": "#f8f9ff",
+                      "primary-container": "#131b2e",
+                      "secondary": "#0058be",
+                      "inverse-primary": "#bec6e0",
+                      "surface-container-low": "#eff4ff",
+                      "primary-fixed-dim": "#bec6e0",
+                      "on-background": "#0b1c30",
+                      "error": "#ba1a1a",
+                      "primary-fixed": "#dae2fd",
+                      "on-primary": "#ffffff",
+                      "outline-variant": "#c6c6cd",
+                      "secondary-fixed-dim": "#adc6ff",
+                      "on-secondary-fixed": "#001a42",
+                      "on-tertiary-container": "#98805d",
+                      "primary": "#000000",
+                      "on-surface-variant": "#45464d",
+                      "on-primary-container": "#7c839b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "8px",
+                      "base": "4px",
+                      "xl": "32px",
+                      "3xl": "64px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "2xl": "48px",
+                      "container-max": "1280px",
+                      "lg": "24px",
+                      "md": "16px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 h-16 bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-lg w-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">AutoCompliance Case Management</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="font-label-md text-label-md text-secondary hover:bg-surface-container-low transition-colors duration-200 ease-in-out px-md py-sm rounded-lg">
+                Release Case
+            </button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a senior compliance officer in a modern corporate setting. Soft daylight illuminates the office environment behind them, which is styled with minimalist furniture and a deep navy and white color palette. The image has a crisp, high-definition quality reflecting an atmosphere of authority and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZqQQVwkeSWCYgblu-1ktFGvQAMghbW8jvRotW5vjOc4xcPDux5lebc8bWZZUEOafiMhVf2ETBBP4_aUlSc5gWI_NZg_Kf5kqVgKm6yZBgZ4to7AOhKZMTVrF8DxeGoh0-m5EG0Do-ITDwSOFeXHgv_ScLDWdT1CekenBxTZnS94UJ9niNTqUWkFcDZQCNoss1sx0e8oeiIjiV6s-1twQceQrSuYcSi77dv43Wndeen4MNLXzz64H8Ew"/>
+</div>
+</div>
+</header>
+<!-- NavigationDrawer -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-surface-container-low border-r border-outline-variant hidden md:flex flex-col py-lg gap-base h-screen z-40 pt-20">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-md mb-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-black text-on-surface">Lead Arbiter</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Compliance Division</p>
+</div>
+</div>
+<div class="bg-surface-container p-sm rounded-lg">
+<p class="font-label-sm text-label-sm text-on-surface-variant">SLA: 98.4%</p>
+</div>
+</div>
+<nav class="flex flex-col px-sm gap-xs">
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high hover:text-on-surface active:scale-[0.98] transition-all duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md bg-secondary-container text-on-secondary-container font-semibold rounded-lg px-md py-sm active:scale-[0.98] transition-all duration-150" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+<span class="font-label-md text-label-md">Case Queue</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high hover:text-on-surface active:scale-[0.98] transition-all duration-150" href="#">
+<span class="material-symbols-outlined">find_in_page</span>
+<span class="font-label-md text-label-md">Evidence Review</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high hover:text-on-surface active:scale-[0.98] transition-all duration-150" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-label-md text-label-md">Rulings</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-md py-sm hover:bg-surface-container-high hover:text-on-surface active:scale-[0.98] transition-all duration-150" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">Audit Logs</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-20 px-md md:px-lg pb-lg min-h-screen">
+<!-- Summary Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex flex-col justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-xs">Pending Rebuttals</p>
+<h3 class="font-display-lg text-display-lg text-secondary">42</h3>
+</div>
+<div class="flex items-center gap-xs text-error mt-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+<span class="font-label-sm text-label-sm">+12% from yesterday</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex flex-col justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-xs">SLA at Risk</p>
+<h3 class="font-display-lg text-display-lg text-error">08</h3>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant mt-sm">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span class="font-label-sm text-label-sm">Requires immediate action</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mb-xs">Weekly Throughput</p>
+<h3 class="font-display-lg text-display-lg text-on-surface">312</h3>
+</div>
+<div class="flex items-center gap-xs text-secondary mt-sm relative z-10">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="font-label-sm text-label-sm">Target: 350 cases</span>
+</div>
+<div class="absolute right-0 bottom-0 opacity-10">
+<span class="material-symbols-outlined text-[80px]">analytics</span>
+</div>
+</div>
+</section>
+<!-- Queue Section Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md mb-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Compliance Case Queue</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Review and resolve active platform disputes.</p>
+</div>
+<div class="flex items-center gap-sm w-full md:w-auto">
+<div class="relative flex-grow md:flex-grow-0">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full md:w-64 bg-surface-container border border-outline-variant rounded-lg pl-10 pr-4 py-2 font-body-sm text-body-sm focus:outline-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="Search Case ID..." type="text"/>
+</div>
+<button class="bg-surface-container-lowest border border-outline-variant p-2 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</div>
+</div>
+<!-- High-Density Case Table/List -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<!-- Table Header (Desktop Only) -->
+<div class="hidden md:grid grid-cols-12 gap-md p-md border-b border-outline-variant bg-surface-container-low font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">
+<div class="col-span-2">Case ID &amp; Priority</div>
+<div class="col-span-3">Dispute Type</div>
+<div class="col-span-3">Status</div>
+<div class="col-span-2">Time Remaining</div>
+<div class="col-span-2 text-right">Actions</div>
+</div>
+<!-- Case Rows -->
+<div class="divide-y divide-outline-variant">
+<!-- Case Item 1: High Priority Urgent -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-sm md:gap-md p-md items-center hover:bg-surface-container-low transition-colors duration-150 group">
+<div class="md:col-span-2 flex flex-col gap-1">
+<span class="font-label-md text-label-md text-secondary">#NEG-8842</span>
+<div class="flex">
+<span class="bg-error-container text-on-error-container text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tight">High Priority</span>
+</div>
+</div>
+<div class="md:col-span-3">
+<p class="font-body-md text-body-md font-semibold text-on-surface">Price Baiting</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">BMW Manhattan vs. User_2910</p>
+</div>
+<div class="md:col-span-3 flex items-center gap-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-surface">Awaiting Arbiter</span>
+</div>
+<div class="md:col-span-2 flex items-center gap-xs text-error font-semibold">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-md text-label-md">04h 12m</span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-95">
+                            Resolve
+                        </button>
+</div>
+</div>
+<!-- Case Item 2: Dealer Conceded -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-sm md:gap-md p-md items-center hover:bg-surface-container-low transition-colors duration-150 group">
+<div class="md:col-span-2 flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant">#NEG-9011</span>
+<div class="flex">
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tight">Medium</span>
+</div>
+</div>
+<div class="md:col-span-3">
+<p class="font-body-md text-body-md font-semibold text-on-surface">Hidden Fees</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Auto Nation FL vs. User_8832</p>
+</div>
+<div class="md:col-span-3 flex items-center gap-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-on-tertiary-container"></span>
+<span class="font-label-md text-label-md text-on-surface">Dealer Conceded</span>
+</div>
+<div class="md:col-span-2 flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-md text-label-md">18h 45m</span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="border border-outline text-on-surface px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors active:scale-95">
+                            Finalize
+                        </button>
+</div>
+</div>
+<!-- Case Item 3: Evidence Required -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-sm md:gap-md p-md items-center hover:bg-surface-container-low transition-colors duration-150 group">
+<div class="md:col-span-2 flex flex-col gap-1">
+<span class="font-label-md text-label-md text-on-surface-variant">#NEG-9125</span>
+<div class="flex">
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tight">Normal</span>
+</div>
+</div>
+<div class="md:col-span-3">
+<p class="font-body-md text-body-md font-semibold text-on-surface">Trade-In Value Misalignment</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Jersey Shore Audi vs. User_1102</p>
+</div>
+<div class="md:col-span-3 flex items-center gap-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+<span class="font-label-md text-label-md text-on-surface">Evidence Review</span>
+</div>
+<div class="md:col-span-2 flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-md text-label-md">2d 03h</span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="border border-outline text-on-surface px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-surface-container-low transition-colors active:scale-95">
+                            Review
+                        </button>
+</div>
+</div>
+<!-- Case Item 4: Critical Price Lock -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-sm md:gap-md p-md items-center hover:bg-surface-container-low transition-colors duration-150 group">
+<div class="md:col-span-2 flex flex-col gap-1">
+<span class="font-label-md text-label-md text-secondary">#NEG-7762</span>
+<div class="flex">
+<span class="bg-error-container text-on-error-container text-[10px] px-1.5 py-0.5 rounded font-bold uppercase tracking-tight">High Priority</span>
+</div>
+</div>
+<div class="md:col-span-3">
+<p class="font-body-md text-body-md font-semibold text-on-surface">Incentive Denied</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tesla Austin vs. User_0041</p>
+</div>
+<div class="md:col-span-3 flex items-center gap-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-on-surface">Awaiting Arbiter</span>
+</div>
+<div class="md:col-span-2 flex items-center gap-xs text-error font-semibold">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-md text-label-md">01h 05m</span>
+</div>
+<div class="md:col-span-2 flex justify-end">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-colors active:scale-95">
+                            Resolve
+                        </button>
+</div>
+</div>
+</div>
+<!-- Table Footer/Pagination -->
+<div class="p-md bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Showing 4 of 42 active cases</p>
+<div class="flex items-center gap-sm">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Background Decorative Element (Asymmetric) -->
+<div class="fixed top-0 right-0 w-1/3 h-screen -z-10 opacity-[0.03] pointer-events-none">
+
+</div>
+</main>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant px-md py-sm flex justify-around items-center z-50">
+<a class="flex flex-col items-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">DASH</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-secondary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">list_alt</span>
+<span class="text-[10px] font-bold">QUEUE</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="text-[10px] font-bold">RULINGS</span>
+</a>
+<a class="flex flex-col items-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-[10px] font-bold">ME</span>
+</a>
+</nav>
+<!-- Floating Action Button (Contextual for New Ticket/Case) -->
+<button class="md:hidden fixed bottom-20 right-6 w-14 h-14 bg-secondary text-on-secondary rounded-full shadow-lg flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[28px]">add_task</span>
+</button>
+<script>
+        // Simple Interaction: Simulate filter toggling
+        const filterBtn = document.querySelector('button .material-symbols-outlined[textContent="filter_list"]');
+        if(filterBtn) {
+            filterBtn.parentElement.addEventListener('click', () => {
+                console.log('Filter system toggled');
+                // Could expand a filter tray here
+            });
+        }
+
+        // Row highlighting logic for priority
+        const rows = document.querySelectorAll('.grid.divide-y > div');
+        rows.forEach(row => {
+            row.addEventListener('click', () => {
+                // Navigate to case detail
+                console.log('Opening case details...');
+            });
+        });
+    </script>
+</body></html>

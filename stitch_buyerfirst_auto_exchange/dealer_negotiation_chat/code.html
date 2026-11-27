@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dealer Suite | Negotiation Room</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Load Tailwind Config from Prompt -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#131b2e",
+                    "on-secondary-fixed": "#001a42",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#565e74",
+                    "primary-fixed": "#dae2fd",
+                    "surface-container-low": "#eff4ff",
+                    "on-primary-container": "#7c839b",
+                    "secondary": "#0058be",
+                    "on-secondary-fixed-variant": "#004395",
+                    "tertiary": "#000000",
+                    "on-secondary-container": "#fefcff",
+                    "outline-variant": "#c6c6cd",
+                    "surface-variant": "#d3e4fe",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#e5eeff",
+                    "primary-container": "#131b2e",
+                    "surface-bright": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "on-tertiary-fixed": "#271901",
+                    "on-background": "#0b1c30",
+                    "secondary-container": "#2170e4",
+                    "on-error-container": "#93000a",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#98805d",
+                    "tertiary-container": "#271901",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface-container-lowest": "#ffffff",
+                    "outline": "#76777d",
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container-high": "#dce9ff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-surface": "#0b1c30",
+                    "primary": "#000000",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "background": "#f8f9ff",
+                    "on-surface-variant": "#45464d",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "inverse-on-surface": "#eaf1ff",
+                    "inverse-surface": "#213145",
+                    "inverse-primary": "#bec6e0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "2xl": "48px",
+                    "xs": "4px",
+                    "3xl": "64px",
+                    "md": "16px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .offer-gradient {
+            background: linear-gradient(135deg, #0b1c30 0%, #131b2e 100%);
+        }
+        .chat-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .chat-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface h-screen flex overflow-hidden">
+<!-- Navigation Drawer (Mandatory Shell) -->
+<aside class="hidden md:flex flex-col h-full fixed left-0 top-0 z-40 bg-surface-container-lowest border-r border-outline-variant w-64">
+<div class="px-lg py-xl">
+<h1 class="font-headline-sm text-headline-sm font-black text-primary">Northside Motors</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-xs">Lead Negotiator</p>
+</div>
+<nav class="flex-1 px-sm">
+<a class="text-on-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container transition-all rounded-full" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-md text-label-md">Active Deals</span>
+</a>
+<a class="text-on-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container transition-all rounded-full" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="text-on-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container transition-all rounded-full" href="#">
+<span class="material-symbols-outlined">insert_chart</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="text-on-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container transition-all rounded-full" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="p-lg border-t border-outline-variant flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">DA</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Dealer Admin</p>
+<p class="text-[10px] text-on-surface-variant">v2.4.0</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col md:ml-64 relative h-screen bg-surface-bright">
+<!-- TopAppBar (Mandatory Shell) -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-lg py-md w-full bg-surface border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button class="md:hidden p-base text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary">Dealer Suite</span>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex items-center gap-xl">
+<a class="text-secondary font-bold border-b-2 border-secondary font-label-md text-label-md px-xs pb-xs" href="#">Negotiation</a>
+<a class="text-on-surface-variant font-label-md text-label-md px-xs pb-xs hover:bg-surface-container-low transition-colors" href="#">History</a>
+<a class="text-on-surface-variant font-label-md text-label-md px-xs pb-xs hover:bg-surface-container-low transition-colors" href="#">Documents</a>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center text-xs font-bold">JD</div>
+</div>
+</header>
+<!-- Offer Banner: Persistent figures at top of chat -->
+<section class="mx-lg mt-md">
+<div class="offer-gradient rounded-xl p-lg flex flex-col md:flex-row items-center justify-between gap-lg text-white shadow-lg relative overflow-hidden">
+<!-- Abstract visual depth element -->
+<div class="absolute right-0 top-0 opacity-10 pointer-events-none transform translate-x-1/4 -translate-y-1/4">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div class="flex items-center gap-lg z-10">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-white/10 p-1">
+<img class="w-full h-full object-cover rounded" data-alt="Close up photograph of a luxury high-end black SUV parked in a brightly lit showroom with polished floors. The lighting is crisp and cool, highlighting the metallic finish and precision design of the vehicle. The overall atmosphere is premium and technical, fitting a high-stakes corporate negotiation environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtvzbULKtooi2LQg3CNUP6n3UABGbZh5RpJlUMsfmYpXbqLkx2mGAWb-pxL5jtzKVfRcY-rYAi5r7DuaPmDk--Mm4kxsoHBGzbKcmKMUBd3esKhWyxD_dmQ66DskHxun8tGb_FjQL-WlQu_-rsVNfNqg_EMuYXcEZUENLxcL6mCR1HQNzxCh5yFwsUvvtnxFwk4604UCjObT9aYmDVFx9flZt5vcNl-VGaeuoAZNMx6x2YvjET_LS_Qg"/>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm">2024 V-Series Stealth</h2>
+<p class="text-white/60 font-label-sm text-label-sm uppercase tracking-widest">Stock: #NV-88219</p>
+</div>
+</div>
+<div class="flex flex-wrap justify-center gap-xl z-10">
+<div class="text-center">
+<p class="text-white/50 text-[10px] font-bold uppercase mb-1">MSRP</p>
+<p class="font-headline-sm text-headline-sm tabular-nums">$84,900</p>
+</div>
+<div class="text-center px-lg border-x border-white/10">
+<p class="text-secondary-fixed text-[10px] font-bold uppercase mb-1">Current Offer</p>
+<p class="font-headline-sm text-headline-sm text-secondary-fixed tabular-nums">$79,500</p>
+</div>
+<div class="text-center">
+<p class="text-tertiary-fixed text-[10px] font-bold uppercase mb-1">Price Gap</p>
+<p class="font-headline-sm text-headline-sm text-tertiary-fixed tabular-nums">-$5,400</p>
+</div>
+</div>
+<div class="z-10">
+<span class="px-md py-sm bg-secondary rounded-full font-label-md text-label-md flex items-center gap-sm shadow-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">sync</span>
+                        Active Negotiation
+                    </span>
+</div>
+</div>
+</section>
+<!-- Chat Container -->
+<section class="flex-1 flex flex-col overflow-hidden mx-lg my-md bg-white border border-outline-variant rounded-xl shadow-sm">
+<div class="flex-1 overflow-y-auto p-lg flex flex-col gap-lg chat-scrollbar" id="chat-window">
+<!-- System Message: Offer Event -->
+<div class="flex flex-col items-center gap-sm my-md">
+<div class="bg-surface-container text-on-surface-variant px-lg py-xs rounded-full font-label-sm text-label-sm">
+                        Negotiation started on Oct 24, 2023
+                    </div>
+</div>
+<!-- Buyer Message -->
+<div class="flex items-start gap-md max-w-[80%]">
+<div class="w-10 h-10 rounded-full bg-slate-200 flex-shrink-0 flex items-center justify-center font-bold text-slate-500">MK</div>
+<div class="flex flex-col gap-sm">
+<div class="bg-surface-container-low p-md rounded-tr-xl rounded-br-xl rounded-bl-xl border border-outline-variant">
+<p class="text-body-md">Hello, I'm interested in the V-Series Stealth. I've been looking at similar models in the area and they seem to be listed a bit lower than your MSRP. What's the best you can do on this unit?</p>
+</div>
+<span class="text-[10px] text-on-surface-variant font-medium">9:41 AM • MARK K.</span>
+</div>
+</div>
+<!-- Offer Event Badge -->
+<div class="self-center w-full max-w-md bg-secondary-container/10 border-l-4 border-secondary p-lg rounded-xl flex items-center justify-between gap-md my-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Counter-Offer Received</p>
+<p class="text-headline-sm text-headline-sm font-bold text-secondary">$79,500</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-on-surface-variant mb-1">INCLUDES</p>
+<p class="text-label-sm text-label-sm text-on-surface-variant">Winter Package, Clear Mask</p>
+</div>
+</div>
+<!-- Dealer Message -->
+<div class="flex items-start gap-md max-w-[80%] self-end flex-row-reverse">
+<div class="w-10 h-10 rounded-full bg-primary flex-shrink-0 flex items-center justify-center font-bold text-white">NM</div>
+<div class="flex flex-col gap-sm items-end">
+<div class="bg-primary text-white p-md rounded-tl-xl rounded-br-xl rounded-bl-xl shadow-md">
+<p class="text-body-md">Hi Mark, we certainly want to earn your business. I've applied our preferred client discount and included the premium protective packages. This brings us to $79,500. This is very competitive for the V-Series trim.</p>
+</div>
+<span class="text-[10px] text-on-surface-variant font-medium">10:05 AM • NORTHSIDE MOTORS</span>
+</div>
+</div>
+<!-- Buyer Message -->
+<div class="flex items-start gap-md max-w-[80%]">
+<div class="w-10 h-10 rounded-full bg-slate-200 flex-shrink-0 flex items-center justify-center font-bold text-slate-500">MK</div>
+<div class="flex flex-col gap-sm">
+<div class="bg-surface-container-low p-md rounded-tr-xl rounded-br-xl rounded-bl-xl border border-outline-variant">
+<p class="text-body-md">That's getting closer. If we can get to $78k flat and include the window tinting, I think we can sign today. Does that work for you?</p>
+</div>
+<span class="text-[10px] text-on-surface-variant font-medium">10:12 AM • MARK K.</span>
+</div>
+</div>
+</div>
+<!-- Chat Input Area -->
+<div class="p-md border-t border-outline-variant bg-surface-container-lowest">
+<div class="flex items-center gap-md bg-white border border-outline-variant rounded-full px-lg py-sm focus-within:ring-2 ring-secondary ring-offset-2 transition-all">
+<button class="p-xs text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md placeholder:text-outline" placeholder="Type your response to the buyer..." type="text"/>
+<button class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center shadow hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Negotiation Toolkit Tray (Expandable) -->
+<div class="absolute bottom-0 left-0 w-full bg-white border-t border-outline-variant shadow-[0_-10px_20px_rgba(0,0,0,0.05)] transform translate-y-[calc(100%-60px)] transition-transform duration-500 z-50 rounded-t-2xl" id="toolkit-tray">
+<!-- Tray Header / Handle -->
+<button class="w-full flex items-center justify-between px-lg py-md hover:bg-surface-container-low transition-colors rounded-t-2xl" onclick="toggleToolkit()">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">build_circle</span>
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-wider">Negotiation Toolkit</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="px-sm py-1 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-bold">4 TOOLS AVAILABLE</span>
+<span class="material-symbols-outlined transition-transform duration-500" id="tray-icon">expand_less</span>
+</div>
+</button>
+<!-- Tray Content -->
+<div class="p-lg grid grid-cols-1 md:grid-cols-4 gap-lg bg-surface-bright">
+<!-- Action: New Offer -->
+<div class="bg-white border border-outline-variant rounded-xl p-lg hover:border-secondary transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-secondary mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">edit_square</span>
+</div>
+<h3 class="font-label-md text-label-md mb-xs">Adjust Offer</h3>
+<p class="text-body-sm text-on-surface-variant">Submit a new price or modify included accessories.</p>
+</div>
+<!-- Action: Trade-in Eval -->
+<div class="bg-white border border-outline-variant rounded-xl p-lg hover:border-secondary transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<h3 class="font-label-md text-label-md mb-xs">Trade-in Assessment</h3>
+<p class="text-body-sm text-on-surface-variant">Generate a Black Book valuation for client's vehicle.</p>
+</div>
+<!-- Action: Finance Calc -->
+<div class="bg-white border border-outline-variant rounded-xl p-lg hover:border-secondary transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center text-on-surface mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">calculate</span>
+</div>
+<h3 class="font-label-md text-label-md mb-xs">Payment Calculator</h3>
+<p class="text-body-sm text-on-surface-variant">Compare lease vs. finance scenarios for this deal.</p>
+</div>
+<!-- Action: Final Contract -->
+<div class="bg-on-background text-white rounded-xl p-lg hover:shadow-xl transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-lg bg-secondary flex items-center justify-center text-white mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">draw</span>
+</div>
+<h3 class="font-label-md text-label-md mb-xs">Final Contract</h3>
+<p class="text-body-sm text-white/70">Lock all terms and send digital signature request.</p>
+</div>
+</div>
+<!-- Safe Area Bottom (Mobile) -->
+<div class="h-8 md:hidden bg-surface-bright"></div>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-secondary font-bold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Deals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+</nav>
+</main>
+<script>
+        let trayOpen = false;
+        function toggleToolkit() {
+            const tray = document.getElementById('toolkit-tray');
+            const icon = document.getElementById('tray-icon');
+            if (trayOpen) {
+                tray.style.transform = 'translateY(calc(100% - 60px))';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                tray.style.transform = 'translateY(0)';
+                icon.style.transform = 'rotate(180deg)';
+            }
+            trayOpen = !trayOpen;
+        }
+
+        // Scroll chat to bottom on load
+        window.onload = function() {
+            const chatWindow = document.getElementById('chat-window');
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        };
+
+        // Subtle micro-interaction: message hover
+        document.querySelectorAll('.chat-scrollbar > div').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.opacity = '0.9';
+                el.style.transition = 'opacity 0.2s';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.opacity = '1';
+            });
+        });
+    </script>
+</body></html>

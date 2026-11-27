@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Team Management | Dealer Suite</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dae2fd",
+                    "inverse-on-surface": "#eaf1ff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "tertiary-fixed": "#fcdeb5",
+                    "on-tertiary-container": "#98805d",
+                    "on-primary": "#ffffff",
+                    "secondary": "#0058be",
+                    "on-primary-container": "#7c839b",
+                    "on-background": "#0b1c30",
+                    "surface-container-low": "#eff4ff",
+                    "secondary-container": "#2170e4",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "on-surface-variant": "#45464d",
+                    "outline-variant": "#c6c6cd",
+                    "inverse-primary": "#bec6e0",
+                    "tertiary-container": "#271901",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#fefcff",
+                    "secondary-fixed": "#d8e2ff",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "on-tertiary-fixed": "#271901",
+                    "tertiary": "#000000",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#0b1c30",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface-dim": "#cbdbf5",
+                    "surface-variant": "#d3e4fe",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary": "#000000",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-secondary-fixed": "#001a42",
+                    "error": "#ba1a1a",
+                    "primary-container": "#131b2e",
+                    "surface-container-high": "#dce9ff",
+                    "surface-tint": "#565e74",
+                    "on-secondary": "#ffffff",
+                    "outline": "#76777d",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed": "#131b2e",
+                    "surface": "#f8f9ff",
+                    "inverse-surface": "#213145",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "background": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "2xl": "48px",
+                    "xs": "4px",
+                    "container-max": "1280px",
+                    "3xl": "64px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f8f9ff;
+        color: #0b1c30;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid #E2E8F0;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-lg py-md w-full bg-surface dark:bg-on-background border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex items-center gap-md">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-secondary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Team Management</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-label-md text-label-md text-on-surface-variant hidden md:block">Northside Motors</span>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior dealership administrator with a neutral, confident expression. High-end corporate lighting in a modern architectural office environment with slate and glass accents. The aesthetic is clean, sharp, and authoritative, matching a high-trust financial tool interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX7IKQhMu_DhwSy4o6V2CdU7B2U1_BRKN00xF6BRznvt18ZzZgTMwVhd_oUv98jS-7putz2AndX-JrTiwTpTJnAKHhP6Jdv_Cngd7_skA4pR4bh3BjcJ0OaWurc9SNbrlKoIqCzCSkx0hQbDqaycoV0-JmanK00duZhHBhheBfePSMccXUZX9yIGlKC3RMKn0rf651sztiMVNOyypozq9DcesIBxb9O7KfYanyZ7WBWzLiG7OEdm3Yaw"/>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-72px)] overflow-hidden">
+<!-- NavigationDrawer (Desktop Only) -->
+<aside class="hidden md:flex flex-col h-full sticky left-0 top-0 z-40 w-64 bg-surface-container-lowest dark:bg-on-background border-r border-outline-variant dark:border-on-surface-variant">
+<div class="px-lg py-xl">
+<div class="font-headline-sm text-headline-sm font-black text-primary dark:text-primary-fixed mb-xl">Dealer Suite</div>
+<nav class="space-y-1">
+<a class="text-on-surface-variant dark:text-outline mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-md text-label-md">Active Deals</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+<a class="text-on-surface-variant dark:text-outline mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">insert_chart</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-md transition-transform duration-200 scale-[0.98]" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto px-lg py-md border-t border-outline-variant">
+<div class="flex items-center gap-sm">
+<div class="flex-1">
+<p class="font-label-md text-label-md font-bold text-on-surface">Dealer Admin</p>
+<p class="text-xs text-on-surface-variant">v2.4.0</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-background">
+<div class="max-w-container-max mx-auto p-gutter lg:p-2xl space-y-lg">
+<!-- Summary Card & Action Row -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-lg items-end">
+<div class="lg:col-span-8">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col md:flex-row md:items-center justify-between gap-md shadow-sm">
+<div class="flex items-center gap-xl">
+<div class="space-y-1">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Members</p>
+<h2 class="font-display-lg text-display-lg text-primary leading-none">12</h2>
+</div>
+<div class="w-px h-12 bg-outline-variant hidden md:block"></div>
+<div class="space-y-1">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Seats</p>
+<div class="flex items-baseline gap-xs">
+<h2 class="font-headline-lg text-headline-lg text-secondary">12</h2>
+<span class="text-on-surface-variant font-body-md text-body-md">/ 15</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="w-full bg-surface-container-high rounded-full h-2">
+<div class="bg-secondary h-2 rounded-full" style="width: 80%"></div>
+</div>
+<p class="text-xs text-on-surface-variant text-right">3 seats remaining in your plan</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4">
+<button class="w-full h-[72px] bg-on-background text-on-primary rounded-xl flex items-center justify-center gap-md hover:opacity-90 transition-opacity active:scale-[0.98] duration-150">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-label-md text-label-md">Invite New Member</span>
+</button>
+</div>
+</section>
+<!-- Team List Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="px-lg py-md border-b border-outline-variant flex items-center justify-between bg-surface-container-low">
+<h3 class="font-label-md text-label-md text-on-surface font-bold">Member Directory</h3>
+<div class="flex items-center gap-sm">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="pl-10 pr-4 py-2 border border-outline-variant rounded-full bg-surface text-sm focus:ring-2 focus:ring-secondary/20 focus:border-secondary outline-none transition-all w-48 md:w-64" placeholder="Search members..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+</div>
+</div>
+<div class="divide-y divide-outline-variant overflow-x-auto">
+<!-- Table-like List Container -->
+<div class="min-w-[700px]">
+<!-- List Header -->
+<div class="grid grid-cols-12 px-lg py-sm bg-surface text-on-surface-variant font-label-sm text-label-sm uppercase tracking-tight">
+<div class="col-span-5">Team Member</div>
+<div class="col-span-3">Role</div>
+<div class="col-span-3">Status</div>
+<div class="col-span-1 text-right">Actions</div>
+</div>
+<!-- Team Members -->
+<div class="flex flex-col">
+<!-- Member 1 -->
+<div class="grid grid-cols-12 items-center px-lg py-md hover:bg-surface-container-low transition-colors group">
+<div class="col-span-5 flex items-center gap-md">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of Sarah Chen, a professional woman in her mid-30s with an approachable and competent demeanor. She is set against a clean, blurred office background with soft blue and grey tones. The image style is professional corporate photography with crisp focus and natural lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4Tki1dfX3zxNiOIJshu1bTgh3a0YmALIki7L5bUtLL5936tHkFKajVoYFhP5ptGrPRlZIu0EyGy1iCgeG9bNlwZnCaYnnLdlj73YhkMEp1alaaxk9jkCivxa47pdS7bTNQW_qQRa56Wc9gTnZf19kCCp8xX25u58lqkjTTa1JQFLHx7FEiNjPhNJL4thoPvTWwm4SygJZhe7Y-j5rySNei61SDtReC3KSiAIScET6Rz1SxpMT7Rb6og"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Sarah Chen</p>
+<p class="text-xs text-on-surface-variant">sarah.c@northsidemotors.com</p>
+</div>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container/10 text-secondary text-xs font-semibold border border-secondary/20">
+                                            Sales Manager
+                                        </span>
+</div>
+<div class="col-span-3">
+<div class="flex items-center gap-sm">
+<span class="text-xs text-on-surface-variant">Active now</span>
+</div>
+</div>
+<div class="col-span-1 text-right">
+<button class="p-2 rounded-full hover:bg-surface-container-high text-outline transition-colors group-hover:text-on-surface">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="grid grid-cols-12 items-center px-lg py-md hover:bg-surface-container-low transition-colors group">
+<div class="col-span-5 flex items-center gap-md">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Portrait of Marcus Thorne, a male executive in his 40s, representing an Admin role. He has a sharp, focused look and is wearing a dark navy suit. The environment is a sleek, modern boardroom with minimalist aesthetics and cool-toned lighting. Professional and high-trust visual quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALZM5MWPFMQ7ahkBf7GLil6EJy__XQlTM7VoK5NJNPFxd5sooE7xFNGxL0ss3hJwYXN2v3Ox9hpCZ9ky-ZDYGUheoRlxqIA1OZeiJtKXDa86yInDB3cDhupW4fKU6h5xD9hrKn-iE61g0SJw6u7UP-NoTFSz-4zL-oMGB7cZ0yrMh3T7qHpOIxv5uR3SJbE_eJ_j9DEAConJ8Vz1GDAEj0cNFGm_5gLG-p7h9X_4mJu5Wjoi4XrscH4g"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Marcus Thorne</p>
+<p class="text-xs text-on-surface-variant">m.thorne@northsidemotors.com</p>
+</div>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-primary-container/10 text-primary text-xs font-semibold border border-primary/20">
+                                            Admin
+                                        </span>
+</div>
+<div class="col-span-3">
+<div class="flex items-center gap-sm">
+<span class="text-xs text-on-surface-variant">Active now</span>
+</div>
+</div>
+<div class="col-span-1 text-right">
+<button class="p-2 rounded-full hover:bg-surface-container-high text-outline transition-colors group-hover:text-on-surface">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="grid grid-cols-12 items-center px-lg py-md hover:bg-surface-container-low transition-colors group">
+<div class="col-span-5 flex items-center gap-md">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of Elena Rodriguez, a Lead Negotiator. She looks sharp and analytical, wearing glasses and a crisp white shirt. The background is a clean, bright showroom with subtle automotive silhouettes in the bokeh. Studio-quality lighting, professional corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDq1va9sQCQCwWQOMW_pngAbo0_NnVeOVq1I_f7Ad7VzcVgS1IwhQPk5HhoJY5QbvqPWnI6P_3bc-cuDbBTByJislQ65xpTYvTw1-Yu3ejsRtWbjKU6jz0-75O4TT7fTQgQK5aBHXRhfJa7tYoR0erQA6u7wvpVOacsXwceiZ_N-RB55ZmFh6dDWXd0ZXy_LC8-Asjt5tsZ0geWtE-9cKsT14xhSaxqf7Zu66mSddlHKFLbiJ_MYHJIYA"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-slate-300 border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">Elena Rodriguez</p>
+<p class="text-xs text-on-surface-variant">e.rodriguez@northsidemotors.com</p>
+</div>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-xs font-semibold border border-outline-variant">
+                                            Lead Negotiator
+                                        </span>
+</div>
+<div class="col-span-3">
+<div class="flex items-center gap-sm">
+<span class="text-xs text-on-surface-variant">Offline</span>
+</div>
+</div>
+<div class="col-span-1 text-right">
+<button class="p-2 rounded-full hover:bg-surface-container-high text-outline transition-colors group-hover:text-on-surface">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Member 4 -->
+<div class="grid grid-cols-12 items-center px-lg py-md hover:bg-surface-container-low transition-colors group border-b border-outline-variant">
+<div class="col-span-5 flex items-center gap-md">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Portrait of David Kim, an Inventory Manager. He is dressed in business casual attire with a clipboard nearby, suggesting utility and technical precision. The background is a well-lit, organized parts or inventory department with clean lines. Modern professional photography, high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5EVZMDOhBQNNuQdBUN4EMHw9tMoi-jw40SKC3C4jMCyloJf3-KvyxTNIbX76_Bo5AXVKirytSsBUotyckqFQ6k5TFqaJZ3gfx1XN3mVqvNhQpnbnQgukyloJ8Gi00Y3pgNNfPG3Tsdh6wpscKlydNYWCQdm_U4yefcvFi7ZhgFMVgGd3-YhJUtlcW9etqfwhU9r2K2z8Ml_EUTlsYtRjfwM_b__mEejxpwzKpw9Xz2uMWyKjBSbOhrQ"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">David Kim</p>
+<p class="text-xs text-on-surface-variant">d.kim@northsidemotors.com</p>
+</div>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-high text-on-surface text-xs font-semibold border border-outline-variant">
+                                            Inventory Manager
+                                        </span>
+</div>
+<div class="col-span-3">
+<div class="flex items-center gap-sm">
+<span class="text-xs text-on-surface-variant">Active now</span>
+</div>
+</div>
+<div class="col-span-1 text-right">
+<button class="p-2 rounded-full hover:bg-surface-container-high text-outline transition-colors group-hover:text-on-surface">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Member 5 (Sales) -->
+<div class="grid grid-cols-12 items-center px-lg py-md hover:bg-surface-container-low transition-colors group">
+<div class="col-span-5 flex items-center gap-md">
+<div class="relative">
+<div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of James Wilson, a Sales Consultant. Friendly but professional look, wearing a polo shirt with a dealership logo. Bright showroom background with soft light. Cohesive with modern SaaS interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3J4lzp65Nt-vtCwrMFLeUWZky08v_AoHa2HEjDflTyXFR5RfHmze2Kmz55evsOhwNcGtikXjV-h3coshIwfkzGbmgs5ikGEQIt-qUys2kX4k8ya17MFMQym5k_5FVO7BUH8uFI6ZFoknEN55P6NMhR8C8q5JgXyYDIqxC5THjIs54yF8FygWjZIxg9lvwSWfWuW1u3yq--tEGnYtXxT_PL4MZ-STFLthFEdVDqfs6gpLCkMgq8ripAA"/>
+</div>
+<div class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-slate-300 border-2 border-surface-container-lowest rounded-full"></div>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-bold">James Wilson</p>
+<p class="text-xs text-on-surface-variant">j.wilson@northsidemotors.com</p>
+</div>
+</div>
+<div class="col-span-3">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-secondary-container/10 text-secondary text-xs font-semibold border border-secondary/20">
+                                            Sales
+                                        </span>
+</div>
+<div class="col-span-3">
+<div class="flex items-center gap-sm">
+<span class="text-xs text-on-surface-variant">Away (30m)</span>
+</div>
+</div>
+<div class="col-span-1 text-right">
+<button class="p-2 rounded-full hover:bg-surface-container-high text-outline transition-colors group-hover:text-on-surface">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination/Footer of List -->
+<div class="px-lg py-md flex items-center justify-between bg-surface-container-low border-t border-outline-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Showing 5 of 12 members</p>
+<div class="flex items-center gap-base">
+<button class="p-1 px-3 border border-outline-variant rounded-lg text-xs font-medium hover:bg-surface transition-colors disabled:opacity-50" disabled="">Prev</button>
+<button class="p-1 px-3 border border-outline-variant rounded-lg text-xs font-medium hover:bg-surface transition-colors bg-surface-container-lowest shadow-sm">1</button>
+<button class="p-1 px-3 border border-outline-variant rounded-lg text-xs font-medium hover:bg-surface transition-colors">2</button>
+<button class="p-1 px-3 border border-outline-variant rounded-lg text-xs font-medium hover:bg-surface transition-colors">3</button>
+<button class="p-1 px-3 border border-outline-variant rounded-lg text-xs font-medium hover:bg-surface transition-colors">Next</button>
+</div>
+</div>
+</section>
+<!-- Plan Usage / Insights -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="glass-card rounded-xl p-lg space-y-md">
+<div class="flex items-center gap-sm text-secondary">
+<span class="material-symbols-outlined text-[20px]">info</span>
+<h4 class="font-label-md text-label-md font-bold uppercase">Role Distribution</h4>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant">Sales &amp; Managers</span>
+<span class="font-bold">8 Members</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 66%"></div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between text-xs">
+<span class="text-on-surface-variant">Administrative</span>
+<span class="font-bold">3 Members</span>
+</div>
+<div class="w-full bg-surface-container-high rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 25%"></div>
+</div>
+</div>
+</div>
+<div class="glass-card rounded-xl p-lg space-y-md">
+<div class="flex items-center gap-sm text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-[20px]">verified_user</span>
+<h4 class="font-label-md text-label-md font-bold uppercase">Security Audit</h4>
+</div>
+<p class="text-sm text-on-surface-variant">All 12 members have enabled Two-Factor Authentication (2FA). Your dealership security score is currently <span class="text-green-600 font-bold">Excellent</span>.</p>
+<button class="text-secondary text-xs font-bold hover:underline">View Access Logs →</button>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-on-background border-t border-outline-variant dark:border-on-surface-variant shadow-md">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-variant dark:hover:bg-surface-container-highest p-2 rounded-lg">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Deals</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-variant dark:hover:bg-surface-container-highest p-2 rounded-lg">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-variant dark:hover:bg-surface-container-highest p-2 rounded-lg">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Offers</span>
+</button>
+<button class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold p-2 rounded-lg active:scale-95 duration-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for hover states
+        document.querySelectorAll('.group').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+            });
+            row.style.transition = 'transform 0.2s ease-out';
+        });
+    </script>
+</body></html>

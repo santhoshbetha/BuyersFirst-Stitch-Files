@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seller Negotiation Dashboard | AutoNegotiate</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "outline": "#76777d",
+                        "tertiary-container": "#271901",
+                        "on-primary-container": "#7c839b",
+                        "surface-variant": "#d3e4fe",
+                        "surface-tint": "#565e74",
+                        "secondary-container": "#2170e4",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "on-secondary-fixed": "#001a42",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "primary-container": "#131b2e",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed-dim": "#adc6ff",
+                        "surface-dim": "#cbdbf5",
+                        "primary-fixed-dim": "#bec6e0",
+                        "secondary": "#0058be",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "inverse-primary": "#bec6e0",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-container": "#98805d",
+                        "on-surface-variant": "#45464d",
+                        "on-primary-fixed": "#131b2e",
+                        "on-error": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9ff",
+                        "primary": "#000000",
+                        "on-secondary-fixed-variant": "#004395",
+                        "outline-variant": "#c6c6cd",
+                        "surface-container-high": "#dce9ff",
+                        "secondary-fixed": "#d8e2ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "inverse-surface": "#213145",
+                        "on-secondary-container": "#fefcff",
+                        "tertiary-fixed": "#fcdeb5",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#271901",
+                        "tertiary": "#000000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "container-max": "1280px",
+                        "2xl": "48px",
+                        "base": "4px",
+                        "3xl": "64px",
+                        "sm": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
+        .negotiation-pulse {
+            animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .7; }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar Navigation Shell -->
+<header class="fixed top-0 w-full bg-surface z-50 flex items-center justify-between px-md h-16 border-b border-outline-variant">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container transition-colors p-sm rounded-full" data-icon="menu">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">AutoNegotiate</h1>
+</div>
+<div class="hidden md:flex items-center gap-xl h-full">
+<a class="flex items-center h-full text-secondary font-bold" data-label="Offers" href="#">Offers</a>
+<a class="flex items-center h-full text-on-surface-variant hover:bg-surface-container transition-colors px-md" data-label="Search" href="#">Search</a>
+<a class="flex items-center h-full text-on-surface-variant hover:bg-surface-container transition-colors px-md" data-label="Messages" href="#">Messages</a>
+<a class="flex items-center h-full text-on-surface-variant hover:bg-surface-container transition-colors px-md" data-label="Profile" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined text-primary p-sm rounded-full hover:bg-surface-container transition-colors" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-label-sm">JS</div>
+</div>
+</header>
+<main class="pt-24 pb-24 md:pb-8 max-w-container-max mx-auto px-md">
+<!-- Dashboard Header -->
+<div class="mb-lg">
+<p class="text-label-md text-on-primary-container mb-xs">DASHBOARD</p>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">2023 Porsche 911 Carrera S</h2>
+</div>
+<!-- Summary Cards Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-lg flex flex-col justify-between">
+<div>
+<p class="text-label-sm text-outline mb-xs">Active Inquiries</p>
+<p class="text-headline-md font-bold text-on-surface">12</p>
+</div>
+<div class="mt-md flex items-center text-secondary">
+<span class="material-symbols-outlined text-body-sm mr-1" data-icon="trending_up">trending_up</span>
+<span class="text-label-sm">+4 new today</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-lg flex flex-col justify-between">
+<div>
+<p class="text-label-sm text-outline mb-xs">Top Offer</p>
+<p class="text-headline-md font-bold text-on-surface">$114,500</p>
+</div>
+<div class="mt-md flex items-center text-on-surface-variant">
+<span class="text-label-sm">Asking: $118,000</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-lg flex flex-col justify-between">
+<div>
+<p class="text-label-sm text-outline mb-xs">Avg. Response Time</p>
+<p class="text-headline-md font-bold text-on-surface">14m</p>
+</div>
+<div class="mt-md flex items-center text-on-surface-variant">
+<span class="text-label-sm">Top 5% of sellers</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Offer Feed -->
+<section class="lg:col-span-8 space-y-md">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Negotiation Feed</h3>
+<div class="flex gap-sm">
+<button class="text-label-sm bg-surface-container px-md py-xs rounded-full border border-outline-variant">All</button>
+<button class="text-label-sm text-outline px-md py-xs rounded-full border border-transparent">Needs Response</button>
+</div>
+</div>
+<!-- Offer Card 1: New Offer -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden transition-all hover:shadow-sm">
+<div class="p-md border-b border-outline-variant bg-surface-container-lowest flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary font-bold">RM</div>
+<div>
+<div class="flex items-center gap-xs">
+<span class="font-label-md text-on-surface">Robert Miller</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="text-label-sm text-outline">Verified Buyer • 4.9★</span>
+</div>
+</div>
+<span class="bg-secondary-container text-on-secondary px-sm py-xs rounded-full text-label-sm font-bold negotiation-pulse">New Offer</span>
+</div>
+<div class="p-md flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex gap-xl">
+<div>
+<p class="text-label-sm text-outline mb-xs">Offer Amount</p>
+<p class="text-headline-sm font-bold text-on-surface">$114,500</p>
+</div>
+<div>
+<p class="text-label-sm text-outline mb-xs">Gap</p>
+<p class="text-headline-sm font-bold text-error">-$3,500</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="px-lg py-md bg-primary text-on-primary rounded-lg text-label-md font-bold transition-transform active:scale-95">Accept Offer</button>
+<button class="px-lg py-md border border-secondary text-secondary rounded-lg text-label-md font-bold transition-transform active:scale-95">Counter Offer</button>
+</div>
+</div>
+</div>
+<!-- Offer Card 2: Counter Sent -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden transition-all opacity-80">
+<div class="p-md border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant font-bold">AL</div>
+<div>
+<div class="flex items-center gap-xs">
+<span class="font-label-md text-on-surface">Amanda Lee</span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="verified">verified</span>
+</div>
+<span class="text-label-sm text-outline">Pro Buyer • 4.7★</span>
+</div>
+</div>
+<span class="bg-surface-container-high text-on-surface-variant px-sm py-xs rounded-full text-label-sm">Counter Sent</span>
+</div>
+<div class="p-md flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex gap-xl">
+<div>
+<p class="text-label-sm text-outline mb-xs">Last Offer</p>
+<p class="text-headline-sm font-bold text-on-surface">$112,000</p>
+</div>
+<div>
+<p class="text-label-sm text-outline mb-xs">Your Counter</p>
+<p class="text-headline-sm font-bold text-secondary">$116,500</p>
+</div>
+</div>
+<button class="text-label-md text-secondary font-bold flex items-center gap-xs">View History <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></button>
+</div>
+</div>
+<!-- Offer Card 3: Awaiting -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden transition-all">
+<div class="p-md border-b border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface font-bold">KD</div>
+<div>
+<div class="flex items-center gap-xs">
+<span class="font-label-md text-on-surface">Kevin Durant</span>
+</div>
+<span class="text-label-sm text-outline">New Member</span>
+</div>
+</div>
+<span class="bg-surface-variant text-on-primary-fixed-variant px-sm py-xs rounded-full text-label-sm">Awaiting Response</span>
+</div>
+<div class="p-md flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex gap-xl">
+<div>
+<p class="text-label-sm text-outline mb-xs">Offer Amount</p>
+<p class="text-headline-sm font-bold text-on-surface">$113,000</p>
+</div>
+<div>
+<p class="text-label-sm text-outline mb-xs">Gap</p>
+<p class="text-headline-sm font-bold text-error">-$5,000</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<button class="px-lg py-md border border-outline-variant text-on-surface rounded-lg text-label-md font-bold transition-transform active:scale-95">Decline</button>
+<button class="px-lg py-md border border-secondary text-secondary rounded-lg text-label-md font-bold transition-transform active:scale-95">Counter</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Analytics & Strategy -->
+<aside class="lg:col-span-4 space-y-lg">
+<!-- Price Strategy Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="insights">insights</span>
+<h4 class="font-label-md text-on-surface uppercase">Price Strategy</h4>
+</div>
+<div class="mb-md">
+<div class="flex justify-between items-center mb-xs">
+<span class="text-label-md text-on-surface-variant">Market Interest</span>
+<span class="text-label-sm font-bold text-secondary bg-secondary-container/10 px-sm py-1 rounded">HIGH</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[85%] rounded-full"></div>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-md leading-relaxed">
+                        We predict a sale within <span class="font-bold text-on-surface">3 days</span> if you hold firm on your asking price of $118,000. Buyer density is peaking for your vehicle category.
+                    </p>
+<button class="w-full py-md border border-outline-variant text-on-surface font-bold text-label-md rounded-lg hover:bg-surface-container transition-colors">Adjust Asking Price</button>
+</div>
+<!-- Listing Velocity -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="speed">speed</span>
+<h4 class="font-label-md text-on-surface uppercase">Listing Velocity</h4>
+</div>
+<div class="relative pt-2 pb-6">
+<div class="flex justify-between text-label-sm text-outline mb-2">
+<span>Listed: Day 4</span>
+<span>Avg Sale: Day 12</span>
+</div>
+<div class="w-full bg-surface-container h-3 rounded-full relative">
+<!-- Progress fill -->
+<div class="bg-secondary h-full w-[33%] rounded-full"></div>
+<!-- Marker for Average -->
+<div class="absolute top-0 left-[75%] h-full w-1 bg-outline-variant"></div>
+<div class="absolute -bottom-6 left-[75%] -translate-x-1/2 text-[10px] text-outline font-bold">MARKET AVG</div>
+</div>
+</div>
+<div class="mt-8 p-md bg-surface-container rounded-lg">
+<div class="flex items-center gap-md">
+<div class="material-symbols-outlined text-secondary text-3xl" data-icon="auto_awesome">auto_awesome</div>
+<p class="text-body-sm text-on-surface-variant italic">"Your listing is performing better than 82% of similar listings in your area."</p>
+</div>
+</div>
+</div>
+<!-- Featured Image Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden">
+<div class="h-48 bg-cover bg-center" data-alt="A side-profile studio shot of a sleek 2023 Porsche 911 Carrera S in Chalk Grey, captured with professional automotive lighting that highlights the vehicle's curves against a clean, minimalist white studio background. The style is modern, high-contrast, and technical, reflecting the dashboard's professional automotive negotiation aesthetic with deep navy and slate undertones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD-jxcSRlz3wjaLdEmMXnc-2Xju1UsagQKHSiRISAYpTQeD2TimtwxmaAYbAk0rqs-7W_kJYCC-47M6DTw3RNcJmq1MNmPDyvDLPpxTmRW_tOYWatvQ0WhKjfD18BfjFIlB40TdoXU09SXk_LCAA88zVnhTpTFwJa0kI8ijJs9hH3DFWw5uP-Awa4B93BxTZPpuZaWYqAySAi6lWN0GRzy24XJqtZFAaEeKZ2jlx8ZH_mNrMpEi9pf3lg')"></div>
+<div class="p-md flex justify-between items-center">
+<span class="text-label-md font-bold text-on-surface">Current Active View</span>
+<button class="text-secondary font-bold text-label-md flex items-center gap-xs">Edit Listing <span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span></button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar Mobile Only -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant pb-safe">
+<button class="flex flex-col items-center justify-center text-secondary bg-secondary-container/20 rounded-xl px-4 py-1">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="text-label-sm">Offers</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="text-label-sm">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-sm">Messages</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    btn.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+
+        // Simulating loading for data focus feel
+        window.addEventListener('load', () => {
+            console.log("Dashboard initialized with precision.");
+        });
+    </script>
+</body></html>

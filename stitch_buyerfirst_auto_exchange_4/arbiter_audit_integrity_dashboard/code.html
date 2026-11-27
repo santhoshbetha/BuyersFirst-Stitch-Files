@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ArbiterCore Audit & Compliance Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-tertiary-fixed": "#271901",
+                    "on-background": "#0b1c30",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-dim": "#cbdbf5",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-tertiary-container": "#98805d",
+                    "on-secondary-fixed": "#001a42",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary-container": "#7c839b",
+                    "secondary-container": "#2170e4",
+                    "outline": "#76777d",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#271901",
+                    "surface-container-low": "#eff4ff",
+                    "secondary": "#0058be",
+                    "surface-tint": "#565e74",
+                    "tertiary-fixed": "#fcdeb5",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-surface-variant": "#45464d",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "surface-container-high": "#dce9ff",
+                    "inverse-surface": "#213145",
+                    "primary-container": "#131b2e",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container": "#e5eeff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface": "#f8f9ff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "on-secondary-container": "#fefcff",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#bec6e0",
+                    "secondary-fixed": "#d8e2ff",
+                    "on-primary-fixed": "#131b2e",
+                    "primary-fixed": "#dae2fd",
+                    "on-primary": "#ffffff",
+                    "tertiary": "#000000",
+                    "primary": "#000000",
+                    "background": "#f8f9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "xs": "4px",
+                    "container-max": "1280px",
+                    "xl": "32px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "md": "16px",
+                    "gutter": "24px",
+                    "3xl": "64px",
+                    "2xl": "48px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .status-pulse {
+            animation: pulse-animation 2s infinite;
+        }
+        @keyframes pulse-animation {
+            0% { box-shadow: 0 0 0 0px rgba(0, 88, 190, 0.4); }
+            100% { box-shadow: 0 0 0 8px rgba(0, 88, 190, 0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex">
+<!-- NavigationDrawer -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface-container-lowest border-r border-outline-variant flex flex-col py-lg z-50">
+<div class="px-md mb-xl flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary text-headline-sm" data-icon="security">security</span>
+<h1 class="font-headline-sm text-headline-sm text-on-primary-container">ArbiterCore Audit</h1>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="bg-secondary-container text-on-secondary-container rounded-xl mx-sm my-xs px-md py-sm flex items-center gap-md transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-label-md text-label-md">Master Trail</span>
+</a>
+<a class="text-on-surface-variant mx-sm my-xs px-md py-sm flex items-center gap-md hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-label-md text-label-md">Case Logs</span>
+</a>
+<a class="text-on-surface-variant mx-sm my-xs px-md py-sm flex items-center gap-md hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-md text-label-md">Risk Flags</span>
+</a>
+<a class="text-on-surface-variant mx-sm my-xs px-md py-sm flex items-center gap-md hover:bg-surface-container-highest rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<div class="px-md mt-auto">
+<div class="bg-surface-container-low rounded-lg p-md border border-outline-variant">
+<div class="flex items-center gap-sm mb-xs">
+<div class="w-2 h-2 rounded-full bg-secondary status-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-surface">System Integrity</span>
+</div>
+<p class="text-[11px] leading-tight text-on-surface-variant">All nodes synced and verified</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen relative">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface border-b border-outline-variant flex items-center justify-between px-lg py-md max-w-container-max mx-auto">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-headline-md" data-icon="security">security</span>
+<h2 class="font-headline-md text-headline-md text-primary">Audit & Compliance</h2>
+</div>
+<div class="flex items-center gap-lg">
+<div class="hidden md:flex gap-md items-center">
+<span class="font-label-md text-label-md text-secondary font-bold cursor-pointer">Dashboard</span>
+<span class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 px-sm py-xs rounded cursor-pointer">Reports</span>
+<span class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200 px-sm py-xs rounded cursor-pointer">Archive</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="text-right hidden sm:block">
+<p class="font-label-md text-label-md text-on-surface">Officer Chen</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Senior Auditor</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-container border border-outline flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a compliance officer in a modern corporate setting. The lighting is crisp and cool, reflecting a clean and authoritative atmosphere. The background is a blurred office with minimalist glass and slate surfaces, consistent with a high-end fintech design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBb5ir6QcJK_QtpcIEynLuu_ev4vMCodUnlIEmE7FE3l70429ywxwcqKekdeta0auAqd6wP15aabegeXfeZt1YBbYowgkFSn8rbNv-_LSGsBRlLh9sed_XlNTtMw3l2QPmaFXmeF0EZRIFhDEymPrJYr7vZF3NiA6o1hdmNg5DilXDBKKItCxj8l3kkiR9hdxghjhNq5vSce9m0uanw5Lz9ue45cVpSljJtZhGPnmDwLDz4ylGSJ_hzgQ"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Canvas Content -->
+<div class="p-lg max-w-container-max mx-auto w-full">
+<!-- Summary Stats -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-lg mb-lg">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-sm">Total Rulings (MTD)</p>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-on-surface">1,284</span>
+<span class="text-secondary font-bold text-label-sm">+12%</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-sm">Avg Resolution</p>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-on-surface">4.2h</span>
+<span class="text-secondary font-bold text-label-sm">-18m</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-sm">Compliance Score</p>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-on-surface">99.8%</span>
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="verified">verified</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-sm">Pending Flags</p>
+<div class="flex items-baseline gap-sm">
+<span class="font-headline-lg text-headline-lg text-error">23</span>
+<span class="text-on-surface-variant text-label-sm">Critical</span>
+</div>
+</div>
+</div>
+<!-- Bento Dashboard Grid -->
+<div class="bento-grid">
+<!-- Main Trend Chart -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg relative overflow-hidden h-[400px]">
+<div class="flex justify-between items-center mb-xl">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Audit Volume Trends</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Comparative analysis of monthly automated vs manual rulings.</p>
+</div>
+<div class="flex gap-xs">
+<button class="px-sm py-xs bg-surface-container-low border border-outline-variant rounded font-label-sm text-label-sm">6 Months</button>
+<button class="px-sm py-xs text-on-surface-variant font-label-sm text-label-sm">Yearly</button>
+</div>
+</div>
+<div class="h-64 flex items-end gap-md px-md">
+<!-- Simplified Visualization Bars -->
+<div class="flex-1 flex flex-col justify-end gap-xs h-full group">
+<div class="w-full bg-secondary-container h-3/4 rounded-t-sm transition-all group-hover:bg-secondary"></div>
+<div class="w-full bg-surface-variant h-1/4 rounded-t-sm"></div>
+<span class="text-[10px] text-center mt-sm text-on-surface-variant font-semibold">JAN</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full group">
+<div class="w-full bg-secondary-container h-2/3 rounded-t-sm transition-all group-hover:bg-secondary"></div>
+<div class="w-full bg-surface-variant h-1/3 rounded-t-sm"></div>
+<span class="text-[10px] text-center mt-sm text-on-surface-variant font-semibold">FEB</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full group">
+<div class="w-full bg-secondary-container h-4/5 rounded-t-sm transition-all group-hover:bg-secondary"></div>
+<div class="w-full bg-surface-variant h-1/5 rounded-t-sm"></div>
+<span class="text-[10px] text-center mt-sm text-on-surface-variant font-semibold">MAR</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full group">
+<div class="w-full bg-secondary-container h-3/4 rounded-t-sm transition-all group-hover:bg-secondary"></div>
+<div class="w-full bg-surface-variant h-1/4 rounded-t-sm"></div>
+<span class="text-[10px] text-center mt-sm text-on-surface-variant font-semibold">APR</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full group">
+<div class="w-full bg-secondary-container h-5/6 rounded-t-sm transition-all group-hover:bg-secondary"></div>
+<div class="w-full bg-surface-variant h-1/6 rounded-t-sm"></div>
+<span class="text-[10px] text-center mt-sm text-on-surface-variant font-semibold">MAY</span>
+</div>
+<div class="flex-1 flex flex-col justify-end gap-xs h-full group">
+<div class="w-full bg-secondary h-full rounded-t-sm transition-all shadow-md"></div>
+<div class="w-full bg-surface-variant h-1/5 rounded-t-sm"></div>
+<span class="text-[10px] text-center mt-sm text-on-surface-variant font-bold text-secondary">JUN</span>
+</div>
+</div>
+<div class="mt-lg flex gap-lg border-t border-outline-variant pt-md">
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Automated Decisions</span>
+</div>
+<div class="flex items-center gap-xs">
+<div class="w-2 h-2 rounded-full bg-surface-variant"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Manual Interventions</span>
+</div>
+</div>
+</div>
+<!-- Violation Type Distribution -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg h-[400px] flex flex-col">
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-md">Violation Clusters</h3>
+<div class="flex-1 flex flex-col justify-center gap-md">
+<div class="space-y-sm">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">Pricing Deviation</span>
+<span class="text-on-surface-variant">42%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary" style="width: 42%"></div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">Data Anomaly</span>
+<span class="text-on-surface-variant">28%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary opacity-80" style="width: 28%"></div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">Credential Breach</span>
+<span class="text-on-surface-variant">15%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary opacity-60" style="width: 15%"></div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface">Policy Drift</span>
+<span class="text-on-surface-variant">15%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary opacity-40" style="width: 15%"></div>
+</div>
+</div>
+</div>
+<button class="mt-xl w-full py-md border border-outline text-secondary font-label-md text-label-md rounded-lg hover:bg-surface-container-low transition-colors">
+                        View Detailed Breakdown
+                    </button>
+</div>
+<!-- Recent Master Trail Entries -->
+<div class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Live Audit Log</h3>
+<span class="text-on-surface-variant font-label-sm text-label-sm">Last Sync: 2m ago</span>
+</div>
+<table class="w-full text-left">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">TIME</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">ENTITY ID</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">RULING TYPE</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">PROBABILITY</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">STATUS</th>
+<th class="px-lg py-md"></th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="px-lg py-md font-body-sm text-body-sm tabular-nums">14:02:11</td>
+<td class="px-lg py-md font-body-sm text-body-sm font-semibold">TR-9823-X</td>
+<td class="px-lg py-md font-body-sm text-body-sm">Automated Settlement</td>
+<td class="px-lg py-md font-body-sm text-body-sm text-secondary font-bold">99.2%</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-surface-container text-on-secondary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Verified</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="px-lg py-md font-body-sm text-body-sm tabular-nums">13:58:45</td>
+<td class="px-lg py-md font-body-sm text-body-sm font-semibold">TR-9824-A</td>
+<td class="px-lg py-md font-body-sm text-body-sm">Manual Price Override</td>
+<td class="px-lg py-md font-body-sm text-body-sm text-error font-bold">64.5%</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-error-container text-on-error-container rounded-full text-[10px] font-bold uppercase tracking-wider">Flagged</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group cursor-pointer">
+<td class="px-lg py-md font-body-sm text-body-sm tabular-nums">13:42:02</td>
+<td class="px-lg py-md font-body-sm text-body-sm font-semibold">TR-9825-Q</td>
+<td class="px-lg py-md font-body-sm text-body-sm">System Validation</td>
+<td class="px-lg py-md font-body-sm text-body-sm text-secondary font-bold">100%</td>
+<td class="px-lg py-md">
+<span class="px-sm py-1 bg-surface-container text-on-secondary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Verified</span>
+</td>
+<td class="px-lg py-md text-right">
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto w-full border-t border-outline-variant bg-surface-container-low flex justify-between items-center px-lg py-md">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 ArbiterCore Negotiation Systems. Internal Audit Environment.</p>
+<div class="flex gap-lg">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity duration-150" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity duration-150" href="#">Audit Protocol</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-opacity duration-150 flex items-center gap-xs" href="#">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                    System Status
+                </a>
+</div>
+</footer>
+</main>
+<script>
+        // Micro-interactions for bars
+        document.querySelectorAll('.group').forEach(group => {
+            group.addEventListener('mouseenter', () => {
+                const bar = group.querySelector('.bg-secondary-container');
+                if(bar) bar.style.transform = 'scaleY(1.05)';
+            });
+            group.addEventListener('mouseleave', () => {
+                const bar = group.querySelector('.bg-secondary-container');
+                if(bar) bar.style.transform = 'scaleY(1)';
+            });
+        });
+    </script>
+</body></html>

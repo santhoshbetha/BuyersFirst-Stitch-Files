@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dealer Suite | Command Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#0b1c30",
+                    "secondary": "#0058be",
+                    "on-secondary-fixed-variant": "#004395",
+                    "secondary-container": "#2170e4",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#131b2e",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#45464d",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "primary-fixed": "#dae2fd",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eaf1ff",
+                    "inverse-surface": "#213145",
+                    "on-primary-fixed": "#131b2e",
+                    "tertiary-container": "#271901",
+                    "surface-dim": "#cbdbf5",
+                    "surface-container": "#e5eeff",
+                    "primary": "#000000",
+                    "on-tertiary-fixed": "#271901",
+                    "on-primary-container": "#7c839b",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "on-secondary-container": "#fefcff",
+                    "surface-container-high": "#dce9ff",
+                    "surface-variant": "#d3e4fe",
+                    "outline": "#76777d",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c6c6cd",
+                    "on-secondary-fixed": "#001a42",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#565e74",
+                    "surface-bright": "#f8f9ff",
+                    "background": "#f8f9ff",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-surface": "#0b1c30",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "inverse-primary": "#bec6e0",
+                    "tertiary": "#000000",
+                    "surface-container-highest": "#d3e4fe",
+                    "secondary-fixed": "#d8e2ff",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-container-low": "#eff4ff",
+                    "surface": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#98805d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "3xl": "64px",
+                    "2xl": "48px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "container-max": "1280px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .glow-blue { box-shadow: 0 0 15px -3px rgba(33, 112, 228, 0.2); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface overflow-hidden">
+<!-- TopAppBar Execution -->
+<header class="sticky top-0 z-50 flex items-center justify-between px-lg py-md w-full bg-surface dark:bg-on-background border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Dealer Suite</h1>
+</div>
+<div class="hidden md:flex gap-xl">
+<nav class="flex gap-lg items-center">
+<a class="text-secondary dark:text-secondary-fixed font-bold border-b-2 border-secondary font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors" href="#">Active Deals</a>
+<a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors" href="#">Inventory</a>
+<a class="text-on-surface-variant dark:text-outline font-label-md text-label-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold text-xs">DP</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- NavigationDrawer Execution -->
+<aside class="hidden md:flex flex-col h-full w-64 bg-surface-container-lowest dark:bg-on-background border-r border-outline-variant dark:border-on-surface-variant z-40">
+<div class="p-lg flex items-center gap-md border-b border-outline-variant">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div>
+<p class="font-label-md text-label-md font-black text-primary dark:text-primary-fixed">Northside Motors</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Lead Negotiator</p>
+</div>
+</div>
+<nav class="flex-1 py-md overflow-y-auto">
+<div class="bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-md scale-[0.98] transition-transform duration-200">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-label-md text-label-md">Active Deals</span>
+</div>
+<div class="text-on-surface-variant dark:text-outline mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">directions_car</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</div>
+<div class="text-on-surface-variant dark:text-outline mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">insert_chart</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</div>
+<div class="text-on-surface-variant dark:text-outline mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container dark:hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+<div class="p-md text-center text-outline text-xs border-t border-outline-variant">
+                v2.4.0 © 2024
+            </div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto custom-scrollbar p-md lg:p-lg bg-background">
+<!-- Fleet-wide Health & Key Stats Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-lg mb-lg">
+<!-- Fleet Health Score (Bento Main) -->
+<div class="lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg flex flex-col justify-between relative overflow-hidden glow-blue">
+<div class="relative z-10">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-xs flex items-center gap-xs uppercase tracking-wider">
+                            Fleet Health Score
+                            <span class="material-symbols-outlined text-sm">info</span>
+</h3>
+<div class="flex items-baseline gap-sm mt-md">
+<span class="font-display-lg text-display-lg text-secondary">94</span>
+<span class="font-headline-sm text-headline-sm text-on-surface-variant">/100</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-sm">Optimal velocity. 8% higher than industry average.</p>
+</div>
+<!-- Micro Visualizer (SVG Placeholder) -->
+<div class="mt-lg h-12 w-full flex items-end gap-1">
+<div class="flex-1 bg-secondary opacity-20 h-[40%] rounded-sm"></div>
+<div class="flex-1 bg-secondary opacity-40 h-[60%] rounded-sm"></div>
+<div class="flex-1 bg-secondary opacity-60 h-[55%] rounded-sm"></div>
+<div class="flex-1 bg-secondary opacity-80 h-[80%] rounded-sm"></div>
+<div class="flex-1 bg-secondary h-[100%] rounded-sm"></div>
+</div>
+</div>
+<!-- Active Negotiations Value -->
+<div class="lg:col-span-4 bg-on-background text-white rounded-xl p-lg flex flex-col justify-between border border-primary">
+<div>
+<h3 class="font-label-md text-label-md text-primary-fixed mb-xs flex items-center gap-xs uppercase tracking-wider">
+                            Real-Time Negotiations
+                            <span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+</h3>
+<div class="font-display-lg text-display-lg mt-md">$14.2M</div>
+<div class="flex items-center gap-xs text-secondary-fixed-dim font-label-sm text-label-sm mt-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>+12% vs last 24h</span>
+</div>
+</div>
+<div class="mt-lg pt-md border-t border-on-primary-fixed-variant flex justify-between items-center">
+<span class="text-xs text-outline">248 Open Threads</span>
+<button class="text-xs text-secondary-fixed font-bold flex items-center">View Map <span class="material-symbols-outlined text-xs">arrow_forward</span></button>
+</div>
+</div>
+<!-- High Density Stats -->
+<div class="lg:col-span-4 grid grid-cols-2 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<p class="text-outline text-xs uppercase font-bold">Inventory Value</p>
+<p class="font-headline-sm text-headline-sm mt-xs">$82.5M</p>
+<div class="w-full bg-outline-variant h-1 rounded-full mt-md overflow-hidden">
+<div class="bg-primary w-4/5 h-full"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<p class="text-outline text-xs uppercase font-bold">Avg. Days Market</p>
+<p class="font-headline-sm text-headline-sm mt-xs">18.4</p>
+<p class="text-error text-xs font-bold mt-sm">+2.1d this week</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<p class="text-outline text-xs uppercase font-bold">Conversion Rate</p>
+<p class="font-headline-sm text-headline-sm mt-xs">68.2%</p>
+<p class="text-secondary text-xs font-bold mt-sm">Top 5% Tier</p>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center justify-center">
+<button class="w-full h-full border-2 border-dashed border-outline-variant rounded-lg text-outline flex flex-col items-center justify-center hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">add</span>
+<span class="text-xs font-bold">Custom KPI</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Priority Batch Controls & Needs Attention -->
+<section class="mb-lg">
+<div class="flex flex-col md:flex-row justify-between items-end md:items-center mb-md gap-md">
+<div>
+<h2 class="font-headline-sm text-headline-sm">Operational Command</h2>
+<p class="text-on-surface-variant font-body-sm">4 Batches require urgent bulk approval</p>
+</div>
+<div class="flex gap-sm">
+<button class="bg-surface-container-lowest border border-outline-variant px-4 py-2 rounded-lg font-label-md text-label-md flex items-center gap-xs hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                        </button>
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-label-md text-label-md flex items-center gap-xs shadow-md">
+<span class="material-symbols-outlined text-sm">check_circle</span> Bulk Approve (4)
+                        </button>
+</div>
+</div>
+<!-- High-Performance Table Container -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant"><input class="rounded-sm border-outline-variant" type="checkbox"/></th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Vehicle / Batch Identity</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Current Status</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant">Market Value</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant text-right">Negotiation Progress</th>
+<th class="px-lg py-md font-label-md text-label-md text-on-surface-variant text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-md"><input class="rounded-sm border-outline-variant" type="checkbox"/></td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A clean, studio-lit side profile of a modern charcoal grey SUV, high-resolution automotive photography style. The lighting is crisp and even, highlighting the sleek lines of the vehicle against a neutral white background. The overall aesthetic is professional, corporate, and minimalist, emphasizing high-value inventory in a premium dealer suite environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDQdcQFLj-DbU0CH2t1kauiObkqaTlvV2J2ea8CJi7uXb-llsTfOaWc802rZQl3FfmN4dwsKHJrRwKSBEkqz2il_2ifsRdC9bz2u1qkAS5W3qdM8AOqfITBQKcNHbc5pj_2_OtIX8jIJtiK7xGxql2OtMT7OB2EJBLQZxKvpr6Kq5S9JbNgis3fl9lHZBa3xuoicz0b_6oclhzSRrTdlXz3mNk1tY-1dcWdmRh7mmOz3_MyZy9mEz_lg"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">2024 LUX-EV Batch Alpha</p>
+<p class="text-xs text-outline">12 Units • Mixed Origin</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="px-xs py-1 rounded bg-surface-variant text-on-surface-variant font-label-sm text-[10px] uppercase font-black">Audit Required</span>
+</td>
+<td class="px-lg py-md font-label-md text-label-md tabular-nums">$642,800</td>
+<td class="px-lg py-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-secondary">Gap: -$12,400</span>
+<div class="w-24 bg-outline-variant h-1 rounded-full mt-xs">
+<div class="bg-secondary w-3/4 h-full"></div>
+</div>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline group-hover:text-primary">more_vert</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-md"><input checked="" class="rounded-sm border-outline-variant" type="checkbox"/></td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close up detail of a high-performance luxury sports car's front grille and LED headlight. The color is a deep metallic blue. Photographed in a high-tech warehouse with soft, industrial overhead lighting. The composition is tight and modern, conveying technical precision and authority in automotive commerce." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeowvgvnBrvfsR8Qqg2eQ1ptK8xvAQ79jWyf61K_1jB4Pt4ey2b1M09KZJwJwCTOGmL6pAhRe80NudtJPZNzZX9eGLlLCDB-cJ6HHrBnSutheOM8dPyCw113FvqdQfkt_sHBDsnBMKGbrpEQof-aFMTrA7Cr3NYGfnGzwzKNmAFwoibbaoUWOHdLvTP5uxaLjkroq2YbTZy_q-crz86sY8zV3YB_Yw71UrzxysKtEmmw1gI3P1InBhUg"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Pre-Owned Premium Sedan (x4)</p>
+<p class="text-xs text-outline">VIN: JP-992...81</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="px-xs py-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-[10px] uppercase font-black">Pending Bulk Offer</span>
+</td>
+<td class="px-lg py-md font-label-md text-label-md tabular-nums">$210,000</td>
+<td class="px-lg py-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-secondary-fixed-variant">Target Met</span>
+<div class="w-24 bg-secondary h-1 rounded-full mt-xs"></div>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline group-hover:text-primary">more_vert</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-lowest transition-colors group">
+<td class="px-lg py-md"><input class="rounded-sm border-outline-variant" type="checkbox"/></td>
+<td class="px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 bg-surface-variant rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A large commercial transport carrier truck loaded with several luxury vehicles parked at a modern delivery terminal during dusk. The scene is illuminated by cool-toned artificial outdoor lighting, creating a high-tech atmosphere. The visual style is crisp and corporate, focusing on logistics and the 'In Transit' status of automotive assets." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAge-M64wkjtonE03D829pwNooofkhzol-8jHLxM08fMTBriKr8Rlo6jo_S5nyg9mMpPZXFd89aEJyAG1kTsTKoJc-3Mx3nVEWjjpg5umLiVvcPf15TCSz5sdVEfYFFo25CDGag_CO2qSDLz71b06soVxF9ntdwcAvZpn8i00tYJui3ZNgH5jEJBC9jlK0D-VkgRA1Qzm6ZnOYkc4jtHj4JozAkB-ILU0xFhbJz1VkKOez3DuFH5KuimQ"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Inter-State Logistics #402</p>
+<p class="text-xs text-outline">8 Units • Arriving 14:00</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-md">
+<span class="px-xs py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-sm text-[10px] uppercase font-black">In Transit</span>
+</td>
+<td class="px-lg py-md font-label-md text-label-md tabular-nums">$385,250</td>
+<td class="px-lg py-md text-right">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-outline">Awaiting Inspection</span>
+<div class="w-24 bg-outline-variant h-1 rounded-full mt-xs"></div>
+</div>
+</td>
+<td class="px-lg py-md text-right">
+<button class="material-symbols-outlined text-outline group-hover:text-primary">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="bg-surface-container-low px-lg py-md border-t border-outline-variant flex justify-between items-center text-on-surface-variant font-label-sm">
+<p>Showing 1-25 of 148 items</p>
+<div class="flex gap-md">
+<button class="hover:text-secondary">Previous</button>
+<button class="hover:text-secondary">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Dashboard Alerts (Small Bento) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-container-highest/30 border border-dashed border-outline-variant rounded-xl p-md flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<p class="text-xs font-bold uppercase text-on-error-container">Margin Alert</p>
+<p class="text-xs text-on-surface-variant">3 units dropped below floor price</p>
+</div>
+</div>
+<div class="bg-surface-container-highest/30 border border-dashed border-outline-variant rounded-xl p-md flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<p class="text-xs font-bold uppercase text-secondary">New Messages</p>
+<p class="text-xs text-on-surface-variant">8 unread dealer counter-offers</p>
+</div>
+</div>
+<div class="bg-surface-container-highest/30 border border-dashed border-outline-variant rounded-xl p-md flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">assignment</span>
+</div>
+<div>
+<p class="text-xs font-bold uppercase">Compliance</p>
+<p class="text-xs text-on-surface-variant">Tax documents ready for signature</p>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar Execution (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-on-background border-t border-outline-variant dark:border-on-surface-variant shadow-md">
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold scale-95 duration-100" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Deals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-variant dark:hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">chat</span>
+<span class="font-label-sm text-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-variant dark:hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-sm text-label-sm">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline hover:bg-surface-variant dark:hover:bg-surface-container-highest" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">Account</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic for active state handling
+        document.querySelectorAll('nav a, aside nav > div').forEach(el => {
+            el.addEventListener('click', function() {
+                // In a real app, this would handle routing
+                console.log('Navigated to: ' + this.innerText.trim());
+            });
+        });
+
+        // Numerical counter animation for visual flair
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const healthScore = document.querySelector('.text-display-lg.text-secondary');
+        if(healthScore) animateValue(healthScore, 0, 94, 1500);
+    </script>
+</body></html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AutoNegotiate | Professional Automotive Negotiation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#dce9ff",
+                    "on-error": "#ffffff",
+                    "error": "#ba1a1a",
+                    "outline": "#76777d",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "primary-fixed": "#dae2fd",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#fefcff",
+                    "surface-tint": "#565e74",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#2170e4",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-container": "#e5eeff",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed-dim": "#bec6e0",
+                    "error-container": "#ffdad6",
+                    "surface": "#f8f9ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary": "#000000",
+                    "surface-bright": "#f8f9ff",
+                    "on-tertiary-container": "#98805d",
+                    "on-background": "#0b1c30",
+                    "inverse-on-surface": "#eaf1ff",
+                    "inverse-primary": "#bec6e0",
+                    "secondary-fixed": "#d8e2ff",
+                    "surface-variant": "#d3e4fe",
+                    "secondary": "#0058be",
+                    "on-tertiary-fixed": "#271901",
+                    "on-tertiary-fixed-variant": "#574425",
+                    "on-secondary-fixed": "#001a42",
+                    "on-primary-container": "#7c839b",
+                    "tertiary-fixed": "#fcdeb5",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "background": "#f8f9ff",
+                    "outline-variant": "#c6c6cd",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#004395",
+                    "tertiary-fixed-dim": "#dec29a",
+                    "tertiary-container": "#271901",
+                    "on-surface-variant": "#45464d",
+                    "on-surface": "#0b1c30",
+                    "surface-container-low": "#eff4ff",
+                    "primary": "#000000",
+                    "surface-dim": "#cbdbf5",
+                    "primary-container": "#131b2e",
+                    "inverse-surface": "#213145"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "container-max": "1280px",
+                    "3xl": "64px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "base": "4px",
+                    "2xl": "48px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .blue-glow {
+            box-shadow: 0 0 20px rgba(0, 88, 190, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar Navigation -->
+<nav class="bg-surface docked full-width top-0 sticky z-50 border-b border-outline-variant shadow-sm h-16 w-full">
+<div class="flex justify-between items-center px-4 md:px-lg h-full max-w-container-max mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-headline-md" data-icon="handshake">handshake</span>
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">AutoNegotiate</span>
+</div>
+<!-- Desktop Navigation Links -->
+<div class="hidden md:flex items-center gap-xl">
+<a class="text-secondary font-semibold font-label-md" href="#">Offers</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1 rounded font-label-md" href="#">Search</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1 rounded font-label-md" href="#">Messages</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1 rounded font-label-md" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-container-low rounded-full transition-colors" data-icon="notifications">notifications</button>
+<button class="hidden md:flex bg-primary text-on-primary px-lg py-2 rounded-lg font-label-md hover:opacity-90 active:scale-95 transition-all">Get Started</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="relative overflow-hidden">
+<!-- Hero Section -->
+<section class="relative pt-16 pb-24 md:pt-32 md:pb-48 bg-surface">
+<div class="absolute inset-0 z-0 opacity-10 pointer-events-none">
+<div class="w-full h-full bg-cover bg-center" data-alt="A macro close-up of a high-end, luxury car dashboard with polished chrome details and glowing digital displays. The lighting is cold and professional with soft blue and deep navy tones, creating a high-tech corporate atmosphere for an automotive negotiation platform. Minimalist and sharp aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuABIfOEOnlxX_g15jNF8iCgmP1hoPvJDfBwmdsjSMSISgihHQiMkzuVwxRNZ_kvJp2M7X_00pB5gJe7qSacv6MwfWm9hpwuvY9IAq3kIhHZg_TxH78fg8Hehh70Ho6CLyOSVGhNOOk0Dook6JggrHQF9WvR8pIAPh42k68K3qG4A2O4zaTNk99ANF5D_dJf0tTbu_2O-MrFYLT-2Evobtf_UeU3NggS8xvByN23GTGQIFGXx8FmE_DDbg')"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-4 md:px-lg text-center">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full mb-lg animate-fade-in">
+<span class="material-symbols-outlined text-[16px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm uppercase tracking-widest">Verified Exchange Protocol</span>
+</div>
+<h1 class="font-display-lg text-display-lg md:text-[64px] mb-md max-w-4xl mx-auto leading-none text-primary">
+                    Negotiate Your Next Car with Absolute Trust.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-2xl">
+                    The modern standard for high-value automotive transactions. Structured data, immutable terms, and a fair-play environment for everyone.
+                </p>
+<!-- Dual Path Entry -->
+<div class="grid md:grid-cols-2 gap-lg max-w-4xl mx-auto mt-xl">
+<div class="glass-card p-xl rounded-xl text-left flex flex-col justify-between hover:shadow-lg transition-shadow group cursor-pointer border border-slate-200">
+<div>
+<div class="w-12 h-12 bg-surface-container-high rounded-lg flex items-center justify-center mb-md group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-secondary group-hover:text-on-secondary-container" data-icon="person">person</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-sm">Individual Buyers/Sellers</h3>
+<p class="font-body-md text-on-surface-variant mb-lg">Unlock professional-grade tools to secure the best market value for your personal vehicle.</p>
+</div>
+<button class="flex items-center gap-2 text-secondary font-semibold group-hover:gap-3 transition-all">
+                            Enter Marketplace <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="bg-primary p-xl rounded-xl text-left flex flex-col justify-between hover:shadow-xl transition-all group cursor-pointer">
+<div>
+<div class="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-md group-hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined text-white" data-icon="business">business</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-white mb-sm">Professional Dealers</h3>
+<p class="font-body-md text-white/70 mb-lg">High-volume inventory management and automated negotiation pipelines for enterprise dealers.</p>
+</div>
+<button class="flex items-center gap-2 text-white font-semibold group-hover:gap-3 transition-all">
+                            Business Solutions <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Trust Signals Row -->
+<section class="py-md bg-surface-container-low border-y border-outline-variant">
+<div class="max-w-container-max mx-auto px-4 md:px-lg flex flex-wrap justify-around items-center gap-xl opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm">10k+</span>
+<span class="font-label-md uppercase">Successful Deals</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="stars">stars</span>
+<span class="font-label-md uppercase">Verified Merchants</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm">$250M+</span>
+<span class="font-label-md uppercase">Total Volume</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-label-md uppercase">Secured Escrow</span>
+</div>
+</div>
+</section>
+<!-- Bento Philosophy Section -->
+<section class="py-24 bg-white">
+<div class="max-w-container-max mx-auto px-4 md:px-lg">
+<div class="mb-2xl text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Our 'Fair Play' Philosophy</h2>
+<p class="text-on-surface-variant max-w-xl">We've removed the friction and mystery from car buying through technical precision and absolute transparency.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Large Feature: Immutable Terms -->
+<div class="md:col-span-8 glass-card rounded-xl p-2xl relative overflow-hidden group">
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div class="max-w-md">
+<span class="text-secondary font-bold tracking-tighter text-4xl mb-md block">01</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-md">Immutable Terms</h3>
+<p class="font-body-md text-on-surface-variant mb-xl">Every bid, every counter-offer, and every concession is logged on a private, tamper-proof ledger. Once an agreement is reached, the terms are locked, preventing last-minute surprises at the dealership.</p>
+</div>
+<div class="flex gap-md items-center">
+<div class="bg-surface-container px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span> Locked Terms
+                                </div>
+<div class="bg-surface-container px-4 py-2 rounded-full font-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="history">history</span> Full Audit Log
+                                </div>
+</div>
+</div>
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
+<div class="w-full h-full bg-cover" data-alt="Close up of digital data stream with minimalist architectural lines. Deep navy and slate grey colors with sharp focus on crystalline structures. High-end financial SaaS aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCcQ7oIbmwBSIk5PaJydrpoFmP_yO19chaq5C3UW2hkRroPjz4N3d2vLktqz9VWEZ_9MUUUfcF85_xrIKoYZ2ARCf_NG4E86eydHQ2xit5-hH-ioRC2e3gkd34uwoN2WD16usAYA_BRtg72OulmmyJz2Ywr6meYH4ChIymdlCtwXiL1-tDO1q6Bdjou_oN1T54iKCMOW7SWdD2Fdw51C79w_dj8JOZlP1PCmEz5af-UT1xzvsrK9cMMlQ')"></div>
+</div>
+</div>
+<!-- Small Feature: Real-time Gap Analysis -->
+<div class="md:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-xl flex flex-col">
+<span class="text-secondary font-bold tracking-tighter text-4xl mb-md">02</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-sm">Real-time Gap Analysis</h3>
+<p class="font-body-sm text-on-surface-variant flex-grow">Our proprietary algorithm analyzes the distance between offers to suggest the most likely path to a 'Win-Win' settlement based on current market velocity.</p>
+<div class="mt-xl p-md bg-surface rounded-lg border border-slate-100">
+<div class="flex justify-between mb-xs">
+<span class="text-xs font-bold uppercase opacity-60">Settlement Gap</span>
+<span class="text-xs font-bold text-secondary">$1,250</span>
+</div>
+<div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 70%"></div>
+</div>
+</div>
+</div>
+<!-- Small Feature: Merit-Based Priority -->
+<div class="md:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-xl">
+<span class="text-secondary font-bold tracking-tighter text-4xl mb-md">03</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-sm">Merit-Based Priority</h3>
+<p class="font-body-sm text-on-surface-variant">Active buyers and sellers with high completion ratings gain priority access to 'Hot Lead' notifications and exclusive merchant deals.</p>
+</div>
+<!-- Large Feature: Fair Play Engine -->
+<div class="md:col-span-8 bg-inverse-surface text-inverse-on-surface rounded-xl p-2xl relative overflow-hidden">
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div class="max-w-md">
+<span class="text-secondary-fixed-dim font-bold tracking-tighter text-4xl mb-md block">04</span>
+<h3 class="font-headline-md text-headline-md mb-md">The Fair Play Engine</h3>
+<p class="font-body-md opacity-80 mb-xl">Our automated moderator ensures that no party can use high-pressure tactics or misleading information. Every interaction is filtered through our professional conduct protocol to maintain a high-trust environment.</p>
+</div>
+<button class="w-fit bg-secondary text-white px-lg py-3 rounded-lg font-label-md hover:bg-secondary/90 transition-colors">Learn About Protocols</button>
+</div>
+<div class="absolute -right-16 -bottom-16 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 bg-surface overflow-hidden relative">
+<div class="max-w-container-max mx-auto px-4 md:px-lg relative z-10">
+<div class="bg-white border border-outline-variant p-2xl md:p-3xl rounded-2xl flex flex-col md:flex-row items-center justify-between gap-xl shadow-xl">
+<div class="max-w-2xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-md">Ready to experience the future of automotive negotiation?</h2>
+<p class="font-body-lg text-on-surface-variant">Join 10,000+ users who have traded over $250M in vehicles using the AutoNegotiate protocol.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-md w-full md:w-auto">
+<button class="bg-primary text-on-primary px-xl py-4 rounded-lg font-label-md hover:opacity-90 active:scale-95 transition-all text-center">Get Started Now</button>
+<button class="border border-secondary text-secondary px-xl py-4 rounded-lg font-label-md hover:bg-secondary/5 transition-all text-center">Schedule Demo</button>
+</div>
+</div>
+</div>
+
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant pt-24 pb-32 md:pb-12">
+<div class="max-w-container-max mx-auto px-4 md:px-lg">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-xl mb-24">
+<div class="col-span-2 md:col-span-1">
+<div class="flex items-center gap-2 mb-lg">
+<span class="material-symbols-outlined text-primary text-headline-sm" data-icon="handshake">handshake</span>
+<span class="font-headline-sm font-bold text-primary">AutoNegotiate</span>
+</div>
+<p class="font-body-sm text-on-surface-variant max-w-xs">Technical precision in automotive markets. The professional choice for transparent transactions.</p>
+</div>
+<div>
+<h4 class="font-label-md text-primary mb-lg uppercase tracking-wider">Product</h4>
+<ul class="space-y-md font-body-sm text-on-surface-variant">
+<li><a class="hover:text-secondary transition-colors" href="#">Marketplace</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Dealer Portal</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Gap Analysis</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Pricing Data</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-primary mb-lg uppercase tracking-wider">Company</h4>
+<ul class="space-y-md font-body-sm text-on-surface-variant">
+<li><a class="hover:text-secondary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Fair Play Policy</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Security</a></li>
+<li><a class="hover:text-secondary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-primary mb-lg uppercase tracking-wider">Connect</h4>
+<div class="flex gap-md">
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors" href="#"><span class="material-symbols-outlined text-[20px]" data-icon="public">public</span></a>
+<a class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container transition-colors" href="#"><span class="material-symbols-outlined text-[20px]" data-icon="mail">mail</span></a>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-xl border-t border-outline-variant font-label-sm text-on-surface-variant/60">
+<p>© 2024 AutoNegotiate Protocol. All rights reserved.</p>
+<div class="flex gap-xl mt-md md:mt-0">
+<a class="hover:text-primary" href="#">Privacy Policy</a>
+<a class="hover:text-primary" href="#">Terms of Service</a>
+<a class="hover:text-primary" href="#">Cookie Settings</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 bg-surface border-t border-outline-variant px-md pb-safe z-50 shadow-lg">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="gavel">gavel</span>
+<span class="font-label-sm">Offers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-label-sm">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 scale-95 duration-100 active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('blue-glow');
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('blue-glow');
+                });
+            });
+        });
+    </script>
+</body></html>
